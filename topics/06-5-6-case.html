@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Методичний кейс · Сила моєї думки · 5–6 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:   #F6F3EE;
+  --surf: #FFFFFF;
+  --ink:  #1A1C28;
+  --text: #2D3348;
+  --muted:#6B7280;
+  --bd:   #E4DDD4;
+  --bds:  #C8C0B4;
+
+  --in:  #3A50A0; --in-l: #EEF1FA; --in-ll:#F5F7FD;
+  --ye:  #A87800; --ye-l: #FBF5E4;
+  --la:  #7058B0; --la-l: #F2EDF8;
+  --gr:  #1A7A5E; --gr-l: #E8F5F0; --gr-ll:#F2FAF7;
+  --ro:  #A03848; --ro-l: #FDECEA;
+  --am:  #A86A0A; --am-l: #FBF3E6;
+  --sl:  #3A5E80; --sl-l: #EBF2F8;
+  --te:  #1A7070; --te-l: #E6F4F4;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.65;}
+
+.hdr{background:var(--ink);padding:.85rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.65rem;position:sticky;top:0;z-index:300;}
+.hbrand{font-family:'Bitter',serif;font-size:.88rem;font-weight:700;color:white;}
+.hnav{display:flex;gap:.25rem;flex-wrap:wrap;}
+.hn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:.28rem .78rem;font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;color:rgba(255,255,255,.55);cursor:pointer;transition:all .2s;}
+.hn:hover{background:rgba(255,255,255,.14);color:white;}
+.hn.on{background:var(--in);border-color:var(--in);color:white;}
+
+.ph{background:linear-gradient(155deg,#080C18 0%,#101428 55%,#080818 100%);padding:4rem 2rem;position:relative;overflow:hidden;}
+.ph::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(88,112,232,.22),transparent 70%);}
+.ph::after{content:'☀️';position:absolute;right:3rem;bottom:1.5rem;font-size:7rem;opacity:.06;pointer-events:none;}
+.ph-in{max-width:1060px;margin:0 auto;position:relative;z-index:1;}
+.ph-tag{font-size:.65rem;font-weight:700;letter-spacing:.22em;color:rgba(180,190,255,.65);margin-bottom:.8rem;}
+.ph h1{font-family:'Bitter',serif;font-size:clamp(1.7rem,3.2vw,2.6rem);font-weight:700;color:white;line-height:1.18;margin-bottom:.65rem;}
+.ph h1 span{color:#C0C8FF;}
+.ph .sub{font-size:.92rem;font-weight:300;font-style:italic;color:rgba(255,255,255,.42);max-width:600px;margin-bottom:1.7rem;}
+.ph-chips{display:flex;gap:.5rem;flex-wrap:wrap;}
+.chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:50px;padding:.3rem .9rem;font-size:.71rem;font-weight:600;color:rgba(255,255,255,.62);}
+
+.tabs{background:var(--surf);border-bottom:2px solid var(--bd);position:sticky;top:54px;z-index:200;overflow-x:auto;}
+.tabs-in{max-width:1060px;margin:0 auto;display:flex;}
+.tb{background:none;border:none;border-bottom:3px solid transparent;padding:.88rem 1.2rem;cursor:pointer;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;color:var(--muted);white-space:nowrap;transition:all .2s;margin-bottom:-2px;}
+.tb:hover{color:var(--ink);}
+.tb.on{color:var(--in);border-bottom-color:var(--in);}
+
+.panel{display:none;}.panel.on{display:block;}
+.wrap{max-width:1060px;margin:0 auto;padding:3rem 2rem;}
+
+.sh{font-family:'Bitter',serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:.32rem;}
+.ss{font-size:.82rem;color:var(--muted);font-style:italic;margin-bottom:1.8rem;}
+hr.r{border:none;border-top:1px solid var(--bd);margin:2.3rem 0;}
+
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.95rem;margin:1.4rem 0;}
+.card{background:var(--surf);border:1px solid var(--bd);border-radius:10px;padding:1.3rem 1.5rem;box-shadow:0 1px 3px rgba(0,0,0,.03);}
+.card .ci{font-size:1.5rem;margin-bottom:.45rem;}
+.card h3{font-family:'Bitter',serif;font-size:.92rem;font-weight:700;margin-bottom:.28rem;color:var(--ink);}
+.card p{font-size:.82rem;color:var(--muted);line-height:1.6;}
+
+.al{border-radius:9px;padding:1rem 1.3rem;margin:.85rem 0;display:flex;gap:.75rem;align-items:flex-start;}
+.al .ai{font-size:1.1rem;flex-shrink:0;margin-top:.1rem;}
+.al p{font-size:.83rem;line-height:1.65;}
+.al strong{font-weight:700;display:block;margin-bottom:.1rem;font-size:.71rem;letter-spacing:.04em;}
+.a-in{background:var(--in-l);border-left:4px solid var(--in);}
+.a-ye{background:var(--ye-l);border-left:4px solid var(--ye);}
+.a-la{background:var(--la-l);border-left:4px solid var(--la);}
+.a-gr{background:var(--gr-l);border-left:4px solid var(--gr);}
+.a-ro{background:var(--ro-l);border-left:4px solid var(--ro);}
+.a-am{background:var(--am-l);border-left:4px solid var(--am);}
+.a-sl{background:var(--sl-l);border-left:4px solid var(--sl);}
+.a-te{background:var(--te-l);border-left:4px solid var(--te);}
+
+.tl{padding-left:2.2rem;position:relative;margin:1.4rem 0;}
+.tl::before{content:'';position:absolute;left:.7rem;top:0;bottom:0;width:2px;background:var(--bd);}
+.ti{position:relative;margin-bottom:1.4rem;}
+.ti::before{content:'';position:absolute;left:-1.85rem;top:.32rem;width:12px;height:12px;border-radius:50%;background:var(--in);border:3px solid var(--surf);box-shadow:0 0 0 2px var(--in);}
+.ti-t{font-size:.64rem;font-weight:700;letter-spacing:.1em;color:var(--in);margin-bottom:.12rem;}
+.ti-h{font-weight:700;font-size:.9rem;margin-bottom:.22rem;color:var(--ink);}
+.ti-b{font-size:.82rem;color:var(--muted);line-height:1.65;}
+
+.scr{background:var(--bg);border:1px solid var(--bd);border-radius:9px;padding:1.2rem 1.4rem;margin:.85rem 0;position:relative;}
+.scr::before{content:attr(data-lbl);position:absolute;top:-9px;left:.95rem;background:var(--in);color:white;font-size:.58rem;font-weight:700;letter-spacing:.1em;padding:.15rem .6rem;border-radius:3px;}
+.scr.ye::before{background:var(--ye);}
+.scr.gr::before{background:var(--gr);}
+.scr.la::before{background:var(--la);}
+.scr.ro::before{background:var(--ro);}
+.scr.am::before{background:var(--am);}
+.scr p{font-size:.87rem;line-height:1.82;font-style:italic;color:var(--ink);}
+.scr p strong{font-style:normal;color:var(--in);}
+.scr.ye p strong{color:var(--ye);}
+.scr.gr p strong{color:var(--gr);}
+.scr.ro p strong{color:var(--ro);}
+
+.tbl{width:100%;border-collapse:collapse;margin:1.1rem 0;font-size:.82rem;}
+.tbl th{background:var(--ink);color:white;text-align:left;padding:.62rem .92rem;font-weight:700;font-size:.7rem;letter-spacing:.04em;}
+.tbl td{padding:.62rem .92rem;border-bottom:1px solid var(--bd);vertical-align:top;line-height:1.65;}
+.tbl tr:nth-child(even) td{background:var(--in-ll);}
+.tbl tr:hover td{background:var(--in-l);}
+
+.pi{background:linear-gradient(135deg,var(--la-l),#F8F5FF);border:1px solid #D4C0F0;border-radius:11px;padding:1.35rem 1.55rem;margin:1.4rem 0;position:relative;overflow:hidden;}
+.pi::after{content:'🧠';font-size:3.8rem;position:absolute;right:.7rem;bottom:-.3rem;opacity:.07;pointer-events:none;}
+.pi .pt{font-size:.64rem;font-weight:700;letter-spacing:.14em;color:var(--la);margin-bottom:.45rem;}
+.pi p{font-size:.85rem;line-height:1.75;color:#2D1B60;font-style:italic;}
+.pi .src{font-size:.71rem;color:#9070C0;margin-top:.5rem;font-style:normal;}
+
+.df3{display:grid;grid-template-columns:repeat(3,1fr);gap:.95rem;margin:1.4rem 0;}
+@media(max-width:660px){.df3{grid-template-columns:1fr;}}
+.dc{border-radius:9px;padding:1.1rem;}
+.dc h4{font-size:.75rem;font-weight:700;letter-spacing:.04em;margin-bottom:.55rem;}
+.dc ul{padding-left:1.05rem;font-size:.81rem;line-height:1.7;color:var(--muted);}
+.dc-a{background:#FFF8E6;border:1px solid #EDD878;}.dc-a h4{color:#8A6D00;}
+.dc-b{background:var(--gr-l);border:1px solid #9DCFBE;}.dc-b h4{color:#1E5244;}
+.dc-c{background:var(--la-l);border:1px solid #C0A8E8;}.dc-c h4{color:#4A2B8A;}
+
+.crb{border:1px solid var(--bd);border-radius:9px;overflow:hidden;margin:1.4rem 0;}
+.crb-h{padding:.75rem 1.25rem;font-family:'Bitter',serif;font-size:.88rem;font-weight:700;display:flex;align-items:center;gap:.5rem;color:white;}
+.crb-b{padding:1.15rem 1.35rem;background:var(--surf);}
+.crb-b h4{font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.25rem;}
+.crb-b p{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:.5rem;}
+.crb-b ol,.crb-b ul{padding-left:1.1rem;font-size:.8rem;color:var(--text);line-height:1.85;}
+
+.ab{border:1px solid var(--bd);border-radius:9px;overflow:hidden;margin:1.4rem 0;}
+.ab-h{padding:.72rem 1.25rem;font-family:'Bitter',serif;font-size:.86rem;font-weight:700;display:flex;align-items:center;gap:.48rem;color:white;}
+.ab-b{padding:1.1rem 1.3rem;background:var(--surf);}
+.ab-b h4{font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.25rem;}
+.ab-b p{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:.48rem;}
+.ab-b ol,.ab-b ul{padding-left:1.05rem;font-size:.8rem;color:var(--text);line-height:1.8;}
+
+.contacts{background:linear-gradient(135deg,var(--gr-l),var(--gr-ll));border:1.5px solid rgba(26,122,94,.22);border-radius:11px;padding:1.35rem 1.55rem;margin:1.4rem 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.95rem;}
+.ct h4{font-size:.76rem;font-weight:700;color:var(--gr);margin-bottom:.28rem;}
+.ct p{font-size:.8rem;color:var(--text);line-height:1.6;}
+.ct .num{font-family:'Bitter',serif;font-size:1.08rem;font-weight:700;color:var(--ink);}
+
+.tag{display:inline-block;font-size:.65rem;font-weight:700;padding:.15rem .52rem;border-radius:3px;margin:.12rem;}
+.tin{background:var(--in-l);color:#2A3B8A;}.tye{background:var(--ye-l);color:#7A5800;}
+.tla{background:var(--la-l);color:#4A2B8A;}.tgr{background:var(--gr-l);color:#1E5244;}
+.tro{background:var(--ro-l);color:#7A2030;}.tam{background:var(--am-l);color:#7A5800;}
+.tsl{background:var(--sl-l);color:#2A4A6A;}.tte{background:var(--te-l);color:#1A5050;}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s;}
+.reveal.vis{opacity:1;transform:none;}
+</style>
+<link rel="stylesheet" href="../assets/psy.css">
+</head>
+<body><nav class="mo-nav"><a href="../index.html">← Кабінет психолога</a><span class="mo-t">Тема 6 · Сила моєї думки: долаємо тривогу · 5–6 клас · Кейс психолога</span><span class="mo-g"><a href="06-5-6-case.html" class="on">5–6 клас</a><a href="06-7-8-case.html">7–8 клас</a><a href="06-9-11-case.html">9–11 клас</a><a href="06-b-case.html">Батьки</a><a href="06-5-6-lesson.html">⇄ Урок</a></span></nav>
+
+<div class="hdr">
+  <div class="hbrand">☀️ Методичний кейс · Сила моєї думки · 5–6 клас</div>
+  <div class="hnav">
+    <button class="hn on"  onclick="sw('plan')">📅 Хронометраж</button>
+    <button class="hn" onclick="sw('theory')">📚 Теорія</button>
+    <button class="hn" onclick="sw('activities')">🎭 Активності</button>
+    <button class="hn" onclick="sw('diff')">🎯 Диференціація</button>
+    <button class="hn" onclick="sw('crisis')">🚨 Протоколи</button>
+    <button class="hn" onclick="sw('scripts')">🗣️ Скрипти</button>
+    <button class="hn" onclick="sw('reflection')">💬 Рефлексія</button>
+  </div>
+</div>
+
+<div class="ph">
+  <div class="ph-in">
+    <div class="ph-tag">МЕТОДИЧНИЙ КЕЙС ДЛЯ ПЕДАГОГА / ПСИХОЛОГА · 5–6 КЛАС</div>
+    <h1>Сила моєї думки:<br><span>долаємо тривогу разом</span></h1>
+    <p class="sub">КПТ і ACT для 11–12-річних: 6 когнітивних спотворень, модель ABC, «хмара думок» (defusion), 8 технік заспокоєння, повний хронометраж і кризові протоколи</p>
+    <div class="ph-chips">
+      <div class="chip">⏱ 45 хвилин</div>
+      <div class="chip">🧠 КПТ + ACT основи</div>
+      <div class="chip">💭 6 пасток думок</div>
+      <div class="chip">🔤 Модель ABC</div>
+      <div class="chip">☁️ Дефузія (ACT)</div>
+      <div class="chip">🚨 Кризові протоколи</div>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tabs-in">
+    <button class="tb on" onclick="sw('plan')">📅 Хронометраж і скрипти</button>
+    <button class="tb" onclick="sw('theory')">📚 Наукова база</button>
+    <button class="tb" onclick="sw('activities')">🎭 Активності педагога</button>
+    <button class="tb" onclick="sw('diff')">🎯 Диференціація</button>
+    <button class="tb" onclick="sw('crisis')">🚨 Кризові протоколи</button>
+    <button class="tb" onclick="sw('scripts')">🗣️ Скрипти і фрази</button>
+    <button class="tb" onclick="sw('reflection')">💬 Рефлексія</button>
+  </div>
+</div>
+
+<!-- PLAN -->
+<div class="panel on" id="panel-plan">
+<div class="wrap">
+  <p class="sh reveal">Покроковий хронометраж уроку</p>
+  <p class="ss reveal">Деталізований сценарій для 5–6 класу</p>
+
+  <div class="al a-ro reveal">
+    <span class="ai">📌</span>
+    <div><p><strong>Перед уроком</strong> Урок про тривогу і думки — один із найчастіших тригерів розкриттів тривожного розладу, ОКР або ПТСР. Пройдіть файл учня самостійно. Підготуйте: контакти 116 111, план дій при розкритті, анонімний ящик питань. Для 5–6 — особливо важливий теплий дружній тон, а не лекційний.</p></div>
+  </div>
+
+  <div class="tl reveal">
+    <div class="ti">
+      <div class="ti-t">00:00 — 06:00</div>
+      <div class="ti-h">Вступ: «Чи бувало з тобою?»</div>
+      <div class="ti-b">Не «що таке тривога» — а одразу до досвіду: <em>«Підніміть руку хто хоч раз відчував серцебиття перед контрольною або коли треба було виступати». Руки підніматимуться всі. «Чудово. Це називається тривога. І вона є у всіх».</em> Нормалізація — ключ до відкритості класу.</div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">06:00 — 13:00</div>
+      <div class="ti-h">Блок 1: Що таке тривога + профіль</div>
+      <div class="ti-b">Учні відмічають ознаки і натискають «показати профіль». Педагог: <em>«Зверніть увагу: у всіх різні ознаки. Тривога в кожного своя. Немає «правильних» або «неправильних» реакцій».</em> Якщо хтось відмітив 7–8 ознак — сигнал для індивідуальної розмови після.</div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">13:00 — 21:00</div>
+      <div class="ti-h">Блок 2–3: Пастки думок + Хмара</div>
+      <div class="ti-b">Пастки читаємо разом або самостійно. Педагог акцентує: <em>«Яку з цих пасток ви впізнали в собі? Не соромно — у кожного є своя улюблена пастка».</em> Хмара думок — обов'язково зробити разом. Після того як думки «відпливають»: <em>«Ви тільки що зробили те, що терапевти називають «дефузією» — роз'єднатись з думкою».</em></div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">21:00 — 29:00</div>
+      <div class="ti-h">Блок 4: Модель ABC</div>
+      <div class="ti-b">Педагог пояснює на прикладі на дошці або вголос. Потім учні заповнюють свій. <em>«Головна ідея ABC: ми не можемо контролювати подію A. Але ми можемо помічати і змінювати думку B. І тоді реакція C буде іншою».</em> Запитайте: «Хто хоче поділитись своїм A — без B і C?»</div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">29:00 — 36:00</div>
+      <div class="ti-h">Блок 5: Сценарії + Вікторина</div>
+      <div class="ti-b">Синхронно або самостійно. Особлива увага — сценарій 8 (сильна тривога, що не проходить). Перед ним: <em>«Якщо для когось це не просто питання тесту — після уроку я тут».</em></div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">36:00 — 43:00</div>
+      <div class="ti-h">Блок 6–7: Інструменти + Мій план</div>
+      <div class="ti-b">Учні обирають техніки і заповнюють план. Педагог теж заповнює свій — моделювання важливе: «У мене теж є техніки. Моя №1 — ...»</div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">43:00 — 45:00</div>
+      <div class="ti-h">Завершення</div>
+      <div class="ti-b">Прочитайте фінальне слово. 116 111 — назвіть. <em>«Я залишаюсь 10 хвилин. Анонімні питання — в ящик або записку».</em></div>
+    </div>
+  </div>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">Скрипти для уроку</p>
+
+  <div class="scr" data-lbl="ВІДКРИТТЯ">
+    <p><strong>«</strong>Сьогодні ми говоримо про тривогу. Але це не урок «що робити з проблемними дітьми». Це урок про те, як влаштований мозок — у вас і в мене. Тривога є у всіх. Навчитись з нею — не боротись, а домовлятись — це навичка, яка знадобиться все життя.<strong>»</strong></p>
+  </div>
+  <div class="scr ye" data-lbl="ПРО «ДУМКИ — НЕ ФАКТИ»">
+    <p><strong>«</strong>Я хочу, щоб ви запам'ятали одну річ з сьогоднішнього уроку: <strong>думка — це не факт.</strong> Думка — це просто слова в голові. «Я невдаха» — не факт. «Мене всі ненавидять» — не факт. Це думки. І думки можна перевірити, оскаржити, замінити.<strong>»</strong></p>
+  </div>
+  <div class="scr" data-lbl="ПРО ХМАРУ ДУМОК — ДО ВПРАВИ">
+    <p><strong>«</strong>Зараз ми зробимо незвичну вправу. Ви будете «класти» тривожні думки в хмару — і відпускати їх. Це символ: думки — як хмари. Вони приходять і йдуть. Ви — небо. Ви — не ваші думки.<strong>»</strong></p>
+  </div>
+  <div class="scr ro" data-lbl="ПЕРЕД СЦЕНАРІЄМ 8 (СИЛЬНА ТРИВОГА)">
+    <p><strong>«</strong>Наступне питання — про сильну тривогу, яка не проходить. Якщо для когось це про «прямо зараз» — знайте: після уроку я тут. І є 116 111 — анонімно, безкоштовно. Тривожитись і просити допомоги — це нормально.<strong>»</strong></p>
+  </div>
+  <div class="scr gr" data-lbl="ЗАКРИТТЯ">
+    <p><strong>«</strong>Ви сьогодні дізнались про пастки думок, модель ABC і техніки заспокоєння. Це — реальні інструменти, які використовують психологи в роботі з тривогою. Починайте з малого: помітили пастку — назвали її. Це вже крок. А якщо важко — 116 111 або до мене.<strong>»</strong></p>
+  </div>
+</div>
+</div>
+
+<!-- THEORY -->
+<div class="panel" id="panel-theory">
+<div class="wrap">
+  <p class="sh reveal">Наукова база уроку</p>
+  <p class="ss reveal">КПТ, ACT і нейронаука тривоги — для педагога</p>
+
+  <div class="pi reveal">
+    <div class="pt">🔬 Центральна концепція</div>
+    <p><strong>Когнітивно-поведінкова терапія (Бек, Елліс) + ACT (Hayes):</strong> КПТ — найдоказовіший метод лікування тривожних розладів у дітей (NICE, 2019). Ключовий механізм: зміна когнітивних спотворень знижує тривогу ефективніше за «розслаблення» без роботи з думками. ACT (Acceptance and Commitment Therapy) доповнює: не «виправляти» думки, а змінювати відношення до них — дефузія.</p>
+    <div class="src">Beck A.T. (1979). Cognitive Therapy of Depression. Ellis A. (1962). Reason and Emotion in Psychotherapy. Hayes S.C. (1999). Acceptance and Commitment Therapy. NICE Guidelines (2019): CG185 Social anxiety disorder.</div>
+  </div>
+
+  <div class="cg reveal">
+    <div class="card"><div class="ci">💭</div><h3>6 когнітивних спотворень</h3><p>Катастрофізація, читання думок, «все або нічого», персоналізація, фільтр на негативне, «повинен/-на». Модель Бека: спотворення виникають автоматично — мозок «заощаджує» час. Розпізнавання = перший крок до зміни.</p></div>
+    <div class="card"><div class="ci">🔤</div><h3>Модель ABC — Альберт Елліс</h3><p>A (Activating event) → B (Belief/думка) → C (Consequence). Ключ: не A викликає C, а B. Зміна B — змінює C. Основа REBT (Раціонально-емотивна поведінкова терапія).</p></div>
+    <div class="card"><div class="ci">☁️</div><h3>Когнітивна дефузія (ACT)</h3><p>Hayes (1999): «злиття» з думкою = думка є правдою. Дефузія = дивитись на думку ззовні. «Я невдаха» → «У мене є думка, що я невдаха». Техніка хмари — саме дефузія.</p></div>
+    <div class="card"><div class="ci">🚨</div><h3>Нейробіологія: мигдалина</h3><p>При тривозі мигдалина «захоплює управління» від префронтальної кори. КПТ буквально тренує кору знову брати контроль. Думки — це корою. Тому робота з думками = робота з мозком.</p></div>
+    <div class="card"><div class="ci">👶</div><h3>Тривога у 11–12 р.</h3><p>ВООЗ: тривожні розлади — найпоширеніші в дитячому віці (до 20%). Пік маніфестації: 10–13 р. Соціальна тривога, тривога розлучення, специфічні фобії, ГТР. Рання освіта знижує тривалість симптомів.</p></div>
+    <div class="card"><div class="ci">🔬</div><h3>Ефективність КПТ</h3><p>Мета-аналіз Silverman et al. (2008): КПТ показує ефективність 60–80% при тривожних розладах у дітей. Груповий формат (клас) — достатньо ефективний для субклінічного рівня і профілактики.</p></div>
+  </div>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">6 пасток думок — педагогічна таблиця</p>
+
+  <table class="tbl reveal">
+    <thead><tr><th>Пастка</th><th>Механізм</th><th>Типова фраза 5–6 класника</th><th>Реальніша думка</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Катастрофізація</strong></td><td>Перебільшення негативу до крайнощів</td><td>«Я помилився — всі думають що я дурень»</td><td>«Помилки роблять всі. Це не катастрофа»</td></tr>
+      <tr><td><strong>Читання думок</strong></td><td>Приписування іншим думок (зазвичай негативних)</td><td>«Вони не взяли мене — значить я їм не подобаюсь»</td><td>«Я не знаю що вони думають. Є багато причин»</td></tr>
+      <tr><td><strong>«Все або нічого»</strong></td><td>Чорно-біле мислення без середини</td><td>«Якщо не перший — я програв/-ла»</td><td>«Є багато позицій між першим і «невдахою»»</td></tr>
+      <tr><td><strong>Персоналізація</strong></td><td>Вся відповідальність на собі</td><td>«Мама в поганому настрої — це через мене»</td><td>«Мамин настрій — її, а не мій»</td></tr>
+      <tr><td><strong>Фільтр на негативне</strong></td><td>Бачити тільки погане</td><td>«Весь день чудово — але один момент погано. Жахливий день»</td><td>«Один поганий момент з багатьох хороших»</td></tr>
+      <tr><td><strong>«Повинен/-на»</strong></td><td>Нереалістичні жорсткі правила</td><td>«Я повинен/-на подобатись всім»</td><td>«Неможливо подобатись всім — і це нормально»</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">Вікові особливості 11–12 років</p>
+  <div class="al a-in reveal"><span class="ai">🌱</span><div><p><strong>Золотий вік для КПТ-профілактики</strong> 11–12 — вік появи абстрактного мислення (за Піаже). Діти вперше здатні «думати про думки» — метакогніція. Саме тому КПТ починає бути ефективним саме з цього віку.</p></div></div>
+  <div class="al a-ye reveal"><span class="ai">👥</span><div><p><strong>Соціальна тривога — пік</strong> 11–13 р. — пік соціальної тривожності. «Всі дивляться на мене», «всі помітили», «мене не беруть» — домінуючі теми. Урок дає мову для цих переживань.</p></div></div>
+  <div class="al a-am reveal"><span class="ai">🇺🇦</span><div><p><strong>Воєнний контекст</strong> Тривога у 2022–2025 часто перемішана з реальними страхами (сирени, втрати). Важливо: не знецінювати реальну загрозу. Урок — про думки, що посилюють тривогу, а не про те, що «все добре».</p></div></div>
+  <div class="al a-la reveal"><span class="ai">📱</span><div><p><strong>Соціальні мережі і порівняння</strong> Instagram/TikTok підсилюють «читання думок» і «фільтр на негативне». Порівняння з ідеалізованими образами — специфічний тригер цього покоління.</p></div></div>
+</div>
+</div>
+
+<!-- ACTIVITIES -->
+<div class="panel" id="panel-activities">
+<div class="wrap">
+  <p class="sh reveal">Активності педагога / психолога</p>
+  <p class="ss reveal">6 вправ для 5–6 класу — КПТ і ACT в доступному форматі</p>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--in)">💭 Активність 1 · «Детектив думок» — знайти пастку <span class="tag tin" style="margin-left:auto">8 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Відпрацювати розпізнавання когнітивних спотворень у реальних прикладах.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>Педагог зачитує 5 коротких ситуацій — учні в парах визначають: яка пастка думок?</li>
+        <li>«Я сказав/-ла щось неправильно на уроці — всі тепер думають що я дурень/-ня» → ?</li>
+        <li>«Отримав/-ла 4 — це жахливо, я ніколи нічого не навчусь» → ?</li>
+        <li>«Подруга не відповіла — вона мене ненавидить» → ?</li>
+        <li>Обговорення: «Чому мозок так думає? Чому це «зручно» для нього?»</li>
+      </ol>
+      <h4>Ключовий інсайт:</h4><p>Пастки думок — автоматичні. Мозок «заощаджує час». Помітити їх — вже велика робота.</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--la)">☁️ Активність 2 · «Небо і хмари» — групова дефузія <span class="tag tla" style="margin-left:auto">8 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Відпрацювати когнітивну дефузію — «роз'єднання» з думкою.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>Педагог малює небо і хмари на дошці (або показує картинку).</li>
+        <li>«Уявіть: ви — небо. Думки — як хмари. Вони проходять повз. Ви їх не зупиняєте — але і не стаєте ними».</li>
+        <li>Кожен пише тривожну думку на стікері (анонімно) → педагог приклеює на «хмари» на дошці → клас разом «відпускає» їх: здуває паперові хмари або педагог їх знімає.</li>
+        <li>Обговорення: «Як почувались коли думка «поплила»?»</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--ye)">🔤 Активність 3 · ABC у трійках — живий тренінг <span class="tag tye" style="margin-left:auto">12 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Відпрацювати модель ABC в безпечному середовищі.</p>
+      <h4>Хід (трійки: Ситуація, Думка, Реакція):</h4>
+      <ol>
+        <li>Один учень описує ситуацію (A) — без оцінки, тільки факти.</li>
+        <li>Другий вгадує яка думка (B) могла виникнути.</li>
+        <li>Третій — яка реакція (C) з такою думкою.</li>
+        <li>Потім — придумують іншу думку (B2) → яка реакція (C2)?</li>
+      </ol>
+      <h4>Ключовий інсайт:</h4><p>«Та сама ситуація — різні думки — зовсім різні реакції. Де ви маєте вплив? На B!»</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--gr)">🫁 Активність 4 · «Кнопка спокою» — групова дихальна вправа <span class="tag tgr" style="margin-left:auto">5 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Відпрацювати техніку дихання як «першу допомогу» при тривозі.</p>
+      <h4>Хід (педагог веде вголос):</h4>
+      <ol>
+        <li>«Закрийте очі або дивіться в одну точку».</li>
+        <li>Дихання 4-4-4: вдих 4 с → затримка 4 с → видих 4 с. Повторити 4 рази разом.</li>
+        <li>Після: «Що змінилось? Де у тілі відчули різницю?»</li>
+        <li>Техніку 5-4-3-2-1 — також провести разом вголос.</li>
+      </ol>
+      <h4>Важливо:</h4><p>Не пропускайте дихальну практику! «Знати» і «вміти» — різні речі. Лише практика в безпечному середовищі дає учням впевненість застосувати це в кризі.</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--am)">✍️ Активність 5 · «Лист Тривозі» — творча техніка <span class="tag tam" style="margin-left:auto">8 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Через творчість дати тривозі «голос» і відстань від неї.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>Учні пишуть короткий «лист» своїй тривозі (5–7 речень).</li>
+        <li>Структура: «Привіт, Тривого. Я знаю що ти кажеш коли... Але насправді... Дякую що попереджаєш, але цього разу я сам/-а впораюсь».</li>
+        <li>Не збирати. Хто хоче — може поділитись.</li>
+      </ol>
+      <h4>Ефект:</h4><p>Екстерналізація — техніка нарративної терапії. Тривога стає «персонажем» а не «частиною мене» → відстань → контроль.</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--te)">🌟 Активність 6 · Анонімний ящик + Мій план <span class="tag tte" style="margin-left:auto">протягом уроку</span></div>
+    <div class="ab-b">
+      <h4>Анонімний ящик (або Google Form):</h4><p>Типові питання 5–6 класу: «Як перестати боятись виступати?», «Що якщо тривога заважає спати?», «Я постійно хвилююсь — це нормально?». Відповідайте публічно і анонімно наприкінці або на наступному уроці.</p>
+      <h4>Мій план:</h4><p>Педагог теж заповнює свій план і ділиться одним пунктом. Моделювання — «у мене теж є техніки» — знімає stigma і показує що турбота про ментальне здоров'я — норма для всіх.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- DIFF -->
+<div class="panel" id="panel-diff">
+<div class="wrap">
+  <p class="sh reveal">Диференційований підхід</p>
+  <p class="ss reveal">Адаптація для різних учнів і контекстів</p>
+
+  <div class="df3 reveal">
+    <div class="dc dc-a">
+      <h4>Потребує особливої підтримки</h4>
+      <ul>
+        <li>Не вимагайте публічного sharing</li>
+        <li>7–8 ознак тривоги → після уроку особисто</li>
+        <li>Дихання з затримкою може посилити тривогу — запропонуйте «просте»</li>
+        <li>Якщо плаче → вийдіть разом тихо</li>
+        <li>Анонімний ящик — обов'язково</li>
+      </ul>
+    </div>
+    <div class="dc dc-b">
+      <h4>Стандартна група</h4>
+      <ul>
+        <li>Повний формат за хронометражем</li>
+        <li>Хмара думок — разом обов'язково</li>
+        <li>ABC у трійках</li>
+        <li>Дихання + 5-4-3-2-1 практично</li>
+        <li>116 111 — назвати</li>
+      </ul>
+    </div>
+    <div class="dc dc-c">
+      <h4>Активні / допитливі</h4>
+      <ul>
+        <li>Пояснення нейробіології мигдалини</li>
+        <li>«Детектив думок» — ускладнений</li>
+        <li>Підготувати вправу ABC для молодших</li>
+        <li>Намалювати власний «охоронець тривоги»</li>
+        <li>Дослідити: що таке КПТ</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="r">
+
+  <table class="tbl reveal">
+    <thead><tr><th>Тип учня</th><th>Поведінка</th><th>Дія педагога</th></tr></thead>
+    <tbody>
+      <tr><td><strong>«Я не хвилююсь ніколи»</strong></td><td>Заперечує, демонстративно байдужий/-а</td><td>«Окей. Але можливо знаєш когось, кому це знадобиться». Не тисніть.</td></tr>
+      <tr><td><strong>Занадто відкритий/-а</strong></td><td>Ділиться дуже особистим при всіх</td><td>«Дякую за відкритість. Цю розмову краще продовжити приватно».</td></tr>
+      <tr><td><strong>Жартує над темою</strong></td><td>Ігнорує або висміює</td><td>Не сперечайтесь публічно. Жарти часто — спосіб уникнути болю.</td></tr>
+      <tr><td><strong>Розплакався/-лась</strong></td><td>Несподівана емоційна реакція</td><td>Тихо вийдіть разом. «Що сталось? Я тут».</td></tr>
+      <tr><td><strong>Сильна тривога (8–10 ознак)</strong></td><td>Відмічає майже всі ознаки</td><td>Після: «Як ти? Хочеш поговорити?» Протокол при потребі.</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- CRISIS -->
+<div class="panel" id="panel-crisis">
+<div class="wrap">
+  <p class="sh reveal">Кризові протоколи</p>
+  <p class="ss reveal">Алгоритми дій при розкриттях тривожного розладу і кризових ситуацій</p>
+
+  <div class="al a-ro reveal">
+    <span class="ai">⚠️</span>
+    <div><p><strong>Для педагога:</strong> Урок про тривогу — один із найчастіших тригерів розкриттів тривожного розладу, ОКР, фобій, ПТСР. Будьте готові залишитись після. Підготуйте: анонімний ящик, контакти нижче, акт розкриття.</p></div>
+  </div>
+
+  <div class="contacts reveal">
+    <div class="ct"><h4>Дитяча гаряча лінія</h4><div class="num">116 111</div><p>Безкоштовно · Анонімно · Цілодобово</p></div>
+    <div class="ct"><h4>Психологічна підтримка</h4><div class="num">0 800 500 335</div><p>Безкоштовно з мобільного</p></div>
+    <div class="ct"><h4>Поліція / Медики</h4><div class="num">102 / 103</div><p>При загрозі або медичному стані</p></div>
+    <div class="ct"><h4>Шкільний психолог</h4><p>Первинне направлення при тривожному розладі або фобії</p></div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--in)">🔵 Протокол 1 · Панічна атака або гостра тривога на уроці</div>
+    <div class="crb-b">
+      <ol>
+        <li>Спокійний голос, низький тон: <em>«Я бачу тобі важко. Ти в безпеці. Я тут».</em></li>
+        <li>Фізіологічне зітхання: покажіть самі — два вдихи, довгий видих. Не командуйте «дихай».</li>
+        <li>5-4-3-2-1 — ведіть тихо: «Назви мені 5 речей що бачиш».</li>
+        <li>Тихо вийдіть разом — без уваги класу.</li>
+        <li>Якщо не заспокоюється 10+ хв → батьки → 103.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--am)">🟡 Протокол 2 · Розкриття тривожного розладу або фобії</div>
+    <div class="crb-b">
+      <ol>
+        <li>Вислухайте. <em>«Дякую що розповів/-ла. Це потрібно було сміливості».</em></li>
+        <li>НЕ: «Та це дрібниці», «Всі так», «Просто не думай про це».</li>
+        <li>З'ясуйте: як давно, чи заважає вчитись і спілкуватись.</li>
+        <li>Направте до шкільного психолога або дитячого психіатра (при ГТР/ОКР/фобії).</li>
+        <li>Поінформуйте батьків м'яко: «Ваша дитина переживає тривогу. Рекомендую консультацію».</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--ro)">🔴 Протокол 3 · Суїцидальні думки або самоушкодження</div>
+    <div class="crb-b">
+      <ol>
+        <li>НЕ залишайте самого/самої.</li>
+        <li>Приватно: <em>«Ти думаєш про те щоб заподіяти собі шкоду?»</em> — запитати прямо.</li>
+        <li>Шкільний психолог + батьки + за потреби 103.</li>
+        <li>Документуйте дослівно одразу.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="pi reveal">
+    <div class="pt">💙 Для вас, педагогу</div>
+    <p>Після складного розкриття — підтримайте себе. Поговоріть з колегою або зателефонуйте на 0 800 500 335. Ваша тривога теж реальна — і ваші техніки теж працюють для вас.</p>
+  </div>
+</div>
+</div>
+
+<!-- SCRIPTS -->
+<div class="panel" id="panel-scripts">
+<div class="wrap">
+  <p class="sh reveal">Скрипти і готові фрази</p>
+  <p class="ss reveal">Конкретні слова для уроку і складних ситуацій</p>
+
+  <p class="sh" style="font-size:1rem;margin:.8rem 0">Фрази для роботи з пастками думок</p>
+
+  <div class="scr" data-lbl="КПТ-ПИТАННЯ ДО ДУМКИ">
+    <p>«Коли чуєш тривожну думку — постав їй ці питання: <strong>Які є докази що це правда? Які є докази проти?</strong> Чи є інше пояснення? Що б я сказав/-ла найкращому другу/-подрузі в такій ситуації? Що трапиться найгірше? А реалістично — що найімовірніше?»</p>
+  </div>
+
+  <div class="scr ye" data-lbl="АКТ-ДЕФУЗІЯ — ДЛЯ КЛАСУ">
+    <p>«Коли з'являється тривожна думка — спробуй так: замість «я невдаха» скажи собі: <strong>«У мене є думка, що я невдаха».</strong> Чуєш різницю? Перше — це ти. Друге — це просто думка. Думки можна спостерігати. Ти — більше ніж твої думки.»</p>
+  </div>
+
+  <div class="scr gr" data-lbl="ПОЯСНЕННЯ МОДЕЛІ ABC ДІТЯМ">
+    <p>«Уяви: учитель попросив відповідати (це A). І ти думаєш: «Я обов'язково помилюсь і всі сміятимуться» (це B). І тому серце б'ється і хочеться сховатись (це C). Тепер змінимо B: «Буває помиляюсь — і нічого страшного». <strong>Та сама ситуація — зовсім інше відчуття.</strong>»</p>
+  </div>
+
+  <hr class="r">
+
+  <p class="sh" style="font-size:1rem;margin:.8rem 0">Таблиця «закриваючих» і «відкриваючих» фраз</p>
+
+  <table class="tbl reveal">
+    <thead><tr><th>❌ Закриваюча</th><th>Чому шкодить</th><th>✅ Відкриваюча</th></tr></thead>
+    <tbody>
+      <tr><td>«Та перестань хвилюватись»</td><td>Неможливо виконати — і посилює тривогу</td><td>«Я бачу що ти хвилюєшся. Що найбільше тривожить?»</td></tr>
+      <tr><td>«Це ж дрібниці»</td><td>Знецінює і ізолює</td><td>«Для тебе це важливо — і це важливо для мене»</td></tr>
+      <tr><td>«Всі так хвилюються»</td><td>Знецінення через порівняння</td><td>«Розкажи мені про свою тривогу»</td></tr>
+      <tr><td>«Ти занадто чутливий/-а»</td><td>Сором за емоцію — і замовчування</td><td>«Твоя чутливість — сила. Ти добре відчуваєш»</td></tr>
+      <tr><td>«Просто думай про позитивне»</td><td>Токсичний позитив — ігнорування болю</td><td>«Давай знайдемо реалістичнішу думку»</td></tr>
+      <tr><td>«Не роби з мухи слона»</td><td>Називання когнітивного спотворення = знецінення</td><td>«Я розумію чому здається страшно. Що реально може статись?»</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- REFLECTION -->
+<div class="panel" id="panel-reflection">
+<div class="wrap">
+  <p class="sh reveal">Рефлексія і оцінка уроку</p>
+  <p class="ss reveal">Інструменти завершення і подальша робота</p>
+
+  <table class="tbl reveal">
+    <thead><tr><th>#</th><th>Exit Ticket</th><th>Питання</th><th>Що дає педагогу</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><span class="tag tin">Одна пастка</span></td><td>«Яку пастку думок я впізнав/-ла у себе?»</td><td>Перевірка засвоєння, персоналізація</td></tr>
+      <tr><td>2</td><td><span class="tag tye">Моя техніка</span></td><td>«Яку техніку спробую першою?»</td><td>Намір → виконання</td></tr>
+      <tr><td>3</td><td><span class="tag tla">Тривога 0–10</span></td><td>«Мій рівень тривоги зараз 0–10» (анонімно)</td><td>Стан класу після уроку</td></tr>
+      <tr><td>4</td><td><span class="tag tro">SOS</span></td><td>«Мені потрібна розмова» — записка без імені</td><td>Безпечне звернення</td></tr>
+      <tr><td>5</td><td><span class="tag tgr">ABC</span></td><td>«Одна ситуація де я використаю ABC цього тижня»</td><td>Конкретний намір застосувати</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="r">
+
+  <div class="cg reveal">
+    <div class="card"><div class="ci">🔍</div><h3>Пастка тижня</h3><p>Через тиждень: «Хто впіймав свою пастку думок?» Ця розмова важливіша за урок. Хоча б 2–3 учні поділились — успіх.</p></div>
+    <div class="card"><div class="ci">📞</div><h3>116 111</h3><p>Через тиждень: скільки пам'ятають номер? Вивісьте у класі. Для 5–6 — це часто перший ресурс при кризі.</p></div>
+    <div class="card"><div class="ci">✉️</div><h3>Анонімні питання</h3><p>Відповідайте публічно на наступному уроці. Це моделює: «Питати — нормально».</p></div>
+    <div class="card"><div class="ci">🤝</div><h3>Після уроку</h3><p>Залишайтесь 10 хвилин завжди. Підлітки підходять саме «просто так» — і це «просто так» найважливіше.</p></div>
+  </div>
+
+  <div class="al a-gr reveal">
+    <span class="ai">📚</span>
+    <div><p><strong>Подальша робота:</strong> Наступна тема: «Емоційний компас», «Психологічна безпека». Батьківські збори: «Тривога дитини — що робити вдома». Щотижнева «хвилина рефлексії»: яку пастку думок помітив/-ла цього тижня? Peer-support: 5–6 клас ділиться техніками з 3–4. Ресурси: Beck J.S. «Cognitive Behavior Therapy», Ross W. Greene «The Explosive Child».</p></div>
+  </div>
+
+  <div class="pi reveal">
+    <div class="pt">💙 Завершальне слово</div>
+    <p>Ви дали дітям мову для того, що вони вже відчувають. «Катастрофізація», «читання думок», «B в моделі ABC» — тепер це їхні слова для їхнього досвіду. А слова дають контроль. Дякуємо за вашу роботу.</p>
+  </div>
+</div>
+</div>
+
+<script>
+function sw(n){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.hn,.tb').forEach(b=>b.classList.remove('on'));
+  document.getElementById('panel-'+n).classList.add('on');
+  document.querySelectorAll('.hn,.tb').forEach(b=>{if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+n+"'"))b.classList.add('on');});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+const ro=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.07});
+document.querySelectorAll('.reveal').forEach(r=>ro.observe(r));
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Джерела й що почитати</h2><h3>Використані джерела</h3><ol><li>Beck, A. T., Rush, A. J., Shaw, B. F., &amp; Emery, G. (1979). <i>Cognitive Therapy of Depression</i>. Guilford Press.</li><li>LeDoux, J. (1996). <i>The Emotional Brain</i>. Simon &amp; Schuster.</li><li>Hofmann, S. G., Asnaani, A., Vonk, I. J. J., Sawyer, A. T., &amp; Fang, A. (2012). The efficacy of cognitive behavioral therapy: A review of meta-analyses. <i>Cognitive Therapy and Research, 36</i>(5), 427–440.</li><li>Greenberger, D., &amp; Padesky, C. A. (1995). <i>Mind Over Mood</i>. Guilford Press.</li><li>Hayes, S. C., Strosahl, K. D., &amp; Wilson, K. G. (1999). <i>Acceptance and Commitment Therapy</i>. Guilford Press.</li><li>Wells, A. (2009). <i>Metacognitive Therapy for Anxiety and Depression</i>. Guilford Press.</li><li>Wegner, D. M., Schneider, D. J., Carter, S. R., &amp; White, T. L. (1987). Paradoxical effects of thought suppression. <i>Journal of Personality and Social Psychology, 53</i>(1), 5–13.</li><li>Craske, M. G., Kircanski, K., Zelikowsky, M., et al. (2008). Optimizing inhibitory learning during exposure therapy. <i>Behaviour Research and Therapy, 46</i>(1), 5–27.</li></ol><h3>Що почитати фахівцеві</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>Mind Over Mood</td><td>Greenberger D., Padesky C. A., 1995</td><td>КПТ-практикум (Thought Record)</td></tr><tr><td>Get Out of Your Mind and Into Your Life</td><td>Hayes S. C., 2005</td><td>Популярний вступ в ACT</td></tr><tr><td>The Anxiety Workbook for Teens</td><td>Schab L. M., 2008</td><td>Вправи для підлітків</td></tr><tr><td>Metacognitive Therapy for Anxiety and Depression</td><td>Wells A., 2009</td><td>Метакогнітивний підхід; для фахівців</td></tr></table><h3>Що порадити батькам</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>How to Talk So Kids Will Listen &amp; Listen So Kids Will Talk</td><td>Faber A., Mazlish E.</td><td>Практичні фрази</td></tr><tr><td>Raising an Emotionally Intelligent Child</td><td>Gottman J., DeClaire J., 1997</td><td>Емоційне коучинг-спілкування</td></tr><tr><td>The Whole-Brain Child</td><td>Siegel D. J., Bryson T. P., 2011</td><td>Емоції дитини</td></tr></table><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="05-5-6-case.html">← Тема 5</a></span><span><a href="07-5-6-case.html">Тема 7 →</a></span></div><a class="mo-fab" href="../index.html#t06">☰ До матриці</a></body>
+</html>

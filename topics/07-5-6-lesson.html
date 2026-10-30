@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Як зберегти спокій · 5–6 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:   #060A12;
+  --s1:   #0C1220;
+  --s2:   #121A2C;
+  --s3:   #181F32;
+  --grn:  #2EB888;
+  --gn-l: rgba(46,184,136,.12);
+  --gn-ll:rgba(46,184,136,.05);
+  --star: #F0D060;
+  --st-l: rgba(240,208,96,.1);
+  --lav:  #8878D0;
+  --la-l: rgba(136,120,208,.1);
+  --rose: #E05070;
+  --ro-l: rgba(224,80,112,.09);
+  --sky:  #4898D8;
+  --sk-l: rgba(72,152,216,.09);
+  --text: #EAE6F0;
+  --muted:rgba(234,230,240,.5);
+  --dim:  rgba(234,230,240,.26);
+  --bd:   rgba(255,255,255,.07);
+  --bd2:  rgba(255,255,255,.14);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+
+/* starfield */
+.stars{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.stars::before,.stars::after{content:'';position:absolute;inset:0;background-image:
+  radial-gradient(1px 1px at 10% 15%,rgba(240,208,96,.6) 0%,transparent 100%),
+  radial-gradient(1px 1px at 25% 40%,rgba(240,208,96,.4) 0%,transparent 100%),
+  radial-gradient(1.5px 1.5px at 40% 8%,rgba(240,208,96,.5) 0%,transparent 100%),
+  radial-gradient(1px 1px at 55% 25%,rgba(240,208,96,.3) 0%,transparent 100%),
+  radial-gradient(1.5px 1.5px at 70% 55%,rgba(240,208,96,.4) 0%,transparent 100%),
+  radial-gradient(1px 1px at 82% 12%,rgba(240,208,96,.5) 0%,transparent 100%),
+  radial-gradient(1px 1px at 92% 38%,rgba(240,208,96,.3) 0%,transparent 100%),
+  radial-gradient(1.5px 1.5px at 15% 72%,rgba(240,208,96,.4) 0%,transparent 100%),
+  radial-gradient(1px 1px at 48% 85%,rgba(240,208,96,.35) 0%,transparent 100%),
+  radial-gradient(1px 1px at 65% 78%,rgba(240,208,96,.3) 0%,transparent 100%);
+  animation:twinkle 4s ease-in-out infinite alternate;}
+.stars::after{background-image:
+  radial-gradient(1px 1px at 5% 50%,rgba(255,255,255,.3) 0%,transparent 100%),
+  radial-gradient(1px 1px at 35% 62%,rgba(255,255,255,.25) 0%,transparent 100%),
+  radial-gradient(1px 1px at 78% 30%,rgba(255,255,255,.3) 0%,transparent 100%),
+  radial-gradient(1px 1px at 90% 70%,rgba(255,255,255,.2) 0%,transparent 100%),
+  radial-gradient(1px 1px at 20% 90%,rgba(255,255,255,.25) 0%,transparent 100%);
+  animation:twinkle 6s ease-in-out infinite alternate-reverse;}
+@keyframes twinkle{0%{opacity:.7;}100%{opacity:1;}}
+
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 50% at 20% 18%,rgba(46,184,136,.12) 0%,transparent 65%),
+             radial-gradient(ellipse 45% 55% at 85% 82%,rgba(136,120,208,.1) 0%,transparent 62%);}
+
+.prog{position:fixed;top:0;left:0;height:3px;z-index:500;background:linear-gradient(90deg,var(--grn),var(--star),var(--lav));transition:width .3s;width:0%;}
+.snav{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.6rem;z-index:300;}
+.snd{width:7px;height:7px;border-radius:50%;background:var(--bd2);border:none;cursor:pointer;padding:0;transition:all .3s;}
+.snd.on{background:var(--grn);transform:scale(1.6);}
+
+/* ── HERO ── */
+.hero{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 1.5rem;text-align:center;}
+
+/* lighthouse SVG */
+.lh-wrap{margin-bottom:2rem;position:relative;}
+.lh-svg{width:80px;height:120px;}
+.lh-beam{position:absolute;top:18px;left:50%;transform-origin:left center;width:180px;height:2px;background:linear-gradient(90deg,rgba(240,208,96,.8),transparent);border-radius:1px;animation:beamSweep 3s ease-in-out infinite alternate;transform:translateY(-50%) rotate(-25deg);}
+@keyframes beamSweep{0%{transform:translateY(-50%) rotate(-40deg);opacity:.6;}100%{transform:translateY(-50%) rotate(10deg);opacity:1;}}
+
+.hero-tag{font-size:.72rem;font-weight:700;letter-spacing:.2em;color:var(--grn);margin-bottom:1.2rem;display:flex;align-items:center;gap:.7rem;justify-content:center;}
+.hero-tag::before,.hero-tag::after{content:'';width:32px;height:1px;background:var(--grn);opacity:.5;}
+.hero h1{font-family:'Nunito',sans-serif;font-size:clamp(2.4rem,7vw,5rem);font-weight:900;line-height:1.1;color:var(--text);margin-bottom:.8rem;letter-spacing:-.01em;}
+.hero h1 .hl{color:var(--grn);}
+.hero h1 .hl2{color:var(--star);}
+.hero h1 .sub{display:block;font-size:.45em;font-weight:600;color:var(--muted);margin-top:.5rem;letter-spacing:.03em;}
+.hero-desc{font-size:.97rem;font-weight:300;line-height:1.9;color:var(--muted);max-width:480px;margin:0 auto 2rem;}
+.hero-pills{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.5rem;}
+.hpill{border:1px solid var(--bd2);border-radius:50px;padding:.35rem 1.1rem;font-size:.75rem;font-weight:600;color:var(--muted);}
+.scroll-cue{display:flex;flex-direction:column;align-items:center;gap:.5rem;font-size:.68rem;font-weight:700;color:var(--dim);letter-spacing:.12em;}
+.sc-ln{width:1px;height:48px;background:linear-gradient(to bottom,var(--grn),transparent);animation:scDrop 2.2s ease-in-out infinite;}
+@keyframes scDrop{0%,100%{opacity:.25;transform:scaleY(.5)translateY(-10px);}50%{opacity:1;transform:scaleY(1)translateY(0);}}
+
+/* ── SECTIONS ── */
+.sec{position:relative;z-index:2;max-width:880px;margin:0 auto;padding:5.5rem 1.5rem;}
+.div{max-width:880px;margin:0 auto;height:1px;background:linear-gradient(90deg,transparent,rgba(46,184,136,.4),transparent);position:relative;z-index:2;}
+
+.sec-lbl{font-size:.7rem;font-weight:700;letter-spacing:.16em;color:var(--grn);margin-bottom:.9rem;display:flex;align-items:center;gap:.55rem;text-transform:uppercase;}
+.sec-lbl::after{content:'';width:24px;height:1px;background:var(--grn);opacity:.5;}
+h2{font-family:'Nunito',sans-serif;font-size:clamp(1.8rem,4vw,2.9rem);font-weight:900;line-height:1.12;color:var(--text);margin-bottom:1rem;letter-spacing:-.01em;}
+h2 em{font-style:normal;color:var(--grn);}
+h2 strong{color:var(--star);}
+.lead{font-size:.95rem;font-weight:300;line-height:1.92;color:var(--muted);max-width:660px;margin-bottom:2rem;}
+
+/* PSY */
+.psy{border-left:2px solid var(--grn);padding:1.4rem 2rem;margin:2rem 0;background:var(--gn-ll);}
+.psy-who{font-size:.62rem;font-weight:700;letter-spacing:.18em;color:var(--grn);margin-bottom:.6rem;text-transform:uppercase;}
+.psy p{font-size:.92rem;font-weight:300;line-height:1.92;color:rgba(234,230,240,.78);font-style:italic;font-family:'Nunito',sans-serif;font-weight:500;}
+
+/* WAVE METER */
+.wave-wrap{margin:1.5rem 0;}
+.wave-labels{display:flex;justify-content:space-between;font-size:.72rem;color:var(--dim);margin-bottom:.5rem;}
+.wave-cells{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;}
+.wc{height:32px;border-radius:5px;cursor:pointer;transition:all .2s;background:var(--s2);border:1px solid var(--bd);}
+.wc:hover{transform:scaleY(1.15);}
+.wc.fill{background:var(--grn);border-color:var(--grn);}
+.wc.fill.warn{background:var(--star);border-color:var(--star);}
+.wc.fill.high{background:var(--rose);border-color:var(--rose);}
+.wave-msg{font-size:.88rem;font-weight:300;color:var(--muted);margin-top:.8rem;font-style:italic;min-height:1.5rem;}
+
+/* SIGNAL CARDS */
+.sig-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:.8rem;margin:1.5rem 0;}
+.sg{background:var(--s1);border:1px solid var(--bd);border-radius:14px;padding:1.2rem;cursor:pointer;transition:all .22s;}
+.sg:hover{transform:translateY(-3px);border-color:var(--bd2);}
+.sg.picked{border-color:var(--grn);background:var(--gn-l);}
+.sg .ck{font-size:.75rem;color:var(--grn);opacity:0;float:right;transition:opacity .2s;}
+.sg.picked .ck{opacity:1;}
+.sg-ico{font-size:1.8rem;margin-bottom:.5rem;display:block;}
+.sg-t{font-size:.86rem;font-weight:700;color:var(--text);margin-bottom:.2rem;}
+.sg-b{font-size:.76rem;font-weight:300;color:var(--muted);line-height:1.52;}
+
+/* LIGHTHOUSE ZONES */
+.zones{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.9rem;margin:1.5rem 0;}
+.zone{border-radius:14px;padding:1.4rem;cursor:pointer;transition:all .2s;border:1px solid transparent;}
+.zone:hover{transform:translateY(-3px);}
+.zone.z-safe{background:rgba(46,184,136,.08);border-color:rgba(46,184,136,.25);}
+.zone.z-safe:hover{background:rgba(46,184,136,.14);}
+.zone.z-wave{background:rgba(240,208,96,.07);border-color:rgba(240,208,96,.22);}
+.zone.z-wave:hover{background:rgba(240,208,96,.12);}
+.zone.z-storm{background:rgba(224,80,112,.07);border-color:rgba(224,80,112,.22);}
+.zone.z-storm:hover{background:rgba(224,80,112,.12);}
+.zone-ico{font-size:2rem;margin-bottom:.6rem;display:block;}
+.zone-t{font-size:.95rem;font-weight:800;font-family:'Nunito',sans-serif;margin-bottom:.35rem;}
+.zone-b{font-size:.8rem;font-weight:300;color:var(--muted);line-height:1.6;}
+.zone-detail{display:none;margin-top:.8rem;font-size:.8rem;font-weight:300;color:var(--muted);line-height:1.72;border-top:1px solid var(--bd);padding-top:.8rem;}
+.zone.open .zone-detail{display:block;}
+
+/* BREATHING */
+.br-shell{background:var(--s1);border:1px solid var(--bd);border-radius:18px;padding:2rem;margin:2rem 0;text-align:center;}
+.br-name{font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:800;color:var(--text);margin-bottom:.5rem;}
+.br-desc{font-size:.8rem;font-weight:300;color:var(--muted);margin-bottom:1.5rem;}
+.br-outer{width:180px;height:180px;margin:0 auto 1.5rem;position:relative;display:flex;align-items:center;justify-content:center;}
+.br-ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(46,184,136,.2);pointer-events:none;animation:ringP 4s ease-in-out infinite;}
+.br-ring2{position:absolute;inset:-12px;border-radius:50%;border:1px solid rgba(46,184,136,.1);pointer-events:none;animation:ringP 4s ease-in-out infinite .5s;}
+@keyframes ringP{0%,100%{transform:scale(1);opacity:.5;}50%{transform:scale(1.04);opacity:1;}}
+.br-circle{width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,rgba(46,184,136,.18),rgba(46,184,136,.08));border:2px solid rgba(46,184,136,.35);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;transition:all .25s;box-shadow:0 0 30px rgba(46,184,136,.12);}
+.br-circle:hover{box-shadow:0 0 40px rgba(46,184,136,.22);}
+.br-circle.inh{animation:brIn 5s ease-in-out forwards;}
+.br-circle.exh{animation:brEx 5s ease-in-out forwards;}
+.br-circle.hld{background:linear-gradient(135deg,rgba(240,208,96,.18),rgba(240,208,96,.08));border-color:rgba(240,208,96,.35);}
+@keyframes brIn{0%{transform:scale(.9);}100%{transform:scale(1.12);}}
+@keyframes brEx{0%{transform:scale(1.12);}100%{transform:scale(.9);}}
+.br-ph{font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;color:var(--grn);}
+.br-n{font-family:'Nunito',sans-serif;font-size:2rem;font-weight:900;color:var(--text);}
+.br-hint{font-size:.8rem;color:var(--muted);margin-bottom:1rem;}
+.br-techs{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin-bottom:.8rem;}
+.brt{background:var(--s2);border:1px solid var(--bd);border-radius:50px;padding:.3rem .85rem;font-family:'DM Sans',sans-serif;font-size:.75rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;}
+.brt:hover{border-color:var(--bd2);color:var(--text);}
+.brt.on{background:var(--grn);border-color:var(--grn);color:var(--bg);}
+.br-cycles{font-size:.72rem;color:var(--dim);}
+
+/* GROUNDING */
+.gr-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.8rem;margin:1.5rem 0;}
+.grc{background:var(--s1);border:1px solid var(--bd);border-radius:14px;padding:1.3rem;cursor:pointer;transition:all .2s;}
+.grc:hover{border-color:var(--bd2);}
+.grc.open{border-color:var(--grn);}
+.grc.open .grc-t{color:var(--grn);}
+.grc-ico{font-size:1.7rem;margin-bottom:.45rem;display:block;}
+.grc-t{font-size:.87rem;font-weight:700;color:var(--text);margin-bottom:.2rem;transition:color .2s;}
+.grc-s{font-size:.77rem;font-weight:300;color:var(--muted);line-height:1.52;}
+.grc-full{display:none;margin-top:.7rem;font-size:.8rem;color:var(--muted);line-height:1.72;border-top:1px solid var(--bd);padding-top:.7rem;}
+.grc.open .grc-full{display:block;}
+
+/* SAFETY PLAN */
+.sp-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:0;margin:1.5rem 0;}
+.spf{background:var(--s1);padding:1.4rem;}
+.spf label{font-size:.62rem;font-weight:700;letter-spacing:.12em;color:var(--dim);display:block;margin-bottom:.5rem;text-transform:uppercase;}
+.spf-in{width:100%;background:transparent;border:none;border-bottom:1px solid var(--bd2);padding:.5rem 0;font-family:'DM Sans',sans-serif;font-size:.84rem;color:var(--text);outline:none;resize:none;transition:border-color .2s;line-height:1.6;}
+.spf-in:focus{border-color:var(--grn);}
+.spf-in::placeholder{color:var(--dim);}
+.sp-btn{background:linear-gradient(135deg,var(--grn),#20A878);color:var(--bg);border:none;border-radius:50px;padding:.78rem 2.2rem;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;display:block;margin:1.5rem auto 0;transition:all .25s;box-shadow:0 8px 24px rgba(46,184,136,.25);}
+.sp-btn:hover{transform:translateY(-2px);}
+.sp-res{display:none;margin-top:1.5rem;background:var(--s1);border:1px solid var(--bd2);border-radius:16px;padding:2rem;}
+.sp-res.show{display:block;}
+.sp-res h3{font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;color:var(--text);text-align:center;margin-bottom:1.1rem;}
+.sp-row{display:flex;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--bd);font-size:.84rem;font-weight:300;line-height:1.65;}
+.sp-row:last-child{border:none;}
+.sp-l{color:var(--dim);font-size:.68rem;font-weight:700;letter-spacing:.06em;min-width:145px;}
+
+/* SCENARIOS */
+.sc-wrap{background:var(--s1);border:1px solid var(--bd);border-radius:18px;overflow:hidden;margin:2rem 0;}
+.sc-hdr{padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(90deg,rgba(46,184,136,.12),rgba(46,184,136,.05));}
+.sc-hdr-t{font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:800;color:var(--text);}
+.sc-pts{font-size:.8rem;font-weight:700;color:var(--grn);}
+.sc-pb{height:3px;background:var(--bd);}
+.sc-pf{height:100%;background:var(--grn);transition:width .4s;}
+.sc-body{padding:1.8rem 1.5rem;}
+.sc-q{font-family:'Nunito',sans-serif;font-size:1.04rem;font-weight:800;line-height:1.5;color:var(--text);margin-bottom:1.3rem;}
+.sc-opts{display:flex;flex-direction:column;gap:.45rem;}
+.sc-o{background:var(--s2);border:1px solid var(--bd);border-radius:12px;padding:.8rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:.86rem;font-weight:300;cursor:pointer;text-align:left;color:var(--muted);transition:all .2s;}
+.sc-o:hover{border-color:var(--bd2);color:var(--text);}
+.sc-o.ok{border-color:var(--grn);background:var(--gn-l);color:var(--grn);}
+.sc-o.bad{border-color:var(--rose);background:var(--ro-l);color:var(--rose);}
+.sc-o:disabled{cursor:not-allowed;}
+.sc-fb{font-size:.84rem;font-weight:300;padding:.85rem 1.1rem;border-left:2px solid var(--bd2);margin-top:.9rem;display:none;line-height:1.78;color:var(--muted);}
+.sc-fb.show{display:block;}.sc-fb.ok{border-color:var(--grn);}.sc-fb.bad{border-color:var(--rose);}
+.sc-nx{display:none;margin-top:.8rem;background:none;border:1px solid var(--star);border-radius:50px;padding:.5rem 1.6rem;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:700;color:var(--star);cursor:pointer;transition:all .2s;}
+.sc-nx:hover{background:var(--star);color:var(--bg);}.sc-nx.show{display:inline-block;}
+.sc-score{font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:900;color:var(--star);text-align:center;margin-top:1.5rem;display:none;}
+
+/* QUIZ */
+.qz-wrap{background:var(--s1);border:1px solid var(--bd);border-radius:18px;padding:2rem;margin:2rem 0;}
+.qz-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;}
+.qz-prog{font-size:.72rem;font-weight:700;color:var(--dim);}
+.qz-pts{font-size:.72rem;font-weight:700;color:var(--grn);}
+.qz-q{font-family:'Nunito',sans-serif;font-size:1.04rem;font-weight:800;line-height:1.5;color:var(--text);margin-bottom:1.2rem;}
+.qz-opts{display:flex;flex-direction:column;gap:.45rem;}
+.qz-o{background:var(--s2);border:1px solid var(--bd);border-radius:12px;padding:.78rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:.86rem;cursor:pointer;text-align:left;color:var(--muted);transition:all .2s;}
+.qz-o:hover{border-color:var(--bd2);color:var(--text);}
+.qz-o.ok{border-color:var(--grn);background:var(--gn-l);color:var(--grn);font-weight:600;}
+.qz-o.bad{border-color:var(--rose);background:var(--ro-l);color:var(--rose);}
+.qz-o:disabled{cursor:not-allowed;}
+.qz-fb{font-size:.84rem;padding:.8rem 1rem;border-left:2px solid var(--bd2);margin-top:.8rem;display:none;line-height:1.78;color:var(--muted);}
+.qz-fb.show{display:block;}.qz-fb.ok{border-color:var(--grn);}.qz-fb.bad{border-color:var(--rose);}
+.qz-nx{display:none;margin-top:.8rem;background:none;border:1px solid var(--lav);border-radius:50px;padding:.5rem 1.6rem;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:700;color:var(--lav);cursor:pointer;transition:all .2s;}
+.qz-nx:hover{background:var(--lav);color:var(--bg);}.qz-nx.show{display:inline-block;}
+.qz-score{font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:900;color:var(--lav);text-align:center;margin-top:1.5rem;display:none;}
+
+/* FINAL */
+.final{position:relative;z-index:2;max-width:680px;margin:0 auto;text-align:center;padding:5rem 1.5rem 8rem;}
+.final-ico{font-size:3.5rem;display:block;margin-bottom:1.5rem;animation:fBounce 2s ease-in-out infinite;}
+@keyframes fBounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+.final-cert{border:1px solid var(--bd2);border-radius:16px;padding:2rem;margin:2rem 0;text-align:left;}
+.fcl{font-size:.62rem;font-weight:700;letter-spacing:.14em;color:var(--dim);margin-bottom:.4rem;text-transform:uppercase;}
+.fcv{font-family:'Nunito',sans-serif;font-size:.96rem;font-weight:700;color:var(--text);line-height:1.65;}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s;}
+.reveal.vis{opacity:1;transform:none;}
+</style>
+<link rel="stylesheet" href="../assets/psy.css">
+</head>
+<body><nav class="mo-nav"><a href="../index.html">← Кабінет психолога</a><span class="mo-t">Тема 7 · Як зберегти спокій під час кризових подій · 5–6 клас · Урок</span><span class="mo-g"><a href="07-5-6-lesson.html" class="on">5–6 клас</a><a href="07-7-8-lesson.html">7–8 клас</a><a href="07-9-11-lesson.html">9–11 клас</a><a href="07-b-lesson.html">Батьки</a><a href="07-5-6-case.html">⇄ Кейс</a></span></nav>
+<div class="prog" id="prog"></div>
+<div class="stars"></div>
+
+<nav class="snav">
+  <button class="snd on" data-i="0"></button>
+  <button class="snd" data-i="1"></button>
+  <button class="snd" data-i="2"></button>
+  <button class="snd" data-i="3"></button>
+  <button class="snd" data-i="4"></button>
+  <button class="snd" data-i="5"></button>
+  <button class="snd" data-i="6"></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="s0">
+  <div class="lh-wrap">
+    <div class="lh-beam"></div>
+    <svg class="lh-svg" viewBox="0 0 80 120" xmlns="http://www.w3.org/2000/svg">
+      <rect x="32" y="80" width="16" height="35" rx="2" fill="rgba(46,184,136,.3)"/>
+      <rect x="28" y="55" width="24" height="28" rx="3" fill="rgba(46,184,136,.4)"/>
+      <rect x="24" y="48" width="32" height="10" rx="2" fill="rgba(46,184,136,.5)"/>
+      <ellipse cx="40" cy="48" rx="14" ry="8" fill="rgba(240,208,96,.25)" stroke="rgba(240,208,96,.6)" stroke-width="1.5"/>
+      <circle cx="40" cy="44" r="5" fill="rgba(240,208,96,.8)"/>
+      <line x1="0" y1="115" x2="80" y2="115" stroke="rgba(72,152,216,.4)" stroke-width="2"/>
+    </svg>
+  </div>
+  <div class="hero-tag">Онлайн-урок · 5–6 клас</div>
+  <h1>
+    <span class="hl">Спокій</span><br>
+    під час <span class="hl2">бурі</span>
+    <span class="sub">як зберегти рівновагу у кризових ситуаціях</span>
+  </h1>
+  <p class="hero-desc">Маяк не зупиняє шторм — але показує дорогу крізь нього. Сьогодні ти станеш своїм власним маяком.</p>
+  <div class="hero-pills">
+    <div class="hpill">⏱ 45 хвилин</div>
+    <div class="hpill">🌊 три зони стану</div>
+    <div class="hpill">🫁 дихання</div>
+    <div class="hpill">✋ заземлення</div>
+    <div class="hpill">🗺️ мій план безпеки</div>
+  </div>
+  <div class="scroll-cue"><span>починаємо</span><div class="sc-ln"></div></div>
+</section>
+
+<!-- S1: ЩО ТАКЕ КРИЗОВА ПОДІЯ -->
+<div class="div"></div>
+<section class="sec reveal" id="s1">
+  <div class="sec-lbl">Частина 1 · Розуміємо</div>
+  <h2>Що таке <em>кризова подія</em> і чому нам важко</h2>
+  <p class="lead">Сирена, вибух, пожежа, страшна новина, евакуація — це кризові події. Вони не «маленькі неприємності». Вони по-справжньому лякають. І це нормально.</p>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · До кожного учня</div>
+    <p>Коли трапляється щось страшне — твоє тіло включає «режим захисту». Серце б'ється, руки тремтять, важко думати. Це не слабкість і не боягузтво. Це твій мозок намагається тебе захистити. Сьогодні ти дізнаєшся як з цим режимом домовитись і знайти свій спокій навіть у бурі.</p>
+  </div>
+
+  <p style="font-size:.82rem;font-weight:700;color:var(--text);margin-bottom:1rem">Відмітьте що ти відчуваєш коли стається щось страшне:</p>
+  <div class="sig-grid">
+    <div class="sg" onclick="this.classList.toggle('picked')"><span class="ck">✓</span><span class="sg-ico">💓</span><div class="sg-t">Серце б'ється сильно</div><div class="sg-b">Тіло готується діяти</div></div>
+    <div class="sg" onclick="this.classList.toggle('picked')"><span class="ck">✓</span><span class="sg-ico">🥶</span><div class="sg-t">Стаю холодним/-ою або тремчу</div><div class="sg-b">Реакція нервової системи</div></div>
+    <div class="sg" onclick="this.classList.toggle('picked')"><span class="ck">✓</span><span class="sg-ico">🧊</span><div class="sg-t">Ніби заморожений/-а</div><div class="sg-b">Реакція «завмри» — теж захист</div></div>
+    <div class="sg" onclick="this.classList.toggle('picked')"><span class="ck">✓</span><span class="sg-ico">😰</span><div class="sg-t">Важко дихати</div><div class="sg-b">Дихання стає поверхневим</div></div>
+    <div class="sg" onclick="this.classList.toggle('picked')"><span class="ck">✓</span><span class="sg-ico">🤯</span><div class="sg-t">Думки плутаються</div><div class="sg-b">Мозок перевантажений загрозою</div></div>
+    <div class="sg" onclick="this.classList.toggle('picked')"><span class="ck">✓</span><span class="sg-ico">😢</span><div class="sg-t">Хочеться плакати</div><div class="sg-b">Нормальний вихід стресу</div></div>
+    <div class="sg" onclick="this.classList.toggle('picked')"><span class="ck">✓</span><span class="sg-ico">😤</span><div class="sg-t">Злюся або дратуюся</div><div class="sg-b">Захисна реакція «бій»</div></div>
+    <div class="sg" onclick="this.classList.toggle('picked')"><span class="ck">✓</span><span class="sg-ico">🙈</span><div class="sg-t">Хочеться сховатись</div><div class="sg-b">Реакція «втеча» або уникнення</div></div>
+  </div>
+
+  <div style="margin-top:1rem">
+    <button onclick="showSigResult()" style="background:var(--grn);color:var(--bg);border:none;border-radius:50px;padding:.6rem 1.6rem;font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:700;cursor:pointer;transition:all .2s">Що це означає для мене →</button>
+    <div id="sigResult" style="margin-top:.8rem;font-size:.86rem;color:var(--muted);font-style:italic;line-height:1.75"></div>
+  </div>
+</section>
+
+<!-- S2: ТРИ ЗОНИ -->
+<div class="div"></div>
+<section class="sec reveal" id="s2">
+  <div class="sec-lbl">Частина 2 · Три стани</div>
+  <h2>Три <em>зони</em> стану —<br>де ти зараз?</h2>
+  <p class="lead">Уяви маяк і море навколо нього. Залежно від нашого стану ми знаходимось в одній із трьох зон. Натисни на кожну щоб дізнатись більше.</p>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Про три зони стану</div>
+    <p>Стівен Поргес виявив: нервова система має три режими роботи. Безпека і зв'язок (маяк), мобілізація (хвилі), завмирання (буря). Жоден не «поганий» — всі захищають. Але знаючи де ти, легше знайти дорогу назад до маяка.</p>
+  </div>
+
+  <div class="zones">
+    <div class="zone z-safe" onclick="this.classList.toggle('open')">
+      <span class="zone-ico">🏠</span>
+      <div class="zone-t" style="color:var(--grn)">Зона маяка · Безпека</div>
+      <div class="zone-b">Спокійно, можеш думати і говорити, тіло розслаблене</div>
+      <div class="zone-detail">Це твій нормальний стан коли все добре. Дихання рівне, м'язи не напружені, можеш сміятись і вчитись. Ціль наших технік — повернути тебе сюди. Ознаки: можеш думати спокійно, хочеться говорити з людьми, відчуваєш тепло і безпеку.</div>
+    </div>
+    <div class="zone z-wave" onclick="this.classList.toggle('open')">
+      <span class="zone-ico">🌊</span>
+      <div class="zone-t" style="color:var(--star)">Зона хвиль · Мобілізація</div>
+      <div class="zone-b">Серце б'ється, дихання часте, важко сидіти спокійно</div>
+      <div class="zone-detail">Тіло готується «бігти або боротись». Кров надходить до м'язів, адреналін росте. Думати стає важче. Корисно при справжній небезпеці. Під час: сирени, страшної новини, конфлікту. Техніки допомагають перейти до зони маяка.</div>
+    </div>
+    <div class="zone z-storm" onclick="this.classList.toggle('open')">
+      <span class="zone-ico">🌀</span>
+      <div class="zone-t" style="color:var(--rose)">Зона бурі · Завмирання</div>
+      <div class="zone-b">Ніби онімів/-ла, важко рухатись або говорити, відчуття відстороненості</div>
+      <div class="zone-detail">«Завмирання» — коли загроза занадто велика. Тіло вимикається для захисту. Ти ніби ззовні дивишся на себе. Це нормальна реакція. Вихід: фізичний рух, дотик до твердої поверхні, холодна вода, голос іншої людини.</div>
+    </div>
+  </div>
+
+  <p style="font-size:.82rem;font-weight:700;color:var(--text);margin:.5rem 0">Де ти зараз? Відмітьте свій стан (0 = повний спокій, 10 = дуже важко):</p>
+  <div class="wave-wrap">
+    <div class="wave-labels"><span>0 — маяк</span><span>10 — буря</span></div>
+    <div class="wave-cells" id="waveCells"></div>
+    <div class="wave-msg" id="waveMsg">Натисни на клітинку щоб відмітити</div>
+  </div>
+</section>
+
+<!-- S3: ДИХАННЯ -->
+<div class="div"></div>
+<section class="sec reveal" id="s3">
+  <div class="sec-lbl">Частина 3 · Перша допомога</div>
+  <h2>Дихання — твій<br><em>вимикач паніки</em></h2>
+  <p class="lead">Коли страшно — дихання стає швидким і поверхневим. Це посилює паніку. Але ти можеш навмисно змінити дихання — і це змінить весь стан.</p>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Чому дихання працює</div>
+    <p>Дихання — єдина функція тіла яку ти можеш контролювати свідомо і яка прямо впливає на нервову систему. Повільний довгий видих активує блукаючий нерв — він «вмикає» режим спокою. Не потрібно нічого особливого — тільки сповільнити видих.</p>
+  </div>
+
+  <div class="br-shell">
+    <div class="br-name" id="brName">Оберіть техніку і натисни коло</div>
+    <div class="br-desc" id="brDesc">Дихай разом з колом</div>
+    <div class="br-outer">
+      <div class="br-ring"></div><div class="br-ring2"></div>
+      <div class="br-circle" id="brCirc" onclick="startBr()">
+        <div class="br-ph" id="brPh">▶</div>
+        <div class="br-n" id="brN">—</div>
+      </div>
+    </div>
+    <div class="br-hint" id="brHint">Натисни коло щоб почати · Натисни знову щоб зупинити</div>
+    <div class="br-techs">
+      <button class="brt on" id="t4" onclick="setTech('s')">🛡️ Безпека 4-4-6</button>
+      <button class="brt" id="tq" onclick="setTech('q')">⬜ Квадрат 4-4-4-4</button>
+      <button class="brt" id="tp" onclick="setTech('p')">💨 Швидке зітхання</button>
+    </div>
+    <div class="br-cycles" id="brCyc">Циклів: 0 / 5</div>
+  </div>
+</section>
+
+<!-- S4: ЗАЗЕМЛЕННЯ -->
+<div class="div"></div>
+<section class="sec reveal" id="s4">
+  <div class="sec-lbl">Частина 4 · Повернутись «тут і зараз»</div>
+  <h2>Заземлення: <em>5 кроків</em><br>назад до себе</h2>
+  <p class="lead">Коли страшно — мозок «застрягає» в небезпеці і відривається від теперішнього моменту. Заземлення повертає тебе сюди — де ти в безпеці. Натисни на кожну техніку.</p>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Техніка «5 чуттів»</div>
+    <p>Сенсорне заземлення — один із найбільш доказових інструментів при гострому стресі. Коли ти фокусуєшся на тому що бачиш, чуєш і відчуваєш прямо зараз, мозок перемикається з «режиму загрози» на «режим теперішнього». Паніка не може жити в теперішньому — тільки в думках про майбутнє або минуле.</p>
+  </div>
+
+  <div class="gr-cards">
+    <div class="grc" onclick="this.classList.toggle('open')"><span class="grc-ico">👁️</span><div class="grc-t">5 речей які ти бачиш</div><div class="grc-s">Поглянь навколо і назви 5 предметів</div><div class="grc-full">Подивись повільно навколо. Назви вголос або подумки: двері, лампа, вікно, стіл, твої руки. Будь-що — головне що ти дійсно бачиш прямо зараз. Це переключає мозок на «тут і зараз».</div></div>
+    <div class="grc" onclick="this.classList.toggle('open')"><span class="grc-ico">✋</span><div class="grc-t">4 речі яких ти торкаєшся</div><div class="grc-s">Відчуй текстуру 4 поверхонь</div><div class="grc-full">Торкнись стільця, підлоги, одягу, шкіри. Відчуй: тепле чи холодне? М'яке чи тверде? Гладке чи шершаве? Фізичний дотик — найшвидший спосіб повернутись у тіло.</div></div>
+    <div class="grc" onclick="this.classList.toggle('open')"><span class="grc-ico">👂</span><div class="grc-t">3 звуки які ти чуєш</div><div class="grc-s">Прислухайся — що звучить зараз?</div><div class="grc-full">Заплющ очі і прислухайся. Що чуєш? Може кроки, вітер, дихання, звук з вулиці? Назви три звуки — будь-які. Слух — потужний якір у теперішньому.</div></div>
+    <div class="grc" onclick="this.classList.toggle('open')"><span class="grc-ico">👃</span><div class="grc-t">2 запахи які відчуваєш</div><div class="grc-s">Понюхай щось навколо</div><div class="grc-full">Понюхай одяг, руки, воду, будь-що що є поруч. Якщо нічого — уяви запах чогось приємного: трава, хліб, кава. Нюх — пряма лінія до мозкового стовбуру і спокою.</div></div>
+    <div class="grc" onclick="this.classList.toggle('open')"><span class="grc-ico">👄</span><div class="grc-t">1 смак</div><div class="grc-s">Що відчуваєш у роті?</div><div class="grc-full">Відчуй смак у роті прямо зараз. Або ковтни слину — вже відчуваєш щось. Якщо є вода — зроби ковток. Смакові відчуття миттєво повертають у тіло.</div></div>
+    <div class="grc" onclick="this.classList.toggle('open')"><span class="grc-ico">🦶</span><div class="grc-t">«Коріння» — відчуй підлогу</div><div class="grc-s">Притисни ступні до підлоги</div><div class="grc-full">Поклади обидві ступні рівно на підлогу. Відчуй тиск — підлога тримає тебе. Уяви що ти дерево і корені йдуть від ступнів вниз. Стабільність підлоги під ногами — потужний сигнал безпеки для мозку.</div></div>
+  </div>
+</section>
+
+<!-- S5: СЦЕНАРІЇ -->
+<div class="div"></div>
+<section class="sec reveal" id="s5">
+  <div class="sec-lbl">Гра · Ситуації</div>
+  <h2>Що <em>робити</em> коли…</h2>
+  <p class="lead">8 реальних ситуацій — обери найкращу дію. Є підказки!</p>
+
+  <div class="sc-wrap">
+    <div class="sc-hdr"><span class="sc-hdr-t" id="scHdr">Ситуація 1 з 8</span><span class="sc-pts" id="scPts">0 pts</span></div>
+    <div class="sc-pb"><div class="sc-pf" id="scPf" style="width:12%"></div></div>
+    <div class="sc-body">
+      <div class="sc-q" id="scQ"></div>
+      <div class="sc-opts" id="scOpts"></div>
+      <div class="sc-fb" id="scFb"></div>
+      <button class="sc-nx" id="scNx" onclick="nxSc()">Далі →</button>
+      <div class="sc-score" id="scScore"></div>
+    </div>
+  </div>
+</section>
+
+<!-- S6: ВІКТОРИНА -->
+<div class="div"></div>
+<section class="sec reveal" id="s6">
+  <div class="sec-lbl">Вікторина</div>
+  <h2>8 запитань про <em>спокій</em><br>і безпеку</h2>
+
+  <div class="qz-wrap">
+    <div class="qz-top"><span class="qz-prog" id="qzPr">Питання 1 з 8</span><span class="qz-pts" id="qzPt">0 pts</span></div>
+    <div class="qz-q" id="qzQ"></div>
+    <div class="qz-opts" id="qzOpts"></div>
+    <div class="qz-fb" id="qzFb"></div>
+    <button class="qz-nx" id="qzNx" onclick="nxQz()">Далі →</button>
+    <div class="qz-score" id="qzSc"></div>
+  </div>
+</section>
+
+<!-- S7: ПЛАН БЕЗПЕКИ -->
+<div class="div"></div>
+<section class="sec reveal" id="s7">
+  <div class="sec-lbl">Мій план</div>
+  <h2>Мій <em>план безпеки</em><br>на кризовий момент</h2>
+  <p class="lead">Коли страшно — мозок не думає добре. Готовий план обходить цей блок. Заповни зараз — і будеш знати що робити.</p>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Про план безпеки</div>
+    <p>Це не «план евакуації» з будівлі — це твій особистий психологічний план. Що робити всередині — з диханням, думками і тілом — коли стає страшно. Цей план — твій маяк у бурі.</p>
+  </div>
+
+  <div class="sp-cols">
+    <div class="spf">
+      <label>Мої ознаки що мені страшно (сигнали тіла)</label>
+      <textarea class="spf-in" id="p1" rows="2" placeholder="Серце б'ється, важко дихати…"></textarea>
+    </div>
+    <div class="spf">
+      <label>Моє безпечне місце (реальне або уявне)</label>
+      <input class="spf-in" type="text" id="p2" placeholder="Вдома у кімнаті, у бабусі…">
+      <br><br>
+      <label>Моя техніка дихання №1</label>
+      <input class="spf-in" type="text" id="p3" placeholder="Безпека 4-4-6, квадрат…">
+    </div>
+    <div class="spf">
+      <label>Моє заземлення (що роблю в першу хвилину)</label>
+      <input class="spf-in" type="text" id="p4" placeholder="5-4-3-2-1, відчую підлогу…">
+      <br><br>
+      <label>Людина якій можу зателефонувати</label>
+      <input class="spf-in" type="text" id="p5" placeholder="Мама, тато, бабуся…">
+    </div>
+    <div class="spf">
+      <label>Моя фраза підтримки</label>
+      <input class="spf-in" type="text" id="p6" placeholder="«Я в безпеці. Це пройде.»">
+      <br><br>
+      <label>Якщо дуже важко — звертаюсь</label>
+      <input class="spf-in" type="text" id="p7" value="116 111 — безкоштовно, анонімно">
+    </div>
+  </div>
+  <button class="sp-btn" onclick="genPlan()">Зберегти мій план безпеки 🏠</button>
+  <div class="sp-res" id="spRes">
+    <h3>🏠 Мій план безпеки</h3>
+    <div id="spContent"></div>
+    <p style="font-size:.7rem;color:var(--dim);text-align:center;margin-top:1.2rem;letter-spacing:.08em">ЗБЕРЕЖИ СКРІНШОТ · ПЕРЕЧИТАЙ КОЛИ СТРАШНО</p>
+  </div>
+</section>
+
+<!-- FINAL -->
+<div class="div"></div>
+<div class="final reveal">
+  <span class="final-ico">🏠</span>
+  <div class="sec-lbl" style="justify-content:center">Урок завершено</div>
+  <h2>Ти — <em>свій маяк</em></h2>
+  <p class="lead" style="text-align:center;margin:0 auto 2rem">Маяк не зупиняє шторм. Але він завжди світить — і показує дорогу додому. Тепер ти знаєш як знайти цей шлях.</p>
+  <div class="final-cert">
+    <div class="fcl">Твої інструменти</div>
+    <div class="fcv">3 зони стану · Дихання 4-4-6 · Заземлення 5-4-3-2-1 · Фраза «Я в безпеці» · Мій план безпеки</div>
+    <br>
+    <div class="fcl">Якщо дуже важко</div>
+    <div class="fcv">116 111 — безкоштовно, анонімно, цілодобово</div>
+  </div>
+  <div class="psy" style="text-align:left;margin-top:2rem">
+    <div class="psy-who">Порада психолога · Фінальна порада</div>
+    <p>Кризові події не роблять тебе слабким/-ою. Вони нагадують що ти живий/-а — і відчуваєш. Страх при небезпеці — це сила, не слабкість: він говорить тобі що важливо. Тепер ти знаєш що робити з цим страхом. Ти — маяк. І ти — в безпеці.</p>
+  </div>
+</div>
+
+<script>
+// NAV
+const sIds=['s0','s1','s2','s3','s4','s5','s6','s7'];
+const snds=document.querySelectorAll('.snd');
+snds.forEach(d=>d.addEventListener('click',()=>document.getElementById(sIds[+d.dataset.i])?.scrollIntoView({behavior:'smooth'})));
+window.addEventListener('scroll',()=>{
+  const p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  document.getElementById('prog').style.width=p+'%';
+  sIds.forEach((id,i)=>{const el=document.getElementById(id);if(!el)return;const r=el.getBoundingClientRect();if(r.top<=window.innerHeight*.55&&r.bottom>=window.innerHeight*.45){snds.forEach(d=>d.classList.remove('on'));snds[i]?.classList.add('on');}});
+});
+document.querySelectorAll('.reveal').forEach(r=>new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.06}).observe(r));
+
+// SIGNALS
+function showSigResult(){
+  const n=document.querySelectorAll('.sg.picked').length;
+  const msgs=[
+    'Зараз тобі спокійно — або ти вже добре справляєшся зі своїми реакціями 🌟',
+    'Кілька реакцій знайомі — і це нормально. Сьогодні дізнаємось як із ними працювати 🌱',
+    'Тіло і мозок активно реагують на небезпеку. Сьогоднішні техніки — саме для тебе 💙',
+    'Багато сигналів — ти, мабуть, пережив/-ла або переживаєш важкий час. Сьогоднішній урок — для тебе 🧡'
+  ];
+  document.getElementById('sigResult').textContent=n<=2?msgs[0]:n<=4?msgs[1]:n<=6?msgs[2]:msgs[3];
+}
+
+// WAVE METER
+const wCells=document.getElementById('waveCells');
+const waveMsgs=['Маяк — повний спокій 🏠','Легке хвилювання — нормально','Трохи неспокійно','Помітна напруга','Хвилювання зростає','Хвилі — тіло реагує 🌊','Досить важко','Сильне хвилювання — спробуй дихання','Дуже важко — дихання і заземлення зараз','Буря — зателефонуй дорослому або 116 111 🌀'];
+for(let i=1;i<=10;i++){
+  const c=document.createElement('div');c.className='wc';c.dataset.v=i;
+  c.onclick=()=>{
+    const v=+c.dataset.v;
+    document.querySelectorAll('.wc').forEach(x=>{const xv=+x.dataset.v;x.classList.toggle('fill',xv<=v);x.classList.toggle('warn',xv<=v&&v>=5&&v<=7);x.classList.toggle('high',xv<=v&&v>=8);});
+    document.getElementById('waveMsg').textContent=`${v}/10 — ${waveMsgs[v-1]}`;
+  };
+  wCells.appendChild(c);
+}
+
+// BREATHING
+const brTechs={
+  s:{name:'Дихання безпеки 4-4-6',desc:'Найкраще при страху: видих довший вдиху',phases:['Вдих','Затримай','Видих'],times:[4,4,6],lbs:['носом повільно','затримай','ротом — повільно-повільно'],maxCyc:5},
+  q:{name:'Квадратне дихання',desc:'Рівні сторони — заспокоює і стабілізує',phases:['Вдих','Затримай','Видих','Затримай'],times:[4,4,4,4],lbs:['носом','затримай','ротом','порожньо'],maxCyc:5},
+  p:{name:'Фізіологічне зітхання',desc:'Найшвидше: два вдихи + довгий видих',phases:['Вдих ×2','Видих'],times:[3,7],lbs:['носом двічі підряд','ротом — дуже повільно'],maxCyc:4}
+};
+let curBr='s',brRAF=null,brPhI=0,brCyc=0,brRun=false,brPhStart=0,brPhDur=0;
+function setTech(t){
+  curBr=t;
+  document.querySelectorAll('.brt').forEach(b=>b.classList.remove('on'));
+  document.getElementById('t'+t)?.classList.add('on');
+  document.getElementById('brName').textContent=brTechs[t].name;
+  document.getElementById('brDesc').textContent=brTechs[t].desc;
+  if(brRun)stopBr();resetBr();
+}
+function resetBr(){
+  document.getElementById('brPh').textContent='▶';document.getElementById('brN').textContent='—';
+  document.getElementById('brHint').textContent='Натисни коло щоб почати';
+  document.getElementById('brCyc').textContent='Циклів: 0 / '+brTechs[curBr].maxCyc;
+  document.getElementById('brCirc').className='br-circle';
+  brPhI=0;brCyc=0;
+}
+function startBr(){if(brRun){stopBr();return;}brRun=true;beginPhase(performance.now());}
+function beginPhase(ts){
+  const t=brTechs[curBr];const ph=t.phases[brPhI],tm=t.times[brPhI],lb=t.lbs[brPhI];
+  brPhStart=ts;brPhDur=tm*1000;
+  document.getElementById('brPh').textContent=ph;
+  document.getElementById('brN').textContent=tm%1===0?tm:tm.toFixed(1);
+  document.getElementById('brHint').textContent=lb;
+  const c=document.getElementById('brCirc');c.className='br-circle';
+  if(ph.includes('Вдих')){void c.offsetWidth;c.classList.add('inh');c.style.animationDuration=tm+'s';}
+  else if(ph.includes('Видих')){void c.offsetWidth;c.classList.add('exh');c.style.animationDuration=tm+'s';}
+  else c.classList.add('hld');
+  tick();
+}
+function tick(){
+  if(!brRun)return;
+  const now=performance.now();const elapsed=now-brPhStart;const rem=Math.max(0,(brPhDur-elapsed)/1000);
+  const t=brTechs[curBr];const tm=t.times[brPhI];
+  document.getElementById('brN').textContent=tm%1===0?Math.ceil(rem):rem.toFixed(1);
+  if(elapsed>=brPhDur){
+    const next=(brPhI+1)%t.phases.length;
+    if(next===0){brCyc++;document.getElementById('brCyc').textContent=`Циклів: ${brCyc} / ${t.maxCyc}`;
+      if(brCyc>=t.maxCyc){finishBr();return;}}
+    brPhI=next;beginPhase(now);return;
+  }
+  brRAF=requestAnimationFrame(tick);
+}
+function finishBr(){brRun=false;cancelAnimationFrame(brRAF);document.getElementById('brCirc').className='br-circle';document.getElementById('brPh').textContent='✓';document.getElementById('brN').textContent='✓';document.getElementById('brHint').textContent='Молодець! Дихання завершено — як почуваєшся?';document.getElementById('brCyc').textContent='Циклів: '+brTechs[curBr].maxCyc+' / '+brTechs[curBr].maxCyc;}
+function stopBr(){brRun=false;cancelAnimationFrame(brRAF);document.getElementById('brCirc').className='br-circle';document.getElementById('brPh').textContent='▶';document.getElementById('brN').textContent='—';}
+setTech('s');
+
+// SCENARIOS
+const sc=[
+  {q:'Загримів гучний вибух і ти злякався/-лась. Перша дія:',
+   opts:['Одразу дивитись новини і з\'ясовувати що сталось','Два вдихи і довгий видих — фізіологічне зітхання — потім лягти або сісти в безпечному місці','Вибігти на вулицю щоб подивитись','Залишатись нерухомо і нічого не робити'],
+   ans:1,fb:'✓ Фізіологічне зітхання — найшвидша перша допомога. Потім — безпечне укриття. Новини і пояснення — після того як тіло заспокоїлось.'},
+  {q:'Пролунала сирена під час уроку. Ти відчуваєш що серце шалено б\'ється. Що найкраще?',
+   opts:['Панікувати і кричати','Слідувати інструкціям вчителя і по дорозі до укриття робити дихання 4-4-6','Самостійно вийти зі школи','Заховатись під партою і нічого не робити'],
+   ans:1,fb:'✓ Слідуй інструкціям дорослих — вони знають план. Одночасно можна дихати. Сирена = план дій, а не паніка.'},
+  {q:'Після страшної події ти «заморозився/-лась» і не можеш рухатись. Що допоможе?',
+   opts:['Залишатись нерухомо — це пройде само','Почати рухатись: потрясти руками, потупати ногами, відчути підлогу під ногами','Думати про те що сталось','Дивитись відео в телефоні'],
+   ans:1,fb:'✓ «Завмирання» — реакція нервової системи. Рух і фізичний контакт з підлогою «перезапускають» систему. Навіть потрясти пальцями — вже допомагає.'},
+  {q:'Ти дивишся новини і стає дуже тривожно і страшно. Найкраща дія:',
+   opts:['Дивитись далі — треба бути в курсі','Закрити новини, зробити техніку 5-4-3-2-1 і зателефонувати комусь близькому','Читати ще більше новин щоб знати все','Лягти спати з телефоном'],
+   ans:1,fb:'✓ Безперервний перегляд новин при кризі підсилює тривогу і не дає нової безпеки. Доза інформації — одна перевірка на годину. Потім — заземлення і контакт з близькою людиною.'},
+  {q:'Твій друг дуже злякався і плаче після страшної події. Як допомогти?',
+   opts:['Казати «перестань плакати — все добре»','Бути поруч, торкнутись руки якщо він/вона не проти, сказати «я тут» і дихати разом','Залишити його/її самого/-у — не чіпати','Показувати відео в телефоні щоб відволікти'],
+   ans:1,fb:'✓ Присутність і контакт важливіші за слова. «Все добре» при реальній небезпеці — знецінює. «Я тут» і спільне дихання — справжня підтримка.'},
+  {q:'Після кризової події ти не можеш заснути — думки крутяться. Що зробити?',
+   opts:['Читати новини поки не засниш','Написати думки на папір або намалювати що відчуваєш, потім зробити дихання 4-4-6 лежачи','Дивитись відео до ранку','Думати про страшне — поки не втомишся'],
+   ans:1,fb:'✓ Виписати думки — «вивантажує» мозок. Потім дихання сповільнює серцебиття. Телефон перед сном підтримує тривогу — синє світло і новинний потік тримають мозок в режимі загрози.'},
+  {q:'Ти відчуваєш що тобі страшно — але соромишся про це казати. Що правда?',
+   opts:['Треба завжди бути хоробрим/-ою і не показувати страх','Страх — нормальна і навіть корисна реакція. Казати про нього — сила, а не слабкість','Страшно буває тільки маленьким дітям','Треба самостійно справлятись і не турбувати інших'],
+   ans:1,fb:'✓ Страх при реальній небезпеці — ознака здорового мозку. Казати про свій страх дорослому чи другу знижує тривогу фізіологічно — через соціальний зв\'язок і окситоцин.'},
+  {q:'Якщо після кризи довго — більше тижня — дуже важко спати, їсти або йти до школи — правильна дія:',
+   opts:['Чекати поки само пройде','Розповісти дорослому і звернутись за допомогою — до шкільного психолога або 116 111','Намагатись не думати про це','Більше дивитись відео щоб відволікатись'],
+   ans:1,fb:'✓ Тривала реакція після кризи — сигнал що потрібна підтримка. 116 111 — анонімно, безкоштовно, цілодобово. Попросити допомоги — найхоробріший крок.'},
+];
+let scI=0,scSc=0,scAns=false;
+function ldSc(){
+  const s=sc[scI];document.getElementById('scHdr').textContent=`Ситуація ${scI+1} з ${sc.length}`;
+  document.getElementById('scPf').style.width=`${((scI+1)/sc.length)*100}%`;
+  document.getElementById('scQ').textContent=s.q;
+  const o=document.getElementById('scOpts');o.innerHTML='';
+  s.opts.forEach((op,i)=>{const b=document.createElement('button');b.className='sc-o';b.textContent=op;b.onclick=()=>anSc(i);o.appendChild(b);});
+  document.getElementById('scFb').className='sc-fb';document.getElementById('scNx').className='sc-nx';scAns=false;
+}
+function anSc(i){if(scAns)return;scAns=true;const s=sc[scI];document.querySelectorAll('.sc-o').forEach(b=>b.disabled=true);const fb=document.getElementById('scFb');
+  if(i===s.ans){document.querySelectorAll('.sc-o')[i].classList.add('ok');fb.className='sc-fb ok show';scSc++;document.getElementById('scPts').textContent=scSc+' pts';}
+  else{document.querySelectorAll('.sc-o')[i].classList.add('bad');document.querySelectorAll('.sc-o')[s.ans].classList.add('ok');fb.className='sc-fb bad show';}
+  fb.textContent=s.fb;document.getElementById('scNx').className='sc-nx show';}
+function nxSc(){scI++;if(scI<sc.length){ldSc();return;}
+  document.getElementById('scQ').textContent='';document.getElementById('scOpts').innerHTML='';
+  document.getElementById('scFb').className='sc-fb';document.getElementById('scNx').className='sc-nx';
+  document.getElementById('scHdr').textContent='Завершено!';
+  const sc2=document.getElementById('scScore');sc2.style.display='block';
+  const m=['Продовжуй вчитись 💙','Добра база 🌱','Відмінно 🌟','Бездоганно ☀️'];
+  sc2.textContent=`${scSc} з ${sc.length} — ${m[Math.min(Math.floor(scSc/(sc.length/m.length)),m.length-1)]}`;}
+ldSc();
+
+// QUIZ
+const qz=[
+  {q:'Що відбувається з тілом коли стає страшно?',opts:['Нічого особливого','Мигдалина мозку вмикає захисну реакцію — серцебиття, дихання і м\'язи змінюються','Тіло стає сильнішим','Мозок вимикається'],ans:1,exp:'✓ Мигдалина — «охоронець» мозку — реагує на загрозу і запускає захисні зміни в тілі. Це нормально і корисно при реальній небезпеці.'},
+  {q:'Яка реакція тіла при кризі НЕ є нормальною?',opts:['Серце б\'ється швидко','Плач або тремтіння','Тіло плавиться і зникає','Важко дихати'],ans:2,exp:'✓ Всі реакції — серцебиття, плач, тремтіння, важке дихання — нормальні. «Плавитись і зникати» — не реальна реакція, звісно.'},
+  {q:'Що таке «зона маяка» (зона безпеки)?',opts:['Місце де немає людей','Стан коли ти спокійний/-а, можеш думати і говорити, тіло розслаблене','Техніка дихання','Правило під час сирени'],ans:1,exp:'✓ Зона маяка — твій нормальний спокійний стан. Всі наші техніки — дихання і заземлення — допомагають повернутись до неї.'},
+  {q:'Чому «дихання безпеки 4-4-6» допомагає при страху?',opts:['Тому що рахунок відволікає','Довгий видих активує блукаючий нерв і вмикає режим спокою в нервовій системі','Тому що кисень збільшується','Тому що закриваєш очі'],ans:1,exp:'✓ Видих довший за вдих активує парасимпатичну нервову систему через блукаючий нерв. Це буквально «вимикач паніки» який є у кожного.'},
+  {q:'Техніка «5-4-3-2-1» — для чого?',opts:['Щоб порахувати до 5','Щоб повернутись «тут і зараз» через 5 чуттів і зупинити паніку','Щоб заснути','Щоб відволіктись від уроку'],ans:1,exp:'✓ Сенсорне заземлення переключає мозок з «режиму загрози» на «режим теперішнього». Паніка живе в думках про майбутнє — заземлення повертає у теперішнє де ти в безпеці.'},
+  {q:'Якщо після кризи «заморозився/-лась» і не можеш рухатись — що найперше зробити?',opts:['Залишатись нерухомо і чекати','Почати рухатись: потрясти руками, притиснути ступні до підлоги','Дивитись на одну точку','Закрити очі і думати про щось приємне'],ans:1,exp:'✓ «Завмирання» — реакція на перевантаження загрозою. Рух і фізичний контакт з твердою поверхнею «перезапускають» нервову систему. Навіть невеликий рух.'},
+  {q:'Як часто варто перевіряти новини під час кризи?',opts:['Весь час — треба знати все','Раз на годину або рідше — і тільки з надійних джерел','Ніколи — новини небезпечні','Кілька разів на хвилину'],ans:1,exp:'✓ Постійний потік новин підтримує тривогу і не дає нової безпеки. Одна перевірка на годину з надійного джерела — достатньо для поінформованості.'},
+  {q:'Якщо страшно і важко — попросити допомоги це:',opts:['Слабкість — треба справлятись самому/-ій','Сила і правильна дія. Соціальна підтримка знижує стрес фізіологічно','Тільки для маленьких','Зайво турбувати людей'],ans:1,exp:'✓ Соціальний зв\'язок і підтримка знижують кортизол — гормон стресу. «Попросити допомоги» — сама ефективна стратегія при кризі. 116 111 завжди готова.'},
+];
+let qzI=0,qzSc=0,qzAns=false;
+function ldQz(){const q=qz[qzI];document.getElementById('qzPr').textContent=`Питання ${qzI+1} з ${qz.length}`;document.getElementById('qzQ').textContent=q.q;
+  const o=document.getElementById('qzOpts');o.innerHTML='';
+  q.opts.forEach((op,i)=>{const b=document.createElement('button');b.className='qz-o';b.textContent=op;b.onclick=()=>anQz(i);o.appendChild(b);});
+  document.getElementById('qzFb').className='qz-fb';document.getElementById('qzNx').className='qz-nx';qzAns=false;}
+function anQz(i){if(qzAns)return;qzAns=true;const q=qz[qzI];document.querySelectorAll('.qz-o').forEach(b=>b.disabled=true);const fb=document.getElementById('qzFb');
+  if(i===q.ans){document.querySelectorAll('.qz-o')[i].classList.add('ok');fb.className='qz-fb ok show';qzSc++;document.getElementById('qzPt').textContent=qzSc+' pts';}
+  else{document.querySelectorAll('.qz-o')[i].classList.add('bad');document.querySelectorAll('.qz-o')[q.ans].classList.add('ok');fb.className='qz-fb bad show';}
+  fb.textContent=q.exp;document.getElementById('qzNx').className='qz-nx show';}
+function nxQz(){qzI++;if(qzI<qz.length){ldQz();return;}
+  document.getElementById('qzQ').textContent='';document.getElementById('qzOpts').innerHTML='';
+  document.getElementById('qzFb').className='qz-fb';document.getElementById('qzNx').className='qz-nx';
+  document.getElementById('qzPr').textContent='Завершено!';
+  const sc=document.getElementById('qzSc');sc.style.display='block';
+  const m=['Починаємо 💙','Добра база 🌱','Відмінно 🌟','Бездоганно ☀️'];
+  sc.textContent=`${qzSc} з ${qz.length} — ${m[Math.min(Math.floor(qzSc/(qz.length/m.length)),m.length-1)]}`;}
+ldQz();
+
+// PLAN
+function genPlan(){
+  const v=id=>document.getElementById(id).value.trim()||'—';
+  document.getElementById('spContent').innerHTML=`
+    <div class="sp-row"><span class="sp-l">Мої сигнали страху</span><span>${v('p1')}</span></div>
+    <div class="sp-row"><span class="sp-l">Моє безпечне місце</span><span>${v('p2')}</span></div>
+    <div class="sp-row"><span class="sp-l">Моє дихання №1</span><span>${v('p3')}</span></div>
+    <div class="sp-row"><span class="sp-l">Моє заземлення</span><span>${v('p4')}</span></div>
+    <div class="sp-row"><span class="sp-l">Людина довіри</span><span>${v('p5')}</span></div>
+    <div class="sp-row"><span class="sp-l">Моя фраза</span><span>${v('p6')}</span></div>
+    <div class="sp-row"><span class="sp-l">Якщо дуже важко</span><span>${v('p7')}</span></div>`;
+  document.getElementById('spRes').classList.add('show');
+}
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Що ще почитати чи подивитись</h2><div class="cards"><div><i>🧰</i><b>Заземлення 5-4-3-2-1</b><br><span>Практика<br>Потренуй із дорослим, коли спокійно</span></div><div><i>📞</i><b>116 111</b><br><span>Дитяча лінія<br>Безкоштовно, анонімно, цілодобово. Психологічна підтримка: 0 800 500 335</span></div></div><h3>Джерела, на які спирається урок</h3><details><summary>Показати список (7)</summary><ol><li>van der Kolk, B. (2014). <i>The Body Keeps the Score</i>. Viking.</li><li>World Health Organization (2011). <i>Psychological First Aid: Guide for Field Workers</i>. WHO.</li><li>SAMHSA (2014). <i>Trauma-Informed Care in Behavioral Health Services</i> (TIP 57).</li><li>Hobfoll, S. E., Watson, P., Bell, C. C., et al. (2007). Five essential elements of immediate and mid-term mass trauma intervention: Empirical evidence. <i>Psychiatry, 70</i>(4), 283–315.</li><li>National Child Traumatic Stress Network. <i>Parent Guidelines for Helping Children After a Disaster</i> (nctsn.org).</li><li>Bonanno, G. A. (2004). Loss, trauma, and human resilience: Have we underestimated the human capacity to thrive after extremely aversive events? <i>American Psychologist, 59</i>(1), 20–28.</li><li>Masten, A. S. (2014). <i>Ordinary Magic: Resilience in Development</i>. Guilford Press.</li></ol></details><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="06-5-6-lesson.html">← Тема 6</a></span><span><a href="08-5-6-lesson.html">Тема 8 →</a></span></div><a class="mo-fab" href="../index.html#t07">☰ До матриці</a></body>
+</html>

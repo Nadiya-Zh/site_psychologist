@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Методичний кейс · Психологічна безпека · 9–11 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:    #F3F1EC; --surf: #FFFFFF;
+  --ink:   #1A1F2A; --text: #2D3748; --muted: #718096;
+  --bd:    #E2DDD4; --bds: #C5BEB4;
+
+  --em:   #1A7A5E; --em-l: #E8F5F0; --em-ll: #F2FAF7;
+  --te:   #B34A2A; --te-l: #FBF0EB;
+  --in:   #344E8C; --in-l: #EEF1FA;
+  --am:   #A86A0A; --am-l: #FBF3E6;
+  --pl:   #6B4E80; --pl-l: #F2EDF6;
+  --sl:   #4A6080; --sl-l: #EBF0F5;
+  --ro:   #A0394A; --ro-l: #FDECEA;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.65;}
+
+/* HDR */
+.hdr{background:var(--ink);padding:.82rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.65rem;position:sticky;top:0;z-index:300;}
+.hbrand{font-family:'Bitter',serif;font-size:.88rem;font-weight:700;color:white;display:flex;align-items:center;gap:.45rem;}
+.hnav{display:flex;gap:.25rem;flex-wrap:wrap;}
+.hn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:.28rem .78rem;font-family:'Lato',sans-serif;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.55);cursor:pointer;transition:all .2s;}
+.hn:hover{background:rgba(255,255,255,.14);color:white;}
+.hn.on{background:var(--te);border-color:var(--te);color:white;}
+
+/* HERO */
+.ph{background:linear-gradient(150deg,#0E1318 0%,#1A2535 40%,#0E1A14 100%);padding:4rem 2rem;position:relative;overflow:hidden;}
+.ph::before{content:'';position:absolute;top:-60px;right:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(180,80,40,.18),transparent 70%);}
+.ph::after{content:'◎';position:absolute;right:3rem;bottom:1.5rem;font-size:8rem;opacity:.04;color:white;pointer-events:none;font-family:serif;}
+.ph-in{max-width:1060px;margin:0 auto;position:relative;z-index:1;}
+.ph-tag{font-size:.65rem;font-weight:700;letter-spacing:.22em;color:rgba(180,230,200,.65);margin-bottom:.8rem;}
+.ph h1{font-family:'Bitter',serif;font-size:clamp(1.7rem,3.2vw,2.5rem);font-weight:700;color:white;line-height:1.18;margin-bottom:.65rem;}
+.ph h1 span{color:#9FD8BC;}
+.ph .sub{font-size:.92rem;font-weight:300;font-style:italic;color:rgba(255,255,255,.4);max-width:560px;margin-bottom:1.7rem;}
+.ph-chips{display:flex;gap:.5rem;flex-wrap:wrap;}
+.chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:50px;padding:.3rem .88rem;font-size:.71rem;font-weight:600;color:rgba(255,255,255,.62);display:flex;align-items:center;gap:.3rem;}
+
+/* TABS */
+.tabs{background:var(--surf);border-bottom:2px solid var(--bd);position:sticky;top:52px;z-index:200;overflow-x:auto;}
+.tabs-in{max-width:1060px;margin:0 auto;display:flex;}
+.tb{background:none;border:none;border-bottom:3px solid transparent;padding:.85rem 1.2rem;cursor:pointer;font-family:'Lato',sans-serif;font-size:.78rem;font-weight:700;color:var(--muted);white-space:nowrap;transition:all .2s;display:flex;align-items:center;gap:.38rem;margin-bottom:-2px;}
+.tb:hover{color:var(--ink);}
+.tb.on{color:var(--te);border-bottom-color:var(--te);}
+
+.panel{display:none;} .panel.on{display:block;}
+.wrap{max-width:1060px;margin:0 auto;padding:3rem 2rem;}
+
+/* TYPE */
+.sh{font-family:'Bitter',serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:.3rem;}
+.ss{font-size:.82rem;color:var(--muted);font-style:italic;margin-bottom:1.8rem;}
+hr.r{border:none;border-top:1px solid var(--bd);margin:2.3rem 0;}
+
+/* CARDS */
+.card{background:var(--surf);border:1px solid var(--bd);border-radius:9px;padding:1.3rem 1.5rem;box-shadow:0 1px 3px rgba(0,0,0,.03);}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.95rem;margin:1.4rem 0;}
+.card .ci{font-size:1.5rem;margin-bottom:.45rem;}
+.card h3{font-family:'Bitter',serif;font-size:.92rem;font-weight:700;margin-bottom:.28rem;color:var(--ink);}
+.card p{font-size:.82rem;color:var(--muted);line-height:1.6;}
+
+/* ALERTS */
+.al{border-radius:9px;padding:1rem 1.3rem;margin:.85rem 0;display:flex;gap:.75rem;align-items:flex-start;}
+.al .ai{font-size:1.1rem;flex-shrink:0;margin-top:.1rem;}
+.al p{font-size:.83rem;line-height:1.65;}
+.al strong{font-weight:700;display:block;margin-bottom:.1rem;font-size:.71rem;letter-spacing:.04em;}
+.a-em{background:var(--em-l);border-left:4px solid var(--em);}
+.a-te{background:var(--te-l);border-left:4px solid var(--te);}
+.a-in{background:var(--in-l);border-left:4px solid var(--in);}
+.a-am{background:var(--am-l);border-left:4px solid var(--am);}
+.a-pl{background:var(--pl-l);border-left:4px solid var(--pl);}
+.a-sl{background:var(--sl-l);border-left:4px solid var(--sl);}
+.a-ro{background:var(--ro-l);border-left:4px solid var(--ro);}
+
+/* TIMELINE */
+.tl{padding-left:2.2rem;position:relative;margin:1.4rem 0;}
+.tl::before{content:'';position:absolute;left:.7rem;top:0;bottom:0;width:2px;background:var(--bd);}
+.ti{position:relative;margin-bottom:1.4rem;}
+.ti::before{content:'';position:absolute;left:-1.85rem;top:.32rem;width:12px;height:12px;border-radius:50%;background:var(--te);border:3px solid var(--surf);box-shadow:0 0 0 2px var(--te);}
+.ti-t{font-size:.64rem;font-weight:700;letter-spacing:.1em;color:var(--te);margin-bottom:.12rem;}
+.ti-h{font-weight:700;font-size:.88rem;margin-bottom:.22rem;color:var(--ink);}
+.ti-b{font-size:.82rem;color:var(--muted);line-height:1.65;}
+
+/* SCRIPT */
+.scr{background:var(--bg);border:1px solid var(--bd);border-radius:9px;padding:1.2rem 1.4rem;margin:.85rem 0;position:relative;}
+.scr::before{content:attr(data-lbl);position:absolute;top:-9px;left:.95rem;background:var(--em);color:white;font-size:.58rem;font-weight:700;letter-spacing:.1em;padding:.15rem .6rem;border-radius:3px;}
+.scr.te::before{background:var(--te);}
+.scr.in::before{background:var(--in);}
+.scr.pl::before{background:var(--pl);}
+.scr p{font-size:.87rem;line-height:1.8;font-style:italic;color:var(--ink);}
+.scr p strong{font-style:normal;color:var(--em);}
+.scr.te p strong{color:var(--te);}
+
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;margin:1.1rem 0;font-size:.82rem;}
+.tbl th{background:var(--ink);color:white;text-align:left;padding:.62rem .92rem;font-weight:700;font-size:.7rem;letter-spacing:.04em;}
+.tbl td{padding:.62rem .92rem;border-bottom:1px solid var(--bd);vertical-align:top;}
+.tbl tr:nth-child(even) td{background:#FAF8F4;}
+.tbl tr:hover td{background:var(--em-ll);}
+
+/* PI */
+.pi{background:linear-gradient(135deg,var(--pl-l),#FAF8FF);border:1px solid #D4C6E8;border-radius:11px;padding:1.35rem 1.55rem;margin:1.4rem 0;position:relative;overflow:hidden;}
+.pi::after{content:'🧠';font-size:3.8rem;position:absolute;right:.7rem;bottom:-.3rem;opacity:.07;pointer-events:none;}
+.pi .pt{font-size:.64rem;font-weight:700;letter-spacing:.14em;color:var(--pl);margin-bottom:.45rem;}
+.pi p{font-size:.85rem;line-height:1.75;color:#3D2B5C;font-style:italic;}
+.pi .src{font-size:.71rem;color:#9B7EC8;margin-top:.5rem;font-style:normal;}
+
+/* DIFF */
+.df3{display:grid;grid-template-columns:repeat(3,1fr);gap:.95rem;margin:1.4rem 0;}
+@media(max-width:660px){.df3{grid-template-columns:1fr;}}
+.dc{border-radius:9px;padding:1.1rem;}
+.dc h4{font-size:.74rem;font-weight:700;letter-spacing:.04em;margin-bottom:.55rem;}
+.dc ul{padding-left:1.05rem;font-size:.81rem;line-height:1.7;color:var(--muted);}
+.dc-a{background:#FFF8E6;border:1px solid #EDD878;} .dc-a h4{color:#8A6D00;}
+.dc-b{background:var(--em-l);border:1px solid #9DCFBE;} .dc-b h4{color:#1E5244;}
+.dc-c{background:var(--in-l);border:1px solid #A8B8E8;} .dc-c h4{color:#2A3B80;}
+
+/* CRISIS BOX */
+.crb{border:1px solid var(--bd);border-radius:9px;overflow:hidden;margin:1.4rem 0;}
+.crb-h{padding:.75rem 1.25rem;font-family:'Bitter',serif;font-size:.88rem;font-weight:700;display:flex;align-items:center;gap:.5rem;color:white;}
+.crb-b{padding:1.15rem 1.35rem;background:var(--surf);}
+.crb-b h4{font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.25rem;}
+.crb-b p{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:.5rem;}
+.crb-b ol,.crb-b ul{padding-left:1.1rem;font-size:.8rem;color:var(--text);line-height:1.85;}
+
+/* ACT BOX */
+.ab{border:1px solid var(--bd);border-radius:9px;overflow:hidden;margin:1.4rem 0;}
+.ab-h{padding:.72rem 1.25rem;font-family:'Bitter',serif;font-size:.86rem;font-weight:700;display:flex;align-items:center;gap:.48rem;color:white;}
+.ab-b{padding:1.1rem 1.3rem;background:var(--surf);}
+.ab-b h4{font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.25rem;}
+.ab-b p{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:.48rem;}
+.ab-b ol,.ab-b ul{padding-left:1.05rem;font-size:.8rem;color:var(--text);line-height:1.8;}
+
+/* TAGS */
+.tag{display:inline-block;font-size:.65rem;font-weight:700;padding:.15rem .52rem;border-radius:3px;margin:.12rem;}
+.tg{background:var(--em-l);color:#1E5244;} .tt{background:var(--te-l);color:#7A3520;}
+.ti2{background:var(--in-l);color:#2A3B80;} .ta{background:var(--am-l);color:#7A5800;}
+.tp{background:var(--pl-l);color:#4A2B6A;} .ts{background:var(--sl-l);color:#3A5070;}
+.tr{background:var(--ro-l);color:#7A2030;}
+
+/* CONTACTS */
+.contacts{background:linear-gradient(135deg,var(--em-l),var(--em-ll));border:1.5px solid rgba(26,122,94,.22);border-radius:11px;padding:1.35rem 1.55rem;margin:1.4rem 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.95rem;}
+.ct h4{font-size:.76rem;font-weight:700;color:var(--em);margin-bottom:.28rem;}
+.ct p{font-size:.8rem;color:var(--text);line-height:1.6;}
+.ct .num{font-family:'Bitter',serif;font-size:1.08rem;font-weight:700;color:var(--ink);}
+
+/* CLASS DIFF (9, 10, 11) */
+.class-tabs{display:flex;gap:.3rem;margin-bottom:1.2rem;flex-wrap:wrap;}
+.ct-btn{background:var(--surf);border:1px solid var(--bd);border-radius:6px;padding:.35rem .88rem;font-family:'Lato',sans-serif;font-size:.78rem;font-weight:700;color:var(--muted);cursor:pointer;transition:all .2s;}
+.ct-btn:hover{border-color:var(--bds);color:var(--ink);}
+.ct-btn.on{background:var(--em);border-color:var(--em);color:white;}
+.class-panel{display:none;} .class-panel.on{display:block;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s;}
+.reveal.vis{opacity:1;transform:none;}
+</style>
+<link rel="stylesheet" href="../assets/psy.css">
+</head>
+<body><nav class="mo-nav"><a href="../index.html">← Кабінет психолога</a><span class="mo-t">Тема 3 · Психологічна безпека та коло довіри · 9–11 клас · Кейс психолога</span><span class="mo-g"><a href="03-5-6-case.html">5–6 клас</a><a href="03-7-8-case.html">7–8 клас</a><a href="03-9-11-case.html" class="on">9–11 клас</a><a href="03-b-case.html">Батьки</a><a href="03-9-11-lesson.html">⇄ Урок</a></span></nav>
+
+<div class="hdr">
+  <div class="hbrand">🛡️ Методичний кейс · Психологічна безпека · 9–11 клас</div>
+  <div class="hnav">
+    <button class="hn on" onclick="sw('plan')">📅 Хронометраж</button>
+    <button class="hn" onclick="sw('theory')">📚 Теорія</button>
+    <button class="hn" onclick="sw('activities')">🎭 Активності</button>
+    <button class="hn" onclick="sw('class')">🎯 За класом</button>
+    <button class="hn" onclick="sw('crisis')">🚨 Протоколи</button>
+    <button class="hn" onclick="sw('digital')">📱 Цифрова</button>
+    <button class="hn" onclick="sw('reflection')">💬 Рефлексія</button>
+  </div>
+</div>
+
+<div class="ph">
+  <div class="ph-in">
+    <div class="ph-tag">МЕТОДИЧНИЙ КЕЙС ДЛЯ ПЕДАГОГА / ПСИХОЛОГА · 9–11 КЛАС</div>
+    <h1>Психологічна безпека<br>та <span>коло довіри</span></h1>
+    <p class="sub">Поглиблений сценарій для старшої школи з науковою базою, скриптами, диференціацією за класами (9 / 10 / 11), кризовими протоколами і блоком цифрової безпеки</p>
+    <div class="ph-chips">
+      <div class="chip">⏱ 45 хвилин</div>
+      <div class="chip">👥 14–17 років (9–11 кл.)</div>
+      <div class="chip">🎭 9 дилем-сценаріїв</div>
+      <div class="chip">🚨 Повні кризові протоколи</div>
+      <div class="chip">📱 Сексторшн · Грумінг · Кібербулінг</div>
+      <div class="chip">🎯 Диференціація за класами</div>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tabs-in">
+    <button class="tb on" onclick="sw('plan')">📅 Хронометраж і скрипти</button>
+    <button class="tb" onclick="sw('theory')">📚 Наукова база</button>
+    <button class="tb" onclick="sw('activities')">🎭 Активності педагога</button>
+    <button class="tb" onclick="sw('class')">🎯 Диференціація за класом</button>
+    <button class="tb" onclick="sw('crisis')">🚨 Кризові протоколи</button>
+    <button class="tb" onclick="sw('digital')">📱 Цифрова безпека</button>
+    <button class="tb" onclick="sw('reflection')">💬 Рефлексія</button>
+  </div>
+</div>
+
+<!-- ══ PLAN ══ -->
+<div class="panel on" id="panel-plan">
+<div class="wrap">
+
+  <p class="sh reveal">Покроковий хронометраж</p>
+  <p class="ss reveal">Деталізований сценарій уроку для 9–11 класу з підказками педагогу</p>
+
+  <div class="al a-te reveal">
+    <span class="ai">📌</span>
+    <div><p><strong>Підготовка — критично для 9–11 класу</strong> Урок торкається тем DARVO, love bombing, сексторшну, суїцидальних думок. Для цього віку — це не абстракція, це реальний досвід частини класу. Підготуйте: акт розкриття, контакти 116 111 і кіберполіції, план дій при розкритті. Оцініть заздалегідь учнів із відомими факторами ризику.</p></div>
+  </div>
+
+  <div class="tl reveal">
+    <div class="ti">
+      <div class="ti-t">00:00 — 07:00</div>
+      <div class="ti-h">Вступ: провокативне питання</div>
+      <div class="ti-b">Не «де тобі безпечно?» — для старшої школи краще: <em>«Назвіть одну ситуацію, в якій вам довелось вибирати між лояльністю і чесністю. Що ви обрали?»</em> Відповіді анонімно в чаті або хвилина письма. Це відразу задає тон серйозної розмови без інфантилізації.</div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">07:00 — 15:00</div>
+      <div class="ti-h">Блок 1–2: Знаки безпеки + Коло довіри</div>
+      <div class="ti-b">Учні заповнюють матрицю знаків і коло. Педагог не коментує відповіді публічно — лише узагальнює: <em>«Більшість з нас мають неоднорідний досвід безпеки. Це норма — і про це можна говорити».</em> Зверніть увагу: якщо онлайн-знайомий у ядрі — не акцентуйте, але після уроку поговоріть.</div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">15:00 — 24:00</div>
+      <div class="ti-h">Блок 3: Анатомія маніпуляції (акордеон)</div>
+      <div class="ti-b">Учні читають і відкривають картки. Педагог коментує вголос DARVO і love bombing — найактуальніші для цього віку. Запитайте: <em>«Хто зустрічав щось схоже? Не обов'язково про себе — може, спостерігали».</em> Не вимагайте — тільки простір. Після тиші: <em>«Знати назву — це вже влада над ситуацією».</em></div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">24:00 — 34:00</div>
+      <div class="ti-h">Блок 4: 9 дилем</div>
+      <div class="ti-b">Найважливіший блок. Синхронне проведення: зачитайте дилему, 25 секунд на відповідь, обговорення. Особлива увага — дилема 5 (сексторшн) і дилема 8 (думки «нікому не потрібен»). Перед дилемою 8: пауза. <em>«Якщо це торкується когось особисто — я буду після уроку».</em> Не пропускайте цю паузу.</div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">34:00 — 39:00</div>
+      <div class="ti-h">Блок 5 + Вікторина: Цифрова безпека</div>
+      <div class="ti-b">Учні читають блок про цифрові загрози самостійно, потім вікторина. Педагог акцентує: 116 111 і cyberpolice.gov.ua — два ресурси, які мають знати всі. Запитайте: хто знав про кіберполіцію до сьогодні?</div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">39:00 — 44:00</div>
+      <div class="ti-h">Блок 7: Особистий план безпеки</div>
+      <div class="ti-b">5 хвилин у тиші. Нагадайте: <em>«Це ваш документ. Але він має бути в телефоні — не лише в пам'яті. Мозок у кризі не згадає логіку».</em></div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">44:00 — 45:00</div>
+      <div class="ti-h">Завершення</div>
+      <div class="ti-b">Прочитайте фінальне слово. Назвіть 116 111. Особисто: <em>«Якщо сьогодні щось підняло хвилю — я тут. Не завтра, а зараз».</em></div>
+    </div>
+  </div>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">Скрипти педагога</p>
+
+  <div class="scr" data-lbl="ВСТУП">
+    <p><strong>«</strong>Сьогодні ми говоримо про речі, про які зазвичай не говорять у школі. Про маніпуляцію в стосунках. Про те, як виглядає контроль в парі. Про те, що відбувається, коли вас шантажують онлайн. Ці теми — реальні. І у вас є право знати, що з ними робити.<strong>»</strong></p>
+  </div>
+  <div class="scr" data-lbl="ПЕРЕД ДИЛЕМОЮ 8">
+    <p><strong>«</strong>Наступна дилема — про момент, коли людина відчуває, що вона «нікому не потрібна». Якщо для когось у цій кімнаті це не просто ситуація з тесту — я хочу, щоб ви знали: після уроку я тут. Телефон 116 111 — цілодобово, анонімно.<strong>»</strong></p>
+  </div>
+  <div class="scr te" data-lbl="ПІСЛЯ СКЛАДНОГО РОЗКРИТТЯ">
+    <p><strong>«</strong>Дякую за довіру. Те, що ти розповів/ла — важливо. Я не можу гарантувати мовчання — але я гарантую, що буду поруч на кожному кроці. Ми разом вирішимо, що далі.<strong>»</strong></p>
+  </div>
+  <div class="scr in" data-lbl="ЗАКРИТТЯ">
+    <p><strong>«</strong>Ви провели 45 хвилин, де вчились захищати себе — не кулаками, а знаннями. Це важливіше. Якщо є думки, питання, тягар — 116 111, кіберполіція, або просто — до мене. Будьте собою. Безпечно.<strong>»</strong></p>
+  </div>
+
+</div>
+</div>
+
+<!-- ══ THEORY ══ -->
+<div class="panel" id="panel-theory">
+<div class="wrap">
+
+  <p class="sh reveal">Наукова база уроку</p>
+  <p class="ss reveal">Ключові концепції, дослідження та вікові особливості 14–17 років</p>
+
+  <div class="pi reveal">
+    <div class="pt">🔬 Центральна концепція</div>
+    <p><strong>Психологічна безпека в підліткових стосунках (Erikson + Brown + Van der Kolk):</strong> У 14–17 років формується ідентичність через стосунки. Якість середовища — психологічно безпечне чи ні — безпосередньо впливає на самооцінку, здатність до близькості та ризики психічних розладів у дорослому віці. Безпечне середовище не «захищає від проблем» — воно дає ресурс їх долати.</p>
+    <div class="src">Van der Kolk, B. (2014). The Body Keeps the Score. Brown, B. (2010). The Gifts of Imperfection.</div>
+  </div>
+
+  <div class="cg reveal">
+    <div class="card"><div class="ci">🧠</div><h3>Нейробіологія маніпуляції</h3><p>Маніпуляція апелює до лімбічної системи, обходячи префронтальну кору. У 14–17 років кора ще розвивається — це робить підлітків більш вразливими до газлайтингу і love bombing. Знання термінів активує кору і дає когнітивний захист.</p></div>
+    <div class="card"><div class="ci">💔</div><h3>Теорія прихильності (Bowlby)</h3><p>Ненадійна прихильність у дитинстві — фактор ризику для токсичних стосунків у підлітковому віці: люди з тривожною прихильністю більш схильні до love bombing-залежності.</p></div>
+    <div class="card"><div class="ci">🎭</div><h3>DARVO (Freyd, 1997)</h3><p>Jennifer Freyd описала DARVO як типову реакцію кривдника при спробі жертви встановити межу. Поширений у булінгу, абьюзивних стосунках і токсичних сім'ях. Знати — означає не бути розгубленим.</p></div>
+    <div class="card"><div class="ci">🌐</div><h3>Цифрові загрози (Pew, 2023)</h3><p>46% підлітків 14–17 стикались з небажаним сексуальним контентом онлайн. Лише 28% повідомили дорослим. Кожне третє розкриття грумінгу — після шкільної освітньої програми.</p></div>
+    <div class="card"><div class="ci">📖</div><h3>Диференційована довіра (Brown)</h3><p>Брене Браун: справжня вразливість вибіркова. Ділитись з усіма — не відкритість, а відсутність меж. «Мармур довіри» накопичується повільно — через маленькі дії, а не великі слова.</p></div>
+    <div class="card"><div class="ci">⚡</div><h3>Кризова психологія (наявність плану)</h3><p>Дослідження NASA і Emergency Management: наявність письмового плану знижує час прийняття рішення у кризі на 40–60%. Особистий план безпеки — не «про всяк випадок», а реальний психологічний інструмент.</p></div>
+  </div>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">Вікові особливості 14–17 років</p>
+
+  <div class="al a-in reveal"><span class="ai">🧩</span><div><p><strong>Пік розвитку ідентичності</strong> Стосунки — «дзеркало» для формування self. Якщо стосунки токсичні — ідентичність формується через призму чужих маніпуляцій. Урок дає альтернативну «лінзу» — власних цінностей.</p></div></div>
+  <div class="al a-pl reveal"><span class="ai">💜</span><div><p><strong>Романтичні стосунки вперше</strong> 14–17 — зазвичай перший досвід романтичних стосунків. Відсутність моделі «здорових» = відтворення побаченого вдома або у медіа. Love bombing і control часто сприймаються як «пристрасть» або «турбота».</p></div></div>
+  <div class="al a-am reveal"><span class="ai">📲</span><div><p><strong>Цифровий простір як основний соціальний майданчик</strong> Для 9–11 класу онлайн — не доповнення до реального, а паралельне соціальне середовище зі своїми ризиками, ієрархіями і маніпуляціями.</p></div></div>
+  <div class="al a-ro reveal"><span class="ai">⚠️</span><div><p><strong>Пік ризику суїцидальних думок</strong> 15–17 — статистично критичний вік. Будь-яке висловлювання слід сприймати серйозно. Ніколи — «для привернення уваги». Навіть якщо так — це теж серйозно.</p></div></div>
+  <div class="al a-sl reveal"><span class="ai">🔒</span><div><p><strong>«Код мовчання» зростає</strong> Якщо в 5–6 класі хтось ще може розповісти вчителю, то в 9–11 — соціальна ціна «повідомлення» максимальна. Анонімні канали (116 111, анонімний ящик) — єдиний реалістичний шлях.</p></div></div>
+
+</div>
+</div>
+
+<!-- ══ ACTIVITIES ══ -->
+<div class="panel" id="panel-activities">
+<div class="wrap">
+
+  <p class="sh reveal">Активності педагога / психолога</p>
+  <p class="ss reveal">6 вправ для проведення у класі — паралельно або замість онлайн-файлу</p>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--em)">◎ Активність 1 · «Анатомія здорових / токсичних стосунків» — порівняльна таблиця <span class="tag tg" style="margin-left:auto">10 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Конкретизувати різницю між здоровими і токсичними патернами на реальних прикладах з підліткового досвіду.</p>
+      <h4>Хід:</h4><p>Педагог малює на дошці дві колонки. Учні пропонують характеристики — педагог розміщує або просить клас вирішити, куди. Приклади: «ревнощі» (часто сприймається як любов — але може бути контроль), «постійні повідомлення» (увага або surveillance?), «жарти над слабкостями» (близькість або маніпуляція?).</p>
+      <h4>Ключовий меседж:</h4><p>Різниця — у паттерні, не в окремому вчинку. Одна груба фраза — не токсичність. Систематичне приниження — токсичність.</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--te)">◈ Активність 2 · Рольові ігри «Встановлення меж» — підлітковий контекст <span class="tag tt" style="margin-left:auto">12 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Відпрацювати асертивну відмову і встановлення меж у ситуаціях, специфічних для 9–11 класу.</p>
+      <h4>Сценарії:</h4>
+      <ul>
+        <li>«Партнер/-ка вимагає пароль від телефону "якщо любиш"»</li>
+        <li>«Тебе просять надіслати фото "тільки тобі, нікому не покажу"»</li>
+        <li>«Компанія давить: всі пробують — чому ти "особливий/а"?»</li>
+        <li>«Старший тиснею просить "допомогти" у сумнівній ситуації»</li>
+      </ul>
+      <h4>Фрази для відпрацювання:</h4>
+      <ul>
+        <li>«Ні — і мені не потрібно пояснювати чому»</li>
+        <li>«Якщо тобі потрібні докази моєї довіри — це вже не довіра»</li>
+        <li>«Я відповідаю за своє рішення — не за твою реакцію на нього»</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--in)">◇ Активність 3 · Кейс-аналіз: «Це маніпуляція чи ні?» <span class="tag ti2" style="margin-left:auto">12 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Розвинути критичне мислення щодо неоднозначних ситуацій.</p>
+      <h4>Кейси для аналізу:</h4>
+      <ul>
+        <li>«Дівчина плаче щоразу, коли хлопець хоче провести час без неї» — маніпуляція чи тривога прихильності?</li>
+        <li>«Хлопець перевіряє, де знаходиться дівчина, "бо турбується"» — турбота чи контроль?</li>
+        <li>«Друг ображається, якщо ти не відповів на повідомлення за 10 хвилин» — чутливість чи газлайтинг?</li>
+      </ul>
+      <h4>Мета дискусії:</h4><p>Не «засудити» — а навчити бачити патерн. Одна ситуація — контекст. Систематичність — знак.</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--am)">△ Активність 4 · «Лист собі з майбутнього» — про стосунки і безпеку <span class="tag ta" style="margin-left:auto">8 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Розвинути проспективне мислення щодо власних цінностей у стосунках.</p>
+      <h4>Завдання:</h4><p>Учні пишуть лист собі з +5 років: «Я хочу, щоб ти знав/ла: у стосунках — ніколи не йди на компроміс у...» і «Ознаки людини, якій я зможу довіряти: ...». Не здають — залишають собі. Педагог також пише свій — і може поділитись фрагментом (без особистих деталей).</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--pl)">◉ Активність 5 · Анонімний ящик «Мені потрібна відповідь» <span class="tag tp" style="margin-left:auto">протягом уроку</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Забезпечити безпечний канал для питань і зізнань без публічного виступу.</p>
+      <h4>Механіка:</h4><p>На початку уроку — учні анонімно пишуть питання. Педагог відповідає публічно (знеособлено) або особисто. Онлайн: Google Forms або анонімний Padlet.</p>
+      <h4>Чому критично для 9–11:</h4><p>Соціальна ціна «відкритого запитання» максимальна. Анонімність — єдиний реалістичний канал для справжніх питань.</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--sl)">▲ Активність 6 · Peer support — учні навчають учнів <span class="tag ts" style="margin-left:auto">15 хв (наступний урок)</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Перенести знання в дію: підготувати старшокласників до розмови з молодшими.</p>
+      <h4>Хід:</h4><p>Групи 9–11 класу готують 5-хвилинні «мікро-уроки» для 6–8 класу: «Ознаки маніпуляції», «Що таке коло довіри», «Куди звернутись». Педагог — фасилітатор. Дослідження підтверджують: peer education ефективніше дорослого навчання з тих же тем.</p>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══ CLASS ══ -->
+<div class="panel" id="panel-class">
+<div class="wrap">
+
+  <p class="sh reveal">Диференціація за класом</p>
+  <p class="ss reveal">9, 10 і 11 клас — різний контекст, різні акценти, різна глибина</p>
+
+  <div class="class-tabs">
+    <button class="ct-btn on" onclick="swClass('c9')">9 клас (14–15 р.)</button>
+    <button class="ct-btn" onclick="swClass('c10')">10 клас (15–16 р.)</button>
+    <button class="ct-btn" onclick="swClass('c11')">11 клас (16–17 р.)</button>
+  </div>
+
+  <div class="class-panel on" id="cp-c9">
+    <div class="al a-em"><span class="ai">⚑</span><div><p><strong>Контекст 9 класу</strong> Перехід від підліткового до юнацького — ідентичність нестабільна. Перші серйозні романтичні стосунки, перший досвід соціального тиску в компанії. Love bombing і «умовна дружба» — найактуальніші теми.</p></div></div>
+    <div class="df3">
+      <div class="dc dc-a"><h4>Акцент уроку</h4><ul><li>Базові маніпуляції (газлайтинг, умовна дружба)</li><li>Коло довіри — розширений формат</li><li>Як казати «ні» без виправдань</li><li>Телефони допомоги — обов'язково</li></ul></div>
+      <div class="dc dc-b"><h4>Що прибрати або спростити</h4><ul><li>DARVO — лише базово (термін + приклад)</li><li>Love bombing — коротко</li><li>Сексторшн — назвати, не деталізувати</li></ul></div>
+      <div class="dc dc-c"><h4>Що додати</h4><ul><li>Більше рольових ігор — відпрацювання</li><li>Анонімний ящик питань</li><li>Акцент на peer pressure</li></ul></div>
+    </div>
+  </div>
+
+  <div class="class-panel" id="cp-c10">
+    <div class="al a-in"><span class="ai">⚑</span><div><p><strong>Контекст 10 класу</strong> Романтичні стосунки вже мають досвід — і перший досвід болю або розчарування. Цифрові ризики зростають: більше онлайн-активності, більше незнайомих контактів. Час для розгорнутої розмови про love bombing, DARVO і цифрову безпеку.</p></div></div>
+    <div class="df3">
+      <div class="dc dc-a"><h4>Акцент уроку</h4><ul><li>Повний блок маніпуляцій, включно з DARVO</li><li>Love bombing — детально</li><li>Цифрова безпека — повний блок</li><li>Диференційована довіра</li></ul></div>
+      <div class="dc dc-b"><h4>Важливо врахувати</h4><ul><li>Деякі вже пережили токсичні стосунки</li><li>Можуть бути в них зараз — уважно</li><li>Після уроку — бути доступним 45 хв</li></ul></div>
+      <div class="dc dc-c"><h4>Що додати</h4><ul><li>Кейс-аналіз «маніпуляція чи ні»</li><li>Розгорнутий план безпеки</li><li>Лист собі з майбутнього</li></ul></div>
+    </div>
+  </div>
+
+  <div class="class-panel" id="cp-c11">
+    <div class="al a-pl"><span class="ai">⚑</span><div><p><strong>Контекст 11 класу</strong> Перехідний рік: стрес ЗНО/вступу, невизначеність майбутнього, можливо — дистанційні стосунки, більша самостійність і менше батьківського контролю. Деякі вже мають серйозний досвід — і ресурс допомагати іншим. Найзріліший формат розмови.</p></div></div>
+    <div class="df3">
+      <div class="dc dc-a"><h4>Акцент уроку</h4><ul><li>Повний формат без спрощень</li><li>Peer support — старшокласники як ресурс</li><li>Кризовий план — акцент на самостійності</li><li>Вступ до університету: новий контекст безпеки</li></ul></div>
+      <div class="dc dc-b"><h4>Що врахувати</h4><ul><li>Частина вже мала досвід насилля або шантажу</li><li>Деякі в токсичних стосунках прямо зараз</li><li>Стрес ЗНО посилює вразливість</li></ul></div>
+      <div class="dc dc-c"><h4>Поглиблений формат</h4><ul><li>Активність peer education для 7–8 класу</li><li>Самостійне опрацювання блоку маніпуляцій</li><li>Індивідуальні консультації за запитом</li></ul></div>
+    </div>
+  </div>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">За типом учня — для всіх класів</p>
+
+  <table class="tbl reveal">
+    <thead><tr><th>Тип</th><th>Ознаки під час уроку</th><th>Дія педагога</th></tr></thead>
+    <tbody>
+      <tr><td><strong>З досвідом насилля</strong></td><td>Мовчання, плач, надмірна деталізація або раптова відстороненість</td><td>Не примушуйте. Після — наодинці. Протокол розкриття. Не залишайте самих.</td></tr>
+      <tr><td><strong>В токсичних стосунках зараз</strong></td><td>Захисна реакція на «негативні» приклади, ображається на критику партнера/-ки</td><td>Не критикуйте партнера публічно. Після: «Як у тебе? Не в загальному — особисто».</td></tr>
+      <tr><td><strong>Цинік / «все це нісенітниця»</strong></td><td>Відкрита зневага, коментарі що знецінюють</td><td>Цинізм — захист від болю. Не дискутуйте публічно. Після: «Мене зацікавила твоя реакція».</td></tr>
+      <tr><td><strong>Занадто відкритий</strong></td><td>Ділиться дуже особистим при всіх, деталі надто конкретні</td><td>«Дякую. Цю розмову краще продовжити особисто» — і виконайте після уроку.</td></tr>
+      <tr><td><strong>Сигнал суїцидальних думок</strong></td><td>Будь-яке висловлювання про «непотрібність», «краще без мене»</td><td>НЕ чекайте. Після уроку — одразу наодинці. Протокол. Не залишайте самих.</td></tr>
+    </tbody>
+  </table>
+
+</div>
+</div>
+
+<!-- ══ CRISIS ══ -->
+<div class="panel" id="panel-crisis">
+<div class="wrap">
+
+  <p class="sh reveal">Кризові протоколи для педагога / психолога</p>
+  <p class="ss reveal">Алгоритми дій при розкриттях під час або після уроку для 9–11 класу</p>
+
+  <div class="al a-te reveal">
+    <span class="ai">⚠️</span>
+    <div><p><strong>Для педагога:</strong> 9–11 клас — найбільш імовірний вік реальних розкриттів насилля, шантажу, суїцидальних думок. Будьте готові. Матеріально: акт розкриття, контакти нижче, номер телефону колеги для підміни. Емоційно: після важкого розкриття — вам теж потрібна підтримка.</p></div>
+  </div>
+
+  <div class="contacts reveal">
+    <div class="ct"><h4>Дитяча гаряча лінія</h4><div class="num">116 111</div><p>Безкоштовно · Анонімно · Цілодобово</p></div>
+    <div class="ct"><h4>Психологічна підтримка</h4><div class="num">0 800 500 335</div><p>Безкоштовно з мобільного</p></div>
+    <div class="ct"><h4>Кіберполіція</h4><p>cyberpolice.gov.ua<br>Для сексторшну і грумінгу</p></div>
+    <div class="ct"><h4>Поліція / Медики</h4><div class="num">102 / 103</div><p>При фізичній загрозі або медичному стані</p></div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--te)">🔴 Протокол 1 · Розкриття насилля (фізичного, сексуального, психологічного)</div>
+    <div class="crb-b">
+      <ol>
+        <li>Збережіть зовнішній спокій. Не виражайте шок, недовіру або жалість.</li>
+        <li><em>«Дякую, що розповів/ла. Ти зробив/ла правильно. Я тут».</em></li>
+        <li>НЕ обіцяйте мовчати. <em>«Я повинен/на зробити певні кроки — але буду поруч».</em></li>
+        <li>НЕ ставте уточнювальних запитань — детальне розпитування шкодить і є роботою слідства.</li>
+        <li>Після розмови — одразу акт розкриття + адміністрація + служба захисту дітей.</li>
+        <li>Організуйте супровід — учень не має залишатись сам/сама.</li>
+        <li>Якщо кривдник — у сім'ї: НЕ повідомляйте батьків одразу, координуйтесь зі службою захисту.</li>
+      </ol>
+      <h4>Чого НЕ робити:</h4>
+      <ul><li>Не говоріть «можливо, ти неправильно зрозумів/ла»</li><li>Не питайте «а що ти зробив/ла, що це сталось»</li><li>Не розповідайте колегам без необхідності</li></ul>
+    </div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--ro)">🔴 Протокол 2 · Суїцидальні висловлювання або думки про самоушкодження</div>
+    <div class="crb-b">
+      <ol>
+        <li>Відведіть у приватне місце. Сядьте — не стійте над учнем.</li>
+        <li>Запитайте прямо: <em>«Ти думаєш про те, щоб заподіяти собі шкоду або піти з життя?»</em></li>
+        <li>Слухайте. Не мінімізуйте. Не кажіть «у тебе все є» або «подумай про маму».</li>
+        <li>Оцініть: <em>«Чи є у тебе план?»</em> — наявність плану підвищує ризик.</li>
+        <li>НЕ залишайте учня самого до кінця дня — фізично або через довірену особу.</li>
+        <li>Психолог закладу + батьки (якщо вони не є джерелом проблеми) + за потреби 103.</li>
+        <li>Документуйте все дослівно одразу після розмови.</li>
+      </ol>
+      <h4>Після ситуації:</h4>
+      <p>Зверніться до супервізора. Ваш стан важливий. Вигорання педагогів у кризових ситуаціях — реальне і серйозне.</p>
+    </div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--am)">🟠 Протокол 3 · Сексторшн або грумінг — розкриття</div>
+    <div class="crb-b">
+      <ol>
+        <li>Після уроку, наодинці. Час — не тисніть.</li>
+        <li><em>«Ти нічого не зробив/ла неправильно. 100% відповідальності — на кривднику».</em></li>
+        <li>Попросіть нічого не видаляти — це докази для кіберполіції.</li>
+        <li>Разом — кіберполіція cyberpolice.gov.ua або 102.</li>
+        <li>Повідомте батьків (якщо вони не є джерелом проблеми).</li>
+        <li>Забезпечте психологічний супровід — сором і провина після таких ситуацій — типові й потребують роботи.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--in)">🔵 Протокол 4 · Токсичні стосунки — підозра або розкриття</div>
+    <div class="crb-b">
+      <ol>
+        <li>НЕ критикуйте партнера/-ку учня прямо — це посилює захисну реакцію і може відвернути від допомоги.</li>
+        <li>Запитуйте про почуття: <em>«Як ти себе почуваєш у цих стосунках? Що тобі в них дається легко, а що важко?»</em></li>
+        <li>Нормалізуйте складність: <em>«Залишати стосунки, навіть токсичні — дуже важко. Це не слабкість, що тяжко».</em></li>
+        <li>Запропонуйте ресурси — без тиску на рішення.</li>
+        <li>Продовжуйте супровід — одна розмова рідко вирішує.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="pi reveal">
+    <div class="pt">💙 Про вас, педагогу/психологу</div>
+    <p>Цей урок — один з найважчих, що може провести педагог. Він відкриває двері, за якими стоять реальні болі реальних людей. Після важкого розкриття: не залишайтесь з цим самі. Колега, супервізор, 0 800 500 335 — для вас теж. Ваша стійкість — умова, а не данність. Дбайте про себе.</p>
+  </div>
+
+</div>
+</div>
+
+<!-- ══ DIGITAL ══ -->
+<div class="panel" id="panel-digital">
+<div class="wrap">
+
+  <p class="sh reveal">Цифрова безпека — поглиблений блок</p>
+  <p class="ss reveal">Теорія, статистика, правова база і практичні алгоритми для педагога</p>
+
+  <div class="pi reveal">
+    <div class="pt">📊 Статистика (Pew Research + IWF, 2023)</div>
+    <p>46% підлітків 14–17 стикались із небажаним сексуальним контентом онлайн. 72% не повідомляли батькам. 1 з 7 отримував запити від незнайомців на особисте спілкування. Середній вік першого зіткнення з грумінгом — 14 років. Найпоширеніше місце початку — ігрові платформи і Telegram.</p>
+    <div class="src">Pew Research Center (2023). Teens and Online Experiences. Internet Watch Foundation Annual Report (2023).</div>
+  </div>
+
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">Правова база — що знати педагогу</p>
+
+  <table class="tbl reveal">
+    <thead><tr><th>Загроза</th><th>Правова кваліфікація (Україна)</th><th>Що робити</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Сексторшн</strong></td><td>Ст. 189 КК (вимагання), ст. 301 КК (розповсюдження порнографії)</td><td>Не сплачувати. Зберегти докази. Кіберполіція 102 або cyberpolice.gov.ua</td></tr>
+      <tr><td><strong>Грумінг</strong></td><td>Ст. 156 КК (розбещення неповнолітніх), ст. 155 КК</td><td>Зберегти переписку. Поліція 102. Служба захисту дітей.</td></tr>
+      <tr><td><strong>Кібербулінг</strong></td><td>Ст. 13 ЗУ «Про освіту» (булінг), адм. відповідальність (Ст. 173-4 КУпАП)</td><td>Скріншоти з датами. Адміністрація школи. Поліція при систематичності.</td></tr>
+      <tr><td><strong>Доксинг (публікація особистих даних)</strong></td><td>ЗУ «Про захист персональних даних», ст. 182 КК</td><td>Скріншоти. Звернення до платформи. За серйозних наслідків — 102.</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">Скрипт для класного розбору грумінгу</p>
+
+  <div class="scr" data-lbl="ДЛЯ КЛАСУ — ПАТЕРН ГРУМІНГУ">
+    <p><strong>«</strong>Грумінг не починається з небезпечних слів. Він починається з найприємніших: «ти особливий/а», «ніхто тебе так не розуміє», «твої батьки просто не доросли до тебе». Потім з'являється прохання тримати контакт у таємниці. Потім — поступова сексуалізація. Потім — тиск або шантаж. На кожному з цих етапів є вихід. Знати патерн — означає побачити його раніше.<strong>»</strong></p>
+  </div>
+
+  <div class="al a-em reveal">
+    <span class="ai">🔗</span>
+    <div><p><strong>Ресурси для педагога:</strong> Кіберполіція: cyberpolice.gov.ua · Hotline.org.ua (повідомлення про небезпечний контент) · Проєкт «Протидія домаганням» (ООН Жінки Україна) · «Безпека дітей онлайн» (ЮНІСЕФ, посібник) · La Strada Ukraine (торгівля людьми і онлайн-безпека)</p></div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══ REFLECTION ══ -->
+<div class="panel" id="panel-reflection">
+<div class="wrap">
+
+  <p class="sh reveal">Рефлексія і оцінка ефективності</p>
+  <p class="ss reveal">Інструменти завершення, вимірювання результату і подальша робота</p>
+
+  <table class="tbl reveal">
+    <thead><tr><th>#</th><th>Exit Ticket</th><th>Питання</th><th>Що дає педагогу</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><span class="tag tg">Один термін</span></td><td>«Один новий термін, який я буду пам'ятати»</td><td>Перевірка засвоєння концепцій</td></tr>
+      <tr><td>2</td><td><span class="tag tt">Анонімне питання</span></td><td>Будь-яке питання без підпису — обов'язково</td><td>Виявлення прихованих потреб і ризиків</td></tr>
+      <tr><td>3</td><td><span class="tag ti2">Шкала</span></td><td>«Наскільки я знаю, що робити у кризовій ситуації? (1–10)»</td><td>Вимірювання відчуття захищеності</td></tr>
+      <tr><td>4</td><td><span class="tag ta">Один крок</span></td><td>«Одна дія, яку я зроблю по-іншому після уроку»</td><td>Переведення знань у поведінку</td></tr>
+      <tr><td>5</td><td><span class="tag tp">Сигнал SOS</span></td><td>Учень може непомітно передати записку «мені потрібна розмова» або «я в порядку»</td><td>Безпечне звернення без публічності</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="r">
+
+  <div class="cg reveal">
+    <div class="card"><div class="ci">📞</div><h3>Знання ресурсів</h3><p>Через тиждень: скільки учнів пам'ятають 116 111 і cyberpolice.gov.ua? Якщо менше 65% — повторіть і вивісіть у класі.</p></div>
+    <div class="card"><div class="ci">🤝</div><h3>Звернення після</h3><p>Кожне звернення після уроку — показник довіри. Навіть одне — свідчить, що урок відкрив простір.</p></div>
+    <div class="card"><div class="ci">📝</div><h3>Анонімні питання</h3><p>Аналіз питань дає найточнішу картину реальних потреб класу — краще за будь-яке анкетування.</p></div>
+    <div class="card"><div class="ci">⚡</div><h3>Зміна мови</h3><p>Чи з'являються у мові учнів нові терміни (газлайтинг, DARVO, кола довіри)? Зміна мови = зміна мислення.</p></div>
+  </div>
+
+  <div class="al a-em reveal">
+    <span class="ai">📚</span>
+    <div><p><strong>Рекомендована подальша робота:</strong> Індивідуальні зустрічі з учнями, що мовчали або надмірно ділились. Батьківські збори: «Цифрова безпека і стосунки у 9–11 класі». Наступні теми: «Самооцінка і стосунки», «Кризова самодопомога», «Підготовка до університету: нове середовище безпеки». Peer education — старшокласники для молодших.</p></div>
+  </div>
+
+  <div class="pi reveal">
+    <div class="pt">💙 Завершальне слово</div>
+    <p>Ви провели урок, де говорили про речі, про які більшість дорослих мовчить. Це сміливо і важливо. Навіть якщо сьогодні здається, що «нічого не сталось» — зерно посіяне. Хтось із цього класу колись згадає саме цей урок — і знатиме, що зробити. Ваша робота важлива навіть тоді, коли ви цього не бачите. Дякуємо.</p>
+  </div>
+
+</div>
+</div>
+
+<script>
+function sw(n){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.hn,.tb').forEach(b=>b.classList.remove('on'));
+  document.getElementById('panel-'+n).classList.add('on');
+  document.querySelectorAll('.hn,.tb').forEach(b=>{if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+n+"'"))b.classList.add('on');});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function swClass(n){
+  document.querySelectorAll('.class-panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.ct-btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById('cp-'+n).classList.add('on');
+  document.querySelectorAll('.ct-btn').forEach(b=>{if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+n+"'"))b.classList.add('on');});
+}
+const ro=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.07});
+document.querySelectorAll('.reveal').forEach(r=>ro.observe(r));
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Джерела й що почитати</h2><h3>Використані джерела</h3><ol><li>Bowlby, J. (1988). <i>A Secure Base</i>. Basic Books.</li><li>Faber, A., &amp; Mazlish, E. (1980/2012). <i>How to Talk So Kids Will Listen &amp; Listen So Kids Will Talk</i>. Scribner.</li><li>Edmondson, A. (1999). Psychological safety and learning behavior in work teams. <i>Administrative Science Quarterly, 44</i>(2), 350–383.</li></ol><h3>Що почитати фахівцеві</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>A Secure Base</td><td>Bowlby J., 1988</td><td>Основи прихильності</td></tr><tr><td>Bullying at School</td><td>Olweus D., 1993</td><td>Булінг</td></tr><tr><td>The Whole-Brain Child</td><td>Siegel D. J., Bryson T. P., 2011</td><td>Емоції й зв'язок</td></tr></table><h3>Що порадити батькам</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>How to Talk So Kids Will Listen &amp; Listen So Kids Will Talk</td><td>Faber A., Mazlish E.</td><td>Практичні фрази</td></tr><tr><td>Raising an Emotionally Intelligent Child</td><td>Gottman J., DeClaire J., 1997</td><td>Емоційне коучинг-спілкування</td></tr><tr><td>The Whole-Brain Child</td><td>Siegel D. J., Bryson T. P., 2011</td><td>Емоції дитини</td></tr></table><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="02-9-11-case.html">← Тема 2</a></span><span><a href="04-9-11-case.html">Тема 4 →</a></span></div><a class="mo-fab" href="../index.html#t03">☰ До матриці</a></body>
+</html>

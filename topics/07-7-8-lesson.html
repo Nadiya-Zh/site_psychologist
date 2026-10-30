@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Спокій під час кризи · 7–8 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:    #070810;
+  --s1:    #0C0E1A;
+  --s2:    #121420;
+  --s3:    #181A28;
+  --blue:  #4888E8;
+  --bl-l:  rgba(72,136,232,.11);
+  --bl-ll: rgba(72,136,232,.05);
+  --amber: #D89830;
+  --am-l:  rgba(216,152,48,.1);
+  --teal:  #28B8A0;
+  --te-l:  rgba(40,184,160,.09);
+  --rose:  #D85870;
+  --ro-l:  rgba(216,88,112,.09);
+  --lav:   #9880D0;
+  --la-l:  rgba(152,128,208,.09);
+  --text:  #E8E4DC;
+  --muted: rgba(232,228,220,.48);
+  --dim:   rgba(232,228,220,.26);
+  --bd:    rgba(255,255,255,.07);
+  --bd2:   rgba(255,255,255,.13);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 48% at 8% 18%,rgba(72,136,232,.13) 0%,transparent 65%),
+    radial-gradient(ellipse 48% 52% at 88% 82%,rgba(216,152,48,.09) 0%,transparent 62%),
+    radial-gradient(ellipse 38% 32% at 50% 48%,rgba(40,184,160,.05) 0%,transparent 55%);}
+
+/* compass grid BG */
+.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;
+  background-image:linear-gradient(rgba(72,136,232,.8) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(72,136,232,.8) 1px,transparent 1px);
+  background-size:60px 60px;}
+
+.prog{position:fixed;top:0;left:0;height:2px;z-index:500;background:linear-gradient(90deg,var(--blue),var(--amber));transition:width .3s;width:0%;}
+.snav{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.55rem;z-index:300;}
+.snd{width:6px;height:6px;border-radius:50%;background:var(--bd2);border:none;cursor:pointer;padding:0;transition:all .3s;}
+.snd.on{background:var(--blue);transform:scale(1.7);}
+
+/* ── HERO ── */
+.hero{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:3.5rem 3rem;}
+.hero-kicker{font-size:.62rem;font-weight:500;letter-spacing:.22em;color:var(--blue);text-transform:uppercase;margin-bottom:1.5rem;}
+
+/* compass SVG */
+.compass-wrap{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:min(320px,35vw);aspect-ratio:1;opacity:.12;pointer-events:none;}
+.compass-wrap svg{width:100%;height:100%;animation:compassSpin 30s linear infinite;}
+@keyframes compassSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(3rem,8vw,7rem);font-weight:700;line-height:.95;color:var(--text);letter-spacing:-.03em;margin-bottom:2rem;}
+.hero h1 .t1{color:var(--blue);}
+.hero h1 .t2{color:var(--amber);}
+.hero-foot{border-top:1px solid var(--bd2);padding-top:1.5rem;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.hero-desc{font-size:.9rem;font-weight:300;line-height:1.9;color:var(--muted);max-width:380px;}
+.hero-tags{display:flex;flex-direction:column;gap:.35rem;align-items:flex-end;}
+.ht{font-size:.62rem;font-weight:500;letter-spacing:.07em;color:var(--dim);text-transform:uppercase;}
+
+/* ── SECTIONS ── */
+.sec{position:relative;z-index:2;max-width:900px;margin:0 auto;padding:6.5rem 2rem;}
+.divl{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:1.5rem;position:relative;z-index:2;padding:0 2rem;}
+.dl-line{height:1px;background:linear-gradient(90deg,var(--blue),transparent);opacity:.3;}
+.dl-n{font-size:.58rem;font-weight:500;letter-spacing:.14em;color:var(--dim);text-transform:uppercase;white-space:nowrap;}
+
+.lbl{font-size:.6rem;font-weight:500;letter-spacing:.2em;color:var(--blue);margin-bottom:.9rem;text-transform:uppercase;display:flex;align-items:center;gap:.55rem;}
+.lbl::after{content:'';width:24px;height:1px;background:var(--blue);opacity:.5;}
+h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;line-height:1.1;color:var(--text);margin-bottom:1.1rem;letter-spacing:-.02em;}
+h2 em{font-style:normal;color:var(--blue);}
+h2 strong{color:var(--amber);}
+.lead{font-size:.95rem;font-weight:300;line-height:1.95;color:var(--muted);max-width:680px;margin-bottom:2rem;}
+
+/* PSY */
+.psy{border-left:2px solid var(--blue);padding:1.4rem 2rem;margin:2.5rem 0;background:var(--bl-ll);}
+.psy-who{font-size:.6rem;font-weight:500;letter-spacing:.18em;color:var(--blue);margin-bottom:.65rem;text-transform:uppercase;}
+.psy p{font-size:.92rem;font-weight:300;line-height:1.95;color:rgba(232,228,220,.75);font-style:italic;}
+
+/* NERVOUS SYSTEM METER */
+.ns-meter{margin:2rem 0;}
+.ns-track{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin:1rem 0;}
+.ns-cell{height:36px;border-radius:4px;cursor:pointer;transition:all .2s;background:var(--s2);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:700;color:var(--dim);}
+.ns-cell:hover{transform:scaleY(1.1);}
+.ns-cell.on{color:var(--bg);}
+.ns-cell.z1{background:var(--teal);border-color:var(--teal);color:var(--bg);}
+.ns-cell.z2{background:var(--amber);border-color:var(--amber);}
+.ns-cell.z3{background:var(--rose);border-color:var(--rose);}
+.ns-labels{display:flex;justify-content:space-between;font-size:.68rem;color:var(--dim);margin-bottom:.4rem;}
+.ns-result{font-size:.88rem;font-weight:300;color:var(--muted);font-style:italic;margin-top:.85rem;min-height:1.5rem;line-height:1.75;}
+
+/* 3 STATES ACCORDION */
+.states-list{margin:2rem 0;}
+.st{border-bottom:1px solid var(--bd);}
+.st-head{display:flex;align-items:center;gap:1rem;padding:1.1rem 0;cursor:pointer;}
+.st-head:hover .st-name{color:var(--amber);}
+.st-ico{font-size:1.5rem;flex-shrink:0;}
+.st-name{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;color:var(--text);flex:1;transition:color .2s;}
+.st-badge{font-size:.63rem;font-weight:600;padding:.18rem .55rem;border-radius:3px;}
+.st-arr{font-size:.65rem;color:var(--dim);transition:transform .25s;}
+.st.open .st-arr{transform:rotate(90deg);}
+.st.open .st-name{color:var(--amber);}
+.st-body{display:none;padding:0 0 1.5rem 3.5rem;font-size:.88rem;font-weight:300;line-height:1.9;color:var(--muted);}
+.st.open .st-body{display:block;}
+.st-science{margin:.7rem 0;padding:.7rem 1rem;background:var(--s2);border-left:1px solid var(--blue);font-size:.8rem;}
+.st-toolkit{margin:.6rem 0;padding:.7rem 1rem;background:var(--te-l);border-left:1px solid var(--teal);font-size:.8rem;color:var(--muted);}
+
+/* RESILIENCE QUIZ */
+.rq-wrap{margin:2rem 0;}
+.rq-item{background:var(--s1);border:1px solid var(--bd);padding:1.2rem 1.4rem;margin-bottom:.5rem;cursor:pointer;display:flex;gap:1rem;align-items:flex-start;transition:background .2s;}
+.rq-item:hover{background:var(--s2);}
+.rq-item.checked{border-color:var(--blue);background:var(--bl-l);}
+.rq-item.checked .rq-box{background:var(--blue);border-color:var(--blue);}
+.rq-box{width:18px;height:18px;border-radius:3px;border:1px solid var(--bd2);flex-shrink:0;margin-top:.15rem;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:white;transition:all .2s;}
+.rq-text{font-size:.87rem;font-weight:300;color:var(--muted);line-height:1.7;}
+.rq-result{margin-top:1rem;padding:1rem 1.3rem;background:var(--s1);border-left:2px solid var(--blue);font-size:.86rem;font-weight:300;color:var(--muted);display:none;line-height:1.78;}
+.rq-result.show{display:block;}
+
+/* BREATHING */
+.br-shell{border:1px solid var(--bd);padding:2rem;margin:2rem 0;text-align:center;}
+.br-tabs{display:flex;gap:.35rem;justify-content:center;margin-bottom:1.5rem;flex-wrap:wrap;}
+.brt{background:var(--s1);border:1px solid var(--bd);padding:.32rem .9rem;font-family:'Inter',sans-serif;font-size:.74rem;font-weight:500;color:var(--muted);cursor:pointer;transition:all .2s;}
+.brt:hover{border-color:var(--bd2);color:var(--text);}
+.brt.on{border-color:var(--blue);color:var(--blue);}
+.br-meta{font-size:.75rem;color:var(--muted);margin-bottom:1.4rem;font-style:italic;}
+.br-outer{width:180px;height:180px;margin:0 auto 1.4rem;position:relative;display:flex;align-items:center;justify-content:center;}
+.br-ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(72,136,232,.2);pointer-events:none;animation:rp 4s ease-in-out infinite;}
+.br-ring2{position:absolute;inset:-12px;border-radius:50%;border:1px solid rgba(72,136,232,.1);pointer-events:none;animation:rp 4s ease-in-out infinite .5s;}
+@keyframes rp{0%,100%{transform:scale(1);}50%{transform:scale(1.04);}}
+.br-c{width:140px;height:140px;border-radius:50%;background:var(--bl-l);border:1.5px solid rgba(72,136,232,.3);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;transition:all .25s;box-shadow:0 0 30px rgba(72,136,232,.1);}
+.br-c:hover{box-shadow:0 0 40px rgba(72,136,232,.2);}
+.br-c.inh{animation:brI var(--dur) ease-in-out forwards;}
+.br-c.exh{animation:brE var(--dur) ease-in-out forwards;}
+.br-c.hld{background:var(--am-l);border-color:rgba(216,152,48,.35);}
+@keyframes brI{0%{transform:scale(.9);}100%{transform:scale(1.12);}}
+@keyframes brE{0%{transform:scale(1.12);}100%{transform:scale(.9);}}
+.br-ph{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:600;color:var(--blue);}
+.br-n{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:700;color:var(--text);}
+.br-hint{font-size:.78rem;color:var(--muted);margin-bottom:.8rem;}
+.br-cyc{font-size:.68rem;color:var(--dim);}
+
+/* GROUNDING TABS */
+.gr-tabs{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:1.2rem;}
+.grt{background:var(--s1);border:1px solid var(--bd);padding:.3rem .85rem;font-family:'Inter',sans-serif;font-size:.76rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;border-radius:2px;}
+.grt:hover{border-color:var(--bd2);color:var(--text);}
+.grt.on{border-color:var(--teal);color:var(--teal);}
+.gr-panel{display:none;}.gr-panel.on{display:block;}
+.gr-card{background:var(--s1);border:1px solid var(--bd);padding:1.5rem 1.8rem;margin-top:.5rem;}
+.grc-h{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;color:var(--text);margin-bottom:.7rem;}
+.grc-steps{list-style:none;padding:0;}
+.grc-steps li{font-size:.86rem;font-weight:300;color:var(--muted);padding:.45rem 0;border-bottom:1px solid var(--bd);display:flex;gap:.7rem;align-items:flex-start;line-height:1.7;}
+.grc-steps li:last-child{border:none;}
+.grc-steps li::before{content:attr(data-n);font-family:'Space Grotesk',sans-serif;font-size:.65rem;font-weight:700;color:var(--blue);min-width:1.4rem;margin-top:.18rem;}
+.grc-note{font-size:.78rem;font-style:italic;color:var(--dim);margin-top:.8rem;padding:.7rem 1rem;border-left:1px solid var(--blue);}
+
+/* CRISIS PLAN */
+.cp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--bd);border:1px solid var(--bd);margin:1.5rem 0;}
+.cpf{background:var(--s1);padding:1.4rem;}
+.cpl{font-size:.58rem;font-weight:500;letter-spacing:.12em;color:var(--dim);display:block;margin-bottom:.5rem;text-transform:uppercase;}
+.cpi{width:100%;background:transparent;border:none;border-bottom:1px solid var(--bd2);padding:.45rem 0;font-family:'Inter',sans-serif;font-size:.83rem;color:var(--text);outline:none;resize:none;transition:border-color .2s;line-height:1.55;}
+.cpi:focus{border-color:var(--blue);}
+.cpi::placeholder{color:var(--dim);}
+.cp-btn{background:var(--blue);color:white;border:none;padding:.72rem 2.2rem;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;display:block;margin:1.5rem auto;transition:all .25s;letter-spacing:.03em;}
+.cp-btn:hover{background:#3878D8;}
+.cp-res{display:none;background:var(--s1);border:1px solid var(--bd2);padding:2rem;margin-top:1.5rem;}
+.cp-res.show{display:block;}
+.cp-res h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;color:var(--text);text-align:center;margin-bottom:1.1rem;}
+.cpr-row{display:flex;gap:1rem;padding:.5rem 0;border-bottom:1px solid var(--bd);font-size:.83rem;font-weight:300;line-height:1.6;}
+.cpr-row:last-child{border:none;}
+.cpr-l{color:var(--dim);font-size:.65rem;font-weight:500;letter-spacing:.06em;min-width:150px;}
+
+/* SCENARIOS */
+.sc-shell{border:1px solid var(--bd);margin:2rem 0;}
+.sc-top{padding:.9rem 1.5rem;border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;align-items:center;}
+.sc-tl{font-size:.6rem;font-weight:500;letter-spacing:.16em;color:var(--dim);text-transform:uppercase;}
+.sc-pp{font-size:.7rem;font-weight:600;color:var(--amber);}
+.sc-pb{height:2px;background:var(--bd);}
+.sc-pf{height:100%;background:var(--amber);transition:width .4s;}
+.sc-body{padding:2rem 1.5rem;}
+.sc-q{font-family:'Space Grotesk',sans-serif;font-size:1.02rem;font-weight:600;line-height:1.55;color:var(--text);margin-bottom:1.4rem;}
+.sc-opts{display:flex;flex-direction:column;gap:.42rem;}
+.sc-o{background:var(--s1);border:1px solid var(--bd);padding:.8rem 1.1rem;font-family:'Inter',sans-serif;font-size:.86rem;font-weight:300;cursor:pointer;text-align:left;color:var(--muted);transition:all .2s;}
+.sc-o:hover{border-color:var(--bd2);color:var(--text);}
+.sc-o.ok{border-color:var(--teal);background:var(--te-l);color:var(--teal);}
+.sc-o.bad{border-color:var(--rose);background:var(--ro-l);color:var(--rose);}
+.sc-o:disabled{cursor:not-allowed;}
+.sc-fb{font-size:.84rem;font-weight:300;padding:.85rem 1.1rem;border-left:1px solid var(--bd2);margin-top:.9rem;display:none;line-height:1.8;color:var(--muted);}
+.sc-fb.show{display:block;}.sc-fb.ok{border-color:var(--teal);}.sc-fb.bad{border-color:var(--rose);}
+.sc-nx{display:none;margin-top:.9rem;background:none;border:1px solid var(--bd2);padding:.5rem 1.5rem;font-family:'Inter',sans-serif;font-size:.76rem;color:var(--dim);cursor:pointer;transition:all .2s;}
+.sc-nx:hover{border-color:var(--amber);color:var(--amber);}.sc-nx.show{display:inline-block;}
+.sc-sc{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--amber);text-align:center;margin-top:1.5rem;display:none;}
+
+/* QUIZ */
+.qz-shell{border:1px solid var(--bd);margin:2rem 0;}
+.qz-top{padding:.85rem 1.5rem;border-bottom:1px solid var(--bd);display:flex;justify-content:space-between;}
+.qz-pr{font-size:.6rem;font-weight:500;letter-spacing:.1em;color:var(--dim);}
+.qz-pp{font-size:.6rem;font-weight:600;color:var(--blue);}
+.qz-body{padding:2rem 1.5rem;}
+.qz-q{font-family:'Space Grotesk',sans-serif;font-size:1.02rem;font-weight:600;line-height:1.5;color:var(--text);margin-bottom:1.3rem;}
+.qz-opts{display:flex;flex-direction:column;gap:.4rem;}
+.qz-o{background:var(--s1);border:1px solid var(--bd);padding:.78rem 1.1rem;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:300;cursor:pointer;text-align:left;color:var(--muted);transition:all .2s;}
+.qz-o:hover{border-color:var(--bd2);color:var(--text);}
+.qz-o.ok{border-color:var(--teal);background:var(--te-l);color:var(--teal);font-weight:500;}
+.qz-o.bad{border-color:var(--rose);background:var(--ro-l);color:var(--rose);}
+.qz-o:disabled{cursor:not-allowed;}
+.qz-fb{font-size:.83rem;font-weight:300;padding:.8rem 1rem;border-left:1px solid var(--bd2);margin-top:.8rem;display:none;line-height:1.8;color:var(--muted);}
+.qz-fb.show{display:block;}.qz-fb.ok{border-color:var(--teal);}.qz-fb.bad{border-color:var(--rose);}
+.qz-nx{display:none;margin-top:.9rem;background:none;border:1px solid var(--bd2);padding:.48rem 1.5rem;font-family:'Inter',sans-serif;font-size:.74rem;color:var(--dim);cursor:pointer;transition:all .2s;}
+.qz-nx:hover{border-color:var(--lav);color:var(--lav);}.qz-nx.show{display:inline-block;}
+.qz-sc{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--lav);text-align:center;margin-top:1.5rem;display:none;padding:1rem;}
+
+/* FINAL */
+.final{position:relative;z-index:2;max-width:700px;margin:0 auto;padding:5.5rem 2rem 9rem;}
+.final-cert{border:1px solid var(--bd2);padding:2.5rem;margin:2rem 0;}
+.fcl{font-size:.58rem;font-weight:500;letter-spacing:.16em;color:var(--dim);margin-bottom:.4rem;text-transform:uppercase;}
+.fcv{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:400;color:var(--text);line-height:1.7;}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s;}
+.reveal.vis{opacity:1;transform:none;}
+</style>
+<link rel="stylesheet" href="../assets/psy.css">
+</head>
+<body><nav class="mo-nav"><a href="../index.html">← Кабінет психолога</a><span class="mo-t">Тема 7 · Як зберегти спокій під час кризових подій · 7–8 клас · Урок</span><span class="mo-g"><a href="07-5-6-lesson.html">5–6 клас</a><a href="07-7-8-lesson.html" class="on">7–8 клас</a><a href="07-9-11-lesson.html">9–11 клас</a><a href="07-b-lesson.html">Батьки</a><a href="07-7-8-case.html">⇄ Кейс</a></span></nav>
+<div class="prog" id="prog"></div>
+<div class="grid-bg"></div>
+
+<nav class="snav">
+  <button class="snd on" data-i="0"></button>
+  <button class="snd" data-i="1"></button>
+  <button class="snd" data-i="2"></button>
+  <button class="snd" data-i="3"></button>
+  <button class="snd" data-i="4"></button>
+  <button class="snd" data-i="5"></button>
+  <button class="snd" data-i="6"></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="s0">
+  <div class="compass-wrap">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <circle cx="100" cy="100" r="90" stroke="rgba(72,136,232,.6)" stroke-width=".8"/>
+      <circle cx="100" cy="100" r="70" stroke="rgba(72,136,232,.4)" stroke-width=".5"/>
+      <circle cx="100" cy="100" r="50" stroke="rgba(72,136,232,.3)" stroke-width=".4"/>
+      <line x1="100" y1="10" x2="100" y2="190" stroke="rgba(72,136,232,.4)" stroke-width=".6"/>
+      <line x1="10" y1="100" x2="190" y2="100" stroke="rgba(72,136,232,.4)" stroke-width=".6"/>
+      <line x1="36" y1="36" x2="164" y2="164" stroke="rgba(72,136,232,.2)" stroke-width=".4"/>
+      <line x1="164" y1="36" x2="36" y2="164" stroke="rgba(72,136,232,.2)" stroke-width=".4"/>
+      <polygon points="100,20 95,100 100,180 105,100" fill="rgba(216,152,48,.7)"/>
+      <polygon points="100,20 95,100 100,90 105,100" fill="rgba(216,88,112,.6)"/>
+      <circle cx="100" cy="100" r="5" fill="rgba(72,136,232,.8)"/>
+      <text x="100" y="8" text-anchor="middle" font-size="8" fill="rgba(72,136,232,.8)" font-family="Inter">N</text>
+      <text x="100" y="196" text-anchor="middle" font-size="8" fill="rgba(72,136,232,.5)" font-family="Inter">S</text>
+      <text x="195" y="103" text-anchor="end" font-size="8" fill="rgba(72,136,232,.5)" font-family="Inter">E</text>
+      <text x="5" y="103" text-anchor="start" font-size="8" fill="rgba(72,136,232,.5)" font-family="Inter">W</text>
+    </svg>
+  </div>
+  <div class="hero-kicker">Онлайн-урок · 7–8 клас · Кризова психологія</div>
+  <h1>
+    <span class="t1">Компас</span><br>
+    у <span class="t2">кризі</span>
+  </h1>
+  <div class="hero-foot">
+    <p class="hero-desc">Нейронаука кризових реакцій, три стани нервової системи і конкретні інструменти регуляції — без спрощень</p>
+    <div class="hero-tags">
+      <span class="ht">◈ Поліваготонія</span>
+      <span class="ht">▲ HRV і дихання</span>
+      <span class="ht">◎ Сенсорне заземлення</span>
+      <span class="ht">◇ Резилієнтність</span>
+      <span class="ht">▽ 9 сценаріїв · 9 питань</span>
+    </div>
+  </div>
+</section>
+
+<!-- S1: НЕЙРОНАУКА КРИЗИ -->
+<div class="divl reveal"><div class="dl-line"></div><div class="dl-n">01 — Нейронаука</div></div>
+<section class="sec reveal" id="s1">
+  <div class="lbl">Що відбувається в мозку</div>
+  <h2>Криза — це <em>нейробіологія</em>,<br>не слабкість</h2>
+  <p class="lead">При загрозі мигдалина «захоплює управління» — за 12 мілісекунд, до того як кора встигла подумати. Серце прискорюється, дихання змінюється, м'язи напружуються. Це не «паніка» — це еволюційний захист.</p>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Про мигдалину і контроль</div>
+    <p>Мигдалина (amygdala) — «охоронець» мозку. При загрозі вона блокує префронтальну кору — «думаючий» мозок. Тому в паніці важко думати раціонально. Але ти можеш навчитись обходити цей блок: через дихання, рух і заземлення ти активуєш вентральний вагус — і PFC знову «вмикається». Це не магія — це нейрофізіологія.</p>
+  </div>
+
+  <p style="font-size:.75rem;font-weight:500;letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin-bottom:.9rem">Оціни свій стан нервової системи прямо зараз (1 = повний спокій, 10 = максимальне збудження):</p>
+  <div class="ns-meter">
+    <div class="ns-labels"><span>1 — вентральний вагус</span><span>10 — дорсальний вагус</span></div>
+    <div class="ns-track" id="nsTrack"></div>
+    <div class="ns-result" id="nsResult">Натисни на клітинку</div>
+  </div>
+</section>
+
+<!-- S2: ТРИ СТАНИ НЕРВОВОЇ СИСТЕМИ -->
+<div class="divl reveal"><div class="dl-line"></div><div class="dl-n">02 — Поліваготонія</div></div>
+<section class="sec reveal" id="s2">
+  <div class="lbl">Порджес · 1994</div>
+  <h2>Три стани <em>нервової системи</em></h2>
+  <p class="lead">Стівен Порджес відкрив: нервова система не «спокій або паніка» — вона має три ієрархічні стани. Розуміти свій стан — перший крок до регуляції.</p>
+
+  <div class="states-list">
+    <div class="st">
+      <div class="st-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="st-ico">🔵</span>
+        <div class="st-name">Вентральний вагус — «безпека і зв'язок»</div>
+        <span class="st-badge" style="background:rgba(40,184,160,.15);color:var(--teal)">Ціль</span>
+        <span class="st-arr">▶</span>
+      </div>
+      <div class="st-body">
+        Стан де ти зазвичай знаходишся коли все добре. Спокій, здатність думати, говорити, навчатись, сміятись. Дихання рівне, серце б'ється ритмічно, обличчя розслаблене. Вентральний вагус — найновіший еволюційний шар нервової системи. Він активується через: рівне дихання, соціальний контакт, безпечне оточення, м'який голос.
+        <div class="st-science">🧬 Механізм: вентральний вагус гальмує симпатику і активує парасимпатичну систему → ЧСС↓, кортизол↓, окситоцин↑</div>
+        <div class="st-toolkit">🧭 Техніки повернення: будь-яка дихальна техніка з довгим видихом · заземлення · контакт з довіреною людиною</div>
+      </div>
+    </div>
+    <div class="st">
+      <div class="st-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="st-ico">🟡</span>
+        <div class="st-name">Симпатична нервова система — «мобілізація»</div>
+        <span class="st-badge" style="background:rgba(216,152,48,.15);color:var(--amber)">«Бій або втеча»</span>
+        <span class="st-arr">▶</span>
+      </div>
+      <div class="st-body">
+        Активується при загрозі: серцебиття прискорюється, дихання часте, м'язи готові до дії, увага звужується до джерела небезпеки. Думати повноцінно — важко. Це не «паніка» — це мобілізація. При справжній небезпеці — рятує. При хибній тривозі — вичерпує.
+        <div class="st-science">🧬 Механізм: мигдалина → гіпоталамус → наднирники → адреналін і кортизол → тіло в режимі дії</div>
+        <div class="st-toolkit">🧭 Техніки виходу: дихання 4-4-6 · фізичний рух (витратити адреналін) · холодна вода на обличчя · назвати 5 речей навколо</div>
+      </div>
+    </div>
+    <div class="st">
+      <div class="st-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="st-ico">🔴</span>
+        <div class="st-name">Дорсальний вагус — «завмирання»</div>
+        <span class="st-badge" style="background:rgba(216,88,112,.15);color:var(--rose)">«Shutdown»</span>
+        <span class="st-arr">▶</span>
+      </div>
+      <div class="st-body">
+        Найдавніший шар — при перевантаженні загрозою тіло «вимикається». Онімілість, відстороненість, важко рухатись і говорити, ніби ззовні дивишся на себе. Це не боягузтво — це захисний механізм рептилій що зберігся в людини. Важливо: вихід через дорсального вагусу потребує поступового, а не різкого «включення».
+        <div class="st-science">🧬 Механізм: дорсальний вагус → сильне гальмування → ЧСС↓↓, рух↓, обмін↓ — «гра в мертвого»</div>
+        <div class="st-toolkit">🧭 Техніки виходу: НЕ різке збудження. Поступово: відчути підлогу → стиснути і розтиснути пальці → зробити маленький рух → м'який голос поряд</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S3: РЕЗИЛІЄНТНІСТЬ -->
+<div class="divl reveal"><div class="dl-line"></div><div class="dl-n">03 — Резилієнтність</div></div>
+<section class="sec reveal" id="s3">
+  <div class="lbl">Внутрішній ресурс</div>
+  <h2>Твоя <em>резилієнтність</em>:<br>що вже є</h2>
+  <p class="lead">Резилієнтність — це не «не відчувати нічого страшного». Це здатність повертатись. У кожного вона є — і її можна розвивати. Відмітьте те що вже маєш:</p>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Про резилієнтність</div>
+    <p>Дослідження ВООЗ після воєн і катастроф: 60–70% людей — включно з дітьми — виявляють природну резилієнтність навіть після серйозних травм. Це не значить «не боятись» або «швидко забути». Це значить — система відновлення вже вбудована. Наше завдання — активувати і зміцнити її.</p>
+  </div>
+
+  <div class="rq-wrap" id="rqWrap">
+    <div class="rq-item" onclick="toggleRQ(this)"><div class="rq-box"></div><div class="rq-text">Я вже переживав/-ла складні ситуації — і справлявся/-лась</div></div>
+    <div class="rq-item" onclick="toggleRQ(this)"><div class="rq-box"></div><div class="rq-text">Є хоча б одна людина якій я довіряю</div></div>
+    <div class="rq-item" onclick="toggleRQ(this)"><div class="rq-box"></div><div class="rq-text">Я вмію робити хоча б одну техніку заспокоєння (дихання, рух, музика…)</div></div>
+    <div class="rq-item" onclick="toggleRQ(this)"><div class="rq-box"></div><div class="rq-text">Є хоча б одна річ яка дає мені радість або сенс</div></div>
+    <div class="rq-item" onclick="toggleRQ(this)"><div class="rq-box"></div><div class="rq-text">Я можу попросити про допомогу коли важко</div></div>
+    <div class="rq-item" onclick="toggleRQ(this)"><div class="rq-box"></div><div class="rq-text">Я знаю що страх і тривога — тимчасові стани, а не постійний стан</div></div>
+    <div class="rq-item" onclick="toggleRQ(this)"><div class="rq-box"></div><div class="rq-text">Я маю рутину або розпорядок що допомагає стабілізуватись</div></div>
+    <div class="rq-item" onclick="toggleRQ(this)"><div class="rq-box"></div><div class="rq-text">Я вмію відрізняти те що в моєму контролі від того що поза ним</div></div>
+  </div>
+  <button onclick="showRQResult()" style="margin-top:.8rem;background:var(--blue);color:white;border:none;padding:.6rem 1.7rem;font-family:'Inter',sans-serif;font-size:.84rem;font-weight:600;cursor:pointer;transition:all .2s">Показати мій рівень резилієнтності →</button>
+  <div class="rq-result" id="rqResult"></div>
+</section>
+
+<!-- S4: ДИХАННЯ -->
+<div class="divl reveal"><div class="dl-line"></div><div class="dl-n">04 — HRV і дихання</div></div>
+<section class="sec reveal" id="s4">
+  <div class="lbl">Варіабельність серцевого ритму</div>
+  <h2>Дихання і <em>HRV</em>:<br>вимірюваний ефект</h2>
+  <p class="lead">HRV (варіабельність серцевого ритму) — показник здоров'я нервової системи. Правильне дихання підвищує HRV за 2–5 хвилин. Це вимірювано смартфоном. Вибери техніку і спробуй:</p>
+
+  <div class="br-shell">
+    <div class="br-tabs">
+      <button class="brt on" id="ts" onclick="setBr('s')">🛡️ 4-4-6 Безпека</button>
+      <button class="brt" id="tc" onclick="setBr('c')">◈ Coherence 5.5</button>
+      <button class="brt" id="tq" onclick="setBr('q')">⬜ Квадрат 4-4-4-4</button>
+      <button class="brt" id="tp" onclick="setBr('p')">💨 Фіз. зітхання</button>
+    </div>
+    <div class="br-meta" id="brMeta">Видих 6 сек → активація вентрального вагусу → ЧСС↓</div>
+    <div class="br-outer">
+      <div class="br-ring"></div><div class="br-ring2"></div>
+      <div class="br-c" id="brC" onclick="startBr()">
+        <div class="br-ph" id="brPh">▶</div>
+        <div class="br-n" id="brN">—</div>
+      </div>
+    </div>
+    <div class="br-hint" id="brHint">Натисни коло · натисни знову щоб зупинити</div>
+    <div class="br-cyc" id="brCyc"></div>
+  </div>
+</section>
+
+<!-- S5: ЗАЗЕМЛЕННЯ -->
+<div class="divl reveal"><div class="dl-line"></div><div class="dl-n">05 — Заземлення</div></div>
+<section class="sec reveal" id="s5">
+  <div class="lbl">Сенсорне заземлення</div>
+  <h2>4 техніки <em>повернення</em><br>до теперішнього</h2>
+  <p class="lead">Паніка і флешбеки «живуть» у думках про небезпечне майбутнє або минуле. Заземлення переводить мозок у теперішній момент — де загрози немає. Вибери техніку:</p>
+
+  <div class="gr-tabs">
+    <button class="grt on" onclick="swGr('g1',this)">✋ 5-4-3-2-1</button>
+    <button class="grt" onclick="swGr('g2',this)">🦶 «Коріння»</button>
+    <button class="grt" onclick="swGr('g3',this)">❄️ Холод</button>
+    <button class="grt" onclick="swGr('g4',this)">🏃 Рух</button>
+  </div>
+
+  <div class="gr-panel on" id="g1">
+    <div class="gr-card">
+      <div class="grc-h">5-4-3-2-1 · Сенсорний протокол</div>
+      <ul class="grc-steps">
+        <li data-n="5">Повільно назви 5 речей які бачиш прямо зараз. Не поспішай — дивись на кожну.</li>
+        <li data-n="4">Торкнись 4 різних поверхонь. Опиши: тепле/холодне, гладке/шершаве.</li>
+        <li data-n="3">Прислухайся — 3 звуки які є прямо зараз. Навіть тиша — це теж «звук».</li>
+        <li data-n="2">Відчуй 2 запахи або понюхай руку, одяг.</li>
+        <li data-n="1">1 смак у роті прямо зараз.</li>
+        <li data-n="↓">Обидві ступні на підлозі. Відчуй тиск.</li>
+      </ul>
+      <div class="grc-note">Ефект: переключення обробки з лімбічної системи до кори. Займає 2–3 хвилини. Можна робити непомітно у будь-якому місці.</div>
+    </div>
+  </div>
+  <div class="gr-panel" id="g2">
+    <div class="gr-card">
+      <div class="grc-h">«Коріння» · Тілесне заземлення</div>
+      <ul class="grc-steps">
+        <li data-n="1">Сядь або стань. Обидві ступні рівно на підлозі.</li>
+        <li data-n="2">Відчуй тиск підошов — підлога тримає тебе. Натисни трохи сильніше.</li>
+        <li data-n="3">Уяви: від ступнів у землю йде коріння — дерево не падає від вітру, бо має коріння.</li>
+        <li data-n="4">Відчуй спину — хребет вертикальний. Плечі опускаються.</li>
+        <li data-n="5">Одне повільне дихання 4-4-6.</li>
+      </ul>
+      <div class="grc-note">Особливо ефективне при «завмиранні» — повертає у тіло через фізичний тиск. Використовуй в укритті або будь-де де можна сидіти.</div>
+    </div>
+  </div>
+  <div class="gr-panel" id="g3">
+    <div class="gr-card">
+      <div class="grc-h">Холод · Швидкий перезапуск</div>
+      <ul class="grc-steps">
+        <li data-n="1">Зустав холодну воду і змочи зап'ястя або обличчя.</li>
+        <li data-n="2">Якщо є лід — стисни в кулаці на 30 секунд.</li>
+        <li data-n="3">Якщо немає — стисни кулаки сильно і розтисни 5 разів.</li>
+        <li data-n="→">Холодна вода активує «пірнальний рефлекс» — ЧСС знижується рефлекторно.</li>
+      </ul>
+      <div class="grc-note">Найшвидша фізіологічна техніка при гострій паніці — ефект за 30–60 секунд. Не підходить при переохолодженні.</div>
+    </div>
+  </div>
+  <div class="gr-panel" id="g4">
+    <div class="gr-card">
+      <div class="grc-h">Рух · Витратити адреналін</div>
+      <ul class="grc-steps">
+        <li data-n="1">10 стрибків на місці — або 10 присідань.</li>
+        <li data-n="2">Потрусіть руками енергійно 20 секунд.</li>
+        <li data-n="3">Швидка ходьба 3–5 хвилин.</li>
+        <li data-n="→">Після: повільне дихання 4-4-6 щоб «приземлитись».</li>
+      </ul>
+      <div class="grc-note">При мобілізації (симпатика) тіло готувалось до фізичної дії — дай йому цю дію. Adrenаlin метаболізується через рух. Особливо ефективно після сирени або гострого переляку.</div>
+    </div>
+  </div>
+</section>
+
+<!-- S6: СЦЕНАРІЇ -->
+<div class="divl reveal"><div class="dl-line"></div><div class="dl-n">06 — Дилеми</div></div>
+<section class="sec reveal" id="s6">
+  <div class="lbl">9 реальних ситуацій</div>
+  <h2>Нейронаука <em>у дії</em></h2>
+
+  <div class="sc-shell">
+    <div class="sc-top"><span class="sc-tl" id="scTl">Ситуація 1 / 9</span><span class="sc-pp" id="scPp">0 pts</span></div>
+    <div class="sc-pb"><div class="sc-pf" id="scPf" style="width:11%"></div></div>
+    <div class="sc-body">
+      <div class="sc-q" id="scQ"></div>
+      <div class="sc-opts" id="scOpts"></div>
+      <div class="sc-fb" id="scFb"></div>
+      <button class="sc-nx" id="scNx" onclick="nxSc()">Наступна →</button>
+      <div class="sc-sc" id="scSc"></div>
+    </div>
+  </div>
+</section>
+
+<!-- S7: ВІКТОРИНА -->
+<div class="divl reveal"><div class="dl-line"></div><div class="dl-n">07 — Вікторина</div></div>
+<section class="sec reveal" id="s7">
+  <div class="lbl">9 питань · Нейронаука кризи</div>
+  <h2>Перевір знання <em>без підказок</em></h2>
+
+  <div class="qz-shell">
+    <div class="qz-top"><span class="qz-pr" id="qzPr">01 / 09</span><span class="qz-pp" id="qzPp">0 pts</span></div>
+    <div class="qz-body">
+      <div class="qz-q" id="qzQ"></div>
+      <div class="qz-opts" id="qzOpts"></div>
+      <div class="qz-fb" id="qzFb"></div>
+      <button class="qz-nx" id="qzNx" onclick="nxQz()">Далі →</button>
+      <div class="qz-sc" id="qzSc"></div>
+    </div>
+  </div>
+</section>
+
+<!-- S8: ПЛАН -->
+<div class="divl reveal"><div class="dl-line"></div><div class="dl-n">08 — Мій протокол</div></div>
+<section class="sec reveal" id="s8">
+  <div class="lbl">Особистий кризовий протокол</div>
+  <h2>Мій <em>компас</em> у кризі</h2>
+  <p class="lead">При гострому стресі PFC заблокована — мозок не генерує рішень. Готовий протокол обходить цей блок. Заповни зараз.</p>
+
+  <div class="cp-grid">
+    <div class="cpf">
+      <label class="cpl">Мій стан при кризі (тілесні сигнали)</label>
+      <textarea class="cpi" id="c1" rows="2" placeholder="Серце пришвидшується, важко дихати…"></textarea>
+    </div>
+    <div class="cpf">
+      <label class="cpl">Я знаходжусь у зоні (обери)</label>
+      <input class="cpi" type="text" id="c2" placeholder="Мобілізація / Завмирання…">
+      <br><br>
+      <label class="cpl">Перший крок виходу</label>
+      <input class="cpi" type="text" id="c3" placeholder="Дихання 4-4-6 / Рух / Холод…">
+    </div>
+    <div class="cpf">
+      <label class="cpl">Моя техніка заземлення</label>
+      <input class="cpi" type="text" id="c4" placeholder="5-4-3-2-1 / Коріння…">
+      <br><br>
+      <label class="cpl">Моя фраза-якір</label>
+      <input class="cpi" type="text" id="c5" placeholder="«Я в безпеці. Це пройде.»">
+    </div>
+    <div class="cpf">
+      <label class="cpl">Людина довіри</label>
+      <input class="cpi" type="text" id="c6" placeholder="До кого звернусь…">
+      <br><br>
+      <label class="cpl">При хронічній тривозі або ПТСР</label>
+      <input class="cpi" type="text" id="c7" value="116 111 — анонімно, безкоштовно, 24/7">
+    </div>
+  </div>
+  <button class="cp-btn" onclick="genCP()">Зберегти мій протокол →</button>
+  <div class="cp-res" id="cpRes">
+    <h3>◈ Мій кризовий протокол</h3>
+    <div id="cpContent"></div>
+    <p style="font-size:.65rem;color:var(--dim);text-align:center;margin-top:1.2rem;letter-spacing:.1em">СКРІНШОТ — ЗБЕРЕЖИ — ВИКОРИСТОВУЙ У КРИЗІ</p>
+  </div>
+</section>
+
+<!-- FINAL -->
+<div class="divl reveal"><div class="dl-line"></div><div class="dl-n">Фінал</div></div>
+<div class="final reveal">
+  <div class="lbl" style="justify-content:flex-start">Урок завершено</div>
+  <h2>Ти — <em>компас,</em><br>не жертва бурі</h2>
+  <p class="lead" style="margin-bottom:2rem">Компас не зупиняє шторм — але завжди показує де північ. Тепер у тебе є нейронаука, три зони стану, дихання, заземлення і протокол.</p>
+  <div class="final-cert">
+    <div class="fcl">Компетенції</div>
+    <div class="fcv">Три зони НС (Порджес) · HRV і дихання · 4 техніки заземлення · Резилієнтність · Кризовий протокол</div>
+    <br>
+    <div class="fcl">При хронічній тривозі</div>
+    <div class="fcv">116 111 · Шкільний психолог · Дорослий якому довіряєш</div>
+  </div>
+  <div class="psy" style="text-align:left;margin-top:2rem">
+    <div class="psy-who">Порада психолога · Фінальна порада</div>
+    <p>Бути в стані мобілізації або завмирання під час реальної кризи — це не слабкість. Це нервова система що захищає тебе. Ти навчився/-лась цю систему розпізнавати і регулювати. Якщо тривога або важкі реакції не відпускають тижнями — це сигнал що потрібна підтримка. 116 111 або до дорослого якому довіряєш. Це сміливість, а не слабкість.</p>
+  </div>
+</div>
+
+<script>
+// NAV
+const sIds=['s0','s1','s2','s3','s4','s5','s6','s7','s8'];
+const snds=document.querySelectorAll('.snd');
+snds.forEach(d=>d.addEventListener('click',()=>document.getElementById(sIds[+d.dataset.i])?.scrollIntoView({behavior:'smooth'})));
+window.addEventListener('scroll',()=>{
+  const p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  document.getElementById('prog').style.width=p+'%';
+  sIds.forEach((id,i)=>{const el=document.getElementById(id);if(!el)return;const r=el.getBoundingClientRect();if(r.top<=window.innerHeight*.55&&r.bottom>=window.innerHeight*.45){snds.forEach(d=>d.classList.remove('on'));snds[i]?.classList.add('on');}});
+});
+document.querySelectorAll('.reveal').forEach(r=>new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.06}).observe(r));
+
+// NS METER
+const nsMsgs=['Повний спокій — вентральний вагус активний 🔵','Легка фонова активація','Помірне збудження — нормально','Відчутна активація симпатики','Симпатика зростає 🟡','Мобілізація — серце і дихання змінились','Висока активація — дихання зараз','Сильна мобілізація — спробуй рух + дихання','Наближення до перевантаження','Ризик «завмирання» — заземлення і дорослий поряд 🔴'];
+const track=document.getElementById('nsTrack');
+for(let i=1;i<=10;i++){
+  const c=document.createElement('div');c.className='ns-cell';c.textContent=i;c.dataset.v=i;
+  c.onclick=()=>{
+    const v=+c.dataset.v;
+    document.querySelectorAll('.ns-cell').forEach(x=>{
+      const xv=+x.dataset.v;
+      x.classList.remove('z1','z2','z3','on');
+      if(xv<=v){x.classList.add('on');if(v<=4)x.classList.add('z1');else if(v<=7)x.classList.add('z2');else x.classList.add('z3');}
+    });
+    document.getElementById('nsResult').textContent=`${v}/10 — ${nsMsgs[v-1]}`;
+  };
+  track.appendChild(c);
+}
+
+// RESILIENCE
+function toggleRQ(el){el.classList.toggle('checked');el.querySelector('.rq-box').textContent=el.classList.contains('checked')?'✓':'';}
+function showRQResult(){
+  const n=document.querySelectorAll('.rq-item.checked').length;
+  const msgs=[
+    'Зараз тобі важко — і це нормально. Сьогоднішні техніки — твоя відправна точка. 116 111 поряд.',
+    'Є ресурси — і їх більше ніж здається. Продовжуй розвивати кожен.',
+    'Хороший рівень резилієнтності. Доповни технічним арсеналом з сьогоднішнього уроку.',
+    'Сильна база резилієнтності. Поділись знаннями — peer-підтримка підсилює всіх.'
+  ];
+  const r=document.getElementById('rqResult');
+  r.textContent=`${n} з 8 — ${msgs[Math.min(Math.floor(n/2),3)]}`;
+  r.classList.add('show');
+}
+
+// BREATHING
+const brData={
+  s:{name:'Безпека 4-4-6',meta:'Видих 6 сек → вентральний вагус → ЧСС↓',phases:['Вдих','Затримай','Видих'],times:[4,4,6],lbs:['носом','не дихай','ротом повільно'],max:6},
+  c:{name:'Coherence 5.5',meta:'5.5 цикли/хв = максимальний HRV',phases:['Вдих','Видих'],times:[5.5,5.5],lbs:['носом плавно','ротом або носом'],max:6},
+  q:{name:'Квадрат 4-4-4-4',meta:'Рівні фази → баланс симпатики/парасимпатики',phases:['Вдих','Затримай','Видих','Затримай'],times:[4,4,4,4],lbs:['носом','затримай','ротом','порожньо'],max:6},
+  p:{name:'Фізіологічне зітхання',meta:'Подвійний вдих → скидання CO₂ → vagus',phases:['Вдих ×2','Видих'],times:[3,7],lbs:['носом двічі підряд','ротом — 7 сек'],max:4}
+};
+let curBr='s',brRAF=null,brPhI=0,brCyc=0,brRun=false,brPhStart=0,brPhDur=0;
+function setBr(t){
+  curBr=t;document.querySelectorAll('.brt').forEach(b=>b.classList.remove('on'));
+  document.getElementById('t'+t).classList.add('on');
+  document.getElementById('brMeta').textContent=brData[t].meta;
+  if(brRun)stopBr();resetBr();
+}
+function resetBr(){
+  document.getElementById('brPh').textContent='▶';document.getElementById('brN').textContent='—';
+  document.getElementById('brHint').textContent='Натисни коло щоб почати';
+  document.getElementById('brCyc').textContent='';
+  document.getElementById('brC').className='br-c';
+  brPhI=0;brCyc=0;
+}
+function startBr(){if(brRun){stopBr();return;}brRun=true;beginPhase(performance.now());}
+function beginPhase(ts){
+  const t=brData[curBr];const ph=t.phases[brPhI],tm=t.times[brPhI],lb=t.lbs[brPhI];
+  brPhStart=ts;brPhDur=tm*1000;
+  document.getElementById('brPh').textContent=ph;
+  document.getElementById('brN').textContent=tm%1===0?tm:tm.toFixed(1);
+  document.getElementById('brHint').textContent=lb;
+  const c=document.getElementById('brC');c.className='br-c';
+  c.style.setProperty('--dur',tm+'s');
+  if(ph.includes('Вдих')){void c.offsetWidth;c.classList.add('inh');}
+  else if(ph.includes('Видих')){void c.offsetWidth;c.classList.add('exh');}
+  else c.classList.add('hld');
+  tick();
+}
+function tick(){
+  if(!brRun)return;
+  const now=performance.now();const rem=Math.max(0,(brPhDur-(now-brPhStart))/1000);
+  const t=brData[curBr];const tm=t.times[brPhI];
+  document.getElementById('brN').textContent=tm%1===0?Math.ceil(rem):rem.toFixed(1);
+  if((now-brPhStart)>=brPhDur){
+    const next=(brPhI+1)%t.phases.length;
+    if(next===0){brCyc++;document.getElementById('brCyc').textContent=`Циклів: ${brCyc} / ${t.max}`;
+      if(brCyc>=t.max){finBr();return;}}
+    brPhI=next;beginPhase(now);return;
+  }
+  brRAF=requestAnimationFrame(tick);
+}
+function finBr(){brRun=false;cancelAnimationFrame(brRAF);document.getElementById('brC').className='br-c';document.getElementById('brPh').textContent='✓';document.getElementById('brN').textContent='✓';document.getElementById('brHint').textContent='Сесія завершена — виміряй пульс';document.getElementById('brCyc').textContent='Циклів: '+brData[curBr].max+' / '+brData[curBr].max;}
+function stopBr(){brRun=false;cancelAnimationFrame(brRAF);document.getElementById('brC').className='br-c';document.getElementById('brPh').textContent='▶';document.getElementById('brN').textContent='—';}
+setBr('s');
+
+// GROUNDING TABS
+function swGr(id,btn){
+  document.querySelectorAll('.gr-panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.grt').forEach(b=>b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');btn.classList.add('on');
+}
+
+// SCENARIOS
+const sc=[
+  {q:'Пролунала сирена. Серце пришвидшилось, руки тремтять. Яка твоя нервова система?',
+   opts:['Вентральний вагус — все добре','Симпатична мобілізація — реакція «бій або втеча»','Дорсальний вагус — завмирання','Нервова система вимкнулась'],
+   ans:1,fb:'Прискорення серця і тремтіння — класичні ознаки симпатичної активації. Тіло готується до дії. Перший крок: дихання 4-4-6 — довгий видих активує вентральний вагус.'},
+  {q:'Після вибуху ти «заморозився/-лась» — не можеш рухатись і говориш повільно. Що відбувається і що робити?',
+   opts:['Ти боягуз/-иня — треба взяти себе в руки','Дорсальний вагус: «завмирання». Вихід — поступово: відчути підлогу, стиснути-розтиснути пальці, почути голос людини поряд','Треба одразу почати бігти','Закрити очі і чекати'],
+   ans:1,fb:'Завмирання — захисний механізм при перевантаженні. НЕ різке збудження. Поступово: фізичний контакт з підлогою → маленький рух → соціальний контакт (голос) → потім дихання.'},
+  {q:'Ти безперервно дивишся новини і рівень тривоги росте. Нейронаукова стратегія:',
+   opts:['Дивитись далі — треба знати все','Одна перевірка на годину з надійного джерела. Після — 5-4-3-2-1 заземлення щоб повернутись із «режиму загрози» в «тут і зараз»','Повністю відмовитись від інформації','Читати якомога більше різних джерел'],
+   ans:1,fb:'Безперервні новини тримають симпатичну систему в активному стані. Заземлення після перегляду допомагає мозку «вийти» з режиму загрози і повернутись до вентрального вагусу.'},
+  {q:'Друг/-ка після кризи став/-ла роздратованим/-ою і злим/-ою. Це:',
+   opts:['Погана поведінка — треба попросити змінитись','Нормальна реакція симпатичної системи — адреналін і кортизол шукають виходу. Не особисто до тебе','Ознака слабкості','Він/вона відвернулись від тебе'],
+   ans:1,fb:'Злість і роздратування після кризи — нормальна симпатична реакція. Адреналін і кортизол мають «вийти». Найкраще — рух (потрясти руками, ходити) і не приймати особисто.'},
+  {q:'Перед кризою у тебе «порожня голова» і важко думати. Чому і що робити?',
+   opts:['Ти нічого не знаєш і не вмієш','Мигдалина заблокувала PFC — префронтальну кору. Дихання або заземлення реактивує PFC за 1–3 хвилини','Треба більше читати','Це постійний стан'],
+   ans:1,fb:'PFC блокується при активації мигдалини — це фізіологічний факт. «Не можу думати» — не ознака нікчемності. Після 5 циклів дихання 4-4-6 або 5-4-3-2-1 заземлення PFC знову «включається».'},
+  {q:'Після кризи ти добре спиш, підтримуєш стосунки і знаходиш сенс у звичних справах. Це:',
+   opts:['Ненормально — після кризи має бути важко','Резилієнтність — природна здатність відновлюватись. 60–70% людей мають її навіть після серйозних подій','Ознака що криза була не справжньою','Випадковість'],
+   ans:1,fb:'Резилієнтність — не відсутність болю, а здатність відновлюватись. ВООЗ: більшість людей відновлюються природно після кризи. Якщо відновлення не відбувається 4+ тижні — сигнал для підтримки.'},
+  {q:'Найефективніша техніка при «завмиранні» (дорсальний вагус):',
+   opts:['Різко закричати щоб «прийти до тями»','Холодна вода або лід на зап\'ясті','Поступовий рух: відчути підлогу, стиснути пальці, голос поряд','Заплющити очі і дихати'],
+   ans:2,fb:'При завмиранні різке збудження може посилити дисоціацію. Поступовість критична: фізичний контакт з підлогою → малий рух → соціальний контакт. Холод — ефективний але обережно при дисоціації.'},
+  {q:'Чому «видих довший за вдих» знижує тривогу?',
+   opts:['Тому що кисню стає більше','Довгий видих стимулює блукаючий нерв → активує парасимпатичну систему → ЧСС↓ і кортизол↓','Тому що відволікає від думок','Тому що змушує думати про рахунок'],
+   ans:1,fb:'Vagus nerve (блукаючий нерв) проходить вздовж всього тіла і з\'єднує мозок з внутрішніми органами. Видих активує його → парасимпатика → буквальне фізіологічне гальмування стресової реакції.'},
+  {q:'Тривожні реакції тривають 4+ тижні, заважають спати, вчитись і спілкуватись. Правильна дія:',
+   opts:['Чекати поки само пройде','Більше практикувати техніки самостійно','Звернутись до фахівця: це може бути ПТСР — доведена умова що потребує клінічної допомоги. 116 111 або психолог','Уникати будь-чого що нагадує кризу'],
+   ans:2,fb:'ПТСР (посттравматичний стресовий розлад) — медична умова, не «слабкість». При тривалих симптомах 4+ тижні що заважають функціонувати — потрібна клінічна допомога. EMDR і соматична терапія — доведені методи. 116 111 — перший крок.'},
+];
+let scI=0,scSc=0,scAns=false;
+function ldSc(){
+  const s=sc[scI];document.getElementById('scTl').textContent=`Ситуація ${scI+1} / ${sc.length}`;
+  document.getElementById('scPf').style.width=`${((scI+1)/sc.length)*100}%`;
+  document.getElementById('scQ').textContent=s.q;
+  const o=document.getElementById('scOpts');o.innerHTML='';
+  s.opts.forEach((op,i)=>{const b=document.createElement('button');b.className='sc-o';b.textContent=op;b.onclick=()=>anSc(i);o.appendChild(b);});
+  document.getElementById('scFb').className='sc-fb';document.getElementById('scNx').className='sc-nx';scAns=false;
+}
+function anSc(i){if(scAns)return;scAns=true;const s=sc[scI];document.querySelectorAll('.sc-o').forEach(b=>b.disabled=true);const fb=document.getElementById('scFb');
+  if(i===s.ans){document.querySelectorAll('.sc-o')[i].classList.add('ok');fb.className='sc-fb ok show';scSc++;document.getElementById('scPp').textContent=scSc+' pts';}
+  else{document.querySelectorAll('.sc-o')[i].classList.add('bad');document.querySelectorAll('.sc-o')[s.ans].classList.add('ok');fb.className='sc-fb bad show';}
+  fb.textContent=s.fb;document.getElementById('scNx').className='sc-nx show';}
+function nxSc(){scI++;if(scI<sc.length){ldSc();return;}
+  document.getElementById('scQ').textContent='';document.getElementById('scOpts').innerHTML='';
+  document.getElementById('scFb').className='sc-fb';document.getElementById('scNx').className='sc-nx';
+  document.getElementById('scTl').textContent='Завершено';
+  const el=document.getElementById('scSc');el.style.display='block';
+  const m=['Є база ▲','КПТ-рівень ◎','Сильно ◈','Відмінно ◉'];
+  el.textContent=`${scSc} / ${sc.length} — ${m[Math.min(Math.floor(scSc/(sc.length/m.length)),m.length-1)]}`;}
+ldSc();
+
+// QUIZ
+const qz=[
+  {q:'«Вентральний вагус» — це:',opts:['Тип сирени','Найновіший еволюційний шар НС що забезпечує «безпеку і зв\'язок» — спокій, здатність думати і спілкуватись','Частина мозку що відповідає за пам\'ять','Гормон стресу'],ans:1,exp:'Порджес (1994): вентральний вагус — найновіший шар поліваготонної НС. Активний при безпеці: дозволяє думати, навчатись, підтримувати стосунки. Блокується при загрозі.'},
+  {q:'Чому при гострій тривозі «важко думати»?',opts:['Тому що людина не намагається','Мигдалина блокує префронтальну кору (PFC) — «думаючий» мозок — при активації загрози','Тому що є дистракції','Тому що страх знищує нейрони'],ans:1,exp:'LeDoux (1996): «захоплення мигдалиною» — при загрозі вона пригнічує PFC за мілісекунди. Дихання і заземлення реактивують PFC через парасимпатичну стимуляцію.'},
+  {q:'«Завмирання» (дорсальний вагус) — це:',opts:['Боягузтво і слабкість','Еволюційно давній захисний механізм при перевантаженні загрозою — «не поганий» стан а захисна реакція','Симптом хвороби','Навмисна поведінка'],ans:1,exp:'Дорсальний вагус — найдавніший шар НС. «Завмирання» при перевантаженні — той самий механізм що й у тварин що «прикидаються мертвими». Не вибір — рефлекс захисту.'},
+  {q:'HRV (варіабельність серцевого ритму) — це:',opts:['Постійна ЧСС без змін','Варіабельність інтервалів між ударами серця — показник гнучкості НС і стресостійкості. Вищий HRV = краща регуляція','Частота серцевих скорочень за хвилину','Тиск крові'],ans:1,exp:'Thayer (2012): HRV — золотий стандарт вимірювання стану НС. Coherence breathing (5.5 цикли/хв) максимально підвищує HRV за 5 хвилин. Можна виміряти смартфоном.'},
+  {q:'Чому «рух» допомагає після гострого стресу?',opts:['Відволікає від думок','Адреналін і кортизол метаболізуються через фізичну активність — тіло «виконує» мобілізацію','Втомлює і заспокоює','Підвищує кортизол'],ans:1,exp:'При симпатичній активації тіло готувалось до фізичної дії — рух «завершує» цикл стресової реакції і дозволяє адреналіну метаболізуватись. Потім — дихання для «приземлення».'},
+  {q:'Техніка «холодна вода на зап\'ястях» при паніці діє через:',opts:['Відволікання','«Пірнальний рефлекс» — холод рефлекторно знижує ЧСС через активацію парасимпатики','Шок що «перезавантажує» мозок','Розведення крові'],ans:1,exp:'Mammalian diving reflex: холодова стимуляція обличчя або зап\'ясть активує парасимпатичну систему через тригемінальний нерв — ЧСС знижується рефлекторно за 30–60 сек.'},
+  {q:'Резилієнтність — це:',opts:['Нечутливість до болю і стресу','Природна здатність відновлюватись після кризи — не відсутність болю а повернення до функціонування','Уникання стресових ситуацій','Ознака що криза не була серйозною'],ans:1,exp:'ВООЗ і Bonanno (2004): 60–70% людей після серйозних травм демонструють природну резилієнтність. Це не «не відчувати нічого» — це здатність системи повертатись до балансу.'},
+  {q:'При яких симптомах після кризи варто звернутись до фахівця?',opts:['Якщо одного дня погано спав/-ла','Якщо реакції тривають 4+ тижні і заважають спати, вчитись і спілкуватись — це можливий ПТСР','Якщо думаєш про те що сталось','Якщо хочеться поговорити'],ans:1,exp:'DSM-5 критерії ПТСР: симптоми 4+ тижні після травматичної події що суттєво порушують функціонування. EMDR і соматична терапія — доведені методи лікування. 116 111 — перший крок.'},
+  {q:'«Пірнальний рефлекс», «поліваготонія», «HRV» — це терміни з якої науки?',opts:['Психоаналізу','Нейрофізіології і психофізіології — науки про взаємодію нервової системи і поведінки','Когнітивної психології','Поведінкової економіки'],ans:1,exp:'Всі три терміни — нейрофізіологія і психофізіологія. Це не «психологічні поради» а вимірювані фізіологічні механізми. Ефект технік підтверджений рандомізованими дослідженнями.'},
+];
+let qzI=0,qzSc=0,qzAns=false;
+const rom=['I','II','III','IV','V','VI','VII','VIII','IX','X'];
+function ldQz(){const q=qz[qzI];document.getElementById('qzPr').textContent=`${rom[qzI]} / ${rom[qz.length-1]}`;document.getElementById('qzQ').textContent=q.q;
+  const o=document.getElementById('qzOpts');o.innerHTML='';
+  q.opts.forEach((op,i)=>{const b=document.createElement('button');b.className='qz-o';b.textContent=op;b.onclick=()=>anQz(i);o.appendChild(b);});
+  document.getElementById('qzFb').className='qz-fb';document.getElementById('qzNx').className='qz-nx';qzAns=false;}
+function anQz(i){if(qzAns)return;qzAns=true;const q=qz[qzI];document.querySelectorAll('.qz-o').forEach(b=>b.disabled=true);const fb=document.getElementById('qzFb');
+  if(i===q.ans){document.querySelectorAll('.qz-o')[i].classList.add('ok');fb.className='qz-fb ok show';qzSc++;document.getElementById('qzPp').textContent=qzSc+' pts';}
+  else{document.querySelectorAll('.qz-o')[i].classList.add('bad');document.querySelectorAll('.qz-o')[q.ans].classList.add('ok');fb.className='qz-fb bad show';}
+  fb.textContent=q.exp;document.getElementById('qzNx').className='qz-nx show';}
+function nxQz(){qzI++;if(qzI<qz.length){ldQz();return;}
+  document.getElementById('qzQ').textContent='';document.getElementById('qzOpts').innerHTML='';
+  document.getElementById('qzFb').className='qz-fb';document.getElementById('qzNx').className='qz-nx';
+  document.getElementById('qzPr').textContent='done';
+  const el=document.getElementById('qzSc');el.style.display='block';
+  const m=['Є база ▲','Добре ◎','Сильно ◈','Відмінно ◉'];
+  el.textContent=`${qzSc} / ${qz.length} — ${m[Math.min(Math.floor(qzSc/(qz.length/m.length)),m.length-1)]}`;}
+ldQz();
+
+// PLAN
+function genCP(){
+  const v=id=>(document.getElementById(id).value.trim()||'—');
+  document.getElementById('cpContent').innerHTML=`
+    <div class="cpr-row"><span class="cpr-l">Мої тілесні сигнали</span><span>${v('c1')}</span></div>
+    <div class="cpr-row"><span class="cpr-l">Моя зона</span><span>${v('c2')}</span></div>
+    <div class="cpr-row"><span class="cpr-l">Перший крок</span><span>${v('c3')}</span></div>
+    <div class="cpr-row"><span class="cpr-l">Заземлення</span><span>${v('c4')}</span></div>
+    <div class="cpr-row"><span class="cpr-l">Фраза-якір</span><span>${v('c5')}</span></div>
+    <div class="cpr-row"><span class="cpr-l">Людина довіри</span><span>${v('c6')}</span></div>
+    <div class="cpr-row"><span class="cpr-l">Хронічна тривога</span><span>${v('c7')}</span></div>`;
+  document.getElementById('cpRes').classList.add('show');
+}
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Що ще почитати чи подивитись</h2><div class="cards"><div><i>🧰</i><b>Заземлення 5-4-3-2-1</b><br><span>Практика<br>Тренуй у спокійний момент</span></div><div><i>📞</i><b>116 111</b><br><span>Дитяча лінія<br>Безкоштовно, анонімно, цілодобово. Психологічна підтримка: 0 800 500 335</span></div></div><h3>Джерела, на які спирається урок</h3><details><summary>Показати список (7)</summary><ol><li>van der Kolk, B. (2014). <i>The Body Keeps the Score</i>. Viking.</li><li>World Health Organization (2011). <i>Psychological First Aid: Guide for Field Workers</i>. WHO.</li><li>SAMHSA (2014). <i>Trauma-Informed Care in Behavioral Health Services</i> (TIP 57).</li><li>Hobfoll, S. E., Watson, P., Bell, C. C., et al. (2007). Five essential elements of immediate and mid-term mass trauma intervention: Empirical evidence. <i>Psychiatry, 70</i>(4), 283–315.</li><li>National Child Traumatic Stress Network. <i>Parent Guidelines for Helping Children After a Disaster</i> (nctsn.org).</li><li>Bonanno, G. A. (2004). Loss, trauma, and human resilience: Have we underestimated the human capacity to thrive after extremely aversive events? <i>American Psychologist, 59</i>(1), 20–28.</li><li>Masten, A. S. (2014). <i>Ordinary Magic: Resilience in Development</i>. Guilford Press.</li></ol></details><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="06-7-8-lesson.html">← Тема 6</a></span><span><a href="08-7-8-lesson.html">Тема 8 →</a></span></div><a class="mo-fab" href="../index.html#t07">☰ До матриці</a></body>
+</html>

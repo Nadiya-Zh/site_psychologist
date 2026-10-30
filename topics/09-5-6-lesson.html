@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Я — це я · Самооцінка і впевненість · 5–6 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#150F24;--s1:#1F1734;--s2:#2A2045;--sun:#FFC93C;--sun-l:rgba(255,201,60,.13);--co:#FF7A6B;--co-l:rgba(255,122,107,.13);--mi:#5EDDB0;--mi-l:rgba(94,221,176,.12);--la:#B79CFF;--tx:#F6F0FF;--mu:rgba(246,240,255,.62);--bd:rgba(255,255,255,.1)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--tx);line-height:1.65;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 85% 8%,rgba(255,201,60,.16),transparent 40%),radial-gradient(circle at 8% 85%,rgba(183,156,255,.14),transparent 45%)}
+.prog{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--sun),var(--co),var(--la));width:0;z-index:50}
+.hero{position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:3rem 1.5rem}
+.sun{width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,#FFE38A,var(--sun));box-shadow:0 0 70px rgba(255,201,60,.55);animation:pulse 4s ease-in-out infinite;margin-bottom:1.6rem;display:grid;place-items:center;font-size:3.4rem}
+@keyframes pulse{50%{transform:scale(1.07);box-shadow:0 0 100px rgba(255,201,60,.7)}}
+.tag{font-size:.75rem;font-weight:700;letter-spacing:.16em;color:var(--sun);text-transform:uppercase;margin-bottom:.8rem}
+h1{font-family:Nunito,sans-serif;font-weight:900;font-size:clamp(2.4rem,7vw,4.6rem);line-height:1.05;margin-bottom:1rem}
+h1 span{color:var(--sun)}
+.sub{max-width:520px;color:var(--mu);font-size:1.05rem}
+.chips{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-top:1.6rem}
+.chip{background:var(--s2);border:1px solid var(--bd);border-radius:50px;padding:.35rem .9rem;font-size:.8rem;font-weight:600}
+.sec{position:relative;max-width:780px;margin:0 auto;padding:4rem 1.5rem}
+.n{font-family:Nunito;font-weight:900;color:var(--co);font-size:.85rem;letter-spacing:.14em;margin-bottom:.4rem}
+h2{font-family:Nunito;font-weight:900;font-size:clamp(1.7rem,4.5vw,2.5rem);line-height:1.15;margin-bottom:.8rem}
+h2 em{font-style:normal;color:var(--sun)}
+.lead{color:var(--mu);margin-bottom:1.6rem;max-width:620px}
+.psy{background:var(--sun-l);border:1px solid rgba(255,201,60,.3);border-radius:18px;padding:1.2rem 1.4rem;margin:1.6rem 0;position:relative}
+.psy b{display:block;font-family:Nunito;font-size:.75rem;letter-spacing:.12em;color:var(--sun);margin-bottom:.35rem;text-transform:uppercase}
+.psy p{font-style:italic;font-size:.95rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.9rem;margin:1.4rem 0}
+.card{background:var(--s1);border:1px solid var(--bd);border-radius:18px;padding:1.2rem}
+.card .e{font-size:2rem;margin-bottom:.3rem}
+.card h3{font-family:Nunito;font-size:1rem;font-weight:800;margin-bottom:.2rem}
+.card p{font-size:.86rem;color:var(--mu)}
+.btn{font-family:Nunito;font-weight:800;border:none;border-radius:50px;padding:.7rem 1.6rem;cursor:pointer;background:var(--sun);color:#2a1f00;font-size:.95rem;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+/* flip game */
+.flip-list{display:grid;gap:.8rem}
+.flip{background:var(--s1);border:1px solid var(--bd);border-radius:18px;padding:1rem 1.2rem}
+.flip .crit{font-weight:700;color:var(--co);margin-bottom:.6rem}
+.flip .opts{display:flex;flex-direction:column;gap:.4rem}
+.o{background:var(--s2);border:1.5px solid var(--bd);border-radius:12px;padding:.6rem .9rem;text-align:left;color:var(--tx);font-family:inherit;font-size:.9rem;cursor:pointer;transition:.2s}
+.o:hover{border-color:var(--la)}
+.o.ok{border-color:var(--mi);background:var(--mi-l)}
+.o.bad{border-color:var(--co);background:var(--co-l)}
+.fb{display:none;margin-top:.6rem;font-size:.86rem;color:var(--mu);padding-left:.8rem;border-left:3px solid var(--mi)}
+.fb.show{display:block}
+/* chips pick */
+.pick{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}
+.pk{background:var(--s2);border:1.5px solid var(--bd);border-radius:50px;padding:.5rem 1rem;font-family:inherit;color:var(--tx);cursor:pointer;font-size:.9rem;font-weight:600;transition:.2s}
+.pk.on{background:var(--sun);color:#2a1f00;border-color:var(--sun);transform:scale(1.04)}
+.mapout{margin-top:1rem;background:var(--s1);border:1px dashed var(--sun);border-radius:18px;padding:1.2rem;text-align:center;min-height:70px}
+.mapout .st{display:inline-block;margin:.2rem;background:var(--sun-l);border-radius:50px;padding:.25rem .8rem;font-weight:700;color:var(--sun);font-size:.9rem}
+/* still-game */
+.still{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+@media(max-width:560px){.still{grid-template-columns:1fr}}
+.st-c{background:var(--s1);border:1px solid var(--bd);border-radius:16px;padding:1rem;cursor:pointer;transition:.3s;min-height:76px}
+.st-c .a{color:var(--co);font-weight:700}
+.st-c .b{display:none;color:var(--mi);font-weight:800}
+.st-c.f{border-color:var(--mi);background:var(--mi-l)}
+.st-c.f .a{text-decoration:line-through;opacity:.5;font-size:.85rem}
+.st-c.f .b{display:block}
+/* quiz */
+.box{background:var(--s1);border:1px solid var(--bd);border-radius:22px;padding:1.4rem}
+.top{display:flex;justify-content:space-between;font-size:.8rem;font-weight:700;color:var(--mu);margin-bottom:.8rem}
+.bar{height:6px;background:var(--s2);border-radius:6px;margin-bottom:1rem;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--sun);transition:width .4s}
+.q{font-family:Nunito;font-weight:800;font-size:1.1rem;margin-bottom:1rem}
+.res{display:none;text-align:center;font-family:Nunito;font-weight:900;font-size:1.4rem;color:var(--sun);padding:1rem}
+.nx{display:none;margin-top:.9rem}
+/* plan */
+.plan{display:grid;gap:.8rem;margin-top:1rem}
+.plan label{font-weight:700;font-size:.85rem;color:var(--sun);display:block;margin-bottom:.25rem}
+.plan textarea,.plan input{width:100%;background:var(--s1);border:1.5px solid var(--bd);border-radius:12px;color:var(--tx);padding:.65rem .9rem;font-family:inherit;font-size:.92rem;resize:none}
+.plan textarea:focus,.plan input:focus{outline:none;border-color:var(--sun)}
+.cert{display:none;margin-top:1.2rem;background:linear-gradient(135deg,var(--s2),var(--s1));border:2px solid var(--sun);border-radius:22px;padding:1.5rem}
+.cert.show{display:block}
+.cert h3{font-family:Nunito;text-align:center;color:var(--sun);margin-bottom:.8rem}
+.cert p{padding:.4rem 0;border-bottom:1px solid var(--bd);font-size:.92rem}
+.cert p b{color:var(--la);display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+.help{background:var(--mi-l);border:1px solid rgba(94,221,176,.3);border-radius:18px;padding:1.1rem 1.3rem;margin-top:1.6rem;font-size:.9rem}
+.reveal{opacity:0;transform:translateY(20px);transition:.7s}.reveal.vis{opacity:1;transform:none}
+</style>
+<link rel="stylesheet" href="../assets/psy.css">
+</head>
+<body><nav class="mo-nav"><a href="../index.html">← Кабінет психолога</a><span class="mo-t">Тема 9 · Самооцінка та впевненість у собі · 5–6 клас · Урок</span><span class="mo-g"><a href="09-5-6-lesson.html" class="on">5–6 клас</a><a href="09-7-8-lesson.html">7–8 клас</a><a href="09-9-11-lesson.html">9–11 клас</a><a href="09-b-lesson.html">Батьки</a><a href="09-5-6-case.html">⇄ Кейс</a></span></nav>
+<div class="prog" id="prog"></div>
+
+<section class="hero">
+  <div class="sun">😊</div>
+  <div class="tag">Онлайн-урок · 5–6 клас</div>
+  <h1>Я — це <span>я</span>:<br>самооцінка і впевненість</h1>
+  <p class="sub">Як говорити з собою по-доброму, помічати свої суперсили і не боятися помилок</p>
+  <div class="chips"><span class="chip">⏱ 40 хвилин</span><span class="chip">🎮 5 ігор</span><span class="chip">🧠 вікторина</span><span class="chip">⭐ мій план</span></div>
+</section>
+
+<section class="sec reveal">
+  <div class="n">01 · ЩО ЦЕ ТАКЕ</div>
+  <h2>Самооцінка — це те, <em>що я думаю про себе</em></h2>
+  <p class="lead">Уяви внутрішнє сонечко. Коли воно світить — ти спокійніше пробуєш нове. Коли його закриває хмара — хочеться сховатись. Хмари бувають у всіх.</p>
+  <div class="cards">
+    <div class="card"><div class="e">🪞</div><h3>Самооцінка</h3><p>Як я ставлюсь до себе: чи вважаю, що я вартий/-а поваги, навіть коли щось не вийшло.</p></div>
+    <div class="card"><div class="e">💪</div><h3>Впевненість</h3><p>Віра, що я можу навчитись і впоратись. Росте з маленьких кроків і практики.</p></div>
+    <div class="card"><div class="e">🌦️</div><h3>Вона змінюється</h3><p>Сьогодні нижча, завтра вища. Це нормально — особливо у 10–12 років.</p></div>
+  </div>
+  <div class="psy"><b>💬 Порада психолога</b><p>У цьому віці ми починаємо багато себе з іншими порівнювати. Від цього «сонечко» може тьмяніти. Це не означає, що з тобою щось не так — це означає, що ти дорослішаєш. І цьому можна навчитись.</p></div>
+</section>
+
+<section class="sec reveal">
+  <div class="n">02 · ГРА «КРИТИК І ДРУГ»</div>
+  <h2>Мій <em>внутрішній голос</em></h2>
+  <p class="lead">В кожного є внутрішній голос. Іноді він як суворий критик, іноді — як добрий друг. Обери відповідь, яку сказав би <b>друг</b>.</p>
+  <div class="flip-list" id="flips"></div>
+  <div class="psy"><b>💬 Порада психолога</b><p>Спробуй правило друга: що б ти сказав/-ла другові, який у такій ситуації? Часто ми добріші до інших, ніж до себе. Добрий голос не означає «все ідеально» — він означає «я поруч і ми щось придумаємо».</p></div>
+</section>
+
+<section class="sec reveal">
+  <div class="n">03 · МОЇ СУПЕРСИЛИ</div>
+  <h2>Що в мені <em>круте?</em></h2>
+  <p class="lead">Обери 3–5 рис, які ТОБІ підходять. Вони з'являться на твоїй карті суперсил.</p>
+  <div class="pick" id="pick"></div>
+  <div class="mapout" id="mapout"><span style="color:var(--mu)">Натисни на риси — вони з'являться тут ✨</span></div>
+  <div class="psy"><b>💬 Порада психолога</b><p>Суперсила — не обов'язково «найкращий у класі». Вміти вислухати, не здаватись, підтримати друга, дивувати ідеями — теж суперсили. Їх є в кожного.</p></div>
+</section>
+
+<section class="sec reveal">
+  <div class="n">04 · ГРА «ЩЕ НЕ»</div>
+  <h2>Помилка — не вирок, а <em>«ще не»</em></h2>
+  <p class="lead">Натисни на картку — і «я не можу» перетвориться на «я ще не вмію». Одне маленьке слово змінює напрям думки.</p>
+  <div class="still" id="still"></div>
+  <div class="psy"><b>💬 Порада психолога</b><p>Мозок росте, коли ми вчимось і помиляємось. Помилка — це не доказ, що ти поганий/-а. Це інформація: «тут потрібно ще потренуватись». Дослідниця Керол Двек назвала це «установкою на зростання».</p></div>
+</section>
+
+<section class="sec reveal">
+  <div class="n">05 · ВПЕВНЕНА ПОВЕДІНКА</div>
+  <h2>Як сказати «ні» і <em>попросити про своє</em></h2>
+  <p class="lead">Є три способи поводитись: мовчати і погоджуватись, кричати і тиснути, або <b>говорити спокійно й чесно</b>. Третій — впевнений. Обери його в кожній ситуації.</p>
+  <div class="flip-list" id="conf"></div>
+</section>
+
+<section class="sec reveal">
+  <div class="n">06 · ПОРІВНЯННЯ</div>
+  <h2>Мій старт — <em>не чужий фініш</em></h2>
+  <div class="cards">
+    <div class="card"><div class="e">📱</div><h3>Соцмережі — вітрина</h3><p>Там показують найкращі моменти. Ти порівнюєш своє «закулісся» з чужою «рекламою».</p></div>
+    <div class="card"><div class="e">🌱</div><h3>Усі ростуть у своєму темпі</h3><p>Хтось швидше вчить математику, хтось — малює чи дружить. Це різні шляхи.</p></div>
+    <div class="card"><div class="e">📈</div><h3>Порівнюй з собою вчорашнім</h3><p>Що я вмію зараз, чого не вмів/-ла місяць тому? Це чесніше і мотивує.</p></div>
+  </div>
+</section>
+
+<section class="sec reveal">
+  <div class="n">07 · ВІКТОРИНА</div>
+  <h2>7 питань <em>на закріплення</em></h2>
+  <div class="box">
+    <div class="top"><span id="qn">1 / 7</span><span id="qp">0 балів</span></div>
+    <div class="bar"><i id="qb" style="width:14%"></i></div>
+    <div class="q" id="qq"></div>
+    <div class="flip-list" id="qo"></div>
+    <div class="fb" id="qf"></div>
+    <button class="btn nx" id="qx" onclick="nextQ()">Далі →</button>
+    <div class="res" id="qr"></div>
+  </div>
+</section>
+
+<section class="sec reveal">
+  <div class="n">08 · МІЙ ПЛАН</div>
+  <h2>Лист <em>підтримки</em> собі</h2>
+  <p class="lead">Заповни — і зроби скріншот. Читай, коли «сонечко» ховається за хмарою.</p>
+  <div class="plan">
+    <div><label>Три речі, які в мені круті</label><textarea id="p1" rows="2" placeholder="Наприклад: добрий/-а, вмію малювати, не здаюсь…"></textarea></div>
+    <div><label>Що я скажу собі, коли щось не вийде</label><textarea id="p2" rows="2" placeholder="Це «ще не». Я можу спробувати інакше…"></textarea></div>
+    <div><label>Маленький крок, який я зроблю цього тижня</label><input id="p3" placeholder="Підніму руку на уроці / запитаю про допомогу…"></div>
+    <div><label>Дорослий, до якого я можу звернутись</label><input id="p4" placeholder="Мама, тато, вчитель, шкільний психолог…"></div>
+  </div>
+  <p style="text-align:center;margin-top:1.2rem"><button class="btn" onclick="mkPlan()">Створити мій лист ⭐</button></p>
+  <div class="cert" id="cert"><h3>⭐ Мій лист підтримки</h3><div id="certb"></div></div>
+  <div class="help">💛 Якщо тобі часто дуже сумно, ти почуваєшся ніким, з тебе знущаються або тобі важко самому/-ій — розкажи дорослому, якому довіряєш. Можна зателефонувати на <b>116 111</b> — безкоштовно, анонімно, цілодобово.</div>
+  <div class="psy"><b>💬 Фінальна порада психолога</b><p>Ти не мусиш бути ідеальним/-ою, щоб бути вартим/-ою поваги. Впевненість росте з маленьких кроків, доброго голосу до себе і людей, які поруч. Ти вже зробив/-ла сьогодні один такий крок.</p></div>
+</section>
+
+<script>
+const $=id=>document.getElementById(id);
+window.addEventListener('scroll',()=>{$('prog').style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%'});
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.06});
+document.querySelectorAll('.reveal').forEach(r=>io.observe(r));
+
+// generic choice builder: items [{t,opts,ans,fb}]
+function buildChoice(el,items){
+  items.forEach(it=>{
+    const d=document.createElement('div');d.className='flip';
+    d.innerHTML=`<div class="crit">${it.t}</div><div class="opts"></div><div class="fb"></div>`;
+    const o=d.querySelector('.opts'),fb=d.querySelector('.fb');let done=false;
+    it.opts.forEach((txt,i)=>{const b=document.createElement('button');b.className='o';b.textContent=txt;
+      b.onclick=()=>{if(done)return;done=true;const bs=o.children;
+        bs[it.ans].classList.add('ok');if(i!==it.ans)b.classList.add('bad');
+        fb.textContent=it.fb;fb.classList.add('show');};o.appendChild(b);});
+    el.appendChild(d);});
+}
+buildChoice($('flips'),[
+ {t:'😖 Критик: «Я помилився/-лась у відповіді. Я тупий/-а».',opts:['«Усі помиляються. Я вчусь, і наступного разу спробую інакше».','«Так і є, краще більше не відповідати».','«Мені все одно».'],ans:0,fb:'Друг не соромить, а підтримує і дивиться вперед.'},
+ {t:'😞 Критик: «Усі в класі кращі за мене».',opts:['«Так, я гірший/-а за всіх».','«У кожного щось виходить краще. Я теж маю свої сильні сторони».','«Мені треба стати найкращим/-ою за один день».'],ans:1,fb:'«Усі» — перебільшення. Друг нагадує про твої сильні сторони.'},
+ {t:'😟 Критик: «Я не зможу, навіть пробувати не буду».',opts:['«Нічого не змінити».','«Мені страшно, але можу спробувати маленький крок».','«Хай хтось інший спробує».'],ans:1,fb:'Страх нормальний. Маленький крок — це вже сміливість.'},
+ {t:'😔 Критик: «Мене не взяли до команди. Зі мною щось не так».',opts:['«Мені прикро. Це не означає, що зі мною не так — можна потренуватись і спробувати ще».','«Я нікому не потрібен/-на».','«Більше ніколи не братиму участь».'],ans:0,fb:'Прикрість — нормальна. Одна відмова не визначає тебе.'},
+]);
+buildChoice($('conf'),[
+ {t:'Друг просить списати контрольну, а ти не хочеш.',opts:['Мовчки даєш списати.','Грубо кричиш: «Відчепись!»','Спокійно: «Ні, я не хочу. Можу допомогти розібрати тему».'],ans:2,fb:'Впевнено = чесно, спокійно і з повагою до себе та іншого.'},
+ {t:'Тебе перебивають під час розповіді.',opts:['Замовкаєш.','Спокійно: «Дай, будь ласка, я договорю».','Починаєш перебивати у відповідь.'],ans:1,fb:'Ти маєш право бути почутим/-ою. Спокійне прохання працює краще за крик.'},
+ {t:'Тобі не зрозуміла задача, а клас вже рухається далі.',opts:['Нічого не питаєш, щоб не виглядати «дурним/-ою».','Піднімаєш руку: «Поясніть ще раз, будь ласка».','Кажеш: «Така нудна задача!»'],ans:1,fb:'Питати — це сила. Так вчаться всі, навіть дорослі.'},
+ {t:'Однокласник дражнить тебе, і тобі неприємно.',opts:['Сміюсь разом, хоч і боляче.','Твердо і спокійно: «Мені це неприємно. Припини». І кажу дорослому, якщо не припиняє.','Починаю дражнити у відповідь.'],ans:1,fb:'Твоя межа — важлива. Якщо дражнять знову — не мовчи, розкажи дорослому.'},
+]);
+
+// strengths
+const strengths=['😊 Добрий/-а','🎨 Творчий/-а','🧩 Кмітливий/-а','🤝 Вірний/-а друг','😂 Веселий/-а','🏃 Енергійний/-а','🔍 Допитливий/-а','💪 Не здаюсь','👂 Вмію слухати','🌟 Чесний/-а','🎵 Музикальний/-а','🛠 Вмію майструвати'];
+const sel=new Set();
+strengths.forEach(s=>{const b=document.createElement('button');b.className='pk';b.textContent=s;
+ b.onclick=()=>{sel.has(s)?sel.delete(s):sel.add(s);b.classList.toggle('on');
+  $('mapout').innerHTML=sel.size?[...sel].map(x=>`<span class="st">${x}</span>`).join(''):'<span style="color:var(--mu)">Натисни на риси — вони з\'являться тут ✨</span>';};
+ $('pick').appendChild(b);});
+
+// still game
+[['Я не вмію малювати','Я ще не вмію малювати — тренуюсь!'],['Я не можу це зрозуміти','Я ще не зрозумів/-ла. Спробую інакше'],['Я поганий/-а в математиці','Я вчусь математики, і кожна задача допомагає'],['Я завжди помиляюсь','Я помиляюсь і вчусь — це нормально'],['Я не вмію дружити','Я вчусь знаходити спільне з людьми'],['Це занадто важко','Це складно, але я можу розбити на кроки']]
+.forEach(([a,b])=>{const d=document.createElement('div');d.className='st-c';d.innerHTML=`<div class="a">${a}</div><div class="b">${b}</div>`;d.onclick=()=>d.classList.toggle('f');$('still').appendChild(d);});
+
+// quiz
+const qz=[
+ {q:'Що таке самооцінка?',o:['Оцінка в щоденнику','Те, як я ставлюсь до себе і що про себе думаю','Скільки в мене друзів'],a:1,e:'Самооцінка — це моє ставлення до себе.'},
+ {q:'Ти помилився/-лась. Що найкраще зробити?',o:['Зрозуміти, чого навчила помилка, і спробувати ще','Сказати, що ти ні на що не здатний/-на','Більше ніколи не пробувати'],a:0,e:'Помилка — інформація для навчання, а не вирок.'},
+ {q:'Що означає «правило друга»?',o:['Просити друга зробити за мене','Говорити собі так, як би я сказав/-ла другові в такій ситуації','Не говорити друзям про проблеми'],a:1,e:'Ми часто добріші до інших, ніж до себе. Це правило вирівнює.'},
+ {q:'Як звучить впевнена відповідь, коли не хочеш щось робити?',o:['«Відчепись!»','Мовчки погодитись','«Ні, я не хочу, але можу допомогти інакше»'],a:2,e:'Спокійно, чесно і з повагою — це впевненість.'},
+ {q:'Чому соцмережі можуть знижувати самооцінку?',o:['Там показують найкращі моменти, і порівняння виходить нечесним','Вони завжди показують правду','Бо там немає картинок'],a:0,e:'Це вітрина, а не повне життя людини.'},
+ {q:'«Я ще не вмію» — це приклад...',o:['Самообману','Установки на зростання: я можу навчитись','Лінощів'],a:1,e:'Слово «ще» відкриває шлях до навчання.'},
+ {q:'Тобі дуже важко, сумно, і з тебе знущаються. Що правильно?',o:['Тримати в собі','Розповісти дорослому, якому довіряєш, або зателефонувати на 116 111','Нікому не казати і чекати'],a:1,e:'Просити допомоги — це сила. 116 111 безкоштовно, анонімно, цілодобово.'},
+];
+let qi=0,qs=0,qa=false;
+function loadQ(){const q=qz[qi];qa=false;$('qn').textContent=`${qi+1} / ${qz.length}`;$('qb').style.width=((qi+1)/qz.length*100)+'%';
+ $('qq').textContent=q.q;$('qo').innerHTML='';$('qf').className='fb';$('qx').style.display='none';
+ q.o.forEach((t,i)=>{const b=document.createElement('button');b.className='o';b.textContent=t;
+  b.onclick=()=>{if(qa)return;qa=true;const bs=$('qo').children;bs[q.a].classList.add('ok');
+   if(i===q.a){qs++;$('qp').textContent=qs+' балів';}else b.classList.add('bad');
+   $('qf').textContent=q.e;$('qf').classList.add('show');$('qx').style.display='inline-block';};$('qo').appendChild(b);});}
+function nextQ(){qi++;if(qi<qz.length){loadQ();return;}
+ $('qq').textContent='';$('qo').innerHTML='';$('qf').className='fb';$('qx').style.display='none';
+ const r=$('qr');r.style.display='block';r.textContent=`${qs} із ${qz.length} — ${qs>=6?'Супер! 🌟':qs>=4?'Чудово! 💪':'Гарний початок! 🌱'}`;}
+loadQ();
+
+function mkPlan(){const v=id=>($(id).value.trim()||'—').replace(/</g,'&lt;');
+ $('certb').innerHTML=`<p><b>Мої суперсили</b>${v('p1')}</p><p><b>Що скажу собі, коли не вийде</b>${v('p2')}</p><p><b>Мій маленький крок</b>${v('p3')}</p><p><b>Мій дорослий</b>${v('p4')}</p><p><b>Якщо важко</b>116 111 — безкоштовно, анонімно, цілодобово</p>`;
+ $('cert').classList.add('show');}
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Що ще почитати чи подивитись</h2><div class="cards"><div><i>🎬</i><b>Inside Out (2015)</b><br><span>Pixar, мультфільм<br>Подивись із дорослим і поговоріть про емоції</span></div><div><i>📞</i><b>116 111</b><br><span>Дитяча лінія<br>Безкоштовно, анонімно, цілодобово. Психологічна підтримка: 0 800 500 335</span></div></div><h3>Джерела, на які спирається урок</h3><details><summary>Показати список (22)</summary><ol><li>Rosenberg, M. (1965). <i>Society and the Adolescent Self-Image</i>. Princeton University Press.</li><li>Baumeister, R. F., Campbell, J. D., Krueger, J. I., &amp; Vohs, K. D. (2003). Does high self-esteem cause better performance, interpersonal success, happiness, or healthier lifestyles? <i>Psychological Science in the Public Interest, 4</i>(1), 1–44.</li><li>Bandura, A. (1977). Self-efficacy: Toward a unifying theory of behavioral change. <i>Psychological Review, 84</i>(2), 191–215.</li><li>Dweck, C. S. (2006). <i>Mindset: The New Psychology of Success</i>. Random House. Критика ефектів: Sisk, V. F., et al. (2018). <i>Psychological Science, 29</i>(4), 549–571.</li><li>Mueller, C. M., &amp; Dweck, C. S. (1998). Praise for intelligence can undermine children’s motivation and performance. <i>Journal of Personality and Social Psychology, 75</i>(1), 33–52.</li><li>Brummelman, E., Thomaes, S., de Castro, B. O., Overbeek, G., &amp; Bushman, B. J. (2014). “That’s not just beautiful — that’s incredibly beautiful!” <i>Psychological Science, 25</i>(3), 728–735.</li><li>Neff, K. D. (2003). Self-compassion: An alternative conceptualization of a healthy attitude toward oneself. <i>Self and Identity, 2</i>(2), 85–101.</li><li>Neff, K. D., &amp; Vonk, R. (2009). Self-compassion versus global self-esteem. <i>Journal of Personality, 77</i>(1), 23–50.</li><li>MacBeth, A., &amp; Gumley, A. (2012). Exploring compassion: A meta-analysis of the association between self-compassion and psychopathology. <i>Clinical Psychology Review, 32</i>(6), 545–552.</li><li>Harter, S. (1999). <i>The Construction of the Self</i>. Guilford Press.</li><li>Robins, R. W., Trzesniewski, K. H., Tracy, J. L., Gosling, S. D., &amp; Potter, J. (2002). Global self-esteem across the life span. <i>Psychology and Aging, 17</i>(3), 423–434.</li><li>Orth, U., Erol, R. Y., &amp; Luciano, E. C. (2018). Development of self-esteem from age 4 to 94 years. <i>Psychological Bulletin, 144</i>(10), 1045–1080.</li><li>Crocker, J., &amp; Wolfe, C. T. (2001). Contingencies of self-worth. <i>Psychological Review, 108</i>(3), 593–623.</li><li>Crocker, J., &amp; Canevello, A. (2008). Creating and undermining social support in communal relationships. <i>Journal of Personality and Social Psychology, 95</i>(3), 555–575.</li><li>Clance, P. R., &amp; Imes, S. A. (1978). The imposter phenomenon in high achieving women. <i>Psychotherapy: Theory, Research &amp; Practice, 15</i>(3), 241–247.</li><li>Hewitt, P. L., &amp; Flett, G. L. (1991). Perfectionism in the self and social contexts. <i>Journal of Personality and Social Psychology, 60</i>(3), 456–470.</li><li>Gottman, J. M., Katz, L. F., &amp; Hooven, C. (1996). Parental meta-emotion philosophy and the emotional life of families. <i>Journal of Family Psychology, 10</i>(3), 243–268.</li><li>Baumrind, D. (1991). The influence of parenting style on adolescent competence and substance use. <i>Journal of Early Adolescence, 11</i>(1), 56–95.</li><li>Gilovich, T., Medvec, V. H., &amp; Savitsky, K. (2000). The spotlight effect in social judgment. <i>Journal of Personality and Social Psychology, 78</i>(2), 211–222.</li><li>Elkind, D. (1967). Egocentrism in adolescence. <i>Child Development, 38</i>(4), 1025–1034.</li><li>Festinger, L. (1954). A theory of social comparison processes. <i>Human Relations, 7</i>(2), 117–140.</li><li>Orben, A., &amp; Przybylski, A. K. (2019). The association between adolescent well-being and digital technology use. <i>Nature Human Behaviour, 3</i>, 173–182.</li></ol></details><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="08-5-6-lesson.html">← Тема 8</a></span><span><a href="10-5-6-lesson.html">Тема 10 →</a></span></div><a class="mo-fab" href="../index.html#t09">☰ До матриці</a></body>
+</html>

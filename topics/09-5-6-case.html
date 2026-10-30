@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Методичний кейс · Самооцінка і впевненість · 5–6 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F8F4EC;--sf:#fff;--ink:#241A33;--tx:#3A3048;--mu:#6E6579;--bd:#E6DDCF;--pl:#5B3A8C;--pl-l:#F0EAF8;--su:#B8860B;--su-l:#FFF6DC;--gr:#1E7A5C;--gr-l:#E6F5EE;--ro:#A8384A;--ro-l:#FCEAEC;--bl:#2E5E94;--bl-l:#E9F1FA}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,sans-serif;background:var(--bg);color:var(--tx);font-size:15px;line-height:1.65}
+.hd{background:var(--ink);padding:1.1rem 1.5rem;position:sticky;top:0;z-index:50;color:#fff;font-family:Bitter,serif;font-weight:700;font-size:.9rem}
+.tabs{background:var(--sf);border-bottom:2px solid var(--bd);position:sticky;top:50px;z-index:40;overflow-x:auto;white-space:nowrap}
+.tb{background:none;border:none;border-bottom:3px solid transparent;padding:.85rem 1.1rem;font:700 .78rem Inter;color:var(--mu);cursor:pointer;margin-bottom:-2px}
+.tb.on{color:var(--pl);border-color:var(--pl)}
+.ph{background:linear-gradient(150deg,#1A1128,#2E1C4A);padding:3rem 1.5rem;color:#fff}
+.ph div{max-width:1000px;margin:0 auto}
+.ph small{letter-spacing:.2em;font-weight:700;color:#FFD66B;font-size:.68rem}
+.ph h1{font-family:Bitter,serif;font-size:clamp(1.6rem,3.4vw,2.4rem);margin:.5rem 0}
+.ph p{color:rgba(255,255,255,.7);max-width:640px;font-size:.92rem}
+.panel{display:none}.panel.on{display:block}
+.wrap{max-width:1000px;margin:0 auto;padding:2.5rem 1.5rem}
+h2{font-family:Bitter,serif;font-size:1.35rem;color:var(--ink);margin-bottom:.3rem}
+h3{font-family:Bitter,serif;font-size:1.02rem;color:var(--ink);margin:1.6rem 0 .6rem}
+.ss{color:var(--mu);font-style:italic;font-size:.85rem;margin-bottom:1.4rem}
+.al{border-left:4px solid var(--pl);background:var(--pl-l);border-radius:8px;padding:.9rem 1.1rem;margin:.8rem 0;font-size:.86rem}
+.al b{display:block;font-size:.72rem;letter-spacing:.04em;margin-bottom:.1rem}
+.al.su{border-color:var(--su);background:var(--su-l)}.al.gr{border-color:var(--gr);background:var(--gr-l)}.al.ro{border-color:var(--ro);background:var(--ro-l)}.al.bl{border-color:var(--bl);background:var(--bl-l)}
+.tl{border-left:2px solid var(--bd);margin:1.2rem 0 1.2rem .5rem;padding-left:1.4rem}
+.ti{margin-bottom:1.1rem;position:relative}
+.ti::before{content:'';position:absolute;left:-1.85rem;top:.4rem;width:10px;height:10px;border-radius:50%;background:var(--pl)}
+.ti i{font-style:normal;font-weight:700;font-size:.68rem;color:var(--pl);letter-spacing:.08em}
+.ti b{display:block;color:var(--ink)}.ti span{font-size:.85rem;color:var(--mu)}
+.scr{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:1rem 1.2rem;margin:1rem 0;position:relative}
+.scr::before{content:attr(data-l);position:absolute;top:-9px;left:12px;background:var(--pl);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.08em;padding:.12rem .55rem;border-radius:3px}
+.scr p{font-style:italic;font-size:.88rem;color:var(--ink)}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.82rem;background:var(--sf)}
+th{background:var(--ink);color:#fff;text-align:left;padding:.55rem .8rem;font-size:.7rem}
+td{padding:.55rem .8rem;border-bottom:1px solid var(--bd);vertical-align:top}
+tr:nth-child(even) td{background:#FBF8F2}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.9rem;margin:1rem 0}
+.cd{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:1.1rem 1.2rem}
+.cd h4{font-family:Bitter,serif;font-size:.92rem;color:var(--ink);margin-bottom:.25rem}.cd p{font-size:.82rem;color:var(--mu)}
+.ab{border:1px solid var(--bd);border-radius:10px;overflow:hidden;margin:1rem 0;background:var(--sf)}
+.ab>b{display:block;padding:.65rem 1.1rem;color:#fff;font-family:Bitter,serif;font-size:.9rem}
+.ab div{padding:.9rem 1.2rem;font-size:.84rem}.ab ol{padding-left:1.1rem;margin:.3rem 0}
+.ab em{display:block;margin-top:.4rem;color:var(--mu)}
+.rb{display:grid;grid-template-columns:1fr 70px;gap:.4rem .8rem;align-items:center;font-size:.84rem;padding:.4rem 0;border-bottom:1px solid var(--bd)}
+.rb select{padding:.3rem;border:1px solid var(--bds,#ccc);border-radius:6px;font:inherit}
+.rbres{margin-top:1rem;padding:1rem 1.2rem;border-radius:10px;background:var(--pl-l);font-size:.9rem;display:none}
+.btn{background:var(--pl);color:#fff;border:none;border-radius:8px;padding:.6rem 1.4rem;font:700 .85rem Inter;cursor:pointer;margin-top:.8rem}
+.ct{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem;background:var(--gr-l);border:1px solid #B9DDCD;border-radius:10px;padding:1.1rem;margin:1rem 0}
+.ct b{font-family:Bitter,serif;font-size:1.05rem;display:block;color:var(--ink)}.ct span{font-size:.78rem}
+.cb{border:1px solid var(--bd);border-radius:10px;overflow:hidden;margin:1rem 0;background:var(--sf)}
+.cb>b{display:block;padding:.6rem 1.1rem;color:#fff;font-family:Bitter,serif;font-size:.88rem}
+.cb ol{padding:.9rem 1.2rem .9rem 2.2rem;font-size:.84rem}
+.df{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.9rem}
+.df div{border-radius:10px;padding:1rem;font-size:.82rem}.df b{display:block;margin-bottom:.3rem}.df ul{padding-left:1rem}
+</style>
+<link rel="stylesheet" href="../assets/psy.css">
+</head>
+<body><nav class="mo-nav"><a href="../index.html">← Кабінет психолога</a><span class="mo-t">Тема 9 · Самооцінка та впевненість у собі · 5–6 клас · Кейс психолога</span><span class="mo-g"><a href="09-5-6-case.html" class="on">5–6 клас</a><a href="09-7-8-case.html">7–8 клас</a><a href="09-9-11-case.html">9–11 клас</a><a href="09-b-case.html">Батьки</a><a href="09-5-6-lesson.html">⇄ Урок</a></span></nav>
+<div class="hd">◈ Методичний кейс · Самооцінка і впевненість у собі · 5–6 клас</div>
+<div class="ph"><div>
+  <small>КЕЙС ДЛЯ ПСИХОЛОГА / ПЕДАГОГА · 5–6 КЛАС · 40 ХВ</small>
+  <h1>Я — це я: самооцінка і впевненість</h1>
+  <p>Хронометраж і скрипти, наукова база з обмеженнями, 6 активностей, діагностика (Дембо–Рубінштейн, Розенберг), диференціація, кризові протоколи.</p>
+</div></div>
+<div class="tabs">
+  <button class="tb on" onclick="sw('plan',this)">📅 Хронометраж і скрипти</button>
+  <button class="tb" onclick="sw('sci',this)">📚 Наукова база</button>
+  <button class="tb" onclick="sw('act',this)">🎭 Активності</button>
+  <button class="tb" onclick="sw('dia',this)">📊 Діагностика</button>
+  <button class="tb" onclick="sw('dif',this)">🎯 Диференціація</button>
+  <button class="tb" onclick="sw('cr',this)">🚨 Протоколи і рефлексія</button>
+</div>
+
+<!-- PLAN -->
+<div class="panel on" id="p-plan"><div class="wrap">
+  <h2>Хронометраж уроку</h2><p class="ss">40 хвилин · онлайн-урок + бесіда ведучого</p>
+  <div class="al ro"><b>Перед уроком</b>Підготуйте анонімну скриньку або форму «Мені потрібна розмова», контакти 116 111 і 0 800 500 335. Не оцінюйте учнів балами за вікторину й не оголошуйте результати вголос.</div>
+  <div class="tl">
+    <div class="ti"><i>00:00–05:00</i><b>Вступ і «сонечко»</b><span>Учні показують пальцями 1–5, наскільки сонечко світить сьогодні. Пояснення: самооцінка змінюється, хмари бувають у всіх.</span></div>
+    <div class="ti"><i>05:00–10:00</i><b>Блок 1: Що таке самооцінка і впевненість</b><span>Три картки + порада психолога. Попросіть двох-трьох учнів сказати своїми словами різницю між самооцінкою і впевненістю.</span></div>
+    <div class="ti"><i>10:00–17:00</i><b>Блок 2: «Критик і друг»</b><span>Гра з вибором відповідей. Після кожної — питання: «Коли ти чуєш критика у своїй голові?» Правило друга.</span></div>
+    <div class="ti"><i>17:00–23:00</i><b>Блок 3: Суперсили</b><span>Кожен обирає 3–5 рис. Парна вправа: «Назви одну суперсилу сусіда».</span></div>
+    <div class="ti"><i>23:00–28:00</i><b>Блок 4: «Ще не» + помилка</b><span>Перетворення фраз «я не можу» на «я ще не вмію». Обговорення: «Яку помилку ти нещодавно зробив/-ла — і чого вона навчила?»</span></div>
+    <div class="ti"><i>28:00–33:00</i><b>Блок 5: Впевнена поведінка</b><span>4 ситуації. Розіграйте дві в парах: «Ні, я не хочу», «Дай я договорю».</span></div>
+    <div class="ti"><i>33:00–37:00</i><b>Блок 6–7: Порівняння і вікторина</b><span>Вікторина: 7 питань, без оцінок.</span></div>
+    <div class="ti"><i>37:00–40:00</i><b>Лист підтримки і завершення</b><span>Заповнення плану, 116 111 — двічі. Залишитись на 10–15 хвилин.</span></div>
+  </div>
+  <h3>Скрипти</h3>
+  <div class="scr" data-l="ВІДКРИТТЯ"><p>«Сьогодні ми говоримо про те, як ми думаємо про себе. Не про оцінки і не про те, хто кращий. А про те, як бути на своєму боці — навіть коли щось не виходить.»</p></div>
+  <div class="scr" data-l="ПРО КРИТИКА"><p>«У кожного в голові є голос, який іноді каже: «Ти не зможеш». Це не правда про тебе. Це просто голос. Ми навчимось відповідати йому так, як відповів би добрий друг.»</p></div>
+  <div class="scr" data-l="ПРО ПОМИЛКИ"><p>«Мозок росте, коли ми пробуємо і помиляємось. Помилка не означає «я поганий». Вона означає «мені ще потрібно потренуватись».»</p></div>
+  <div class="scr" data-l="ЗАКРИТТЯ"><p>«Ти не мусиш бути ідеальним, щоб бути вартим поваги. А якщо тобі сумно, тривожно чи хтось ображає — розкажи дорослому, якому довіряєш, або зателефонуй на 116 111.»</p></div>
+</div></div>
+
+<!-- SCIENCE -->
+<div class="panel" id="p-sci"><div class="wrap">
+  <h2>Наукова база</h2><p class="ss">Що відомо і де обмеження — щоб не обіцяти більше, ніж дають дані</p>
+  <div class="cg">
+    <div class="cd"><h4>Динаміка самооцінки</h4><p>Дослідження Robins, Orth та ін.: самооцінка знижується на переході до підліткового віку, особливо у дівчат, потім у середньому зростає. Тож «просідання» у 5–6 класі — типове, а не діагноз.</p></div>
+    <div class="cd"><h4>Самооцінка і досягнення</h4><p>Baumeister et al. (2003): висока самооцінка сама по собі не покращує успішність. Тому ми будуємо її на реальних навичках і досвіді, а не на порожніх компліментах.</p></div>
+    <div class="cd"><h4>Самоефективність</h4><p>Bandura (1977): віра в здатність впоратись зростає від досвіду успіху, спостереження за іншими, підтримки і керування тривогою. Маленькі кроки важливіші за гучні слова.</p></div>
+    <div class="cd"><h4>Установка на зростання</h4><p>Dweck: «ще не» і похвала за зусилля (Mueller & Dweck, 1998) підтримують наполегливість. Обмеження: мета-аналізи (Sisk et al., 2018) показують загалом малі ефекти, тому це складова, а не панацея.</p></div>
+    <div class="cd"><h4>Самоспівчуття</h4><p>Neff (2003): доброта до себе, спільна людяність і усвідомленість пов'язані з нижчою тривогою і самокритикою. Базис «правила друга».</p></div>
+    <div class="cd"><h4>Соціальне порівняння</h4><p>Festinger (1954). У цьому віці порівняння посилюється. Дані про вплив соцмереж неоднорідні (асоціації зазвичай малі), тому ми вчимо критичного погляду, а не лякаємо.</p></div>
+  </div>
+  <div class="al bl"><b>Важлива різниця</b>Самооцінка ≠ самовпевненість і ≠ нарцисизм. Мета уроку — реалістична, тепла самооцінка, а не «я найкращий». Не хваліть без підстав: хваліть зусилля, стратегію, прогрес.</div>
+  <h3>Вікові особливості 10–12 років</h3>
+  <table><tr><th>Особливість</th><th>Наслідок для уроку</th></tr>
+  <tr><td>Зростає значущість думки однолітків</td><td>Правила безпеки в групі, без публічних рейтингів і порівнянь</td></tr>
+  <tr><td>Початок пубертату, увага до зовнішності</td><td>Не обговорюємо вагу/зовнішність як «проблему»; фокус на функціональності тіла і характері</td></tr>
+  <tr><td>Конкретне мислення з ростом абстрактного</td><td>Метафори (сонечко, критик/друг), короткі приклади</td></tr>
+  <tr><td>Чутливість до оцінок дорослих</td><td>Похвала конкретна: «Ти довго не здавався — і ось результат»</td></tr></table>
+</div></div>
+
+<!-- ACTIVITIES -->
+<div class="panel" id="p-act"><div class="wrap">
+  <h2>Активності для ведучого</h2><p class="ss">6 вправ для 5–6 класу</p>
+  <div class="ab"><b style="background:var(--pl)">🪞 1. Критик і друг (парна, 8 хв)</b><div>Кожен записує одну «фразу критика», яку чув у голові. Партнер, не оцінюючи, формулює відповідь друга. <ol><li>Критик каже: «Я зробив/-ла помилку».</li><li>Друг каже: «Це схоже на навчання. Що ти зробиш наступного разу?»</li></ol><em>Правило: фразу критика ніхто не коментує і не сміється.</em></div></div>
+  <div class="ab"><b style="background:var(--su)">⭐ 2. Коло суперсил (група, 10 хв)</b><div>По колу кожен отримує одну конкретну позитивну фразу від сусіда («Ти завжди слухаєш, коли я розповідаю»). <em>Правило: фрази про вчинки і риси, не про зовнішність і оцінки. Ведучий стежить, щоб нікого не пропустили.</em></div></div>
+  <div class="ab"><b style="background:var(--gr)">🌱 3. «Помилка тижня» (клас, регулярно)</b><div>Раз на тиждень разом розбираємо одну «корисну помилку»: що сталось, чого вона навчила. Ведучий першим розповідає власну. <em>Нормалізує помилки, знижує страх оцінки.</em></div></div>
+  <div class="ab"><b style="background:var(--bl)">🗣 4. Впевнені фрази (рольова, 8 хв)</b><div>Пари розігрують: «Ні, я не хочу», «Дай я договорю», «Мені це неприємно, припини». Три позиції: тихо, грубо, впевнено. <em>Пошук різниці в тоні, позі, погляді.</em></div></div>
+  <div class="ab"><b style="background:var(--ro)">🫙 5. Баночка досягнень (індивідуально)</b><div>Учень записує на папірцях один успіх за день (навіть дрібний) і складає в баночку. Через тиждень перечитує. <em>Тренує мозок помічати хороше (протидія negativity bias).</em></div></div>
+  <div class="ab"><b style="background:var(--pl)">📈 6. Моя лінія росту (10 хв)</b><div>Учень малює дві точки: «що я вмів/-ла в 1 класі» і «що вмію тепер». <em>Порівняння з собою замість інших.</em></div></div>
+</div></div>
+
+<!-- DIAGNOSTICS -->
+<div class="panel" id="p-dia"><div class="wrap">
+  <h2>Діагностика самооцінки</h2><p class="ss">Для шкільного психолога. Скринінг, не діагноз</p>
+  <div class="al ro"><b>Етичні межі — прочитайте перед використанням</b>
+  Діагностику проводить психолог за правилами закладу й згодою батьків. Результати конфіденційні: не озвучуються класу й не прикріплюються до оцінок. Один результат не визначає дитину — це привід для розмови, а не ярлик. При низьких показниках — індивідуальна бесіда, не «тест для всіх» з публічним розбором. Не використовуйте методики на уроці без підготовки.</div>
+
+  <h3>1. «Сходинки» / «Драбинка» (Дембо–Рубінштейн, модифікація Прихожан)</h3>
+  <table><tr><th>Параметр</th><th>Опис</th></tr>
+  <tr><td>Для кого</td><td>Діти з 5–6 років; широко застосовується в українській і пострадянській шкільній психології, підходить для 5–6 класу.</td></tr>
+  <tr><td>Матеріал</td><td>Аркуш із 5–7 вертикальними лініями (довжина 100 мм). Шкали: здоров'я, розум, характер, друзі, зовнішність, ставлення до навчання (за потреби — «щастя», «сила»).</td></tr>
+  <tr><td>Інструкція</td><td>«Уяви, що на цій лінії зверху — найкращі за (параметр), знизу — найгірші. Постав хрестик, де ти зараз. Потім — де тебе поставили б мама/учитель/друг. Потім — де ти хотів би бути».</td></tr>
+  <tr><td>Підрахунок</td><td>Відстань від низу лінії до хрестика (мм) = бали з 100 для кожної шкали. Середнє по шкалах + розбіжність між «я» і «ідеал».</td></tr>
+  <tr><td>Орієнтовна інтерпретація</td><td>До ~45 — занижена; ~45–74 — середня/реалістична; ~75–90 — висока; понад ~90 по всіх шкалах — можливе завищення або захисна відповідь. Межі різняться в джерелах: звіряйтеся з керівництвом, яке використовуєте.</td></tr>
+  <tr><td>Обмеження</td><td>Проєктивно-самозвітна, помірні психометричні дані; чутлива до ситуації й соціальної бажаності. Використовуйте разом із бесідою і спостереженням.</td></tr></table>
+
+  <h3>2. Шкала самооцінки Розенберга (RSES, 1965)</h3>
+  <div class="al bl"><b>Надійність і межі</b>Найбільш вивчений інструмент (10 тверджень). Добрі психометричні показники на підлітках 12+; для 10–11 років — лише обережний скринінг (ризик нерозуміння формулювань). Український текст нижче — робочий переклад без окремої української валідизації: це обмеження для офіційних висновків. Пункти 6 і 9 («даремний/-а», «невдаха») чутливі: при високих балах за ними — індивідуальна розмова.</div>
+  <p style="font-size:.82rem;color:var(--mu);margin:.6rem 0">Оберіть відповідь для кожного твердження: 3 — повністю згоден/-на, 2 — згоден/-на, 1 — не згоден/-на, 0 — категорично не згоден/-на. Пункти 2, 5, 6, 8, 9 рахуються у зворотному порядку (калькулятор це враховує).</p>
+  <div id="rb"></div>
+  <button class="btn" onclick="calcRB()">Порахувати</button>
+  <div class="rbres" id="rbres"></div>
+  <div class="al"><b>Інтерпретація (за поширеною практикою)</b>0–30 балів. Приблизно 15–25 — нормальний діапазон; нижче 15 — самооцінка нижча за норму (привід для бесіди, не діагноз); понад 25 — висока, зазвичай без тривоги, але звіряйтеся з поведінкою. Для дітей 10–12 порівнюйте з динамікою для самої дитини, а не з універсальною нормою.</div>
+
+  <h3>3. Спостереження і зворотний зв'язок</h3>
+  <table><tr><th>Що спостерігаємо</th><th>Можливий сигнал</th></tr>
+  <tr><td>Уникає відповідей, «я не вмію» ще до спроби</td><td>Низька самоефективність, страх оцінки</td></tr>
+  <tr><td>Різко знецінює свої роботи, перфекціонізм</td><td>Нереалістичні вимоги до себе</td></tr>
+  <tr><td>Надмірна хвальба, агресія при невдачі</td><td>Крихка (захисна) самооцінка</td></tr>
+  <tr><td>Знущання з боку інших, ізоляція</td><td>Зовнішній чинник — потрібне втручання</td></tr></table>
+  <div class="al su"><b>Практичний протокол</b>Класна діагностика: «шкала сонечка» (1–5) на початку/в кінці уроку — анонімно, для оцінки настрою групи. Індивідуально: Сходинки або RSES — лише психолог, у бесіді, з наступною зустріччю.</div>
+</div></div>
+
+<!-- DIFF -->
+<div class="panel" id="p-dif"><div class="wrap">
+  <h2>Диференційований підхід</h2><p class="ss">Адаптація для різних дітей</p>
+  <div class="df">
+    <div style="background:var(--su-l)"><b>Потребує підтримки</b><ul><li>Не змушуйте ділитись</li><li>Суперсили — з допомогою ведучого</li><li>Кожну спробу відзначайте</li><li>Індивідуальна розмова після</li></ul></div>
+    <div style="background:var(--gr-l)"><b>Базова група</b><ul><li>Повний формат за хронометражем</li><li>Рольові в парах</li><li>Лист підтримки</li></ul></div>
+    <div style="background:var(--bl-l)"><b>Лідери / впевнені</b><ul><li>Роль «друга» в парних вправах</li><li>Допомога у «Помилка тижня»</li><li>Стежте, щоб впевненість не ставала домінуванням</li></ul></div>
+  </div>
+  <table><tr><th>Тип дитини</th><th>Як проявляється</th><th>Що робить ведучий</th></tr>
+  <tr><td>Перфекціоніст/-ка</td><td>Переживає через «неправильну» вправу</td><td>«Тут немає неправильних відповідей». Хваліть процес.</td></tr>
+  <tr><td>«Клоун»</td><td>Жартує, щоб уникнути серйозності</td><td>Дайте роль у вправі; не публічне осміяння</td></tr>
+  <tr><td>Тихий/-а</td><td>Не пише, не відповідає</td><td>Не тисніть; дайте письмовий формат і підійдіть після</td></tr>
+  <tr><td>Дитина, якої цураються</td><td>Сидить окремо, ніхто не називає суперсил</td><td>Ведучий називає її суперсилу сам; пара з доброзичливим однокласником; повідомте шкільного психолога</td></tr></table>
+</div></div>
+
+<!-- CRISIS -->
+<div class="panel" id="p-cr"><div class="wrap">
+  <h2>Кризові протоколи та рефлексія</h2><p class="ss">Алгоритми для педагога і психолога</p>
+  <div class="ct"><div><b>116 111</b><span>Дитяча лінія · безкоштовно · анонімно · цілодобово</span></div><div><b>0 800 500 335</b><span>Психологічна підтримка · безкоштовно</span></div><div><b>102 / 103</b><span>Поліція / медики — при загрозі</span></div></div>
+  <div class="cb"><b style="background:var(--su)">🟡 1 · Висловлювання самознецінення («я ніщо», «я всім заважаю»)</b><ol><li>Вислухайте, не сперечайтесь і не відмахуйтесь («та що ти!»).</li><li>Уточніть: «Давно це так? Що в цей момент найважче?»</li><li>Повідомте шкільного психолога; обговоріть з батьками обережно.</li><li>Якщо висловлювання безнадійні або про небажання жити — Протокол 3.</li></ol></div>
+  <div class="cb"><b style="background:var(--bl)">🔵 2 · Булінг і цькування</b><ol><li>Припиніть ситуацію, підтримайте дитину наодинці.</li><li>Не змушуйте «помиритися» публічно.</li><li>Зафіксуйте факти, повідомте керівництво й батьків за процедурою закладу.</li><li>Окрема робота з усім класом — не з жертвою як «проблемою».</li></ol></div>
+  <div class="cb"><b style="background:var(--ro)">🔴 3 · Думки про смерть, самоушкодження</b><ol><li>Приватно, спокійно: «Ти думаєш про те, щоб заподіяти собі шкоду?»</li><li>Не залишайте дитину самою; не обіцяйте зберігати таємницю.</li><li>Шкільний психолог + батьки одразу; за потреби 103.</li><li>Зафіксуйте дослівно сказане одразу після розмови.</li></ol></div>
+  <div class="cb"><b style="background:var(--pl)">🟣 4 · Перфекціонізм і панічний страх оцінок</b><ol><li>Нормалізуйте: «Хвилювання бути «правильним» знайоме багатьом».</li><li>Розділяйте «зусилля» і «результат».</li><li>Якщо тривога чи соматичні симптоми (болі, безсоння) тривають — рекомендуйте батькам звернутись до фахівця.</li></ol></div>
+  <h3>Рефлексія</h3>
+  <table><tr><th>Exit ticket</th><th>Що дає</th></tr>
+  <tr><td>«Сонечко» 1–5 на початку і в кінці (анонімно)</td><td>Зміна настрою групи</td></tr>
+  <tr><td>«Одна суперсила, яку я помітив у собі»</td><td>Особистий зв'язок з темою</td></tr>
+  <tr><td>«Одна річ, яку я спробую цього тижня»</td><td>Конкретний намір</td></tr>
+  <tr><td>«Мені потрібна розмова» (анонімна записка)</td><td>Безпечне звернення по допомогу</td></tr></table>
+  <div class="al gr"><b>Подальша робота</b>Щотижнева «помилка тижня» і баночка досягнень. Тема для батьківських зборів: «Як хвалити дитину: зусилля замість ярликів». Наступна тема в серії: «Дружба і межі».</div>
+  <div class="al"><b>Для вас</b>Теми самооцінки торкаються й дорослих. Після важких розмов — підтримка колег або 0 800 500 335.</div>
+</div></div>
+
+<script>
+function sw(n,btn){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));
+ document.getElementById('p-'+n).classList.add('on');btn.classList.add('on');scrollTo({top:0,behavior:'smooth'});}
+const rs=[['Загалом я задоволений/-на собою',0],['Іноді я думаю, що я зовсім нікчемний/-на',1],['Я вважаю, що в мене є низка хороших якостей',0],['Я вмію робити все не гірше за більшість інших людей',0],['Мені, здається, нічим пишатися',1],['Іноді я почуваюсь абсолютно непотрібним/-ою',1],['Я вважаю себе гідною людиною, принаймні не гіршою за інших',0],['Мені хотілося б більше поважати себе',1],['Загалом я схильний/-на вважати себе невдахою',1],['Я ставлюсь до себе позитивно',0]];
+const rb=document.getElementById('rb');
+rs.forEach(([t,r],i)=>{const d=document.createElement('div');d.className='rb';
+ d.innerHTML=`<span>${i+1}. ${t}</span><select data-r="${r}"><option value="">—</option><option value="3">3</option><option value="2">2</option><option value="1">1</option><option value="0">0</option></select>`;rb.appendChild(d);});
+function calcRB(){const sel=[...rb.querySelectorAll('select')];const out=document.getElementById('rbres');
+ if(sel.some(s=>s.value==='')){out.style.display='block';out.textContent='Відповідайте на всі 10 тверджень.';return;}
+ let sum=0,flags=[];sel.forEach((s,i)=>{const v=+s.value;const sc=s.dataset.r==='1'?3-v:v;sum+=sc;if((i===5||i===8)&&sc<=1)flags.push(i+1);});
+ const lvl=sum<15?'нижче нормального діапазону':sum<=25?'нормальний діапазон':'вище нормального діапазону';
+ out.style.display='block';
+ out.innerHTML=`<b>${sum} / 30 — ${lvl}</b><br>Це скринінг, а не діагноз.${flags.length?`<br><b style="color:#A8384A">Звернути увагу: пункти ${flags.join(' і ')} дали низькі бали — потрібна індивідуальна бесіда.</b>`:''}`;}
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Джерела й що почитати</h2><h3>Використані джерела</h3><ol><li>Rosenberg, M. (1965). <i>Society and the Adolescent Self-Image</i>. Princeton University Press.</li><li>Baumeister, R. F., Campbell, J. D., Krueger, J. I., &amp; Vohs, K. D. (2003). Does high self-esteem cause better performance, interpersonal success, happiness, or healthier lifestyles? <i>Psychological Science in the Public Interest, 4</i>(1), 1–44.</li><li>Bandura, A. (1977). Self-efficacy: Toward a unifying theory of behavioral change. <i>Psychological Review, 84</i>(2), 191–215.</li><li>Dweck, C. S. (2006). <i>Mindset: The New Psychology of Success</i>. Random House. Критика ефектів: Sisk, V. F., et al. (2018). <i>Psychological Science, 29</i>(4), 549–571.</li><li>Mueller, C. M., &amp; Dweck, C. S. (1998). Praise for intelligence can undermine children’s motivation and performance. <i>Journal of Personality and Social Psychology, 75</i>(1), 33–52.</li><li>Brummelman, E., Thomaes, S., de Castro, B. O., Overbeek, G., &amp; Bushman, B. J. (2014). “That’s not just beautiful — that’s incredibly beautiful!” <i>Psychological Science, 25</i>(3), 728–735.</li><li>Neff, K. D. (2003). Self-compassion: An alternative conceptualization of a healthy attitude toward oneself. <i>Self and Identity, 2</i>(2), 85–101.</li><li>Neff, K. D., &amp; Vonk, R. (2009). Self-compassion versus global self-esteem. <i>Journal of Personality, 77</i>(1), 23–50.</li><li>MacBeth, A., &amp; Gumley, A. (2012). Exploring compassion: A meta-analysis of the association between self-compassion and psychopathology. <i>Clinical Psychology Review, 32</i>(6), 545–552.</li><li>Harter, S. (1999). <i>The Construction of the Self</i>. Guilford Press.</li><li>Robins, R. W., Trzesniewski, K. H., Tracy, J. L., Gosling, S. D., &amp; Potter, J. (2002). Global self-esteem across the life span. <i>Psychology and Aging, 17</i>(3), 423–434.</li><li>Orth, U., Erol, R. Y., &amp; Luciano, E. C. (2018). Development of self-esteem from age 4 to 94 years. <i>Psychological Bulletin, 144</i>(10), 1045–1080.</li><li>Crocker, J., &amp; Wolfe, C. T. (2001). Contingencies of self-worth. <i>Psychological Review, 108</i>(3), 593–623.</li><li>Crocker, J., &amp; Canevello, A. (2008). Creating and undermining social support in communal relationships. <i>Journal of Personality and Social Psychology, 95</i>(3), 555–575.</li><li>Clance, P. R., &amp; Imes, S. A. (1978). The imposter phenomenon in high achieving women. <i>Psychotherapy: Theory, Research &amp; Practice, 15</i>(3), 241–247.</li><li>Hewitt, P. L., &amp; Flett, G. L. (1991). Perfectionism in the self and social contexts. <i>Journal of Personality and Social Psychology, 60</i>(3), 456–470.</li><li>Gottman, J. M., Katz, L. F., &amp; Hooven, C. (1996). Parental meta-emotion philosophy and the emotional life of families. <i>Journal of Family Psychology, 10</i>(3), 243–268.</li><li>Baumrind, D. (1991). The influence of parenting style on adolescent competence and substance use. <i>Journal of Early Adolescence, 11</i>(1), 56–95.</li><li>Gilovich, T., Medvec, V. H., &amp; Savitsky, K. (2000). The spotlight effect in social judgment. <i>Journal of Personality and Social Psychology, 78</i>(2), 211–222.</li><li>Elkind, D. (1967). Egocentrism in adolescence. <i>Child Development, 38</i>(4), 1025–1034.</li><li>Festinger, L. (1954). A theory of social comparison processes. <i>Human Relations, 7</i>(2), 117–140.</li><li>Orben, A., &amp; Przybylski, A. K. (2019). The association between adolescent well-being and digital technology use. <i>Nature Human Behaviour, 3</i>, 173–182.</li></ol><h3>Що почитати фахівцеві</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>Self-Compassion</td><td>Neff K., 2011</td><td>Практики самоспівчуття</td></tr><tr><td>Mindset</td><td>Dweck C. S., 2006</td><td>Установка на зростання; про критику ефектів див. Sisk та ін. (2018)</td></tr><tr><td>Brainstorm</td><td>Siegel D. J., 2013</td><td>Про мозок підлітка</td></tr><tr><td>The Construction of the Self</td><td>Harter S., 1999</td><td>Розвиток самоуявлення</td></tr></table><h3>Що порадити батькам</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>How to Talk So Kids Will Listen &amp; Listen So Kids Will Talk</td><td>Faber A., Mazlish E.</td><td>Практичні фрази</td></tr><tr><td>Raising an Emotionally Intelligent Child</td><td>Gottman J., DeClaire J., 1997</td><td>Емоційне коучинг-спілкування</td></tr><tr><td>The Whole-Brain Child</td><td>Siegel D. J., Bryson T. P., 2011</td><td>Емоції дитини</td></tr></table><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="08-5-6-case.html">← Тема 8</a></span><span><a href="10-5-6-case.html">Тема 10 →</a></span></div><a class="mo-fab" href="../index.html#t09">☰ До матриці</a></body>
+</html>

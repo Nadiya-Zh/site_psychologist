@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Опора для впевненості · Онлайн-урок для батьків</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,700;0,900;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0E1815;--s1:#15231E;--s2:#1C2F28;--am:#F0B94B;--am-l:rgba(240,185,75,.12);--sg:#8FD1B0;--sg-l:rgba(143,209,176,.12);--co:#F08A6B;--co-l:rgba(240,138,107,.12);--tx:#F3EEE2;--mu:rgba(243,238,226,.6);--dm:rgba(243,238,226,.32);--bd:rgba(255,255,255,.09);--bd2:rgba(255,255,255,.17)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,sans-serif;background:var(--bg);color:var(--tx);line-height:1.75;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 80% 5%,rgba(240,185,75,.12),transparent 40%),radial-gradient(circle at 5% 90%,rgba(143,209,176,.1),transparent 45%)}
+.prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--sg),var(--am));z-index:50}
+.hero{min-height:92vh;max-width:900px;margin:0 auto;padding:4rem 1.8rem 2.5rem;display:flex;flex-direction:column;justify-content:flex-end;position:relative}
+.lb{font-size:.68rem;font-weight:600;letter-spacing:.2em;color:var(--am);text-transform:uppercase;margin-bottom:1rem}
+h1{font-family:Fraunces,serif;font-weight:900;font-size:clamp(2.6rem,7.5vw,5.4rem);line-height:1.02;letter-spacing:-.02em;margin-bottom:1.3rem}
+h1 i{color:var(--am);font-weight:500}
+.hb{border-top:1px solid var(--bd2);padding-top:1.2rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--mu);font-size:.92rem;font-weight:300}
+.hb ul{list-style:none;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dm);text-align:right}
+.sec{max-width:780px;margin:0 auto;padding:4.5rem 1.8rem;position:relative}
+.dv{max-width:780px;margin:0 auto;height:1px;background:linear-gradient(90deg,var(--am),transparent);opacity:.3}
+.n{font-size:.66rem;letter-spacing:.2em;color:var(--sg);font-weight:600;text-transform:uppercase;margin-bottom:.7rem}
+h2{font-family:Fraunces,serif;font-weight:700;font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.15;margin-bottom:.9rem}
+h2 i{color:var(--am);font-weight:500}
+.lead{color:var(--mu);max-width:640px;margin-bottom:1.6rem;font-weight:300}
+.psy{border-left:3px solid var(--am);background:var(--am-l);padding:1.2rem 1.5rem;margin:1.8rem 0;border-radius:0 12px 12px 0}
+.psy b{display:block;font-size:.64rem;letter-spacing:.14em;color:var(--am);text-transform:uppercase;margin-bottom:.35rem}
+.psy p{font-family:Fraunces,serif;font-style:italic;font-size:.96rem;color:rgba(243,238,226,.85)}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.9rem;margin:1.3rem 0}
+.c{background:var(--s1);border:1px solid var(--bd);border-radius:16px;padding:1.3rem}
+.c h3{font-family:Fraunces,serif;font-size:1.02rem;margin-bottom:.3rem}.c p{font-size:.85rem;color:var(--mu)}
+.tg{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.8rem;margin:1.2rem 0}
+.tc{background:var(--s1);border:1px solid var(--bd);border-radius:16px;padding:1.1rem 1.2rem;cursor:pointer;transition:.25s;min-height:110px;font-size:.9rem}
+.tc small{display:block;font-size:.62rem;letter-spacing:.14em;color:var(--co);font-weight:600;margin-bottom:.3rem}
+.tc .b{display:none;color:var(--sg)}.tc .b small{color:var(--sg)}
+.tc.f{border-color:var(--sg);background:var(--sg-l)}.tc.f .a{display:none}.tc.f .b{display:block}
+.opts{display:flex;flex-direction:column;gap:.45rem;margin-top:.9rem}
+.o{background:var(--s2);border:1.5px solid var(--bd);border-radius:12px;padding:.75rem 1rem;text-align:left;color:var(--mu);font:300 .9rem Inter;cursor:pointer;transition:.2s}
+.o:hover{border-color:var(--bd2);color:var(--tx)}
+.o.ok{border-color:var(--sg);background:var(--sg-l);color:var(--sg)}.o.bad{border-color:var(--co);background:var(--co-l);color:var(--co)}
+.fb{display:none;font-size:.87rem;color:var(--mu);padding:.7rem 1rem;border-left:2px solid var(--sg);margin-top:.8rem}.fb.show{display:block}
+.box{background:var(--s1);border:1px solid var(--bd);border-radius:20px;overflow:hidden}
+.bt{display:flex;justify-content:space-between;padding:.8rem 1.4rem;border-bottom:1px solid var(--bd);font-size:.66rem;letter-spacing:.12em;color:var(--dm);text-transform:uppercase}.bt b{color:var(--am)}
+.bb{padding:1.5rem 1.4rem}
+.q{font-family:Fraunces,serif;font-weight:700;font-size:1.1rem;line-height:1.5}
+.btn{background:var(--am);color:#1A1405;border:none;border-radius:50px;padding:.7rem 1.9rem;font:700 .88rem Inter;cursor:pointer;margin-top:1rem}
+.btn.g{background:none;border:1px solid var(--bd2);color:var(--mu);padding:.5rem 1.4rem}
+.res{display:none;text-align:center;font-family:Fraunces,serif;font-weight:700;font-size:1.4rem;color:var(--am);padding:1rem}
+.pick{display:grid;gap:.5rem;margin:1rem 0}
+.pk{display:flex;gap:.7rem;align-items:flex-start;background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:.7rem 1rem;cursor:pointer;font-size:.9rem}
+.pk input{margin-top:.35rem;accent-color:var(--am);width:17px;height:17px}
+.pk.d{border-color:var(--am);background:var(--am-l)}
+.out{display:none;margin-top:1.1rem;padding:1.2rem 1.4rem;background:var(--s2);border-radius:14px;border-left:3px solid var(--am);font-size:.9rem;color:var(--mu)}
+.out b{color:var(--am)}
+.mx{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:1.2rem 0}
+@media(max-width:560px){.mx{grid-template-columns:1fr}}
+.mc{border:1.5px solid var(--bd);background:var(--s1);border-radius:16px;padding:1.1rem;cursor:pointer;transition:.2s;font-size:.85rem}
+.mc h3{font-family:Fraunces,serif;font-size:1rem;margin-bottom:.2rem}.mc small{color:var(--dm);font-size:.66rem;letter-spacing:.1em}
+.mc.on{border-color:var(--am);background:var(--am-l)}.mc.best.on{border-color:var(--sg);background:var(--sg-l)}
+.mxt{display:none;margin-top:.4rem;padding:1rem 1.2rem;background:var(--s2);border-radius:14px;font-size:.88rem;color:var(--mu)}
+.steps{counter-reset:s;margin:1.2rem 0}
+.st{counter-increment:s;background:var(--s1);border:1px solid var(--bd);border-radius:14px;padding:1rem 1.2rem 1rem 3.2rem;margin:.6rem 0;position:relative;font-size:.9rem}
+.st::before{content:counter(s);position:absolute;left:1rem;top:.9rem;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--am);color:#1A1405;font-weight:700;display:grid;place-items:center;font-size:.85rem}
+.st b{display:block;color:var(--tx)}.st span{color:var(--mu);font-size:.85rem}.st em{color:var(--sg);font-size:.82rem;display:block;margin-top:.2rem}
+.tbs{display:flex;gap:.4rem;flex-wrap:wrap;margin:1rem 0 .6rem}
+.tbn{border:1.5px solid var(--bd);background:var(--s1);border-radius:50px;padding:.45rem 1.1rem;font:600 .8rem Inter;color:var(--mu);cursor:pointer}
+.tbn.on{background:var(--am);color:#1A1405;border-color:var(--am)}
+.tp{display:none;background:var(--s1);border:1px solid var(--bd);border-radius:16px;padding:1.3rem 1.5rem;font-size:.9rem}
+.tp.on{display:block}.tp h3{font-family:Fraunces,serif;margin-bottom:.4rem}.tp ul{padding-left:1.2rem}.tp li{margin:.3rem 0;color:var(--mu)}
+.w5{display:grid;gap:.5rem;margin:1rem 0}
+.w5 .r{display:grid;grid-template-columns:1fr 130px;gap:.8rem;align-items:center;font-size:.88rem;padding:.55rem 0;border-bottom:1px solid var(--bd)}
+.w5 select{background:var(--s2);border:1px solid var(--bd2);color:var(--tx);border-radius:8px;padding:.35rem;font:inherit}
+.plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:.8rem}
+.pf{background:var(--s1);border:1px solid var(--bd);border-radius:14px;padding:1.1rem}
+.pf label{font-size:.62rem;letter-spacing:.12em;color:var(--dm);text-transform:uppercase;display:block;margin-bottom:.4rem}
+.pf textarea,.pf input{width:100%;background:none;border:none;border-bottom:1px solid var(--bd2);color:var(--tx);font:300 .9rem Inter;padding:.4rem 0;resize:none;outline:none}
+.pf textarea:focus,.pf input:focus{border-color:var(--am)}
+.cert{display:none;margin-top:1.3rem;border:1.5px solid var(--am);background:var(--s1);border-radius:18px;padding:1.6rem}.cert.show{display:block}
+.cert h3{font-family:Fraunces,serif;text-align:center;color:var(--am);margin-bottom:.8rem}
+.cert p{padding:.5rem 0;border-bottom:1px solid var(--bd);font-size:.88rem}.cert p b{display:block;font-size:.62rem;letter-spacing:.1em;color:var(--dm);text-transform:uppercase;font-weight:500}
+.help{border:1px solid rgba(143,209,176,.3);background:var(--sg-l);border-radius:14px;padding:1.1rem 1.4rem;margin-top:1.6rem;font-size:.88rem}
+.reveal{opacity:0;transform:translateY(18px);transition:.7s}.reveal.vis{opacity:1;transform:none}
+</style>
+<link rel="stylesheet" href="../assets/psy.css">
+</head>
+<body><nav class="mo-nav"><a href="../index.html">← Кабінет психолога</a><span class="mo-t">Тема 9 · Самооцінка та впевненість у собі · Батьки · Урок</span><span class="mo-g"><a href="09-5-6-lesson.html">5–6 клас</a><a href="09-7-8-lesson.html">7–8 клас</a><a href="09-9-11-lesson.html">9–11 клас</a><a href="09-b-lesson.html" class="on">Батьки</a><a href="09-b-case.html">⇄ Кейс</a></span></nav>
+<div class="prog" id="prog"></div>
+<section class="hero">
+  <div class="lb">Онлайн-урок для батьків · дітей 5–11 класів</div>
+  <h1>Опора для<br><i>впевненості</i></h1>
+  <div class="hb"><p style="max-width:440px">Як говорити, хвалити й підтримувати дитину так, щоб її самооцінка росла з досвіду, а не з порожніх слів</p>
+  <ul><li>⏱ 50 хвилин</li><li>🎮 5 ігор</li><li>◈ самоаудит</li><li>▲ вікторина</li></ul></div>
+</section>
+
+<div class="dv"></div>
+<section class="sec reveal">
+  <div class="n">01 · Міфи і факти</div>
+  <h2>Що ми <i>думаємо</i> про самооцінку</h2>
+  <p class="lead">Натисніть на картку, щоб побачити, що кажуть дослідження.</p>
+  <div class="tg" id="myth"></div>
+  <div class="psy"><b>Порада психолога</b><p>Самооцінка — не «товщина шкіри» і не результат компліментів. Це ставлення дитини до себе, яке будується з досвіду подолання, теплих стосунків і того, як із нею говорять у важкі моменти.</p></div>
+</section>
+
+<div class="dv"></div>
+<section class="sec reveal">
+  <div class="n">02 · Гра «Що б ви сказали?»</div>
+  <h2>Шість <i>ситуацій</i> з життя</h2>
+  <p class="lead">Оберіть відповідь, яка найкраще підтримує дитину. Це не екзамен: у кожного з нас бувають «автоматичні» фрази.</p>
+  <div class="box"><div class="bt"><span id="dn">Ситуація 1 / 6</span><b id="dp">0 балів</b></div>
+  <div class="bb"><div class="q" id="dq"></div><div class="opts" id="do"></div><div class="fb" id="df"></div><button class="btn g" id="dx" style="display:none" onclick="nextD()">Далі →</button><div class="res" id="dr"></div></div></div>
+</section>
+
+<div class="dv"></div>
+<section class="sec reveal">
+  <div class="n">03 · Самоаудит похвали</div>
+  <h2>Як ви <i>хвалите</i></h2>
+  <p class="lead">Позначте фрази, які ви кажете дитині часто. Це рефлексія, а не стандартизований тест.</p>
+  <div class="pick" id="praise"></div>
+  <button class="btn" onclick="auditPraise()">Показати мій профіль →</button>
+  <div class="out" id="praiseOut"></div>
+  <div class="psy"><b>Порада психолога</b><p>Похвала за зусилля й стратегію («ти не здавався/-лась») підтримує наполегливість. Похвала «розумом» чи завищена («ти найкращий у світі») робить помилки страшнішими. Хвалити треба менше «загального» й більше конкретного.</p></div>
+</section>
+
+<div class="dv"></div>
+<section class="sec reveal">
+  <div class="n">04 · Стиль підтримки</div>
+  <h2>Тепло і <i>структура</i></h2>
+  <p class="lead">Дослідження Баумрінд описують стилі за двома осями: тепло (підтримка) і вимоги (структура, межі). Натисніть на квадрант.</p>
+  <div class="mx" id="mx"></div>
+  <div class="mxt" id="mxt"></div>
+  <div class="psy"><b>Порада психолога</b><p>Авторитетний стиль (тепло + чіткі межі) найчастіше пов'язаний із кращим емоційним благополуччям дітей. Це зв'язок, а не гарантія: темперамент, обставини й культура теж мають значення. Жоден батько не вкладається в один квадрант увесь час.</p></div>
+</section>
+
+<div class="dv"></div>
+<section class="sec reveal">
+  <div class="n">05 · Емоційне коучинг-спілкування</div>
+  <h2>Чотири кроки <i>до розмови</i></h2>
+  <p class="lead">За Готтманом: спочатку зв'язок, потім рішення.</p>
+  <div class="steps">
+    <div class="st"><b>Помітьте емоцію</b><span>Зупиніться й подивіться на дитину, а не на ситуацію.</span><em>«Ти якийсь сумний сьогодні».</em></div>
+    <div class="st"><b>Побачте можливість зблизитись</b><span>Емоція — шанс на контакт, а не проблема, яку треба вимкнути.</span><em>«Хочеш розкажу, що в мене було складного?»</em></div>
+    <div class="st"><b>Назвіть і визнайте почуття</b><span>Без «не плач» і «дрібниця». Визнання не означає згоду з усім.</span><em>«Мені здається, тобі було прикро й соромно».</em></div>
+    <div class="st"><b>Разом шукайте виходи</b><span>Межі лишаються: емоції можна відчувати, а поведінка має межі.</span><em>«Що б ти хотів/-ла зробити? Чим я можу допомогти?»</em></div>
+  </div>
+  <div class="box" style="margin-top:1.5rem"><div class="bt"><span id="en">Мініситуація 1 / 3</span><b id="ep">0 балів</b></div>
+  <div class="bb"><div class="q" id="eq"></div><div class="opts" id="eo"></div><div class="fb" id="ef"></div><button class="btn g" id="ex" style="display:none" onclick="nextE()">Далі →</button><div class="res" id="er"></div></div></div>
+</section>
+
+<div class="dv"></div>
+<section class="sec reveal">
+  <div class="n">06 · За віком</div>
+  <h2>Що змінюється <i>з віком</i></h2>
+  <div class="tbs"><button class="tbn on" onclick="tab(0,this)">5–6 клас</button><button class="tbn" onclick="tab(1,this)">7–8 клас</button><button class="tbn" onclick="tab(2,this)">9–11 клас</button></div>
+  <div class="tp on"><h3>10–12 років</h3><ul><li>Зростає вага думки однолітків, перші порівняння.</li><li>Допомагає: «ще не вмію», маленькі кроки, баночка досягнень, правило друга.</li><li>Стежте за дражнінням і булінгом; питайте конкретно, без допиту.</li><li>Уникайте порівнянь із братами, сестрами, однокласниками.</li></ul></div>
+  <div class="tp"><h3>12–14 років</h3><ul><li>«Уявна аудиторія»: здається, що всі дивляться й оцінюють.</li><li>Тіло змінюється: не коментуйте вагу й зовнішність; фокус на здоров'ї й характері.</li><li>Слухайте без порад, поважайте приватність, давайте простір пробувати.</li><li>Соцмережі: розмовляйте про «вітрину» й «закулісся», а не лише забороняйте.</li></ul></div>
+  <div class="tp"><h3>14–17 років</h3><ul><li>Пошук ідентичності; тиск НМТ і вибору шляху.</li><li>Ризик залежності самооцінки від оцінок, схвалення, стосунків.</li><li>Цікавтесь цінностями й інтересами, а не лише балами; підтримуйте кілька «опор».</li><li>Говоріть про межі в стосунках і право на «ні».</li></ul></div>
+</section>
+
+<div class="dv"></div>
+<section class="sec reveal">
+  <div class="n">07 · Ви як приклад</div>
+  <h2>Як ви <i>говорите про себе</i></h2>
+  <p class="lead">Діти слухають не лише те, що ми кажемо їм, а й те, що кажемо про себе.</p>
+  <div class="g3">
+    <div class="c"><h3>Помилка вголос</h3><p>«Я запізнився/-лась. Таке буває, наступного разу вийду раніше». Дитина вчиться, що помилка не катастрофа.</p></div>
+    <div class="c"><h3>Про зовнішність</h3><p>Уникайте «я жахливо виглядаю» й дієтних розмов при дітях. Підлітки це засвоюють.</p></div>
+    <div class="c"><h3>Самоспівчуття</h3><p>Спробуйте запитати себе: що б я сказав/-ла подрузі в такій ситуації?</p></div>
+  </div>
+  <div class="psy"><b>Порада психолога</b><p>Вам не потрібна ідеальна самооцінка. Достатньо чесно показувати дитині, як дорослий переживає невдачі й піклується про себе. Якщо вам важко самим, це теж привід звернутися по підтримку.</p></div>
+
+  <h3 style="font-family:Fraunces,serif;margin:2rem 0 .4rem">Короткий самоогляд вашого самопочуття (WHO-5)</h3>
+  <p class="lead" style="margin-bottom:.8rem">Необов'язково й приватно. Індекс благополуччя ВООЗ: 5 тверджень про останні два тижні. Це скринінг, а не діагноз. Український текст — робочий переклад, офіційні версії є на сайті розробників.</p>
+  <div class="w5" id="w5"></div>
+  <button class="btn" onclick="calcW()">Порахувати</button>
+  <div class="out" id="wout"></div>
+</section>
+
+<div class="dv"></div>
+<section class="sec reveal">
+  <div class="n">08 · Вікторина</div>
+  <h2>9 питань <i>на закріплення</i></h2>
+  <div class="box"><div class="bt"><span id="qn">01 / 09</span><b id="qp">0 балів</b></div>
+  <div class="bb"><div class="q" id="qq"></div><div class="opts" id="qo"></div><div class="fb" id="qf"></div><button class="btn g" id="qx" style="display:none" onclick="nextQ()">Далі →</button><div class="res" id="qr"></div></div></div>
+</section>
+
+<div class="dv"></div>
+<section class="sec reveal">
+  <div class="n">09 · Мій план</div>
+  <h2>План <i>на тиждень</i></h2>
+  <p class="lead">Оберіть 2–3 дії, які реально встигнете. Менше — краще.</p>
+  <div class="plan">
+    <div class="pf"><label>Одна фраза, яку я замінюю</label><input id="p1" placeholder="Було → стане…"></div>
+    <div class="pf"><label>Що я похвалю цього тижня (процес, зусилля)</label><textarea id="p2" rows="2" placeholder="Конкретно…"></textarea></div>
+    <div class="pf"><label>10 хвилин слухання без порад: коли саме</label><input id="p3" placeholder="Вечеря / дорога…"></div>
+    <div class="pf"><label>Що скажу про свою помилку дитині</label><textarea id="p4" rows="2" placeholder="Коротко й чесно…"></textarea></div>
+    <div class="pf"><label>Як подбаю про себе</label><input id="p5" placeholder="Сон, прогулянка, розмова з другом…"></div>
+  </div>
+  <p style="text-align:center"><button class="btn" onclick="mkPlan()">Створити мій план ⭐</button></p>
+  <div class="cert" id="cert"><h3>⭐ Мій план підтримки</h3><div id="certb"></div></div>
+  <div class="help"><b>Коли звернутись по допомогу:</b> дитина тижнями каже «я нікому не потрібен/-на», втрачає інтерес до улюбленого, змінюється сон і апетит, стає замкненою, її цькують, або виникають розмови про смерть чи самоушкодження. Тоді: поговоріть спокійно, не залишайте дитину наодинці в небезпеці, зверніться до шкільного психолога чи лікаря. Дитяча лінія <b>116 111</b> (безкоштовно, анонімно, цілодобово), психологічна підтримка <b>0 800 500 335</b>, при загрозі <b>103 / 102</b>.</div>
+  <div class="psy"><b>Фінальна порада психолога</b><p>Ви не мусите бути ідеальним батьком чи матір'ю. Достатньо бути поруч, слухати й вірити, що дитина може вчитись. Маленькі повторювані дії зміцнюють дитину сильніше за гучні слова.</p></div>
+</section>
+
+<script>
+const $=id=>document.getElementById(id);
+addEventListener('scroll',()=>{$('prog').style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%'});
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.05});
+document.querySelectorAll('.reveal').forEach(r=>io.observe(r));
+
+[['«Чим більше хвалити, тим краще»','Не обов\'язково. Завищена чи загальна похвала може знижувати готовність братись за складне (Brummelman et al., 2014). Важлива конкретна, чесна похвала за зусилля.'],['«Самооцінка — це риса характеру»','Вона змінюється. У 10–14 років у середньому знижується, потім зростає. Типове «просідання» — не вада дитини.'],['«Треба захищати від невдач»','Дитина вчиться на подоланні. Надмірний захист позбавляє досвіду «я впораюсь». Підтримуйте, а не вирішуйте за неї.'],['«Висока самооцінка = кращі оцінки»','Сама висока самооцінка не покращує результатів (Baumeister et al., 2003). Важливі навички, досвід і ставлення до себе.'],['«Самооцінка і впевненість — одне й те саме»','Ні. Самооцінка — загальне ставлення до себе. Впевненість (самоефективність, Bandura) — віра, що впораюсь із конкретною справою.']]
+.forEach(([a,b])=>{const d=document.createElement('div');d.className='tc';d.innerHTML=`<div class="a"><small>МІФ</small>${a}</div><div class="b"><small>ФАКТ</small>${b}</div>`;d.onclick=()=>d.classList.toggle('f');$('myth').appendChild(d)});
+
+function engine(cfg){let i=0,sc=0,done=false;
+ function load(){const q=cfg.items[i];done=false;$(cfg.n).textContent=cfg.label(i);$(cfg.q).textContent=q.q;$(cfg.o).innerHTML='';$(cfg.f).className='fb';$(cfg.x).style.display='none';
+  q.o.forEach((t,k)=>{const b=document.createElement('button');b.className='o';b.textContent=t;
+   b.onclick=()=>{if(done)return;done=true;$(cfg.o).children[q.a].classList.add('ok');
+    if(k===q.a){sc++;$(cfg.p).textContent=sc+' балів'}else b.classList.add('bad');
+    $(cfg.f).textContent=q.e;$(cfg.f).classList.add('show');$(cfg.x).style.display='inline-block'};$(cfg.o).appendChild(b)})}
+ window[cfg.next]=()=>{i++;if(i<cfg.items.length){load();return}
+  $(cfg.q).textContent='';$(cfg.o).innerHTML='';$(cfg.f).className='fb';$(cfg.x).style.display='none';
+  const t=cfg.items.length,r=$(cfg.r);r.style.display='block';r.textContent=`${sc} із ${t} — ${sc>=t*.8?'Чудово ◉':sc>=t*.55?'Хороша база ◈':'Є що спробувати ▲'}`};
+ load()}
+engine({items:[
+ {q:'Дитина (11 р.) принесла 8 балів і засмучена, бо хотіла 10. Що найкраще?',o:['«Це ж майже 10, не переживай!»','«Бачу, тобі прикро. Що вдалось добре, а що б хотіла покращити?»','«Бачиш, треба було краще готуватись»'],a:1,e:'Спочатку визнати почуття, потім разом подивитись на процес, без знецінення й докорів.'},
+ {q:'Підліток (13 р.) каже: «Я негарний, усі мене ненавидять». Яка перша реакція допомагає?',o:['«Що ти вигадуєш, ти найкрасивіший/-а!»','«Це звучить боляче. Розкажи, що сталось?»','«Не дивись у соцмережі й усе буде добре»'],a:1,e:'Заперечення не працює: підліток відчуває, що його не чують. Слухання й уточнення відкривають розмову.'},
+ {q:'Дитина малює і каже: «Я не вмію малювати». Що допоможе?',o:['«Ти чудово малюєш!»','«Ти ще вчишся. Що саме не виходить? Давай спробуємо маленький крок»','«Ну, тоді не малюй»'],a:1,e:'«Ще» й маленький крок підтримують установку на зростання (Dweck).'},
+ {q:'Старшокласник (16 р.) переживає через НМТ і каже: «Якщо не вступлю, життя пропало». Що найкраще?',o:['«Не вигадуй, усе буде добре»','«Розумію, як це тисне. Давай разом подумаємо про варіанти й що ти можеш зробити зараз»','«Треба було раніше починати»'],a:1,e:'Визнати тиск, розширити перспективу, повернути до дій. Результат не вичерпує цінності людини.'},
+ {q:'Молодший брат/сестра виконав/-ла завдання краще. Дитина засмучена. Що спробувати?',o:['«Бачиш, твій брат може, а ти ні»','«У кожного свої сильні сторони. Що ти вмієш, чого не вмів/-ла на початку року?»','«Не порівнюй себе з ним/нею» і тема закрита'],a:1,e:'Порівнювати з минулим «собою» чесніше й мотивує. Заборона розмови не допомагає.'},
+ {q:'Підліток довго мовчить у мережі, замкнений і втратив інтерес до улюбленого. Що робити?',o:['Чекати, поки саме мине','Спокійно поговорити, висловити турботу й за потреби звернутись до шкільного психолога чи лікаря','Забрати телефон і покарати'],a:1,e:'Тривалі зміни потребують уваги. Покарання закриває розмову.'}],
+ n:'dn',q:'dq',o:'do',f:'df',x:'dx',p:'dp',r:'dr',next:'nextD',label:i=>`Ситуація ${i+1} / 6`});
+engine({items:[
+ {q:'Дитина кричить: «Я тебе ненавиджу!» (7 років). Що з кроків Готтмана доречно першим?',o:['Покарати за образу','Помітити емоцію й назвати її: «Ти дуже злишся. Розкажи»','Пояснити, що так говорити негарно'],a:1,e:'Спочатку емоція, потім межа поведінки: «Злитись можна, ображати — ні».'},
+ {q:'Чи означає визнання почуття, що ви згодні з усім?',o:['Так, тому краще не визнавати','Ні: «Я розумію, що ти злишся» не скасовує меж і правил','Так, інакше дитина не повірить'],a:1,e:'Визнання почуттів і межі поведінки поєднуються.'},
+ {q:'Дитина плаче через дрібницю (на ваш погляд). Що допомагає?',o:['«Це ж дрібниця!»','«Для тебе це важливо. Я поруч»','Піти, щоб не підтримувати плач'],a:1,e:'Те, що дрібниця для дорослого, може бути великим для дитини.'}],
+ n:'en',q:'eq',o:'eo',f:'ef',x:'ex',p:'ep',r:'er',next:'nextE',label:i=>`Мініситуація ${i+1} / 3`});
+engine({items:[
+ {q:'Яка похвала найкраще підтримує впевненість?',o:['«Ти найрозумніша дитина у світі»','«Ти довго шукав/-ла рішення й не здався/-лась»','«Молодець» (за все підряд)'],a:1,e:'Конкретне зусилля й стратегія (Mueller & Dweck, 1998).'},
+ {q:'Чим самооцінка відрізняється від самоефективності?',o:['Нічим','Самооцінка — загальне ставлення до себе; самоефективність — віра, що впораюсь із конкретним','Самоефективність — це оцінки'],a:1,e:'Bandura: самоефективність росте від досвіду маленьких перемог.'},
+ {q:'Що кажуть дослідження про самооцінку в 10–14 років?',o:['Завжди зростає','У середньому знижується, потім зростає','Не змінюється'],a:1,e:'Типове «просідання» (Robins, Orth). Це не діагноз.'},
+ {q:'Стиль «тепло + чіткі межі» (авторитетний) зазвичай...',o:['Пов\'язаний із кращим благополуччям дітей','Не має значення','Шкідливий'],a:0,e:'Зв\'язок, а не гарантія. Враховуйте темперамент і ситуацію.'},
+ {q:'Що робити, коли дитина помилилась?',o:['Показати, що помилка катастрофа','Нормалізувати й разом дізнатись, чого вона навчила','Не помічати'],a:1,e:'Помилка — інформація. Модель — ваша реакція на власні помилки.'},
+ {q:'Чому не варто коментувати вагу й зовнішність підлітка?',o:['Це підвищує мотивацію','Може посилити сором і ризик розладів харчової поведінки','Це нормально'],a:1,e:'Фокус на здоров\'ї й характері безпечніший.'},
+ {q:'«Вітрина» в соцмережах — це...',o:['Повне життя людини','Відібрані найкращі моменти, що створюють нечесне порівняння','Реклама'],a:1,e:'Порівнюємо власне «закулісся» з чужою «рекламою».'},
+ {q:'Що з переліченого — ознака, що потрібна допомога фахівця?',o:['Одного дня поганий настрій','Тижні безнадії, втрати інтересів, замкненості, зміни сну й апетиту, розмови про смерть','Сумнів перед контрольною'],a:1,e:'Тривалі й виражені зміни потребують оцінки психолога чи лікаря.'},
+ {q:'Куди можна звернутись анонімно й цілодобово?',o:['Лише до класного керівника','Дитяча лінія 116 111 (також 0 800 500 335 для психологічної підтримки)','Нікуди'],a:1,e:'116 111 — для дітей, 0 800 500 335 — психологічна підтримка. При загрозі: 103/102.'}],
+ n:'qn',q:'qq',o:'qo',f:'qf',x:'qx',p:'qp',r:'qr',next:'nextQ',label:i=>`${String(i+1).padStart(2,'0')} / 09`});
+
+const phr=[['«Ти такий/-а розумний/-а!»','p'],['«Бачу, скільки зусиль ти вклав/-ла»','e'],['«Ти найкращий/-а у світі!»','i'],['«Дивись, як сестра/однокласник старається»','c'],['«Ти не здався/-лась, коли було важко»','e'],['«Молодець!» (без уточнення)','g'],['«У тебе талант, тобі це легко»','p'],['«Мені подобається, як ти це придумав/-ла»','e']];
+phr.forEach(([t,k])=>{const l=document.createElement('label');l.className='pk';l.innerHTML=`<input type="checkbox" data-k="${k}"><span>${t}</span>`;l.querySelector('input').onchange=e=>l.classList.toggle('d',e.target.checked);$('praise').appendChild(l)});
+function auditPraise(){const c={e:0,p:0,i:0,c:0,g:0};document.querySelectorAll('#praise input:checked').forEach(x=>c[x.dataset.k]++);
+ const o=$('praiseOut');o.style.display='block';const tot=c.e+c.p+c.i+c.c+c.g;
+ if(!tot){o.textContent='Позначте хоча б одну фразу.';return}
+ let m=`<b>За зусилля й процес:</b> ${c.e}. <b>За «розум/талант»:</b> ${c.p}. <b>Завищена:</b> ${c.i}. <b>Порівняння:</b> ${c.c}. <b>Загальна:</b> ${c.g}.<br><br>`;
+ m+=c.e>=tot/2?'Ви часто хвалите зусилля й процес: це підтримує наполегливість. Додайте конкретику: що саме ви побачили.':'Спробуйте перенести акцент на зусилля й стратегію: «Ти пробував/-ла три способи, поки не вийшло» замість «ти розумний/-а».';
+ if(c.c)m+='<br>Порівняння з іншими дітьми може підривати довіру. Порівнюйте з минулим «собою».';
+ if(c.i)m+='<br>Завищену похвалу замінюйте чесною й конкретною.';
+ o.innerHTML=m}
+
+const qd=[['warm','Тепло + межі','Авторитетний','Підтримка, чіткі й пояснені правила, діалог. Найчастіше пов\'язаний із кращим благополуччям дітей. Приклад: «Я розумію, що ти хочеш гуляти довше. Правило лишається, але розкажи, що для тебе важливо».',1],['auth','Вимоги без тепла','Авторитарний','Жорсткі правила, мало пояснень і тепла. Пов\'язаний із тривожністю й нижчою самооцінкою. Приклад: «Тому що я так сказав».',0],['perm','Тепло без меж','Поблажливий','Багато тепла, мало меж. Діти бувають менш саморегульованими. Приклад: «Роби як хочеш, аби не плакав/-ла».',0],['neg','Мало тепла і меж','Відсторонений','Мало участі й контролю. Найвищий ризик труднощів у дитини. Часто виникає з виснаження, а не «поганого» батьківства.',0]];
+qd.forEach(([k,s,t,d,b])=>{const c=document.createElement('div');c.className='mc'+(b?' best':'');c.innerHTML=`<small>${s.toUpperCase()}</small><h3>${t}</h3>`;
+ c.onclick=()=>{document.querySelectorAll('.mc').forEach(x=>x.classList.remove('on'));c.classList.add('on');const m=$('mxt');m.style.display='block';m.textContent=d};$('mx').appendChild(c)});
+
+function tab(i,b){document.querySelectorAll('.tp').forEach((p,k)=>p.classList.toggle('on',k===i));document.querySelectorAll('.tbn').forEach(x=>x.classList.remove('on'));b.classList.add('on')}
+
+const w5=['Протягом двох тижнів я почувався/-лась бадьорим/-ою і в доброму настрої','Я почувався/-лась спокійним/-ою і розслабленим/-ою','Я почувався/-лась енергійним/-ою й активним/-ою','Я прокидався/-лась свіжим/-ою й відпочилим/-ою','Моє повсякденне життя було наповнене цікавими для мене речами'];
+const lv=[['Весь час',5],['Більшу частину часу',4],['Трохи більше половини часу',3],['Трохи менше половини часу',2],['Іноді',1],['Ніколи',0]];
+w5.forEach(t=>{const r=document.createElement('div');r.className='r';r.innerHTML=`<span>${t}</span><select><option value="">—</option>${lv.map(([a,b])=>`<option value="${b}">${a}</option>`).join('')}</select>`;$('w5').appendChild(r)});
+function calcW(){const s=[...document.querySelectorAll('#w5 select')],o=$('wout');o.style.display='block';
+ if(s.some(x=>x.value==='')){o.textContent='Відповідайте на всі 5 тверджень.';return}
+ const raw=s.reduce((a,x)=>a+ +x.value,0),pc=raw*4;
+ o.innerHTML=`<b>${raw} із 25 (${pc}%)</b><br>`+(raw<13?'Результат нижчий за 13: це привід звернутись до сімейного лікаря чи психолога, щоб оцінити стан. Це не діагноз, але ви заслуговуєте на підтримку. 0 800 500 335 безкоштовно.':'Результат у межах, що не вказують на знижене самопочуття. Продовжуйте дбати про відпочинок і підтримку.')+'<br><small style="color:var(--dm)">Скринінг WHO-5; не діагноз. Якщо ви почуваєтесь погано незалежно від балів, зверніться по допомогу.</small>'}
+
+function mkPlan(){const v=id=>($(id).value.trim()||'—').replace(/</g,'&lt;');
+ $('certb').innerHTML=`<p><b>Замінюю фразу</b>${v('p1')}</p><p><b>Хвалю за</b>${v('p2')}</p><p><b>10 хвилин слухання</b>${v('p3')}</p><p><b>Про свою помилку скажу</b>${v('p4')}</p><p><b>Дбаю про себе</b>${v('p5')}</p><p><b>Якщо важко</b>116 111 · 0 800 500 335 · 103/102</p>`;
+ $('cert').classList.add('show')}
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Що ще почитати чи подивитись</h2><div class="cards"><div><i>📖</i><b>Raising an Emotionally Intelligent Child</b><br><span>Gottman J., DeClaire J., 1997<br>Емоційне коучинг-спілкування</span></div><div><i>📖</i><b>Mindset</b><br><span>Dweck C. S., 2006<br>Установка на зростання; читайте й критичні мета-аналізи</span></div><div><i>📞</i><b>116 111</b><br><span>Дитяча лінія<br>Безкоштовно, анонімно, цілодобово. Психологічна підтримка: 0 800 500 335</span></div></div><h3>Джерела, на які спирається урок</h3><details><summary>Показати список (22)</summary><ol><li>Rosenberg, M. (1965). <i>Society and the Adolescent Self-Image</i>. Princeton University Press.</li><li>Baumeister, R. F., Campbell, J. D., Krueger, J. I., &amp; Vohs, K. D. (2003). Does high self-esteem cause better performance, interpersonal success, happiness, or healthier lifestyles? <i>Psychological Science in the Public Interest, 4</i>(1), 1–44.</li><li>Bandura, A. (1977). Self-efficacy: Toward a unifying theory of behavioral change. <i>Psychological Review, 84</i>(2), 191–215.</li><li>Dweck, C. S. (2006). <i>Mindset: The New Psychology of Success</i>. Random House. Критика ефектів: Sisk, V. F., et al. (2018). <i>Psychological Science, 29</i>(4), 549–571.</li><li>Mueller, C. M., &amp; Dweck, C. S. (1998). Praise for intelligence can undermine children’s motivation and performance. <i>Journal of Personality and Social Psychology, 75</i>(1), 33–52.</li><li>Brummelman, E., Thomaes, S., de Castro, B. O., Overbeek, G., &amp; Bushman, B. J. (2014). “That’s not just beautiful — that’s incredibly beautiful!” <i>Psychological Science, 25</i>(3), 728–735.</li><li>Neff, K. D. (2003). Self-compassion: An alternative conceptualization of a healthy attitude toward oneself. <i>Self and Identity, 2</i>(2), 85–101.</li><li>Neff, K. D., &amp; Vonk, R. (2009). Self-compassion versus global self-esteem. <i>Journal of Personality, 77</i>(1), 23–50.</li><li>MacBeth, A., &amp; Gumley, A. (2012). Exploring compassion: A meta-analysis of the association between self-compassion and psychopathology. <i>Clinical Psychology Review, 32</i>(6), 545–552.</li><li>Harter, S. (1999). <i>The Construction of the Self</i>. Guilford Press.</li><li>Robins, R. W., Trzesniewski, K. H., Tracy, J. L., Gosling, S. D., &amp; Potter, J. (2002). Global self-esteem across the life span. <i>Psychology and Aging, 17</i>(3), 423–434.</li><li>Orth, U., Erol, R. Y., &amp; Luciano, E. C. (2018). Development of self-esteem from age 4 to 94 years. <i>Psychological Bulletin, 144</i>(10), 1045–1080.</li><li>Crocker, J., &amp; Wolfe, C. T. (2001). Contingencies of self-worth. <i>Psychological Review, 108</i>(3), 593–623.</li><li>Crocker, J., &amp; Canevello, A. (2008). Creating and undermining social support in communal relationships. <i>Journal of Personality and Social Psychology, 95</i>(3), 555–575.</li><li>Clance, P. R., &amp; Imes, S. A. (1978). The imposter phenomenon in high achieving women. <i>Psychotherapy: Theory, Research &amp; Practice, 15</i>(3), 241–247.</li><li>Hewitt, P. L., &amp; Flett, G. L. (1991). Perfectionism in the self and social contexts. <i>Journal of Personality and Social Psychology, 60</i>(3), 456–470.</li><li>Gottman, J. M., Katz, L. F., &amp; Hooven, C. (1996). Parental meta-emotion philosophy and the emotional life of families. <i>Journal of Family Psychology, 10</i>(3), 243–268.</li><li>Baumrind, D. (1991). The influence of parenting style on adolescent competence and substance use. <i>Journal of Early Adolescence, 11</i>(1), 56–95.</li><li>Gilovich, T., Medvec, V. H., &amp; Savitsky, K. (2000). The spotlight effect in social judgment. <i>Journal of Personality and Social Psychology, 78</i>(2), 211–222.</li><li>Elkind, D. (1967). Egocentrism in adolescence. <i>Child Development, 38</i>(4), 1025–1034.</li><li>Festinger, L. (1954). A theory of social comparison processes. <i>Human Relations, 7</i>(2), 117–140.</li><li>Orben, A., &amp; Przybylski, A. K. (2019). The association between adolescent well-being and digital technology use. <i>Nature Human Behaviour, 3</i>, 173–182.</li></ol></details><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="08-b-lesson.html">← Тема 8</a></span><span><a href="10-b-lesson.html">Тема 10 →</a></span></div><a class="mo-fab" href="../index.html#t09">☰ До матриці</a></body>
+</html>

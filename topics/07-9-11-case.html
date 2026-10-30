@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Методичний кейс · Спокій під час кризи · 9–11 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:   #F5F2EC;
+  --surf: #FFFFFF;
+  --ink:  #1A1C28;
+  --text: #2D3348;
+  --muted:#6B7280;
+  --bd:   #E4DDD0;
+
+  --vio: #6848B8; --vi-l: #EEEAF8; --vi-ll:#F5F3FC;
+  --gr:  #1A6E52; --gr-l: #E6F2ED; --gr-ll:#F2F9F6;
+  --am:  #A87800; --am-l: #FBF4E4; --am-ll:#FEF9EF;
+  --te:  #1A7070; --te-l: #E6F3F3;
+  --ro:  #A03848; --ro-l: #FDECEA;
+  --pl:  #6B4E88; --pl-l: #F0ECF8;
+  --sl:  #3A5E80; --sl-l: #EBF2F8;
+  --in:  #344888; --in-l: #EEF1F9;
+  --ru:  #B84020; --ru-l: #FBF0EB;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.65;}
+
+.hdr{background:var(--ink);padding:.85rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.65rem;position:sticky;top:0;z-index:300;}
+.hbrand{font-family:'Bitter',serif;font-size:.88rem;font-weight:700;color:white;}
+.hnav{display:flex;gap:.25rem;flex-wrap:wrap;}
+.hn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:.28rem .78rem;font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;transition:all .2s;}
+.hn:hover{background:rgba(255,255,255,.14);color:white;}
+.hn.on{background:var(--vio);border-color:var(--vio);color:white;}
+
+.ph{background:linear-gradient(155deg,#060608 0%,#0A080E 55%,#060608 100%);padding:4rem 2rem;position:relative;overflow:hidden;}
+.ph::before{content:'';position:absolute;top:-60px;right:-60px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(136,104,216,.2),transparent 70%);}
+.ph-in{max-width:1060px;margin:0 auto;position:relative;z-index:1;}
+.ph-tag{font-size:.65rem;font-weight:700;letter-spacing:.22em;color:rgba(160,140,240,.65);margin-bottom:.8rem;}
+.ph h1{font-family:'Bitter',serif;font-size:clamp(1.7rem,3.2vw,2.6rem);font-weight:700;color:white;line-height:1.18;margin-bottom:.65rem;}
+.ph h1 span{color:#B0A0F0;}
+.ph .sub{font-size:.92rem;font-weight:300;font-style:italic;color:rgba(255,255,255,.42);max-width:640px;margin-bottom:1.7rem;}
+.ph-chips{display:flex;gap:.5rem;flex-wrap:wrap;}
+.chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:50px;padding:.3rem .9rem;font-size:.71rem;font-weight:600;color:rgba(255,255,255,.6);}
+
+.tabs{background:var(--surf);border-bottom:2px solid var(--bd);position:sticky;top:54px;z-index:200;overflow-x:auto;}
+.tabs-in{max-width:1060px;margin:0 auto;display:flex;}
+.tb{background:none;border:none;border-bottom:3px solid transparent;padding:.88rem 1.2rem;cursor:pointer;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;color:var(--muted);white-space:nowrap;transition:all .2s;margin-bottom:-2px;}
+.tb:hover{color:var(--ink);}
+.tb.on{color:var(--vio);border-bottom-color:var(--vio);}
+
+.panel{display:none;}.panel.on{display:block;}
+.wrap{max-width:1060px;margin:0 auto;padding:3rem 2rem;}
+
+.sh{font-family:'Bitter',serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:.32rem;}
+.ss{font-size:.82rem;color:var(--muted);font-style:italic;margin-bottom:1.8rem;}
+hr.r{border:none;border-top:1px solid var(--bd);margin:2.3rem 0;}
+
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.95rem;margin:1.4rem 0;}
+.card{background:var(--surf);border:1px solid var(--bd);border-radius:10px;padding:1.3rem 1.5rem;}
+.card .ci{font-size:1.5rem;margin-bottom:.45rem;}
+.card h3{font-family:'Bitter',serif;font-size:.92rem;font-weight:700;margin-bottom:.28rem;color:var(--ink);}
+.card p{font-size:.82rem;color:var(--muted);line-height:1.6;}
+
+.al{border-radius:9px;padding:1rem 1.3rem;margin:.85rem 0;display:flex;gap:.75rem;align-items:flex-start;}
+.al .ai{font-size:1.1rem;flex-shrink:0;margin-top:.05rem;}
+.al p{font-size:.83rem;line-height:1.65;}
+.al strong{font-weight:700;display:block;margin-bottom:.1rem;font-size:.71rem;letter-spacing:.04em;}
+.a-vio{background:var(--vi-l);border-left:4px solid var(--vio);}
+.a-gr{background:var(--gr-l);border-left:4px solid var(--gr);}
+.a-am{background:var(--am-l);border-left:4px solid var(--am);}
+.a-te{background:var(--te-l);border-left:4px solid var(--te);}
+.a-ro{background:var(--ro-l);border-left:4px solid var(--ro);}
+.a-pl{background:var(--pl-l);border-left:4px solid var(--pl);}
+.a-sl{background:var(--sl-l);border-left:4px solid var(--sl);}
+.a-in{background:var(--in-l);border-left:4px solid var(--in);}
+.a-ru{background:var(--ru-l);border-left:4px solid var(--ru);}
+
+.tl{padding-left:2.2rem;position:relative;margin:1.4rem 0;}
+.tl::before{content:'';position:absolute;left:.7rem;top:0;bottom:0;width:2px;background:var(--bd);}
+.ti{position:relative;margin-bottom:1.4rem;}
+.ti::before{content:'';position:absolute;left:-1.85rem;top:.32rem;width:12px;height:12px;border-radius:50%;background:var(--vio);border:3px solid var(--surf);box-shadow:0 0 0 2px var(--vio);}
+.ti-t{font-size:.64rem;font-weight:700;letter-spacing:.1em;color:var(--vio);margin-bottom:.12rem;}
+.ti-h{font-weight:700;font-size:.9rem;margin-bottom:.22rem;color:var(--ink);}
+.ti-b{font-size:.82rem;color:var(--muted);line-height:1.65;}
+.ti.am::before{background:var(--am);}.ti.am .ti-t{color:var(--am);}
+.ti.gr::before{background:var(--gr);}.ti.gr .ti-t{color:var(--gr);}
+.ti.ro::before{background:var(--ro);}.ti.ro .ti-t{color:var(--ro);}
+.ti.pl::before{background:var(--pl);}.ti.pl .ti-t{color:var(--pl);}
+.ti.in::before{background:var(--in);}.ti.in .ti-t{color:var(--in);}
+
+.scr{background:var(--bg);border:1px solid var(--bd);border-radius:9px;padding:1.2rem 1.4rem;margin:.85rem 0;position:relative;}
+.scr::before{content:attr(data-lbl);position:absolute;top:-9px;left:.95rem;background:var(--vio);color:white;font-size:.58rem;font-weight:700;letter-spacing:.1em;padding:.15rem .6rem;border-radius:3px;}
+.scr.am::before{background:var(--am);}
+.scr.gr::before{background:var(--gr);}
+.scr.ro::before{background:var(--ro);}
+.scr.pl::before{background:var(--pl);}
+.scr.te::before{background:var(--te);}
+.scr.in::before{background:var(--in);}
+.scr p{font-size:.87rem;line-height:1.85;font-style:italic;color:var(--ink);}
+.scr p strong{font-style:normal;color:var(--vio);}
+.scr.am p strong{color:var(--am);}
+.scr.ro p strong{color:var(--ro);}
+.scr.gr p strong{color:var(--gr);}
+
+.tbl{width:100%;border-collapse:collapse;margin:1.1rem 0;font-size:.82rem;}
+.tbl th{background:var(--ink);color:white;text-align:left;padding:.62rem .92rem;font-weight:700;font-size:.7rem;letter-spacing:.04em;}
+.tbl td{padding:.62rem .92rem;border-bottom:1px solid var(--bd);vertical-align:top;line-height:1.65;}
+.tbl tr:nth-child(even) td{background:var(--vi-ll);}
+.tbl tr:hover td{background:var(--vi-l);}
+
+.pi{background:linear-gradient(135deg,var(--vi-l),var(--vi-ll));border:1px solid rgba(104,72,184,.22);border-radius:11px;padding:1.35rem 1.55rem;margin:1.4rem 0;position:relative;overflow:hidden;}
+.pi::after{content:'◈';font-size:4rem;position:absolute;right:.7rem;bottom:-.3rem;opacity:.06;pointer-events:none;color:var(--vio);}
+.pi .pt{font-size:.64rem;font-weight:700;letter-spacing:.14em;color:var(--vio);margin-bottom:.45rem;}
+.pi p{font-size:.85rem;line-height:1.75;color:#1A0840;font-style:italic;}
+.pi .src{font-size:.71rem;color:#5040A0;margin-top:.5rem;font-style:normal;}
+
+.df3{display:grid;grid-template-columns:repeat(3,1fr);gap:.95rem;margin:1.4rem 0;}
+@media(max-width:660px){.df3{grid-template-columns:1fr;}}
+.dc{border-radius:9px;padding:1.1rem;}
+.dc h4{font-size:.75rem;font-weight:700;letter-spacing:.04em;margin-bottom:.55rem;}
+.dc ul{padding-left:1.05rem;font-size:.81rem;line-height:1.7;color:var(--muted);}
+.dc-a{background:#FFF8E6;border:1px solid #EDD878;}.dc-a h4{color:#8A6D00;}
+.dc-b{background:var(--gr-l);border:1px solid #9DCFBE;}.dc-b h4{color:#1E5244;}
+.dc-c{background:var(--vi-l);border:1px solid #B0A0E0;}.dc-c h4{color:#4A2B8A;}
+
+.ct-tabs{display:flex;gap:.35rem;margin-bottom:1.2rem;flex-wrap:wrap;}
+.ct-btn{background:var(--surf);border:1px solid var(--bd);border-radius:6px;padding:.35rem .88rem;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .2s;}
+.ct-btn:hover{border-color:var(--bd);color:var(--ink);}
+.ct-btn.on{background:var(--vio);border-color:var(--vio);color:white;}
+.ct-panel{display:none;}.ct-panel.on{display:block;}
+
+.crb{border:1px solid var(--bd);border-radius:9px;overflow:hidden;margin:1.4rem 0;}
+.crb-h{padding:.75rem 1.25rem;font-family:'Bitter',serif;font-size:.88rem;font-weight:700;display:flex;align-items:center;gap:.5rem;color:white;}
+.crb-b{padding:1.15rem 1.35rem;background:var(--surf);}
+.crb-b h4{font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.25rem;}
+.crb-b p{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:.5rem;}
+.crb-b ol,.crb-b ul{padding-left:1.1rem;font-size:.8rem;color:var(--text);line-height:1.85;}
+
+.ab{border:1px solid var(--bd);border-radius:9px;overflow:hidden;margin:1.4rem 0;}
+.ab-h{padding:.72rem 1.25rem;font-family:'Bitter',serif;font-size:.86rem;font-weight:700;display:flex;align-items:center;gap:.48rem;color:white;}
+.ab-b{padding:1.1rem 1.3rem;background:var(--surf);}
+.ab-b h4{font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.25rem;}
+.ab-b p{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:.48rem;}
+.ab-b ol,.ab-b ul{padding-left:1.05rem;font-size:.8rem;color:var(--text);line-height:1.8;}
+
+.contacts{background:linear-gradient(135deg,var(--gr-l),var(--gr-ll));border:1.5px solid rgba(26,110,82,.22);border-radius:11px;padding:1.35rem 1.55rem;margin:1.4rem 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.95rem;}
+.ct h4{font-size:.76rem;font-weight:700;color:var(--gr);margin-bottom:.28rem;}
+.ct p{font-size:.8rem;color:var(--text);line-height:1.6;}
+.ct .num{font-family:'Bitter',serif;font-size:1.08rem;font-weight:700;color:var(--ink);}
+
+.tag{display:inline-block;font-size:.65rem;font-weight:700;padding:.15rem .52rem;border-radius:3px;margin:.12rem;}
+.tvio{background:var(--vi-l);color:#4A2B8A;}.tgr{background:var(--gr-l);color:#1E5244;}
+.tam{background:var(--am-l);color:#7A5800;}.tro{background:var(--ro-l);color:#7A2030;}
+.tpl{background:var(--pl-l);color:#4A2B6A;}.tte{background:var(--te-l);color:#1A5050;}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s;}
+.reveal.vis{opacity:1;transform:none;}
+</style>
+<link rel="stylesheet" href="../assets/psy.css">
+</head>
+<body><nav class="mo-nav"><a href="../index.html">← Кабінет психолога</a><span class="mo-t">Тема 7 · Як зберегти спокій під час кризових подій · 9–11 клас · Кейс психолога</span><span class="mo-g"><a href="07-5-6-case.html">5–6 клас</a><a href="07-7-8-case.html">7–8 клас</a><a href="07-9-11-case.html" class="on">9–11 клас</a><a href="07-b-case.html">Батьки</a><a href="07-9-11-lesson.html">⇄ Урок</a></span></nav>
+
+<div class="hdr">
+  <div class="hbrand">◈ Методичний кейс · Спокій під час кризи · 9–11 клас</div>
+  <div class="hnav">
+    <button class="hn on" onclick="sw('plan')">📅 Хронометраж</button>
+    <button class="hn" onclick="sw('theory')">📚 Теорія</button>
+    <button class="hn" onclick="sw('activities')">🎭 Активності</button>
+    <button class="hn" onclick="sw('diff')">🎯 Диференціація</button>
+    <button class="hn" onclick="sw('crisis')">🚨 Протоколи</button>
+    <button class="hn" onclick="sw('scripts')">🗣️ Скрипти</button>
+    <button class="hn" onclick="sw('reflection')">💬 Рефлексія</button>
+  </div>
+</div>
+
+<div class="ph">
+  <div class="ph-in">
+    <div class="ph-tag">МЕТОДИЧНИЙ КЕЙС · ПЕДАГОГ / ПСИХОЛОГ · 9–11 КЛАС</div>
+    <h1>Як зберегти спокій<br><span>під час кризи — найглибший рівень</span></h1>
+    <p class="sub">Поліваготонія · Allostatic load (McEwen) · ПТСР і тіло (van der Kolk) · PTG (Tedeschi) · Логотерапія (Frankl) · EMDR · ACT · Диференціація 9/10/11 клас · Повні кризові протоколи</p>
+    <div class="ph-chips">
+      <div class="chip">⏱ 45 хвилин</div>
+      <div class="chip">🧠 10 концепцій</div>
+      <div class="chip">💓 HRV і відновлення</div>
+      <div class="chip">🌱 PTG · Frankl</div>
+      <div class="chip">🎯 Диференціація 9/10/11</div>
+      <div class="chip">🚨 ПТСР-протоколи</div>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tabs-in">
+    <button class="tb on" onclick="sw('plan')">📅 Хронометраж і скрипти</button>
+    <button class="tb" onclick="sw('theory')">📚 Наукова база</button>
+    <button class="tb" onclick="sw('activities')">🎭 Активності педагога</button>
+    <button class="tb" onclick="sw('diff')">🎯 Диференціація за класом</button>
+    <button class="tb" onclick="sw('crisis')">🚨 Кризові протоколи</button>
+    <button class="tb" onclick="sw('scripts')">🗣️ Скрипти і фрази</button>
+    <button class="tb" onclick="sw('reflection')">💬 Рефлексія</button>
+  </div>
+</div>
+
+<!-- ══ PLAN ══ -->
+<div class="panel on" id="panel-plan">
+<div class="wrap">
+  <p class="sh reveal">Покроковий хронометраж · 45 хвилин</p>
+  <p class="ss reveal">Найглибший рівень серії · Trauma-informed · Нейронаука + PTG + Frankl</p>
+
+  <div class="al a-ro reveal">
+    <span class="ai">📌</span>
+    <div><p><strong>Перед уроком — найвищий ризик серії</strong> Урок торкається ПТСР, allostatic load і смислу страждання — для 9–11 класу в Україні 2022–2025 це не абстракція. Частина учнів може мати клінічний рівень ПТСР, складне горювання або суїцидальні думки. Підготуйте: анонімну форму, контакти 116 111, список місцевих травматерапевтів для направлення, план дій при розкритті. Тема Франкла і PTG може «відкрити» глибоко заховане — будьте готові залишитись після уроку.</p></div>
+  </div>
+
+  <div class="tl reveal">
+    <div class="ti">
+      <div class="ti-t">00:00 — 07:00</div>
+      <div class="ti-h">Вступ: NS-метр + «amygdala hijack»</div>
+      <div class="ti-b">NS-метр анонімно. Якщо кілька учнів 8–10 — адаптуйте урок. Науковий гачок: <em>«LeDoux (1996): при загрозі мигдалина бере управління за 12 мілісекунд. PFC — «думаючий» мозок — заблокована. Сьогодні — про те як їй повернути управління»</em>. Для 9–11 клінічна мова мотивує.</div>
+    </div>
+    <div class="ti am">
+      <div class="ti-t">07:00 — 17:00 · БЛОК 1–2</div>
+      <div class="ti-h">Нейронаука + Allostatic load</div>
+      <div class="ti-b">Три рівні НС — як таблиця, а не тільки образи. Allostatic load — для 9–11 це особливо актуально: <em>«Хто відчуває хронічну втому, когнітивний туман або «не можу нічого відчувати»? Це може бути allostatic overload — виснаження системи адаптації»</em>. Слайдер навантаження — особистий і приватний.</div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">17:00 — 24:00 · БЛОК 3</div>
+      <div class="ti-h">Дихання + HRV-вимірювання</div>
+      <div class="ti-b">Coherence 5.5 з пульсометрією. Для 9–11 фізіологічний доказ критично важливий: <em>«Виміряйте пульс до і після — це дані. Не «заспокойся». Нейрофізіологія»</em>. Педагог дихає разом — моделює саморегуляцію.</div>
+    </div>
+    <div class="ti am">
+      <div class="ti-t">24:00 — 33:00 · БЛОК 4–5</div>
+      <div class="ti-h">PTG + Цінності і смисл (Frankl)</div>
+      <div class="ti-b">Найделікатніший блок. PTG: <em>«Не «криза — добра». А «людина здатна знайти щось нове через неї»»</em>. Перед Франклом: <em>«Наступне — про смисл. Якщо для когось це «надто близько» зараз — можна просто слухати»</em>. 5 питань Frankl — відкриті, без примусу до відповідей вголос.</div>
+    </div>
+    <div class="ti in">
+      <div class="ti-t">33:00 — 41:00 · БЛОК 6–7</div>
+      <div class="ti-h">Дилеми + Вікторина</div>
+      <div class="ti-b">Дилеми включають EMDR, somatic therapy і PTG — для 9–11 це не надмірна деталізація. Особлива пауза перед дилемою 9 (ПТСР). Вікторина — питання клінічного рівня. <em>«Ви зараз знаєте більше про нейронауку кризи ніж більшість дорослих».</em></div>
+    </div>
+    <div class="ti ro">
+      <div class="ti-t">41:00 — 45:00</div>
+      <div class="ti-h">Протокол + завершення</div>
+      <div class="ti-b">Особистий протокол — 4 хвилини. Frankl-цитата. 116 111 — двічі. Спільне дихання. <em>«Залишаюсь 20 хвилин. Анонімна форма — посилання в чаті».</em></div>
+    </div>
+  </div>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">Ключові скрипти</p>
+
+  <div class="scr" data-lbl="ВІДКРИТТЯ — НАУКОВИЙ РІВЕНЬ">
+    <p><strong>«</strong>Ви, мабуть, чули «не панікуй» або «візьми себе в руки». Нейронаука 2024: при «amygdala hijack» взяти себе в руки фізіологічно неможливо — PFC заблокована. Сьогодні — про те що справді допомагає. <strong>Конкретний нейрохак для конкретних ситуацій.</strong><strong>»</strong></p>
+  </div>
+  <div class="scr am" data-lbl="ПРО ALLOSTATIC LOAD">
+    <p><strong>«</strong>Allostatic load — накопичена ціна адаптації до хронічного стресу. <strong>Хронічна втома, складно вчитись, «нічого не відчуваю» — це може бути не лінощі і не характер.</strong> Це виснажена система адаптації. І це потребує системного відновлення, а не «взяти себе в руки».<strong>»</strong></p>
+  </div>
+  <div class="scr" data-lbl="ПЕРЕД PTG І FRANKL">
+    <p><strong>«</strong>Наступне — про посттравматичне зростання і смисл. Це не «криза на благо» — такого не буває. Це про те що людина здатна знайти щось нове через важкий досвід. Якщо для когось це зараз «надто близько» — <strong>просто слухайте. Не треба відповідати або «зростати» прямо зараз.</strong><strong>»</strong></p>
+  </div>
+  <div class="scr ro" data-lbl="ПЕРЕД ДИЛЕМОЮ 9 (ПТСР)">
+    <p><strong>«</strong>Остання дилема — про симптоми 4+ тижні. <strong>ПТСР — медична умова, а не слабкість і не вирок. Вона лікується.</strong> EMDR і соматична терапія мають найвищий рівень доказовості. Якщо для когось це «про зараз» — 116 111. Після уроку — я тут.<strong>»</strong></p>
+  </div>
+  <div class="scr gr" data-lbl="ЗАКРИТТЯ">
+    <p><strong>«</strong>Франкл писав у Аушвіці: «Між стимулом і реакцією є простір. У цьому просторі — наша свобода». LeDoux підтвердив: цей простір існує нейробіологічно — 300 мілісекунд «вищого шляху». <strong>Ви щойно навчились цей простір розширювати.</strong><strong>»</strong></p>
+  </div>
+</div>
+</div>
+
+<!-- ══ THEORY ══ -->
+<div class="panel" id="panel-theory">
+<div class="wrap">
+  <p class="sh reveal">Наукова база · Найглибша в серії</p>
+  <p class="ss reveal">10 концепцій · Нейронаука кризи · ПТСР · PTG · Логотерапія · ACT</p>
+
+  <div class="pi reveal">
+    <div class="pt">🔬 Центральна концепція</div>
+    <p><strong>Інтеграція трьох рівнів: нейробіологія → резилієнтність → смисл:</strong> Урок будується у трьох шарах. Нижній: нейробіологія кризи (Порджес, LeDoux, McEwen) — що відбувається у тілі. Середній: резилієнтність і регуляція (HRV, PTG, Bonanno) — що можна зробити. Вищий: смисл і цінності (Frankl, Hayes) — чому варто. Для 9–11 всі три шари доступні і необхідні.</p>
+    <div class="src">Porges (2011). Polyvagal Theory. LeDoux (1996). Emotional Brain. McEwen (1998). Allostatic Load. van der Kolk (2014). Body Keeps the Score. Tedeschi & Calhoun (1996). PTG. Frankl (1946). Man's Search for Meaning. Hayes (1999). ACT. Bonanno (2004). Resilience. WHO (2022). PTSD Guidelines. Lehrer et al. (2000). HRV Biofeedback.</div>
+  </div>
+
+  <div class="cg reveal">
+    <div class="card"><div class="ci">🌊</div><h3>Поліваготонія · Порджес</h3><p>Три ієрархічних рівні НС. Для 9–11: вентральний вагус (PFC активна) → симпатика (mобілізація) → дорсальний вагус (завмирання). Ієрархія виходу: тіло → рух → соціальний контакт → когнітивне опрацювання.</p></div>
+    <div class="card"><div class="ci">🏋️</div><h3>Allostatic load · McEwen</h3><p>Накопичена ціна хронічної адаптації. Наслідки: пошкодження гіпокампу (пам'ять), PFC (рішення), імунна дисрегуляція. Відновлення: сон, рух, соціальний зв'язок, регулярна дихальна практика. Системно, не ситуативно.</p></div>
+    <div class="card"><div class="ci">💓</div><h3>HRV · Thayer (2012)</h3><p>Варіабельність ЧСС — золотий стандарт вимірювання вегетативного тонусу. Coherence breathing (5.5/хв): максимізує HRV за 5 хвилин. Мета-аналіз: вища HRV → краща емоційна регуляція і резилієнтність.</p></div>
+    <div class="card"><div class="ci">🧠</div><h3>ПТСР і тіло · van der Kolk</h3><p>«The body keeps the score»: травматична пам'ять зберігається в тілі і активується сенсорно. Когнітивна терапія не завжди достатня. EMDR і соматична терапія (SEP) — показані. Дорсальний вагус «застряє».</p></div>
+    <div class="card"><div class="ci">🌱</div><h3>PTG · Tedeschi & Calhoun</h3><p>Посттравматичне зростання — 5 вимірів: нові можливості, особистісна сила, стосунки, вдячність, екзистенційне. Передумова: «когнітивна боротьба» — активний пошук смислу. Не автоматичний і не обов'язковий.</p></div>
+    <div class="card"><div class="ci">🕯️</div><h3>Логотерапія · Frankl</h3><p>«Воля до смислу» — базова людська потреба (Frankl, 1946). Три джерела: творення, досвід, ставлення до незмінного страждання. «Між стимулом і реакцією є простір» — передвісник ACT і нейронауки «вищого шляху».</p></div>
+    <div class="card"><div class="ci">🌀</div><h3>ACT · Hayes (1999)</h3><p>Психологічна гнучкість: здатність діяти відповідно до цінностей при присутності болю. Шість процесів: прийняття, дефузія, теперішній момент, спостерігаюче «я», цінності, зобов'язана дія.</p></div>
+    <div class="card"><div class="ci">🦎</div><h3>Пірнальний рефлекс</h3><p>Mammalian diving reflex: холодова стимуляція → тригемінальний нерв → парасимпатика → ЧСС↓ за 30–60 сек. Найшвидша фізіологічна техніка при гострій паніці. Обережно при дисоціації.</p></div>
+    <div class="card"><div class="ci">🔬</div><h3>EMDR · WHO 2022</h3><p>Eye Movement Desensitization and Reprocessing. ВООЗ (2022): першою лінією при ПТСР. Механізм: білатеральна стимуляція під час активації травматичного спогаду → переопрацювання. Ефективність: 77–100% при 3–12 сесіях.</p></div>
+    <div class="card"><div class="ci">🏅</div><h3>Резилієнтність · Bonanno</h3><p>65% людей після важких травм — природна резилієнтність. Предиктори: соціальна підтримка, позитивні емоції навіть під час горя (paradoxical coping), когнітивна і емоційна гнучкість, self-efficacy.</p></div>
+  </div>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">PTG vs Резилієнтність vs ПТСР — порівняльна таблиця</p>
+
+  <table class="tbl reveal">
+    <thead><tr><th>Концепт</th><th>Визначення</th><th>Передумова</th><th>Роль педагога</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Резилієнтність</strong></td><td>Природне відновлення після кризи — повернення до базового рівня функціонування</td><td>Соціальна підтримка, ресурси, self-efficacy</td><td>Зміцнювати ресурси і підтримку</td></tr>
+      <tr><td><strong>PTG (посттравматичне зростання)</strong></td><td>Ріст через «когнітивну боротьбу» — рух вище базового рівня</td><td>Когнітивна боротьба зі смислом, підтримка</td><td>Не нав'язувати — але відкрити простір</td></tr>
+      <tr><td><strong>ПТСР</strong></td><td>Медична умова: симптоми 4+ тижні що порушують функціонування після травматичної події</td><td>Інтенсивність події, брак підтримки, біологічна вразливість</td><td>Виявити і направити до фахівця</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">Особливості 14–17 років у кризовому контексті</p>
+
+  <div class="al a-vio reveal"><span class="ai">🧠</span><div><p><strong>Ідентичнісна криза + зовнішня криза</strong> 14–17 р. — час формування ідентичності (Erikson: «ідентичність vs дифузія ролей»). Воєнна криза накладається на вже напружений розвитковий процес. Питання «хто я», «навіщо» і «яке майбутнє» — максимально актуальні. Frankl і PTG торкаються саме цього шару.</p></div></div>
+  <div class="al a-am reveal"><span class="ai">😶</span><div><p><strong>«Flat affect» і емоційне заціпеніння</strong> При allostatic overload або хронічному ПТСР підлітки можуть виглядати «байдужими» або «знесиленими» — не злими і не тривожними. Це може бути дорсальний вагус: дисоціація або «emotional shutdown». Не «байдужість» — захист системи.</p></div></div>
+  <div class="al a-pl reveal"><span class="ai">🎓</span><div><p><strong>ЗНО і майбутнє як стресор</strong> 9–11 клас: академічний тиск ЗНО + невизначеність майбутнього в умовах війни = унікальна комбінація стресорів. Frankl: «Навіть у невизначеності майбутнього є простір для вибору цінностей і дій». ACT-підхід: готуватись попри невизначеність.</p></div></div>
+  <div class="al a-ro reveal"><span class="ai">⚠️</span><div><p><strong>Максимальний ризик ПТСР і суїцидальних думок</strong> ВООЗ Україна (2024): підлітки 15–17 р. — найвищий ризик ПТСР і суїцидальних думок серед шкільного віку. PTG-тема може «відкрити» матеріал який учень носив роками. Будьте готові до розкриттів після уроку.</p></div></div>
+</div>
+</div>
+
+<!-- ══ ACTIVITIES ══ -->
+<div class="panel" id="panel-activities">
+<div class="wrap">
+  <p class="sh reveal">Активності педагога / психолога</p>
+  <p class="ss reveal">6 науково обґрунтованих вправ для 9–11 класу · Клінічний рівень</p>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--vio)">💓 Активність 1 · «HRV-лабораторія» — вимірювання до і після <span class="tag tvio" style="margin-left:auto">10 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Відчути і виміряти ефект дихання на серцевий ритм — доказовість мотивує 9–11.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>Вимірювання пульсу вручну (два пальці на зап'ясток, 30 сек × 2) або через смартфон (камера + палець).</li>
+        <li>Педагог веде Coherence 5.5 голосом — 5 хвилин разом. Дихає разом з учнями.</li>
+        <li>Повторне вимірювання пульсу. Порівняти.</li>
+        <li>«Хто відчув різницю? Де в тілі?» Клас обговорює.</li>
+      </ol>
+      <h4>Ключовий меседж:</h4><p>«Ви щойно підвищили HRV через vagus nerve — і виміряли це. Не «заспокойся» — фізіологія. Це ваш інструмент на все життя».</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--am)">🌡️ Активність 2 · «Allostatic audit» — анонімне картографування навантаження <span class="tag tam" style="margin-left:auto">7 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Дати мову для хронічного виснаження — і нормалізувати потребу у відновленні.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>Кожен анонімно оцінює «мій рівень allostatic load» — 0 (відновлений/-а) до 10 (виснажений/-а).</li>
+        <li>Педагог збирає і оголошує середнє.</li>
+        <li>«Це не «ваша провина» — це медична реальність тривалої кризи. Відновлення — медична необхідність».</li>
+        <li>Коротке обговорення: що допомагає відновлюватись?</li>
+      </ol>
+      <h4>Важливо:</h4><p>Якщо кілька учнів поставили 9–10 — підійдіть особисто між блоками. Критичний allostatic overload може вказувати на клінічний рівень.</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--te)">🌱 Активність 3 · «PTG-карта» — де я після кризи <span class="tag tte" style="margin-left:auto">8 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Активувати PTG-мислення — без романтизації страждання.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>«Подумайте про складний досвід який ви вже пройшли. Не потрібно ним ділитись».</li>
+        <li>Намалюйте або напишіть: «Що я дізнався/-лась про себе?», «Що змінилось у стосунках?», «Що став/-ла цінувати більше?»</li>
+        <li>Хто хоче — ділиться одним пунктом. Без примусу.</li>
+        <li>«PTG — не «було добре що сталось». А «я знайшов/-ла щось нове через це»».</li>
+      </ol>
+      <h4>УВАГА:</h4><p>Якщо учень/-иця каже «нічого хорошого не знайшов/-ла» — НІКОЛИ не заперечуйте. «Це теж правда — і це нормально». PTG не обов'язковий.</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--pl)">🕯️ Активність 4 · «Три джерела смислу» — особистий Frankl-аналіз <span class="tag tpl" style="margin-left:auto">10 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Активувати логотерапевтичний підхід — знайти особисті джерела смислу.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>Педагог пояснює три джерела Франкла (коротко — 2 хв).</li>
+        <li>«Напишіть по одному прикладу до кожного джерела у вашому житті зараз».</li>
+        <li>5 хвилин письма. Не збирають. Не показують.</li>
+        <li>«Навіть якщо одне джерело зараз недоступне — два інших є. Франкл знайшов смисл навіть у концтаборі через третє джерело».</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--gr)">🎯 Активність 5 · «Цінності під тиском» — ACT-кларифікація <span class="tag tgr" style="margin-left:auto">7 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Прояснити особисті цінності і відокремити їх від зовнішніх обставин — серцевина ACT.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>«Що б ти робив/-ла якби не було кризи?» — 3 відповіді.</li>
+        <li>«Що з цього ти можеш робити прямо зараз — при всьому що є?»</li>
+        <li>«Які дії відповідно до твоїх цінностей можливі навіть в умовах невизначеності?»</li>
+        <li>Обговорення: «ACT каже: тривога і дія — не взаємовиключні. Цінності — компас, а не настрій».</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--sl)">🏫 Активність 6 · Peer-teaching + «Нейронаукові ТЕД-токи» для молодших <span class="tag tgr" style="margin-left:auto">наступний урок</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Закріпити через пояснення і активувати PTG-вимір «особистісної сили».</p>
+      <h4>Хід:</h4><p>Групи 9–11 готують 5-хвилинні «ТЕД-токи» для 7–8 класу: «Що таке allostatic load», «Три зони НС і як з них виходити», «Що таке PTG — і чому це не «травма на благо»». Педагог — консультант. Старшокласники — наукові посли і ресурс для молодших.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══ DIFF ══ -->
+<div class="panel" id="panel-diff">
+<div class="wrap">
+  <p class="sh reveal">Диференціація за класом</p>
+  <p class="ss reveal">9, 10 і 11 клас — різний контекст і різна глибина</p>
+
+  <div class="ct-tabs">
+    <button class="ct-btn on" onclick="swCt('c9')">9 клас</button>
+    <button class="ct-btn" onclick="swCt('c10')">10 клас</button>
+    <button class="ct-btn" onclick="swCt('c11')">11 клас</button>
+  </div>
+
+  <div class="ct-panel on" id="ct-c9">
+    <div class="al a-vio"><span class="ai">⚑</span><div><p><strong>9 клас:</strong> Перший рік старшої школи. Ідентичнісне питання «хто я» активне. Стрес поки не максимальний — найкращий момент для глибокого введення в нейронауку кризи. PTG і Frankl сприймаються добре. Акцент на резилієнтності і ресурсах.</p></div></div>
+    <div class="df3">
+      <div class="dc dc-a"><h4>Акцент</h4><ul><li>Повний формат</li><li>Наукові терміни без спрощень</li><li>PTG-карта — детальна</li><li>Три джерела Франкла</li><li>Peer-teaching для 7–8</li></ul></div>
+      <div class="dc dc-b"><h4>Адаптувати</h4><ul><li>Allostatic load — базово</li><li>EMDR згадати, не деталізувати</li></ul></div>
+      <div class="dc dc-c"><h4>Додати</h4><ul><li>«Цінності і ЗНО»</li><li>Resilience-картка</li></ul></div>
+    </div>
+  </div>
+
+  <div class="ct-panel" id="ct-c10">
+    <div class="al a-am"><span class="ai">⚑</span><div><p><strong>10 клас:</strong> ЗНО починає тиснути реально. Allostatic load — актуальна тема. Можлива хронічна втома і «flat affect». Повний формат. Особлива увага на відновлення і критерії коли звертатись до фахівця.</p></div></div>
+    <div class="df3">
+      <div class="dc dc-a"><h4>Акцент</h4><ul><li>Повний формат</li><li>Allostatic audit — центральна вправа</li><li>HRV-вимірювання</li><li>ACT + цінності при ЗНО</li><li>116 111 та місцеві фахівці</li></ul></div>
+      <div class="dc dc-b"><h4>Враховувати</h4><ul><li>TR може підняти накопичений матеріал</li><li>Залишатись 20+ хвилин після</li></ul></div>
+      <div class="dc dc-c"><h4>Додати</h4><ul><li>«Готуватись при невизначеності» (ACT)</li><li>Список КПТ і травматерапевтів</li></ul></div>
+    </div>
+  </div>
+
+  <div class="ct-panel" id="ct-c11">
+    <div class="al a-ro"><span class="ai">⚑</span><div><p><strong>11 клас:</strong> Максимальний стрес серії. ЗНО + вступ + невизначеність майбутнього + розлучення з однокласниками. Найвищий ризик ПТСР, вигорання і суїцидальних думок. Найделікатніший урок у всій серії. Frankl тут найглибше резонує.</p></div></div>
+    <div class="df3">
+      <div class="dc dc-a"><h4>Акцент</h4><ul><li>Frankl — центральна тема</li><li>PTG: «знайти щось нове» після 3 р. війни</li><li>Allostatic overload — визнати</li><li>Протокол — для реального використання</li><li>Peer-teaching для молодших</li></ul></div>
+      <div class="dc dc-b"><h4>Критично</h4><ul><li>Залишатись 20+ хвилин завжди</li><li>Анонімна форма обов'язкова</li><li>Список травматерапевтів</li><li>Суїцидальні думки — найвищий ризик</li></ul></div>
+      <div class="dc dc-c"><h4>Додати</h4><ul><li>«Лист собі після ЗНО / після школи»</li><li>«Що я беру з собою» — PTG-підсумок</li></ul></div>
+    </div>
+  </div>
+
+  <hr class="r">
+  <table class="tbl reveal">
+    <thead><tr><th>Поведінка учня</th><th>Нейробіологічна інтерпретація</th><th>Дія педагога</th></tr></thead>
+    <tbody>
+      <tr><td><strong>«Це нонсенс — немає ніякого PTG»</strong></td><td>Захист, можливо власний болісний досвід без підтримки</td><td>«Ти маєш право так думати. PTG — не обов'язок. Але дослідження…» Не тиснути.</td></tr>
+      <tr><td><strong>«Flat affect» — байдужий/-а до всього уроку</strong></td><td>Дорсальний вагус: emotional shutdown або дисоціація</td><td>Не тиснути. Між блоками тихо: «Ти в порядку?» Після — особисто.</td></tr>
+      <tr><td><strong>Розповідає детально про травму при класі</strong></td><td>Потреба у свідку + ризик ретравматизації класу</td><td>Тихо зупиніть. «Дякую. Давайте після — це важливо і заслуговує окремого часу».</td></tr>
+      <tr><td><strong>Allostatic slider 9–10</strong></td><td>Критичне виснаження або ПТСР</td><td>Особисто між блоками. «Ти написав/-ла 9. Є спеціалісти що саме з цим допомагають».</td></tr>
+      <tr><td><strong>«Яка різниця — все одно невідомо що буде»</strong></td><td>Cognitive constriction + безнадійність (ризик)</td><td>Зупиніться. «Ти кажеш «яка різниця» — розкажи мені більше». Приватно. Протокол.</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- ══ CRISIS ══ -->
+<div class="panel" id="panel-crisis">
+<div class="wrap">
+  <p class="sh reveal">Кризові протоколи</p>
+  <p class="ss reveal">Найповніші у серії · Специфічні для 9–11 клас і воєнного контексту</p>
+
+  <div class="al a-ro reveal">
+    <span class="ai">🚨</span>
+    <div><p><strong>Урок про кризу, PTG і Франкла — найвищий ризик розкриттів у всій серії.</strong> Теми смислу страждання, посттравматичного зростання і «вибору ставлення» можуть «відкрити» роками придушений матеріал. Для 9–11 у воєнному контексті це — не гіпотетичний ризик, а реальна ймовірність.</p></div>
+  </div>
+
+  <div class="contacts reveal">
+    <div class="ct"><h4>Дитяча гаряча лінія</h4><div class="num">116 111</div><p>Анонімно · Безкоштовно · 24/7</p></div>
+    <div class="ct"><h4>Підтримка дорослих</h4><div class="num">0 800 500 335</div><p>Для педагога і батьків</p></div>
+    <div class="ct"><h4>Медики / Поліція</h4><div class="num">103 / 102</div><p>При загрозі або медичному стані</p></div>
+    <div class="ct"><h4>Травматерапевт</h4><p>EMDR або SEP (Levine) — при ПТСР. Дитячий психіатр — при критичному рівні. Направлення — ваш обов'язок.</p></div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--ro)">🔴 Протокол 1 · Суїцидальні думки або висловлювання про безнадійність</div>
+    <div class="crb-b">
+      <p>Специфічні тригери на цьому уроці: «яка різниця», «нема сенсу готуватись», «після мене все одно», «я вже не встигну».</p>
+      <ol>
+        <li>НЕ залишати самого/самої.</li>
+        <li>Приватно, спокійно: «Ти сказав/-ла щось важливе. Ти думаєш про те щоб заподіяти собі шкоду?»</li>
+        <li>Шкільний психолог + батьки + за потреби 103. Не чекати до завтра.</li>
+        <li>116 111 — для учня прямо зараз.</li>
+        <li>Документуйте дослівно одразу після.</li>
+      </ol>
+      <h4>Особливість 9–11:</h4><p>Когнітивне звуження («constriction») — «яка різниця» або «все одно не вийде» — може бути маскованою суїцидальністю при невизначеності майбутнього. Запитайте прямо.</p>
+    </div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--ru)">🟠 Протокол 2 · Флешбек, дисоціація або гостра дереалізація</div>
+    <div class="crb-b">
+      <p>Специфічні тригери: PTG-вправа або питання про смисл може активувати травматичний спогад.</p>
+      <ol>
+        <li>Низький спокійний голос: «[Ім'я], я тут. Ти в класі. Ти в безпеці».</li>
+        <li>Фізичне заземлення: «Відчуй підлогу. Ось стілець — торкнись». Якщо дозволяє — рука на плечі.</li>
+        <li>НЕ просити «розказати що сталось» — це може поглибити флешбек.</li>
+        <li>Вийдіть разом тихо. Не залишайте самого/самої.</li>
+        <li>Якщо не повертається 5+ хв → 103.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--am)">🟡 Протокол 3 · «Я думаю що у мене ПТСР» або розкриття хронічної симптоматики</div>
+    <div class="crb-b">
+      <ol>
+        <li>«Дякую що сказав/-ла. Те що ти описуєш — серйозно і заслуговує уваги».</li>
+        <li>НЕ кажіть: «Ти точно маєш ПТСР» або «Це просто тривога».</li>
+        <li>«Є фахівці що саме з цим допомагають: EMDR, соматична терапія. Я можу допомогти знайти контакт».</li>
+        <li>Направте: шкільний психолог → дитячий психіатр або травматерапевт.</li>
+        <li>Поінформуйте батьків.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--in)">🔵 Протокол 4 · «Flat affect» — емоційне заціпеніння тривалістю 4+ тижні</div>
+    <div class="crb-b">
+      <p>«Нічого не відчуваю», «мені все одно», відсутність реакцій на позитив і негатив.</p>
+      <ol>
+        <li>НЕ кажіть «ти просто виснажений/-а — відпочинь».</li>
+        <li>«Те що ти описуєш може бути ознакою виснаження системи — і це потребує уваги».</li>
+        <li>Дитячий психіатр — виключити депресивний або ПТСР-компонент.</li>
+        <li>Батькам: «Ваша дитина потребує фахової оцінки — це не «підлітковий вік»».</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="pi reveal">
+    <div class="pt">💙 Для вас, педагогу — після найглибшого уроку серії</div>
+    <p>Ви провели урок де торкались ПТСР, PTG і смислу страждання в контексті реальної війни. Це — одна з найважчих педагогічних задач. Вторинна травматизація і vicarious traumatization — реальні ризики. Після важкого уроку: поговоріть з колегою або супервізором, зателефонуйте на 0 800 500 335, дайте собі відновлення. Ваша стабільність — умова роботи, не данність.</p>
+  </div>
+</div>
+</div>
+
+<!-- ══ SCRIPTS ══ -->
+<div class="panel" id="panel-scripts">
+<div class="wrap">
+  <p class="sh reveal">Скрипти і готові фрази</p>
+  <p class="ss reveal">Точні слова для PTG, Франкла і важких моментів · Специфічно для 9–11</p>
+
+  <p class="sh" style="font-size:1rem;margin:.8rem 0">Введення PTG — скрипт</p>
+  <div class="scr" data-lbl="PTG — ЧИМ НЕ Є">
+    <p>«Перш ніж говорити про посттравматичне зростання — що це НЕ є. <strong>PTG — це не «криза на благо». Не «треба страждати щоб рости». Не «забути і рухатись далі».</strong> Це — дослідне спостереження: деякі люди, після дуже важкого, знаходять в собі щось чого раніше не бачили. Не всі. Не завжди. Не обов'язково. Але це можливо.»</p>
+  </div>
+
+  <div class="scr am" data-lbl="FRANKL — ВВЕДЕННЯ">
+    <p>«Віктор Франкл написав «Людина в пошуках смислу» у 1946 році — після того як пережив Аушвіц, Дахау і смерть майже всієї сім'ї. Він писав: <strong>«Нам можна забрати все — крім останньої людської свободи: вибрати своє ставлення до будь-яких обставин».</strong> Нейронаука 2024 підтверджує: «вищий шлях» через кору — це і є ця свобода, вимірювана нейробіологічно.»</p>
+  </div>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1rem;margin:.8rem 0">Таблиця фраз</p>
+
+  <table class="tbl reveal">
+    <thead><tr><th>❌ Не казати</th><th>Проблема</th><th>✓ Альтернатива</th></tr></thead>
+    <tbody>
+      <tr><td>«Ти маєш знайти в цьому щось позитивне»</td><td>Примус до PTG — токсичний позитив, ретравматизація</td><td>«Іноді щось нове відкривається — і це нікому не треба шукати навмисно»</td></tr>
+      <tr><td>«Ти маєш ПТСР»</td><td>Не ваша роль діагностувати</td><td>«Те що ти описуєш — серйозно. Є люди що саме з цим допомагають»</td></tr>
+      <tr><td>«Франкл вижив — ти теж зможеш»</td><td>Порівняння мінімізує і тисне</td><td>«Франкл описав щось що стосується кожного — незалежно від масштабу»</td></tr>
+      <tr><td>«Все буде добре після ЗНО»</td><td>Обіцянка яку не можеш гарантувати</td><td>«Невизначеність реальна. І ти можеш діяти відповідно до своїх цінностей при ній»</td></tr>
+      <tr><td>«Просто відпочинь — і allostatic load зменшиться»</td><td>Спрощення медичного стану</td><td>«Allostatic overload потребує системного підходу — і іноді фахової допомоги»</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- ══ REFLECTION ══ -->
+<div class="panel" id="panel-reflection">
+<div class="wrap">
+  <p class="sh reveal">Рефлексія і оцінка уроку</p>
+  <p class="ss reveal">Вимірювання ефекту і стратегія подальшої роботи</p>
+
+  <table class="tbl reveal">
+    <thead><tr><th>#</th><th>Exit Ticket</th><th>Питання</th><th>Що дає педагогу</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><span class="tag tvio">NS-метр до/після</span></td><td>«Мій стан на початку і в кінці» (анонімно)</td><td>Вимірювання ефекту регуляції</td></tr>
+      <tr><td>2</td><td><span class="tag tam">Allostatic load</span></td><td>«Мій рівень навантаження — 0–10»</td><td>Виявлення тих хто потребує підтримки</td></tr>
+      <tr><td>3</td><td><span class="tag tpl">PTG або Frankl</span></td><td>«Один інсайт що резонував найбільше»</td><td>Глибина засвоєння</td></tr>
+      <tr><td>4</td><td><span class="tag tro">SOS анонімно</span></td><td>«Мені потрібна розмова» — форма або записка</td><td>Безпечне звернення</td></tr>
+      <tr><td>5</td><td><span class="tag tgr">Моя цінність</span></td><td>«Одна дія відповідно до моїх цінностей цього тижня»</td><td>Намір → дія (ACT)</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="r">
+
+  <div class="cg reveal">
+    <div class="card"><div class="ci">💓</div><h3>HRV через тиждень</h3><p>«Хто практикував Coherence 5.5 вдома? Що змінилось?» Конкретний фізіологічний досвід — найкращий аргумент для продовження.</p></div>
+    <div class="card"><div class="ci">📞</div><h3>116 111</h3><p>Перевіряйте скільки пам'ятають. Для 11 класу — назвіть конкретних місцевих травматерапевтів якщо є. Вивісьте у класі.</p></div>
+    <div class="card"><div class="ci">🎓</div><h3>Peer-teaching</h3><p>«ТЕД-токи» для 7–8. Активує PTG-вимір «особистісна сила» і «нові можливості» — підлітки стають ресурсом для молодших.</p></div>
+    <div class="card"><div class="ci">🤝</div><h3>Після уроку</h3><p>Залишайтесь 20 хвилин завжди. 9–11 підходять після — саме тоді відбуваються найважливіші розмови. Часто після дзвінка.</p></div>
+  </div>
+
+  <div class="al a-gr reveal">
+    <span class="ai">📚</span>
+    <div><p><strong>Ресурси і подальша робота:</strong> Книги для педагога: Frankl V. «Man's Search for Meaning» (є переклад «Людина в пошуках смислу»), van der Kolk B. «The Body Keeps the Score», Levine P. «Waking the Tiger», Tedeschi R. «Posttraumatic Growth in Clinical Practice». Відео: van der Kolk TED «How trauma lodges in the body», Frankl YouTube «Why to believe in others». Тренінги: EMDR beginner training, Psychological First Aid (ВООЗ). Подальша робота: індивідуальні консультації за exit tickets, батьківські збори «Allostatic load у вашої дитини — що робити», направлення до травматерапевтів.</p></div>
+  </div>
+
+  <div class="pi reveal">
+    <div class="pt">💙 Завершальне слово</div>
+    <p>Ви провели найглибший урок у всій серії — і один із найважливіших у педагогічній кар'єрі. Нейробіологія кризи, allostatic load, посттравматичне зростання і смисл страждання за Франклом — в реальному контексті реальної України 2025 року. Ці учні несуть у собі досвід який більшість підручників ще не описала. Ваша готовність говорити про це мовою науки і людяності — дарує їм і мову, і гідність. Це важливіше ніж будь-який план уроку.</p>
+  </div>
+</div>
+</div>
+
+<script>
+function sw(n){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.hn,.tb').forEach(b=>b.classList.remove('on'));
+  document.getElementById('panel-'+n).classList.add('on');
+  document.querySelectorAll('.hn,.tb').forEach(b=>{if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+n+"'"))b.classList.add('on');});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function swCt(n){
+  document.querySelectorAll('.ct-panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.ct-btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById('ct-'+n).classList.add('on');
+  document.querySelectorAll('.ct-btn').forEach(b=>{if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+n+"'"))b.classList.add('on');});
+}
+const ro=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.07});
+document.querySelectorAll('.reveal').forEach(r=>ro.observe(r));
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Джерела й що почитати</h2><h3>Використані джерела</h3><ol><li>van der Kolk, B. (2014). <i>The Body Keeps the Score</i>. Viking.</li><li>World Health Organization (2011). <i>Psychological First Aid: Guide for Field Workers</i>. WHO.</li><li>SAMHSA (2014). <i>Trauma-Informed Care in Behavioral Health Services</i> (TIP 57).</li><li>Hobfoll, S. E., Watson, P., Bell, C. C., et al. (2007). Five essential elements of immediate and mid-term mass trauma intervention: Empirical evidence. <i>Psychiatry, 70</i>(4), 283–315.</li><li>National Child Traumatic Stress Network. <i>Parent Guidelines for Helping Children After a Disaster</i> (nctsn.org).</li><li>Bonanno, G. A. (2004). Loss, trauma, and human resilience: Have we underestimated the human capacity to thrive after extremely aversive events? <i>American Psychologist, 59</i>(1), 20–28.</li><li>Masten, A. S. (2014). <i>Ordinary Magic: Resilience in Development</i>. Guilford Press.</li></ol><h3>Що почитати фахівцеві</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>Psychological First Aid: Guide for Field Workers</td><td>WHO, 2011</td><td>Принципи «дивись, слухай, з'єднуй»</td></tr><tr><td>Parent Guidelines for Helping Children After a Disaster</td><td>NCTSN (nctsn.org)</td><td>Практичні поради</td></tr><tr><td>The Body Keeps the Score</td><td>van der Kolk B., 2014</td><td>Популярний огляд; частина тверджень дискусійна</td></tr><tr><td>Ordinary Magic</td><td>Masten A. S., 2014</td><td>Стійкість</td></tr></table><h3>Що порадити батькам</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>How to Talk So Kids Will Listen &amp; Listen So Kids Will Talk</td><td>Faber A., Mazlish E.</td><td>Практичні фрази</td></tr><tr><td>Raising an Emotionally Intelligent Child</td><td>Gottman J., DeClaire J., 1997</td><td>Емоційне коучинг-спілкування</td></tr><tr><td>The Whole-Brain Child</td><td>Siegel D. J., Bryson T. P., 2011</td><td>Емоції дитини</td></tr></table><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="06-9-11-case.html">← Тема 6</a></span><span><a href="08-9-11-case.html">Тема 8 →</a></span></div><a class="mo-fab" href="../index.html#t07">☰ До матриці</a></body>
+</html>

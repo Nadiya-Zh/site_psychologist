@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кейс психолога · Батьківська зустріч · Самооцінка і впевненість</title>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F4EE;--sf:#fff;--ink:#14231E;--tx:#2F3B35;--mu:#65726B;--bd:#E1E3D8;--gr:#2F7A5E;--gr-l:#E5F3EC;--am:#9A6B0E;--am-l:#FCF1D8;--ro:#A8384A;--ro-l:#FCEAEC;--bl:#2E5E94;--bl-l:#E9F1FA;--te:#B8573A;--te-l:#FBEDE6}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,sans-serif;background:var(--bg);color:var(--tx);font-size:15px;line-height:1.65}
+.hd{background:var(--ink);padding:1.1rem 1.5rem;position:sticky;top:0;z-index:50;color:#fff;font:700 .9rem Bitter,serif}
+.tabs{background:var(--sf);border-bottom:2px solid var(--bd);position:sticky;top:50px;z-index:40;overflow-x:auto;white-space:nowrap}
+.tb{background:none;border:none;border-bottom:3px solid transparent;padding:.85rem 1.1rem;font:700 .78rem Inter;color:var(--mu);cursor:pointer;margin-bottom:-2px}
+.tb.on{color:var(--gr);border-color:var(--gr)}
+.ph{background:linear-gradient(150deg,#0E1815,#1F3A30);padding:3rem 1.5rem;color:#fff}
+.ph div{max-width:1000px;margin:0 auto}
+.ph small{letter-spacing:.2em;font-weight:700;color:#A8E0C3;font-size:.68rem}
+.ph h1{font:700 clamp(1.6rem,3.4vw,2.4rem) Bitter,serif;margin:.5rem 0}
+.ph p{color:rgba(255,255,255,.7);max-width:680px;font-size:.92rem}
+.panel{display:none}.panel.on{display:block}
+.wrap{max-width:1000px;margin:0 auto;padding:2.5rem 1.5rem}
+h2{font:700 1.35rem Bitter,serif;color:var(--ink);margin-bottom:.3rem}
+h3{font:700 1.02rem Bitter,serif;color:var(--ink);margin:1.6rem 0 .6rem}
+.ss{color:var(--mu);font-style:italic;font-size:.85rem;margin-bottom:1.4rem}
+.al{border-left:4px solid var(--gr);background:var(--gr-l);border-radius:8px;padding:.9rem 1.1rem;margin:.8rem 0;font-size:.86rem}
+.al b{display:block;font-size:.72rem;letter-spacing:.04em;margin-bottom:.1rem}
+.al.am{border-color:var(--am);background:var(--am-l)}.al.ro{border-color:var(--ro);background:var(--ro-l)}.al.bl{border-color:var(--bl);background:var(--bl-l)}.al.te{border-color:var(--te);background:var(--te-l)}
+.tl{border-left:2px solid var(--bd);margin:1.2rem 0 1.2rem .5rem;padding-left:1.4rem}
+.ti{margin-bottom:1.1rem;position:relative}
+.ti::before{content:'';position:absolute;left:-1.85rem;top:.4rem;width:10px;height:10px;border-radius:50%;background:var(--gr)}
+.ti i{font-style:normal;font-weight:700;font-size:.68rem;color:var(--gr);letter-spacing:.08em}
+.ti b{display:block;color:var(--ink)}.ti span{font-size:.85rem;color:var(--mu)}
+.scr{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:1rem 1.2rem;margin:1rem 0;position:relative}
+.scr::before{content:attr(data-l);position:absolute;top:-9px;left:12px;background:var(--gr);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.08em;padding:.12rem .55rem;border-radius:3px}
+.scr p{font-style:italic;font-size:.88rem;color:var(--ink)}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.82rem;background:var(--sf)}
+th{background:var(--ink);color:#fff;text-align:left;padding:.55rem .8rem;font-size:.7rem}
+td{padding:.55rem .8rem;border-bottom:1px solid var(--bd);vertical-align:top}
+tr:nth-child(even) td{background:#F9FAF5}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.9rem;margin:1rem 0}
+.cd{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:1.1rem 1.2rem}
+.cd h4{font:700 .92rem Bitter,serif;color:var(--ink);margin-bottom:.25rem}.cd p{font-size:.82rem;color:var(--mu)}
+.ab{border:1px solid var(--bd);border-radius:10px;overflow:hidden;margin:1rem 0;background:var(--sf)}
+.ab>b{display:block;padding:.65rem 1.1rem;color:#fff;font:700 .9rem Bitter,serif}
+.ab div{padding:.9rem 1.2rem;font-size:.84rem}.ab ol{padding-left:1.1rem;margin:.3rem 0}
+.ab em{display:block;margin-top:.4rem;color:var(--mu)}
+.qa{border:1px solid var(--bd);border-radius:10px;background:var(--sf);margin:.6rem 0;overflow:hidden}
+.qa button{width:100%;text-align:left;background:none;border:none;padding:.85rem 1.1rem;font:600 .88rem Inter;color:var(--ink);cursor:pointer}
+.qa div{display:none;padding:0 1.1rem 1rem;font-size:.85rem;color:var(--mu)}
+.qa.o div{display:block}
+.rb{display:grid;grid-template-columns:1fr 210px;gap:.4rem .8rem;align-items:center;font-size:.84rem;padding:.45rem 0;border-bottom:1px solid var(--bd)}
+.rb select{padding:.3rem;border:1px solid #ccc;border-radius:6px;font:inherit}
+.rbres{margin-top:1rem;padding:1rem 1.2rem;border-radius:10px;background:var(--gr-l);font-size:.9rem;display:none}
+.btn{background:var(--gr);color:#fff;border:none;border-radius:8px;padding:.6rem 1.4rem;font:700 .85rem Inter;cursor:pointer;margin-top:.8rem}
+.ct{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem;background:var(--gr-l);border:1px solid #B9DDCD;border-radius:10px;padding:1.1rem;margin:1rem 0}
+.ct b{font:700 1.05rem Bitter,serif;display:block;color:var(--ink)}.ct span{font-size:.78rem}
+.cb{border:1px solid var(--bd);border-radius:10px;overflow:hidden;margin:1rem 0;background:var(--sf)}
+.cb>b{display:block;padding:.6rem 1.1rem;color:#fff;font:700 .88rem Bitter,serif}
+.cb ol{padding:.9rem 1.2rem .9rem 2.2rem;font-size:.84rem}
+</style>
+<link rel="stylesheet" href="../assets/psy.css">
+</head>
+<body><nav class="mo-nav"><a href="../index.html">← Кабінет психолога</a><span class="mo-t">Тема 9 · Самооцінка та впевненість у собі · Батьки · Кейс психолога</span><span class="mo-g"><a href="09-5-6-case.html">5–6 клас</a><a href="09-7-8-case.html">7–8 клас</a><a href="09-9-11-case.html">9–11 клас</a><a href="09-b-case.html" class="on">Батьки</a><a href="09-b-lesson.html">⇄ Урок</a></span></nav>
+<div class="hd">◈ Кейс психолога · Батьківська зустріч · Самооцінка і впевненість</div>
+<div class="ph"><div>
+  <small>КЕЙС ДЛЯ ПСИХОЛОГА / ПЕДАГОГА · БАТЬКІВСЬКА ОНЛАЙН-ЗУСТРІЧ · 75 ХВ</small>
+  <h1>Опора для впевненості</h1>
+  <p>Як провести зустріч із батьками учнів 5–11 класів: сценарій і скрипти, наукова база з обмеженнями, активності, діагностика (WHO-5), 8 типових питань батьків, етика й протоколи.</p>
+</div></div>
+<div class="tabs">
+  <button class="tb on" onclick="sw('plan',this)">📅 Сценарій і скрипти</button>
+  <button class="tb" onclick="sw('sci',this)">📚 Наукова база</button>
+  <button class="tb" onclick="sw('act',this)">🎭 Активності</button>
+  <button class="tb" onclick="sw('dia',this)">📊 Діагностика</button>
+  <button class="tb" onclick="sw('qa',this)">❓ Питання батьків</button>
+  <button class="tb" onclick="sw('cr',this)">🚨 Етика і протоколи</button>
+</div>
+
+<div class="panel on" id="p-plan"><div class="wrap">
+  <h2>Сценарій зустрічі</h2><p class="ss">75 хвилин · онлайн · до і після зустрічі учасники проходять урок «Опора для впевненості»</p>
+  <div class="al am"><b>Підготовка</b>Розішліть батькам посилання на інтерактивний урок за 2–3 дні (необов'язково, 50 хв). Підготуйте форму анонімних запитань і форму «Хочу індивідуальну розмову». Попросіть не обговорювати дітей поіменно. Підготуйте контакти 116 111 і 0 800 500 335.</div>
+  <div class="tl">
+    <div class="ti"><i>00:00–07:00</i><b>Відкриття й правила</b><span>Правила: без поіменного обговорення дітей, без осуду, добровільність. Чат для запитань. Запитання-розминка (анонімна опитувалка): «Що найскладніше у підтримці самооцінки вашої дитини?»</span></div>
+    <div class="ti"><i>07:00–17:00</i><b>Блок 1: Міфи і факти</b><span>5 міфів (картки з уроку). Для кожного — одна пряма цитата з досліджень і життєвий приклад.</span></div>
+    <div class="ti"><i>17:00–30:00</i><b>Блок 2: Мова підтримки</b><span>Похвала за зусилля, не за «розум» (Mueller & Dweck; Brummelman). Гра «Що б ви сказали?»: 3 ситуації вголос, голосування в чаті.</span></div>
+    <div class="ti"><i>30:00–40:00</i><b>Блок 3: Тепло + межі</b><span>Модель Баумрінд: матриця. Підкресліть: зв'язок, а не гарантія; жоден батько не в одному квадранті завжди.</span></div>
+    <div class="ti"><i>40:00–50:00</i><b>Блок 4: Емоційне коучинг-спілкування</b><span>4 кроки Готтмана, практика в парах у «кімнатах» по 3 хвилини.</span></div>
+    <div class="ti"><i>50:00–58:00</i><b>Блок 5: За віком і НМТ</b><span>Група за віком дитини: 5–6, 7–8, 9–11. Кожна обирає одну пораду.</span></div>
+    <div class="ti"><i>58:00–65:00</i><b>Блок 6: Батьки як приклад + самопочуття</b><span>Нормалізація власних труднощів. Запропонуйте приватно пройти WHO-5 з уроку; результатів не збираємо.</span></div>
+    <div class="ti"><i>65:00–73:00</i><b>Q&A</b><span>Відповіді на анонімні питання (підготовлені відповіді у вкладці «Питання батьків»).</span></div>
+    <div class="ti"><i>73:00–75:00</i><b>Завершення</b><span>«Одна дія на цей тиждень» у чаті. 116 111 і 0 800 500 335. Запрошення на індивідуальну консультацію.</span></div>
+  </div>
+  <h3>Скрипти</h3>
+  <div class="scr" data-l="ВІДКРИТТЯ"><p>«Дякую, що ви тут. Ми не говоритимемо про «правильних» чи «неправильних» батьків. Ми поговоримо про те, що реально допомагає дитині вірити, що вона може вчитись і що її цінують. Ваш досвід цінний, і дослідження допомагають його уточнити.»</p></div>
+  <div class="scr" data-l="ПРО МІФИ"><p>«Самооцінка — не «товста шкіра» і не результат компліментів. Це ставлення до себе, що росте з досвіду подолання труднощів і з того, як із дитиною говорять у важкі моменти.»</p></div>
+  <div class="scr" data-l="ПРО ПОХВАЛУ"><p>«Не потрібно хвалити більше. Потрібно хвалити точніше: що саме дитина зробила, яке зусилля вклала. Така похвала підтримує наполегливість, а загальна чи завищена може знижувати готовність пробувати складне.»</p></div>
+  <div class="scr" data-l="НОРМАЛІЗАЦІЯ"><p>«Усі ми кажемо дітям фрази, про які потім шкодуємо. Це не провал, а привід спробувати інакше. Починайте з однієї зміни.»</p></div>
+  <div class="scr" data-l="ЗАКРИТТЯ"><p>«Ви не мусите бути ідеальними. Достатньо бути поруч, слухати й вірити, що дитина може вчитись. Якщо ви помічаєте тривалі зміни в самопочутті дитини, зверніться до нас або на 116 111.»</p></div>
+</div></div>
+
+<div class="panel" id="p-sci"><div class="wrap">
+  <h2>Наукова база</h2><p class="ss">Що відомо, і де обмеження: чесно перед батьками</p>
+  <div class="cg">
+    <div class="cd"><h4>Траєкторія самооцінки</h4><p>Robins, Orth: у ранньому підлітковому віці самооцінка в середньому знижується (сильніше в дівчат), потім зростає. Це типовий патерн, не діагноз.</p></div>
+    <div class="cd"><h4>Похвала</h4><p>Mueller & Dweck (1998): похвала за інтелект порівняно з похвалою за зусилля впливала на вибір складніших завдань і наполегливість. Brummelman et al. (2014): завищена похвала знижує готовність до виклику в дітей із низькою самооцінкою. Обмеження: розмір ефектів різний, великі мета-аналізи показують переважно малі ефекти.</p></div>
+    <div class="cd"><h4>Стилі виховання</h4><p>Baumrind; Maccoby & Martin: авторитетний стиль (тепло + чіткі межі) пов'язаний із кращим благополуччям (наприклад, мета-аналізи Pinquart). Зв'язок кореляційний, залежить від культури й темпераменту.</p></div>
+    <div class="cd"><h4>Емоційне коучинг-спілкування</h4><p>Gottman et al. (1996): коучинг емоцій батьками пов'язаний із кращою саморегуляцією дітей. Основні кроки: помітити, зблизитись, назвати, шукати виходи.</p></div>
+    <div class="cd"><h4>Самоефективність</h4><p>Bandura (1977): віра у власні можливості росте від досвіду успіху, спостереження, підтримки. Батьківський страх невдачі дитини знижує можливості досвіду подолання.</p></div>
+    <div class="cd"><h4>Батьківське благополуччя</h4><p>Виснаження й дистрес батьків пов'язані з менш чутливою взаємодією. Тому турбота про батьків є частиною підтримки дитини, а не «егоїзмом».</p></div>
+  </div>
+  <div class="al bl"><b>Обмеження, які варто озвучити батькам</b>Дослідження показують зв'язки, а не рецепти для кожної сім'ї. Самооцінка залежить від багатьох чинників (темперамент, школа, однолітки, травматичний досвід). Жоден прийом не гарантує результату.</div>
+  <h3>Вікові акценти</h3>
+  <table><tr><th>Вік</th><th>Що важливо для батьків</th></tr>
+  <tr><td>10–12 років</td><td>Порівняння з однолітками, дражнінг; «ще не» і маленькі кроки; уникати порівнянь із братами/сестрами</td></tr>
+  <tr><td>12–14 років</td><td>«Уявна аудиторія», зовнішність, соцмережі; не коментувати вагу; слухати без порад</td></tr>
+  <tr><td>14–17 років</td><td>Ідентичність, НМТ, ризик залежності цінності від оцінок і схвалення; кілька «опор»; межі у стосунках</td></tr></table>
+</div></div>
+
+<div class="panel" id="p-act"><div class="wrap">
+  <h2>Активності для зустрічі</h2><p class="ss">6 вправ у форматі онлайн</p>
+  <div class="ab"><b style="background:var(--gr)">🃏 1. Міфи й факти (опитувалка, 8 хв)</b><div>Висуньте твердження: «Чим більше хвалити, тим краще». Голосування «згоден/не згоден». Розкриття фактів. <em>Результат: зняття напруги, розширення перспективи.</em></div></div>
+  <div class="ab"><b style="background:var(--am)">💬 2. «Було → стало» (чат, 10 хв)</b><div>Батьки пишуть у чат фразу, яку часто кажуть дитині, і її варіант підтримки. Ведучий обирає 3–4 і коментує. <em>Без поіменності й осуду.</em></div></div>
+  <div class="ab"><b style="background:var(--bl)">🗣 3. Практика у «кімнатах» (3 хв)</b><div>Пари: один батько грає дитину («Я не вмію, я тупий»), інший відповідає за 4 кроками Готтмана. Потім міняються. <em>Важливо: добровільність, без записів.</em></div></div>
+  <div class="ab"><b style="background:var(--te)">🧩 4. «Мої опори» (5 хв)</b><div>Батьки записують 3 джерела, звідки їхня дитина черпає цінність (захоплення, дружба, допомога). Якщо джерело одне (наприклад, оцінки), це привід розширити. <em>Особливо для 9–11 класів.</em></div></div>
+  <div class="ab"><b style="background:var(--gr)">🧘 5. «Моя фраза до себе» (3 хв)</b><div>Батьки пишуть, що б сказали подрузі, яка сьогодні помилилась, і застосовують це до себе. <em>Модель самоспівчуття для дитини.</em></div></div>
+  <div class="ab"><b style="background:var(--am)">📅 6. «Одна дія на тиждень» (чат, 2 хв)</b><div>Кожен пише одну дію. Через тиждень — коротке нагадування в чаті класу. <em>Конкретний намір підвищує ймовірність виконання.</em></div></div>
+</div></div>
+
+<div class="panel" id="p-dia"><div class="wrap">
+  <h2>Діагностика</h2><p class="ss">Що доречно робити з батьками, а чого не варто</p>
+  <div class="al ro"><b>Етичні межі</b>Не проводьте тестування самооцінки дитини «для батьків» і не просіть батьків оцінювати її за шкалами вдома. Діагностику дітей проводить психолог за згодою батьків. Не збирайте результатів WHO-5 від батьків групою: це приватний самоогляд. Не діагностуйте батьків; скринінг — привід підтримати й порадити звернутись до лікаря.</div>
+
+  <h3>1. WHO-5 (Індекс благополуччя ВООЗ, 1998)</h3>
+  <div class="al bl"><b>Надійність і межі</b>П'ять тверджень про останні два тижні, шкала 0–5. Широко використовується як короткий скринінг благополуччя і депресії, добре валідований у різних країнах і віках, безкоштовний. Український текст — робочий переклад; для офіційних висновків візьміть затверджену версію з сайту розробників (Psychiatric Centre North Zealand). Це не діагностичний інструмент.</div>
+  <div id="w5"></div>
+  <button class="btn" onclick="calcW()">Порахувати</button>
+  <div class="rbres" id="wout"></div>
+  <table><tr><th>Сирий бал (0–25)</th><th>Відсоток (×4)</th><th>Інтерпретація</th></tr>
+  <tr><td>13–25</td><td>52–100%</td><td>У межах, що не вказують на знижене благополуччя</td></tr>
+  <tr><td>8–12</td><td>32–48%</td><td>Знижене благополуччя; доцільна бесіда й оцінка (лікар/психолог), перевірка на депресію</td></tr>
+  <tr><td>0–7</td><td>0–28%</td><td>Виражене зниження; рекомендується звернутись для оцінки депресивного стану</td></tr></table>
+  <p style="font-size:.8rem;color:var(--mu)">Загальноприйняті пороги: сирий бал нижче 13 (≤50%) — привід для додаткової оцінки; ≤28% — висока ймовірність депресії. Порівняйте з протоколом вашої установи.</p>
+
+  <h3>2. Прості неформальні інструменти (не стандартизовані)</h3>
+  <table><tr><th>Інструмент</th><th>Для чого</th></tr>
+  <tr><td>Самоаудит похвали з уроку</td><td>Усвідомлення типів похвали; без балів і порівнянь</td></tr>
+  <tr><td>Матриця «тепло / межі»</td><td>Рефлексія стилю; не діагностика сім'ї</td></tr>
+  <tr><td>Анонімна опитувалка очікувань і запитань</td><td>Адаптація змісту під групу</td></tr>
+  <tr><td>Форма «Хочу індивідуальну розмову»</td><td>Безпечний шлях звернення батьків</td></tr></table>
+  <div class="al am"><b>Для індивідуальної роботи з батьками</b>Валідні опитувальники стилів виховання (наприклад, PSDQ) мають авторські права: використовуйте за ліцензією й затвердженим перекладом. У груповому форматі обходьтесь рефлексивними вправами.</div>
+</div></div>
+
+<div class="panel" id="p-qa"><div class="wrap">
+  <h2>8 типових питань батьків</h2><p class="ss">Підготовлені відповіді · натисніть, щоб розгорнути</p>
+  <div class="qa"><button onclick="this.parentElement.classList.toggle('o')">1. «Моя дитина дуже невпевнена. Це на все життя?»</button><div>Ні. Самооцінка змінюється: у підлітків часто «просідає», потім зростає. На неї впливають досвід подолання, підтримка й ставлення до помилок. Невпевненість у ситуації й тривала знижена самооцінка — різне; у другому випадку варто поговорити зі шкільним психологом.</div></div>
+  <div class="qa"><button onclick="this.parentElement.classList.toggle('o')">2. «Чи не зіпсую я дитину, якщо хвалитиму?»</button><div>Хвалити не шкідливо. Проблема в завищеній чи загальній похвалі («найкращий у світі», «розумник»). Хваліть конкретні зусилля, стратегію, прогрес — так підтримується наполегливість.</div></div>
+  <div class="qa"><button onclick="this.parentElement.classList.toggle('o')">3. «Дитину дражнять. Мені втрутитись?»</button><div>Вислухайте й підтримайте. Збережіть факти (скріншоти, дати), повідомте класного керівника й шкільного психолога за процедурою закладу. Не змушуйте «помиритися» наодинці й не радьте «дати здачі». Якщо є загроза безпеці, повідомте керівництво чи поліцію.</div></div>
+  <div class="qa"><button onclick="this.parentElement.classList.toggle('o')">4. «Дитина весь час сидить у телефоні й порівнює себе з блогерами»</button><div>Спробуйте розмову про «вітрину» й «закулісся». Разом помічайте, після чого дитина почувається гірше, і домовтеся про межі. Лише заборона часто посилює конфлікт. Якщо це супроводжується тривалим пригніченим станом, зверніться по допомогу.</div></div>
+  <div class="qa"><button onclick="this.parentElement.classList.toggle('o')">5. «Підліток каже «я нікому не потрібен». Як реагувати?»</button><div>Не знецінюйте й не сперечайтесь. «Дякую, що сказав/-ла. Я поруч. Розкажи, що сталося». Запитайте прямо, чи є думки про шкоду собі. Якщо так, або стан триває тижнями, зверніться до психолога чи лікаря. 116 111, 103 при загрозі.</div></div>
+  <div class="qa"><button onclick="this.parentElement.classList.toggle('o')">6. «Мій чоловік/дружина жорсткіший. Як узгодити стиль?»</button><div>Ідеальної узгодженості не потрібно. Важливі єдині базові межі й тепло з боку обох. Поговоріть наодинці про 2–3 принципи, які точно спільні. Не критикуйте партнера при дитині.</div></div>
+  <div class="qa"><button onclick="this.parentElement.classList.toggle('o')">7. «Як говорити про НМТ, не додаючи тиску?»</button><div>Питайте про самопочуття, а не лише про бали. Говоріть про «план Б» і те, що результат не вичерпує цінності. Допомагайте з режимом сну й відпочинком. Помітні ознаки тривоги чи депресії — привід до фахівця.</div></div>
+  <div class="qa"><button onclick="this.parentElement.classList.toggle('o')">8. «Мені самому/-ій важко. Чи варто звертатись?»</button><div>Так. Ваш стан впливає на дитину, і це не егоїзм. Скористайтесь лінією 0 800 500 335, сімейним лікарем чи психологом. Тривалу втому, тривогу чи безнадію варто оцінити з фахівцем.</div></div>
+</div></div>
+
+<div class="panel" id="p-cr"><div class="wrap">
+  <h2>Етика та протоколи</h2><p class="ss">Для психолога і педагога на батьківській зустрічі</p>
+  <div class="ct"><div><b>116 111</b><span>Дитяча лінія · безкоштовно · анонімно · цілодобово</span></div><div><b>0 800 500 335</b><span>Психологічна підтримка (також для батьків)</span></div><div><b>102 / 103</b><span>Поліція / медики при загрозі</span></div></div>
+  <div class="cb"><b style="background:var(--gr)">🟢 1 · Батько розкриває проблему дитини у групі</b><ol><li>Подякуйте, обмежте деталі: «Давайте продовжимо наодинці після зустрічі».</li><li>Не обговорюйте конкретну дитину при групі; нагадайте правило конфіденційності.</li><li>Запропонуйте індивідуальну консультацію протягом тижня.</li></ol></div>
+  <div class="cb"><b style="background:var(--am)">🟡 2 · Звинувачення батьків або школи</b><ol><li>Не захищайтесь і не звинувачуйте: «Я чую, що вам тривожно».</li><li>Поверніться до спільної мети: що допоможе дитині.</li><li>Складні кейси переносьте на індивідуальну зустріч.</li></ol></div>
+  <div class="cb"><b style="background:var(--bl)">🔵 3 · Інформація про булінг чи насильство</b><ol><li>Запишіть факти без оцінок, передайте керівництву й за процедурою закладу.</li><li>Підтримайте батьків, поясніть кроки.</li><li>У разі насильства над дитиною дійте відповідно до законодавства й внутрішніх протоколів (повідомлення відповідних служб).</li></ol></div>
+  <div class="cb"><b style="background:var(--ro)">🔴 4 · Батько говорить про безнадію, думки про смерть або шкоду дитині</b><ol><li>Спокійно, окремо від групи: «Ви думаєте про те, щоб заподіяти шкоду собі чи комусь?»</li><li>Не залишайте людину без підтримки; повідомте про 0 800 500 335 і лікаря.</li><li>При безпосередній небезпеці — 103/102.</li><li>Про загрозу дитині дійте за протоколом закладу негайно.</li></ol></div>
+  <h3>Рефлексія після зустрічі</h3>
+  <table><tr><th>Питання</th><th>Що дає</th></tr>
+  <tr><td>«Одна дія на цей тиждень» (чат)</td><td>Конкретний намір батьків</td></tr>
+  <tr><td>Анонімна оцінка: «Що було найкориснішим / чого не вистачило?»</td><td>Зворотний зв'язок для вас</td></tr>
+  <tr><td>Кількість запитів на індивідуальну розмову</td><td>Показник довіри й потреби</td></tr>
+  <tr><td>Нагадування через тиждень</td><td>Підтримка змін</td></tr></table>
+  <div class="al"><b>Подальша робота</b>Щомісяця одна коротка порада в чаті класу. Наступні теми: «Тривога дитини», «НМТ без паніки», «Онлайн-безпека». Для самих батьків: мінігрупа підтримки.</div>
+  <div class="al"><b>Для вас</b>Батьківські зустрічі емоційно виснажують. Після складних розмов скористайтесь підтримкою колег або супервізією.</div>
+</div></div>
+
+<script>
+function sw(n,b){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));document.querySelectorAll('.tb').forEach(x=>x.classList.remove('on'));
+ document.getElementById('p-'+n).classList.add('on');b.classList.add('on');scrollTo({top:0,behavior:'smooth'});}
+const t5=['Протягом двох тижнів я почувався/-лась бадьорим/-ою і в доброму настрої','Я почувався/-лась спокійним/-ою і розслабленим/-ою','Я почувався/-лась енергійним/-ою й активним/-ою','Я прокидався/-лась свіжим/-ою й відпочилим/-ою','Моє повсякденне життя було наповнене цікавими для мене речами'];
+const lv=[['Весь час',5],['Більшу частину часу',4],['Трохи більше половини часу',3],['Трохи менше половини часу',2],['Іноді',1],['Ніколи',0]];
+const w=document.getElementById('w5');
+t5.forEach((t,i)=>{const d=document.createElement('div');d.className='rb';d.innerHTML=`<span>${i+1}. ${t}</span><select><option value="">—</option>${lv.map(([a,b])=>`<option value="${b}">${a}</option>`).join('')}</select>`;w.appendChild(d)});
+function calcW(){const s=[...w.querySelectorAll('select')],o=document.getElementById('wout');o.style.display='block';
+ if(s.some(x=>x.value==='')){o.textContent='Відповідайте на всі 5 тверджень.';return}
+ const raw=s.reduce((a,x)=>a+ +x.value,0);
+ const lvl=raw<=7?'виражене зниження, рекомендована оцінка депресивного стану':raw<13?'знижене благополуччя, доцільна бесіда й оцінка':'у межах, що не вказують на зниження';
+ o.innerHTML=`<b>${raw} із 25 (${raw*4}%) — ${lvl}</b><br>Скринінг, не діагноз.`}
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Джерела й що почитати</h2><h3>Використані джерела</h3><ol><li>Rosenberg, M. (1965). <i>Society and the Adolescent Self-Image</i>. Princeton University Press.</li><li>Baumeister, R. F., Campbell, J. D., Krueger, J. I., &amp; Vohs, K. D. (2003). Does high self-esteem cause better performance, interpersonal success, happiness, or healthier lifestyles? <i>Psychological Science in the Public Interest, 4</i>(1), 1–44.</li><li>Bandura, A. (1977). Self-efficacy: Toward a unifying theory of behavioral change. <i>Psychological Review, 84</i>(2), 191–215.</li><li>Dweck, C. S. (2006). <i>Mindset: The New Psychology of Success</i>. Random House. Критика ефектів: Sisk, V. F., et al. (2018). <i>Psychological Science, 29</i>(4), 549–571.</li><li>Mueller, C. M., &amp; Dweck, C. S. (1998). Praise for intelligence can undermine children’s motivation and performance. <i>Journal of Personality and Social Psychology, 75</i>(1), 33–52.</li><li>Brummelman, E., Thomaes, S., de Castro, B. O., Overbeek, G., &amp; Bushman, B. J. (2014). “That’s not just beautiful — that’s incredibly beautiful!” <i>Psychological Science, 25</i>(3), 728–735.</li><li>Neff, K. D. (2003). Self-compassion: An alternative conceptualization of a healthy attitude toward oneself. <i>Self and Identity, 2</i>(2), 85–101.</li><li>Neff, K. D., &amp; Vonk, R. (2009). Self-compassion versus global self-esteem. <i>Journal of Personality, 77</i>(1), 23–50.</li><li>MacBeth, A., &amp; Gumley, A. (2012). Exploring compassion: A meta-analysis of the association between self-compassion and psychopathology. <i>Clinical Psychology Review, 32</i>(6), 545–552.</li><li>Harter, S. (1999). <i>The Construction of the Self</i>. Guilford Press.</li><li>Robins, R. W., Trzesniewski, K. H., Tracy, J. L., Gosling, S. D., &amp; Potter, J. (2002). Global self-esteem across the life span. <i>Psychology and Aging, 17</i>(3), 423–434.</li><li>Orth, U., Erol, R. Y., &amp; Luciano, E. C. (2018). Development of self-esteem from age 4 to 94 years. <i>Psychological Bulletin, 144</i>(10), 1045–1080.</li><li>Crocker, J., &amp; Wolfe, C. T. (2001). Contingencies of self-worth. <i>Psychological Review, 108</i>(3), 593–623.</li><li>Crocker, J., &amp; Canevello, A. (2008). Creating and undermining social support in communal relationships. <i>Journal of Personality and Social Psychology, 95</i>(3), 555–575.</li><li>Clance, P. R., &amp; Imes, S. A. (1978). The imposter phenomenon in high achieving women. <i>Psychotherapy: Theory, Research &amp; Practice, 15</i>(3), 241–247.</li><li>Hewitt, P. L., &amp; Flett, G. L. (1991). Perfectionism in the self and social contexts. <i>Journal of Personality and Social Psychology, 60</i>(3), 456–470.</li><li>Gottman, J. M., Katz, L. F., &amp; Hooven, C. (1996). Parental meta-emotion philosophy and the emotional life of families. <i>Journal of Family Psychology, 10</i>(3), 243–268.</li><li>Baumrind, D. (1991). The influence of parenting style on adolescent competence and substance use. <i>Journal of Early Adolescence, 11</i>(1), 56–95.</li><li>Gilovich, T., Medvec, V. H., &amp; Savitsky, K. (2000). The spotlight effect in social judgment. <i>Journal of Personality and Social Psychology, 78</i>(2), 211–222.</li><li>Elkind, D. (1967). Egocentrism in adolescence. <i>Child Development, 38</i>(4), 1025–1034.</li><li>Festinger, L. (1954). A theory of social comparison processes. <i>Human Relations, 7</i>(2), 117–140.</li><li>Orben, A., &amp; Przybylski, A. K. (2019). The association between adolescent well-being and digital technology use. <i>Nature Human Behaviour, 3</i>, 173–182.</li></ol><h3>Що почитати фахівцеві</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>Self-Compassion</td><td>Neff K., 2011</td><td>Практики самоспівчуття</td></tr><tr><td>Mindset</td><td>Dweck C. S., 2006</td><td>Установка на зростання; про критику ефектів див. Sisk та ін. (2018)</td></tr><tr><td>Brainstorm</td><td>Siegel D. J., 2013</td><td>Про мозок підлітка</td></tr><tr><td>The Construction of the Self</td><td>Harter S., 1999</td><td>Розвиток самоуявлення</td></tr></table><h3>Що порадити батькам</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>How to Talk So Kids Will Listen &amp; Listen So Kids Will Talk</td><td>Faber A., Mazlish E.</td><td>Практичні фрази</td></tr><tr><td>Raising an Emotionally Intelligent Child</td><td>Gottman J., DeClaire J., 1997</td><td>Емоційне коучинг-спілкування</td></tr><tr><td>The Whole-Brain Child</td><td>Siegel D. J., Bryson T. P., 2011</td><td>Емоції дитини</td></tr></table><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="08-b-case.html">← Тема 8</a></span><span><a href="10-b-case.html">Тема 10 →</a></span></div><a class="mo-fab" href="../index.html#t09">☰ До матриці</a></body>
+</html>

@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Конфлікт чи непорозуміння · 5–6 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F0F8F6;
+  --s1:#E8F5F2;
+  --ink:#0D2B26;
+  --text:#1A3A35;
+  --muted:#4A7268;
+  --dim:#8AB4AE;
+  --bd:#C8E0DB;
+  --bd2:#9ECEC6;
+  --teal:#0D8A72;--te-l:#D4F0EA;--te-ll:#EAF8F5;
+  --coral:#E85840;--co-l:#FDECEA;--co-ll:#FEF5F4;
+  --gold:#C87C10;--go-l:#FBF0D8;--go-ll:#FEF8EE;
+  --lav:#7058C8;--la-l:#EEE8FA;
+  --sky:#1878C8;--sk-l:#E4F0FA;
+  --mint:#18A878;--mi-l:#D8F4EA;
+  --rose:#D84870;--ro-l:#FDECEA;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 50% at 10% 15%,rgba(13,138,114,.08) 0%,transparent 65%),
+    radial-gradient(ellipse 50% 45% at 88% 85%,rgba(232,88,64,.07) 0%,transparent 62%);}
+
+.prog{position:fixed;top:0;left:0;height:4px;z-index:500;background:linear-gradient(90deg,var(--teal),var(--coral),var(--gold));transition:width .3s;width:0%;}
+.snav{position:fixed;right:1.1rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.55rem;z-index:300;}
+.snd{width:8px;height:8px;border-radius:50%;background:var(--bd2);border:none;cursor:pointer;padding:0;transition:all .3s;}
+.snd.on{background:var(--teal);transform:scale(1.6);}
+
+/* HERO */
+.hero{position:relative;z-index:2;background:linear-gradient(160deg,#042018 0%,#063028 60%,#042820 100%);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 1.5rem;text-align:center;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:
+  radial-gradient(ellipse 70% 60% at 50% 0%,rgba(13,138,114,.25) 0%,transparent 65%),
+  radial-gradient(ellipse 50% 40% at 20% 90%,rgba(232,88,64,.18) 0%,transparent 60%);}
+
+/* Bridge SVG */
+.bridge-wrap{margin-bottom:2rem;position:relative;z-index:1;}
+.bridge-svg{width:200px;height:80px;}
+
+.hero-tag{font-size:.7rem;font-weight:700;letter-spacing:.2em;color:rgba(13,200,160,.65);margin-bottom:1.2rem;display:flex;align-items:center;gap:.7rem;justify-content:center;position:relative;z-index:1;}
+.hero-tag::before,.hero-tag::after{content:'';width:30px;height:1px;background:rgba(13,200,160,.4);}
+.hero h1{font-family:'Nunito',sans-serif;font-size:clamp(2.2rem,7vw,4.8rem);font-weight:900;line-height:1.1;color:white;margin-bottom:.8rem;letter-spacing:-.01em;position:relative;z-index:1;}
+.hero h1 .ht{color:#5DECD4;}
+.hero h1 .hc{color:#FF9080;}
+.hero-desc{font-size:.97rem;font-weight:300;line-height:1.9;color:rgba(255,255,255,.5);max-width:500px;margin:0 auto 2rem;position:relative;z-index:1;}
+.hero-pills{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.5rem;position:relative;z-index:1;}
+.hpill{border:1px solid rgba(255,255,255,.15);border-radius:50px;padding:.35rem 1rem;font-size:.74rem;font-weight:600;color:rgba(255,255,255,.55);}
+.scroll-hint{display:flex;flex-direction:column;align-items:center;gap:.45rem;font-size:.65rem;font-weight:700;color:rgba(255,255,255,.3);letter-spacing:.1em;position:relative;z-index:1;}
+.sc-ln{width:1px;height:44px;background:linear-gradient(to bottom,rgba(13,200,160,.6),transparent);animation:scDrop 2.2s ease-in-out infinite;}
+@keyframes scDrop{0%,100%{opacity:.25;transform:scaleY(.5);}50%{opacity:1;transform:scaleY(1);}}
+
+/* SECTIONS */
+.sec{position:relative;z-index:2;max-width:860px;margin:0 auto;padding:5rem 1.5rem;}
+.divider{max-width:860px;margin:0 auto;height:2px;background:linear-gradient(90deg,var(--teal),transparent);opacity:.25;position:relative;z-index:2;}
+
+.sec-lbl{font-size:.68rem;font-weight:700;letter-spacing:.16em;color:var(--teal);margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem;text-transform:uppercase;}
+.sec-lbl::after{content:'';width:22px;height:2px;background:var(--teal);border-radius:1px;}
+.sec-lbl.co{color:var(--coral);}.sec-lbl.co::after{background:var(--coral);}
+.sec-lbl.go{color:var(--gold);}.sec-lbl.go::after{background:var(--gold);}
+.sec-lbl.lav{color:var(--lav);}.sec-lbl.lav::after{background:var(--lav);}
+
+h2{font-family:'Nunito',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.15;color:var(--ink);margin-bottom:1rem;letter-spacing:-.01em;}
+h2 em{font-style:normal;color:var(--teal);}
+h2 em.co{color:var(--coral);}
+h2 em.go{color:var(--gold);}
+.lead{font-size:.95rem;font-weight:300;line-height:1.95;color:var(--muted);max-width:640px;margin-bottom:2rem;}
+
+/* PSY */
+.psy{border-left:3px solid var(--teal);padding:1.2rem 1.8rem;margin:2rem 0;background:var(--te-ll);}
+.psy.co{border-color:var(--coral);background:var(--co-ll);}
+.psy-who{font-size:.6rem;font-weight:700;letter-spacing:.18em;color:var(--teal);margin-bottom:.5rem;text-transform:uppercase;}
+.psy.co .psy-who{color:var(--coral);}
+.psy p{font-size:.9rem;font-weight:300;line-height:1.92;color:var(--text);font-style:italic;}
+
+/* CONFLICT vs MISUNDERSTANDING cards */
+.cvs{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1.8rem 0;}
+@media(max-width:560px){.cvs{grid-template-columns:1fr;}}
+.cv-card{border-radius:14px;padding:1.5rem;}
+.cv-card.conf{background:var(--co-l);border:1.5px solid rgba(232,88,64,.25);}
+.cv-card.mis{background:var(--te-ll);border:1.5px solid rgba(13,138,114,.25);}
+.cv-ico{font-size:2rem;margin-bottom:.6rem;display:block;}
+.cv-t{font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;margin-bottom:.5rem;}
+.cv-card.conf .cv-t{color:var(--coral);}
+.cv-card.mis .cv-t{color:var(--teal);}
+.cv-list{list-style:none;font-size:.83rem;font-weight:300;color:var(--text);line-height:1.7;}
+.cv-list li{padding:.25rem 0;border-bottom:1px solid rgba(0,0,0,.06);}
+.cv-list li:last-child{border:none;}
+.cv-list li::before{content:'·';margin-right:.4rem;color:var(--coral);}
+.cv-card.mis .cv-list li::before{color:var(--teal);}
+
+/* STYLE QUIZ */
+.sqz-wrap{background:white;border:1.5px solid var(--bd);border-radius:18px;overflow:hidden;margin:2rem 0;}
+.sqz-head{background:linear-gradient(90deg,var(--teal),var(--mint));padding:1.1rem 1.6rem;display:flex;align-items:center;justify-content:space-between;}
+.sqz-title{font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:800;color:white;}
+.sqz-step{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.7);}
+.sqz-pb{height:4px;background:rgba(255,255,255,.2);}
+.sqz-pf{height:100%;background:rgba(255,255,255,.8);transition:width .35s;}
+.sqz-body{padding:1.8rem 1.6rem;}
+.sqz-q{font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;line-height:1.55;color:var(--ink);margin-bottom:1.2rem;}
+.sqz-opts{display:flex;flex-direction:column;gap:.5rem;}
+.sqz-o{background:var(--s1);border:1.5px solid var(--bd);border-radius:12px;padding:.85rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:400;cursor:pointer;text-align:left;color:var(--text);transition:all .2s;display:flex;align-items:center;gap:.7rem;}
+.sqz-o:hover{border-color:var(--teal);background:var(--te-ll);}
+.sqz-o.sel{border-color:var(--teal);background:var(--te-l);}
+.sqz-ico{font-size:1.3rem;flex-shrink:0;}
+.sqz-result{display:none;padding:1.8rem 1.6rem;text-align:center;}
+.sqz-result.show{display:block;}
+.sqz-res-ico{font-size:3.5rem;margin-bottom:.8rem;display:block;}
+.sqz-res-t{font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:900;color:var(--ink);margin-bottom:.5rem;}
+.sqz-res-lbl{display:inline-block;padding:.25rem .9rem;border-radius:50px;font-size:.72rem;font-weight:700;margin-bottom:1rem;}
+.sqz-res-b{font-size:.88rem;font-weight:300;line-height:1.85;color:var(--muted);margin-bottom:1.2rem;}
+.sqz-res-tip{background:var(--te-ll);border-left:3px solid var(--teal);padding:.8rem 1.1rem;font-size:.84rem;font-weight:300;color:var(--text);text-align:left;margin-bottom:1rem;line-height:1.7;}
+.sqz-retry{background:var(--teal);color:white;border:none;border-radius:50px;padding:.65rem 1.8rem;font-family:'DM Sans',sans-serif;font-size:.84rem;font-weight:600;cursor:pointer;transition:all .2s;}
+.sqz-retry:hover{background:var(--mint);}
+
+/* EMOTION CARDS */
+.em-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.7rem;margin:1.5rem 0;}
+.em-c{background:white;border:1.5px solid var(--bd);border-radius:14px;padding:1.1rem .8rem;cursor:pointer;text-align:center;transition:all .22s;position:relative;}
+.em-c:hover{transform:translateY(-3px);border-color:var(--bd2);}
+.em-c.flip{border-color:var(--teal);}
+.em-c .em-front,.em-c .em-back{transition:opacity .25s;}
+.em-c .em-back{display:none;}
+.em-c.flip .em-front{display:none;}
+.em-c.flip .em-back{display:block;}
+.em-ico{font-size:2.2rem;margin-bottom:.4rem;display:block;}
+.em-q{font-size:.78rem;font-weight:600;color:var(--ink);}
+.em-name{font-size:.82rem;font-weight:700;color:var(--teal);margin-bottom:.3rem;}
+.em-desc{font-size:.72rem;font-weight:300;color:var(--muted);line-height:1.5;}
+.em-signal{font-size:.68rem;font-weight:600;color:var(--coral);margin-top:.4rem;}
+
+/* SCENARIOS GAME */
+.scg-wrap{background:white;border:1.5px solid var(--bd);border-radius:18px;overflow:hidden;margin:2rem 0;}
+.scg-top{background:linear-gradient(90deg,var(--coral),#E87050);padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.scg-tl{font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:800;color:white;}
+.scg-pts{font-size:.75rem;font-weight:700;color:rgba(255,255,255,.8);}
+.scg-pb{height:4px;background:rgba(255,255,255,.2);}
+.scg-pf{height:100%;background:rgba(255,255,255,.8);transition:width .4s;}
+.scg-body{padding:1.8rem 1.5rem;}
+.scg-scene{background:var(--co-ll);border-radius:12px;padding:1.1rem 1.3rem;margin-bottom:1.2rem;font-size:.88rem;font-weight:300;line-height:1.78;color:var(--text);}
+.scg-scene strong{color:var(--coral);font-weight:700;display:block;font-size:.7rem;letter-spacing:.1em;margin-bottom:.4rem;text-transform:uppercase;}
+.scg-q{font-family:'Nunito',sans-serif;font-size:.96rem;font-weight:800;color:var(--ink);margin-bottom:1.1rem;line-height:1.5;}
+.scg-opts{display:flex;flex-direction:column;gap:.45rem;}
+.scg-o{background:var(--s1);border:1.5px solid var(--bd);border-radius:12px;padding:.8rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:.86rem;cursor:pointer;text-align:left;color:var(--text);transition:all .2s;}
+.scg-o:hover{border-color:var(--coral);background:var(--co-ll);}
+.scg-o.ok{border-color:var(--teal);background:var(--te-l);color:var(--teal);}
+.scg-o.bad{border-color:var(--coral);background:var(--co-l);color:var(--coral);}
+.scg-o:disabled{cursor:not-allowed;}
+.scg-fb{font-size:.84rem;font-weight:300;padding:.85rem 1.1rem;border-left:2px solid var(--bd);margin-top:.9rem;display:none;line-height:1.78;color:var(--muted);}
+.scg-fb.show{display:block;}.scg-fb.ok{border-color:var(--teal);}.scg-fb.bad{border-color:var(--coral);}
+.scg-nx{display:none;margin-top:.9rem;background:none;border:1.5px solid var(--gold);border-radius:50px;padding:.5rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:700;color:var(--gold);cursor:pointer;transition:all .2s;}
+.scg-nx:hover{background:var(--gold);color:white;}.scg-nx.show{display:inline-block;}
+.scg-sc{font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:900;color:var(--gold);text-align:center;display:none;margin-top:1rem;}
+
+/* QUIZ */
+.qz-wrap{background:white;border:1.5px solid var(--bd);border-radius:18px;overflow:hidden;margin:2rem 0;}
+.qz-top{background:linear-gradient(90deg,var(--lav),#9878D8);padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.qz-tl{font-family:'Nunito',sans-serif;font-size:.88rem;font-weight:800;color:white;}
+.qz-pts{font-size:.75rem;font-weight:700;color:rgba(255,255,255,.8);}
+.qz-body{padding:1.8rem 1.5rem;}
+.qz-q{font-family:'Nunito',sans-serif;font-size:.96rem;font-weight:800;color:var(--ink);margin-bottom:1.1rem;line-height:1.5;}
+.qz-opts{display:flex;flex-direction:column;gap:.45rem;}
+.qz-o{background:var(--s1);border:1.5px solid var(--bd);border-radius:12px;padding:.8rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:.86rem;cursor:pointer;text-align:left;color:var(--text);transition:all .2s;}
+.qz-o:hover{border-color:var(--lav);background:var(--la-l);}
+.qz-o.ok{border-color:var(--mint);background:var(--mi-l);color:var(--mint);font-weight:600;}
+.qz-o.bad{border-color:var(--coral);background:var(--co-l);color:var(--coral);}
+.qz-o:disabled{cursor:not-allowed;}
+.qz-fb{font-size:.84rem;font-weight:300;padding:.85rem 1.1rem;border-left:2px solid var(--bd);margin-top:.9rem;display:none;line-height:1.78;color:var(--muted);}
+.qz-fb.show{display:block;}.qz-fb.ok{border-color:var(--mint);}.qz-fb.bad{border-color:var(--coral);}
+.qz-nx{display:none;margin-top:.9rem;background:none;border:1.5px solid var(--lav);border-radius:50px;padding:.5rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:700;color:var(--lav);cursor:pointer;transition:all .2s;}
+.qz-nx:hover{background:var(--lav);color:white;}.qz-nx.show{display:inline-block;}
+.qz-sc{font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:900;color:var(--lav);text-align:center;display:none;margin-top:1rem;}
+
+/* STEPS */
+.step-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.9rem;margin:1.8rem 0;}
+.step{background:white;border:1.5px solid var(--bd);border-radius:14px;padding:1.3rem;position:relative;transition:transform .2s;}
+.step:hover{transform:translateY(-2px);}
+.step-n{font-family:'Nunito',sans-serif;font-size:2.5rem;font-weight:900;color:var(--teal);opacity:.15;position:absolute;top:.6rem;right:1rem;line-height:1;}
+.step-ico{font-size:1.5rem;margin-bottom:.5rem;display:block;}
+.step-t{font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.35rem;padding-right:2rem;}
+.step-b{font-size:.8rem;font-weight:300;color:var(--muted);line-height:1.65;}
+
+/* MY PLAN */
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:1px;background:var(--bd);border:1.5px solid var(--bd);border-radius:0;margin:1.5rem 0;}
+.pf{background:white;padding:1.3rem;}
+.pl{font-size:.6rem;font-weight:700;letter-spacing:.12em;color:var(--dim);display:block;margin-bottom:.5rem;text-transform:uppercase;}
+.pi{width:100%;background:transparent;border:none;border-bottom:1.5px solid var(--bd);padding:.45rem 0;font-family:'DM Sans',sans-serif;font-size:.84rem;color:var(--text);outline:none;resize:none;transition:border-color .2s;line-height:1.55;}
+.pi:focus{border-color:var(--teal);}
+.pi::placeholder{color:var(--dim);}
+.plan-btn{background:linear-gradient(135deg,var(--teal),var(--mint));color:white;border:none;border-radius:50px;padding:.78rem 2.2rem;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;display:block;margin:1.5rem auto;transition:all .25s;box-shadow:0 6px 20px rgba(13,138,114,.28);}
+.plan-btn:hover{transform:translateY(-2px);}
+.plan-res{display:none;background:white;border:1.5px solid var(--bd2);border-radius:16px;padding:2rem;margin-top:1.5rem;}
+.plan-res.show{display:block;}
+.plan-res h3{font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;color:var(--ink);text-align:center;margin-bottom:1rem;}
+.pr-row{display:flex;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--bd);font-size:.83rem;font-weight:300;line-height:1.6;}
+.pr-row:last-child{border:none;}
+.pr-l{color:var(--dim);font-size:.65rem;font-weight:700;letter-spacing:.06em;min-width:140px;}
+
+/* FINAL */
+.final{position:relative;z-index:2;max-width:660px;margin:0 auto;text-align:center;padding:5rem 1.5rem 8rem;}
+.final-ico{font-size:3.5rem;display:block;margin-bottom:1.5rem;}
+.final-cert{border:1.5px solid var(--bd2);border-radius:16px;padding:2rem;margin:2rem 0;text-align:left;background:white;}
+.fcl{font-size:.62rem;font-weight:700;letter-spacing:.14em;color:var(--dim);margin-bottom:.4rem;text-transform:uppercase;}
+.fcv{font-size:.9rem;font-weight:600;color:var(--text);line-height:1.65;}
+
+.al{border-radius:12px;padding:1rem 1.3rem;margin:1.2rem 0;display:flex;gap:.8rem;align-items:flex-start;}
+.al .ai{font-size:1.2rem;flex-shrink:0;margin-top:.05rem;}
+.al p{font-size:.85rem;line-height:1.7;}
+.al p strong{font-weight:700;display:block;margin-bottom:.2rem;font-size:.72rem;letter-spacing:.04em;}
+.a-te{background:var(--te-ll);border-left:4px solid var(--teal);}
+.a-co{background:var(--co-ll);border-left:4px solid var(--coral);}
+.a-go{background:var(--go-ll);border-left:4px solid var(--gold);}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s;}
+.reveal.vis{opacity:1;transform:none;}
+</style>
+<link rel="stylesheet" href="../assets/psy.css">
+</head>
+<body><nav class="mo-nav"><a href="../index.html">← Кабінет психолога</a><span class="mo-t">Тема 8 · Конфлікт чи непорозуміння: шукаємо вихід · 5–6 клас · Урок</span><span class="mo-g"><a href="08-5-6-lesson.html" class="on">5–6 клас</a><a href="08-7-8-lesson.html">7–8 клас</a><a href="08-9-11-lesson.html">9–11 клас</a><a href="08-b-lesson.html">Батьки</a><a href="08-5-6-case.html">⇄ Кейс</a></span></nav>
+<div class="prog" id="prog"></div>
+
+<nav class="snav">
+  <button class="snd on" data-i="0"></button>
+  <button class="snd" data-i="1"></button>
+  <button class="snd" data-i="2"></button>
+  <button class="snd" data-i="3"></button>
+  <button class="snd" data-i="4"></button>
+  <button class="snd" data-i="5"></button>
+  <button class="snd" data-i="6"></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="s0">
+  <div class="bridge-wrap">
+    <svg class="bridge-svg" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg" fill="none">
+      <!-- Left bank -->
+      <rect x="0" y="55" width="40" height="25" fill="rgba(13,138,114,.5)" rx="4"/>
+      <!-- Right bank -->
+      <rect x="160" y="55" width="40" height="25" fill="rgba(232,88,64,.5)" rx="4"/>
+      <!-- Bridge deck -->
+      <rect x="30" y="48" width="140" height="8" fill="rgba(255,255,255,.25)" rx="2"/>
+      <!-- Arch -->
+      <path d="M30,56 Q100,10 170,56" stroke="rgba(255,255,255,.4)" stroke-width="2.5" fill="none"/>
+      <!-- Cables -->
+      <line x1="80" y1="25" x2="70" y2="52" stroke="rgba(255,255,255,.25)" stroke-width="1"/>
+      <line x1="100" y1="17" x2="100" y2="52" stroke="rgba(255,255,255,.25)" stroke-width="1"/>
+      <line x1="120" y1="25" x2="130" y2="52" stroke="rgba(255,255,255,.25)" stroke-width="1"/>
+      <!-- People -->
+      <circle cx="55" cy="44" r="5" fill="rgba(13,200,160,.8)"/>
+      <circle cx="145" cy="44" r="5" fill="rgba(255,150,128,.8)"/>
+      <!-- Arrow between people -->
+      <line x1="64" y1="44" x2="136" y2="44" stroke="rgba(255,255,255,.3)" stroke-width="1.5" stroke-dasharray="6 4"/>
+    </svg>
+  </div>
+  <div class="hero-tag">Онлайн-урок · 5–6 клас</div>
+  <h1>
+    <span class="ht">Конфлікт</span><br>
+    чи <span class="hc">непорозуміння</span>?
+  </h1>
+  <p class="hero-desc">Разом розбираємось: чим вони відрізняються, звідки беруться і — найголовніше — як будувати мости замість стін.</p>
+  <div class="hero-pills">
+    <div class="hpill">⏱ 45 хвилин</div>
+    <div class="hpill">🧪 Тест стилю</div>
+    <div class="hpill">😤 Емоції</div>
+    <div class="hpill">🎭 8 сценаріїв</div>
+    <div class="hpill">🌉 Мій план</div>
+  </div>
+  <div class="scroll-hint"><span>починаємо</span><div class="sc-ln"></div></div>
+</section>
+
+<!-- S1: КОНФЛІКТ vs НЕПОРОЗУМІННЯ -->
+<div class="divider"></div>
+<section class="sec reveal" id="s1">
+  <div class="sec-lbl">Частина 1 · Розбираємось</div>
+  <h2><em>Конфлікт</em> і непорозуміння —<br>це одне й те саме?</h2>
+  <p class="lead">Спойлер: ні. І від цього залежить що робити далі. Ось головна різниця:</p>
+
+  <div class="cvs">
+    <div class="cv-card conf">
+      <span class="cv-ico">⚡</span>
+      <div class="cv-t">Конфлікт</div>
+      <ul class="cv-list">
+        <li>Різні інтереси або потреби</li>
+        <li>Обидва хочуть різного</li>
+        <li>Потребує домовленості або вибору</li>
+        <li>Є напруга між людьми</li>
+        <li>Приклад: хто сидить поруч з вікном</li>
+      </ul>
+    </div>
+    <div class="cv-card mis">
+      <span class="cv-ico">🌀</span>
+      <div class="cv-t">Непорозуміння</div>
+      <ul class="cv-list">
+        <li>Різне розуміння однієї ситуації</li>
+        <li>Хочуть одного — але не знають</li>
+        <li>Вирішується поясненням</li>
+        <li>Зникає коли дізнаються правду</li>
+        <li>Приклад: думав що образили — але не хотіли</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Важлива ідея</div>
+    <p>Більшість шкільних «сварок» — це насправді непорозуміння. Хтось не так зрозумів слово, жест або мовчання. Перш ніж сердитись — варто запитати: «Ти мав/-ла на увазі те що я подумав/-ла?» Одне питання може врятувати дружбу.</p>
+  </div>
+
+  <div class="al a-go reveal">
+    <span class="ai">🌟</span>
+    <div><p><strong>Цікавий факт</strong> Дослідники підрахували: у підлітків 7 з 10 конфліктів починаються через непорозуміння в повідомленнях. Без інтонації і виразу обличчя легко «прочитати» зовсім не те.</p></div>
+  </div>
+</section>
+
+<!-- S2: СТИЛІ ПОВЕДІНКИ -->
+<div class="divider"></div>
+<section class="sec reveal" id="s2">
+  <div class="sec-lbl co">Частина 2 · Твій стиль</div>
+  <h2>Як ти зазвичай<br>реагуєш у <em class="co">конфлікті</em>?</h2>
+  <p class="lead">У кожного є свій звичний «стиль» — те що ти робиш автоматично коли щось іде не так. Пройди міні-тест і дізнайся свій:</p>
+
+  <div class="sqz-wrap">
+    <div class="sqz-head">
+      <span class="sqz-title">🧪 Тест: Мій стиль у конфлікті</span>
+      <span class="sqz-step" id="sqStep">Питання 1 з 5</span>
+    </div>
+    <div class="sqz-pb"><div class="sqz-pf" id="sqPf" style="width:20%"></div></div>
+    <div class="sqz-body" id="sqBody">
+      <div class="sqz-q" id="sqQ"></div>
+      <div class="sqz-opts" id="sqOpts"></div>
+    </div>
+    <div class="sqz-result" id="sqResult">
+      <span class="sqz-res-ico" id="sqRIco"></span>
+      <div class="sqz-res-t" id="sqRT"></div>
+      <div class="sqz-res-lbl" id="sqRL"></div>
+      <div class="sqz-res-b" id="sqRB"></div>
+      <div class="sqz-res-tip" id="sqRTip"></div>
+      <button class="sqz-retry" onclick="resetSq()">Пройти ще раз</button>
+    </div>
+  </div>
+
+  <div class="psy co">
+    <div class="psy-who">Порада психолога · Про стилі</div>
+    <p>Немає «поганого» стилю — кожен має свої плюси. Але якщо ти завжди уникаєш або завжди «виграєш» — це може псувати стосунки. Найкраща навичка: вміти обирати різні стилі залежно від ситуації.</p>
+  </div>
+</section>
+
+<!-- S3: ЕМОЦІЇ В КОНФЛІКТІ -->
+<div class="divider"></div>
+<section class="sec reveal" id="s3">
+  <div class="sec-lbl">Частина 3 · Емоції</div>
+  <h2>Що ти відчуваєш —<br>і що це <em>говорить</em> тобі?</h2>
+  <p class="lead">Під час конфлікту тіло і голова повні сигналів. Натисни на кожну емоцію щоб дізнатись більше:</p>
+
+  <div class="em-grid">
+    <div class="em-c" onclick="this.classList.toggle('flip')">
+      <div class="em-front"><span class="em-ico">😡</span><div class="em-q">Злість</div></div>
+      <div class="em-back"><div class="em-name">😡 Злість</div><div class="em-desc">Говорить: «щось важливе для мене порушено»</div><div class="em-signal">Що робити: зупинись, подихай, потім говори</div></div>
+    </div>
+    <div class="em-c" onclick="this.classList.toggle('flip')">
+      <div class="em-front"><span class="em-ico">😢</span><div class="em-q">Образа</div></div>
+      <div class="em-back"><div class="em-name">😢 Образа</div><div class="em-desc">Говорить: «мені важливо що думають про мене»</div><div class="em-signal">Що робити: скажи «мені було боляче коли...»</div></div>
+    </div>
+    <div class="em-c" onclick="this.classList.toggle('flip')">
+      <div class="em-front"><span class="em-ico">😰</span><div class="em-q">Страх</div></div>
+      <div class="em-back"><div class="em-name">😰 Страх</div><div class="em-desc">Говорить: «я не хочу втратити людину або ситуацію»</div><div class="em-signal">Що робити: назви що саме тебе лякає</div></div>
+    </div>
+    <div class="em-c" onclick="this.classList.toggle('flip')">
+      <div class="em-front"><span class="em-ico">🙄</span><div class="em-q">Роздратування</div></div>
+      <div class="em-back"><div class="em-name">🙄 Роздратування</div><div class="em-desc">Говорить: «щось повторюється і мене вже дістало»</div><div class="em-signal">Що робити: поговори про причину, а не наслідок</div></div>
+    </div>
+    <div class="em-c" onclick="this.classList.toggle('flip')">
+      <div class="em-front"><span class="em-ico">😳</span><div class="em-q">Збентеження</div></div>
+      <div class="em-back"><div class="em-name">😳 Збентеження</div><div class="em-desc">Говорить: «я не розумію що відбувається»</div><div class="em-signal">Що робити: запитай «поясни мені будь ласка»</div></div>
+    </div>
+    <div class="em-c" onclick="this.classList.toggle('flip')">
+      <div class="em-front"><span class="em-ico">😔</span><div class="em-q">Сором</div></div>
+      <div class="em-back"><div class="em-name">😔 Сором</div><div class="em-desc">Говорить: «я зробив/-ла щось що суперечить моїм цінностям»</div><div class="em-signal">Що робити: визнай помилку, виправи якщо можеш</div></div>
+    </div>
+    <div class="em-c" onclick="this.classList.toggle('flip')">
+      <div class="em-front"><span class="em-ico">😤</span><div class="em-q">Гордість / впертість</div></div>
+      <div class="em-back"><div class="em-name">😤 Гордість</div><div class="em-desc">Говорить: «мені важливо не «програти»»</div><div class="em-signal">Питання: «що важливіше — перемогти або зберегти стосунки?»</div></div>
+    </div>
+    <div class="em-c" onclick="this.classList.toggle('flip')">
+      <div class="em-front"><span class="em-ico">🫤</span><div class="em-q">Байдужість</div></div>
+      <div class="em-back"><div class="em-name">🫤 Байдужість</div><div class="em-desc">Іноді справжня, іноді — захист від болю</div><div class="em-signal">Запитай себе: «мені справді все одно, чи просто страшно?»</div></div>
+    </div>
+  </div>
+
+  <div class="al a-te reveal">
+    <span class="ai">🧠</span>
+    <div><p><strong>Пам'ятай</strong> Злість — це майже завжди «вторинна» емоція. Під нею ховається щось інше: страх, образа або смуток. Якщо знайти «що під злістю» — набагато легше пояснити іншій людині що відбувається.</p></div>
+  </div>
+</section>
+
+<!-- S4: 5 КРОКІВ -->
+<div class="divider"></div>
+<section class="sec reveal" id="s4">
+  <div class="sec-lbl go">Частина 4 · Інструменти</div>
+  <h2>5 кроків щоб<br><em class="go">вирішити</em> конфлікт</h2>
+  <p class="lead">Алгоритм який справді працює — не тільки в школі, але і в житті:</p>
+
+  <div class="step-grid">
+    <div class="step">
+      <span class="step-n">1</span>
+      <span class="step-ico">🛑</span>
+      <div class="step-t">Зупинись і охолонь</div>
+      <div class="step-b">Не вирішуй конфлікт у момент коли серце б'ється а голова «кипить». 3 дихання або 5 хвилин — і тоді до розмови.</div>
+    </div>
+    <div class="step">
+      <span class="step-n">2</span>
+      <span class="step-ico">👁️</span>
+      <div class="step-t">Зрозумій що сталось</div>
+      <div class="step-b">Що саме тебе зачепило? Запитай себе: «Це конфлікт чи непорозуміння?» Може варто просто перепитати перш ніж сваритись.</div>
+    </div>
+    <div class="step">
+      <span class="step-n">3</span>
+      <span class="step-ico">🗣️</span>
+      <div class="step-t">Скажи «Я-повідомлення»</div>
+      <div class="step-b">«Я відчуваю... коли... тому що...» замість «Ти завжди...». Перша форма — про тебе. Друга — атака. Атака викликає захист.</div>
+    </div>
+    <div class="step">
+      <span class="step-n">4</span>
+      <span class="step-ico">👂</span>
+      <div class="step-t">Вислухай без перебивання</div>
+      <div class="step-b">Дай іншій людині закінчити. Потім скажи «Я зрозумів/-ла що ти...» — перевір чи правильно почув/-ла. Це вже наполовину вирішує проблему.</div>
+    </div>
+    <div class="step">
+      <span class="step-n">5</span>
+      <span class="step-ico">🤝</span>
+      <div class="step-t">Знайдіть рішення разом</div>
+      <div class="step-b">«Як ми можемо вирішити це щоб обом було нормально?» Мета — не перемогти, а знайти де ваші потреби перетинаються.</div>
+    </div>
+    <div class="step">
+      <span class="step-n">+</span>
+      <span class="step-ico">🌉</span>
+      <div class="step-t">Якщо сам/-а не виходить</div>
+      <div class="step-b">Попроси дорослого допомогти — це не слабкість. Медіатор (посередник) — людина яка допомагає обом почути одне одного.</div>
+    </div>
+  </div>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Про «Я-повідомлення»</div>
+    <p>«Я-повідомлення» — одна з найпотужніших технік комунікації. Замість: «Ти завжди ігноруєш мене!» — спробуй: «Я відчуваю себе непоміченим/-ою коли ти не відповідаєш на повідомлення, бо для мене це важливо». Різниця — людина не захищається, а чує тебе.</p>
+  </div>
+</section>
+
+<!-- S5: СЦЕНАРІЇ -->
+<div class="divider"></div>
+<section class="sec reveal" id="s5">
+  <div class="sec-lbl co">Гра · Сценарії</div>
+  <h2>8 ситуацій —<br>що <em class="co">робити</em>?</h2>
+  <p class="lead">Реальні ситуації зі шкільного життя. Обери найкращий варіант — і дізнайся чому!</p>
+
+  <div class="scg-wrap">
+    <div class="scg-top">
+      <span class="scg-tl" id="scgTl">Ситуація 1 з 8</span>
+      <span class="scg-pts" id="scgPts">0 балів</span>
+    </div>
+    <div class="scg-pb"><div class="scg-pf" id="scgPf" style="width:12%"></div></div>
+    <div class="scg-body">
+      <div class="scg-q" id="scgQ"></div>
+      <div class="scg-opts" id="scgOpts"></div>
+      <div class="scg-fb" id="scgFb"></div>
+      <button class="scg-nx" id="scgNx" onclick="nxScg()">Далі →</button>
+      <div class="scg-sc" id="scgSc"></div>
+    </div>
+  </div>
+</section>
+
+<!-- S6: ВІКТОРИНА -->
+<div class="divider"></div>
+<section class="sec reveal" id="s6">
+  <div class="sec-lbl lav">Вікторина</div>
+  <h2>8 запитань про<br><em>конфлікти</em> і спілкування</h2>
+
+  <div class="qz-wrap">
+    <div class="qz-top">
+      <span class="qz-tl" id="qzTl">Питання 1 з 8</span>
+      <span class="qz-pts" id="qzPts">0 балів</span>
+    </div>
+    <div class="qz-body">
+      <div class="qz-q" id="qzQ"></div>
+      <div class="qz-opts" id="qzOpts"></div>
+      <div class="qz-fb" id="qzFb"></div>
+      <button class="qz-nx" id="qzNx" onclick="nxQz()">Далі →</button>
+      <div class="qz-sc" id="qzSc"></div>
+    </div>
+  </div>
+</section>
+
+<!-- S7: МІЙ ПЛАН -->
+<div class="divider"></div>
+<section class="sec reveal" id="s7">
+  <div class="sec-lbl">Мій план</div>
+  <h2>Мій особистий<br><em>план вирішення конфліктів</em></h2>
+  <p class="lead">Заповни зараз поки свіжо — і матимеш готову пам'ятку для наступного разу:</p>
+
+  <div class="plan-grid">
+    <div class="pf">
+      <label class="pl">Мій звичний стиль у конфлікті</label>
+      <input class="pi" type="text" id="p1" placeholder="Уникаю / йду напролом / шукаю компроміс...">
+      <br><br>
+      <label class="pl">Емоція яку я найчастіше відчуваю</label>
+      <input class="pi" type="text" id="p2" placeholder="Злість, образа, збентеження...">
+    </div>
+    <div class="pf">
+      <label class="pl">Що я зроблю ПЕРШИМ наступного разу</label>
+      <input class="pi" type="text" id="p3" placeholder="Зупинюсь і подихаю...">
+      <br><br>
+      <label class="pl">Моє «Я-повідомлення» для частої ситуації</label>
+      <textarea class="pi" id="p4" rows="2" placeholder="Я відчуваю... коли... тому що..."></textarea>
+    </div>
+    <div class="pf">
+      <label class="pl">Доросла якій я довіряю (для важких ситуацій)</label>
+      <input class="pi" type="text" id="p5" placeholder="Вчитель, батьки, психолог...">
+      <br><br>
+      <label class="pl">Одна річ яку хочу покращити у своїй комунікації</label>
+      <textarea class="pi" id="p6" rows="2" placeholder="Більше слухати, не перебивати..."></textarea>
+    </div>
+  </div>
+  <button class="plan-btn" onclick="genPlan()">Зберегти мій план 🌉</button>
+  <div class="plan-res" id="planRes">
+    <h3>🌉 Мій план вирішення конфліктів</h3>
+    <div id="planContent"></div>
+    <p style="font-size:.68rem;color:var(--dim);text-align:center;margin-top:1.2rem">ЗБЕРЕЖИ СКРІНШОТ · ПЕРЕЧИТАЙ ПЕРЕД ВАЖКОЮ РОЗМОВОЮ</p>
+  </div>
+</section>
+
+<!-- FINAL -->
+<div class="divider"></div>
+<div class="final reveal">
+  <span class="final-ico">🌉</span>
+  <div class="sec-lbl" style="justify-content:center">Урок завершено</div>
+  <h2>Мости будуються<br><em>словами і слуханням</em></h2>
+  <p class="lead" style="text-align:center;margin:0 auto 2rem">Конфлікти — частина стосунків. Але кожен конфлікт — це шанс краще зрозуміти одне одного. Тепер у тебе є інструменти.</p>
+  <div class="final-cert">
+    <div class="fcl">Мої інструменти</div>
+    <div class="fcv">5 кроків вирішення · Я-повідомлення · Розпізнавання емоцій · Мій стиль · Особистий план</div>
+    <br>
+    <div class="fcl">Якщо важко і самому не виходить</div>
+    <div class="fcv">116 111 — анонімно, безкоштовно, для дітей і підлітків</div>
+  </div>
+  <div class="psy" style="text-align:left;margin-top:2rem">
+    <div class="psy-who">Порада психолога · Фінальна порада</div>
+    <p>Вміти вирішувати конфлікти — одна з найважливіших навичок у житті. Нею не народжуються — її тренують. Щоразу коли ти обираєш поговорити замість мовчати або кричати, ти тренуєш цей м'яз. Ти вже зробив/-ла крок сьогодні.</p>
+  </div>
+</div>
+
+<script>
+// NAV
+const sIds=['s0','s1','s2','s3','s4','s5','s6','s7'];
+const snds=document.querySelectorAll('.snd');
+snds.forEach(d=>d.addEventListener('click',()=>document.getElementById(sIds[+d.dataset.i])?.scrollIntoView({behavior:'smooth'})));
+window.addEventListener('scroll',()=>{
+  const p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  document.getElementById('prog').style.width=p+'%';
+  sIds.forEach((id,i)=>{const el=document.getElementById(id);if(!el)return;const r=el.getBoundingClientRect();if(r.top<=window.innerHeight*.55&&r.bottom>=window.innerHeight*.45){snds.forEach(d=>d.classList.remove('on'));snds[i]?.classList.add('on');}});
+});
+document.querySelectorAll('.reveal').forEach(r=>new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.06}).observe(r));
+
+// ── STYLE QUIZ (Thomas-Kilmann simplified) ──
+const sqQs=[
+  {q:'Твій друг узяв твою річ без дозволу. Ти:',
+   opts:[
+     {t:'Мовчу — не хочу псувати стосунки',v:'A'},
+     {t:'Прямо кажу «це моє, поверни»',v:'D'},
+     {t:'Питаю «що сталось?» і кажу як мені',v:'C'},
+     {t:'Пропоную домовитись: я дозволю але попереджай',v:'K'},
+   ]},
+  {q:'У групі проекту всі хочуть робити по-своєму. Ти:',
+   opts:[
+     {t:'Погоджуюсь на будь-що щоб не було конфлікту',v:'A'},
+     {t:'Наполягаю на своїй ідеї — вона краща',v:'D'},
+     {t:'Кажу свою думку і слухаю інших',v:'C'},
+     {t:'Пропоную взяти частину ідеї кожного',v:'K'},
+   ]},
+  {q:'Однокласник/-ця публічно розкритикував/-ла твою роботу. Ти:',
+   opts:[
+     {t:'Нічого не кажу, але переживаю всередині',v:'A'},
+     {t:'Захищаюсь і пояснюю що він/-а не правий/-а',v:'D'},
+     {t:'Після уроку говорю «мені було боляче» і питаю що мав/-ла на увазі',v:'C'},
+     {t:'Кажу «можливо є і плюси і мінуси» і продовжую',v:'K'},
+   ]},
+  {q:'Ти і друг хочете дивитись різні фільми. Ти:',
+   opts:[
+     {t:'Погоджуюсь на його/-її фільм',v:'A'},
+     {t:'Кажу «дивимось мій і все»',v:'D'},
+     {t:'Обговорюємо що кожен хоче і знаходимо спільне',v:'C'},
+     {t:'Пропоную: сьогодні твій, завтра мій',v:'K'},
+   ]},
+  {q:'Тебе несправедливо звинуватили при всіх. Ти:',
+   opts:[
+     {t:'Мовчу — не хочу скандалу',v:'A'},
+     {t:'Одразу і голосно кажу що це неправда',v:'D'},
+     {t:'Спокійно кажу «це не відповідає дійсності, давайте розберемось»',v:'C'},
+     {t:'Скажу потім один-на-один що це було несправедливо',v:'K'},
+   ]},
+];
+const sqStyles={
+  A:{name:'Уникання',ico:'🐢',color:'#888',desc:'Ти схильний/-а уникати конфліктів і відходити вбік. Це зменшує напругу в моменті — але проблеми накопичуються.',tip:'Спробуй: обери одну ситуацію де ти зазвичай мовчиш — і скажи своє «Я-повідомлення».'},
+  D:{name:'Суперництво',ico:'🦁',color:'#E85840',desc:'Ти захищаєш свою позицію рішуче і прямо. Це добре в ситуаціях де важливо відстояти себе — але може лякати інших.',tip:'Спробуй: перед відповіддю спитай «а що думає інша людина?»'},
+  C:{name:'Співпраця',ico:'🌟',color:'#0D8A72',desc:'Ти шукаєш рішення де обидва задоволені. Це найефективніший стиль для довгострокових стосунків!',tip:'Ти вже маєш цей навик — продовжуй і навчай інших!'},
+  K:{name:'Компроміс',ico:'🤝',color:'#C87C10',desc:'Ти готовий/-а на взаємні поступки. Це дуже корисно — але іноді обидва отримують «менше ніж хотіли».',tip:'Спробуй: іноді варто шукати рішення де обидва отримують ВСЕ — а не половину.'},
+};
+let sqI=0,sqVotes={A:0,D:0,C:0,K:0};
+function initSq(){sqI=0;sqVotes={A:0,D:0,C:0,K:0};ldSq();}
+function ldSq(){
+  const q=sqQs[sqI];
+  document.getElementById('sqStep').textContent=`Питання ${sqI+1} з ${sqQs.length}`;
+  document.getElementById('sqPf').style.width=`${((sqI+1)/sqQs.length)*100}%`;
+  document.getElementById('sqQ').textContent=q.q;
+  const o=document.getElementById('sqOpts');o.innerHTML='';
+  q.opts.forEach(op=>{
+    const b=document.createElement('button');b.className='sqz-o';
+    b.innerHTML=`<span class="sqz-ico">${op.v==='A'?'🐢':op.v==='D'?'🦁':op.v==='C'?'🌟':'🤝'}</span>${op.t}`;
+    b.onclick=()=>{sqVotes[op.v]++;sqI++;if(sqI<sqQs.length)ldSq();else showSqResult();};
+    o.appendChild(b);
+  });
+}
+function showSqResult(){
+  document.getElementById('sqBody').style.display='none';
+  const top=Object.entries(sqVotes).sort((a,b)=>b[1]-a[1])[0][0];
+  const s=sqStyles[top];
+  document.getElementById('sqRIco').textContent=s.ico;
+  document.getElementById('sqRT').textContent=`Твій стиль: ${s.name}`;
+  const lbl=document.getElementById('sqRL');lbl.textContent=s.name;lbl.style.background=s.color+'20';lbl.style.color=s.color;
+  document.getElementById('sqRB').textContent=s.desc;
+  document.getElementById('sqRTip').textContent='💡 '+s.tip;
+  document.getElementById('sqResult').classList.add('show');
+}
+function resetSq(){document.getElementById('sqBody').style.display='block';document.getElementById('sqResult').classList.remove('show');initSq();}
+initSq();
+
+// ── SCENARIOS ──
+const scg=[
+  {scene:'Максим взяв твій олівець без дозволу і каже «та він тобі не потрібен».',
+   q:'Що скажеш?',
+   opts:['Мовчу — нехай бере','«Ти завжди берешь чуже без питання!»','«Максиме, мені потрібен цей олівець. Наступного разу запитуй будь ласка»','Хапаю назад і відвертаюсь'],
+   ans:2,fb:'✓ Третій варіант — це «Я-повідомлення» + чітке прохання. Ти висловлюєш свою потребу без атаки. Другий варіант — узагальнення («завжди») яке лише злить.'},
+  {scene:'Тебе додали до групового проекту без твоєї згоди і тепер ти маєш робити більше роботи.',
+   q:'Як краще вчинити?',
+   opts:['Роблю мовчки але сердиться','Кажу «я не давав/-ла згоди, обговорімо розподіл роботи»','Взагалі нічого не роблю на знак протесту','Скаржуся всім друзям але не самому/-ій вчителю'],
+   ans:1,fb:'✓ Другий варіант — прямо і чесно. Ти не напали, але й не проковтнули несправедливість. Мовчання накопичує образу. Саботаж шкодить тобі самому.'},
+  {scene:'Подруга/друг прочитала/-в твоє особисте повідомлення через плече і тепер знає твій секрет.',
+   q:'Що робиш?',
+   opts:['Вдаю що нічого не сталось','Перестаю спілкуватись без пояснення','Кажу «мені некомфортно що ти прочитала/-в — для мене це важливо» і прошу тримати в таємниці','Розповідаю її/-його секрет у відповідь'],
+   ans:2,fb:'✓ Третій варіант. Ти говориш про своє відчуття («мені некомфортно»), пояснюєш чому і просиш конкретної дії. Без помсти і без мовчання.'},
+  {scene:'Ти і сусід/-ка по парті постійно штовхаєтесь. Сьогодні ти через це отримав/-ла зауваження.',
+   q:'Як вирішити?',
+   opts:['Штовхаю у відповідь сильніше','Прошу пересадити мене без розмови','Після уроку кажу «слухай, ми постійно заважаємо одне одному. Як ми можемо це вирішити?»','Скаржуся вчителю не говорячи з сусідом/-кою'],
+   ans:2,fb:'✓ Третій варіант — ти звертаєшся до людини напряму і пропонуєш вирішити разом. Це поважає і тебе і сусіда. Скарга без розмови — можливий крок, але після спроби вирішити самостійно.'},
+  {scene:'У чаті класу написали щось образливе і всі думають що це ти — але це не ти.',
+   q:'Що робиш?',
+   opts:['Мовчу — само розбереться','Пишу у чаті «це не я» і пояснюю','Кидаю образи у відповідь','Виходжу з чату і ні з ким не говорю'],
+   ans:1,fb:'✓ Другий варіант. Ти чітко і спокійно відповідаєш на звинувачення. Можна також поговорити з вчителем якщо ситуація серйозна. Мовчання сприймається як визнання.'},
+  {scene:'Ти зробив/-ла другу послугу а він/-вона не подякувала і навіть не визнала.',
+   q:'Як вчинити?',
+   opts:['Більше ніколи нічого не роблю','Кажу «ти невдячна/-ий людина»','Говорю «я допоміг/-ла тобі і хотів/-ла би щоб ти це визнавав/-ла — для мене це важливо»','Розповідаю всім щоб його/її засудили'],
+   ans:2,fb:'✓ Третій варіант — ти говориш про свою потребу у визнанні без звинувачень. Це відкриває можливість для реального діалогу.'},
+  {scene:'Учитель несправедливо знизив оцінку і каже що ти недостатньо старався/-лась.',
+   q:'Як правильно відреагувати?',
+   opts:['Мовчу але всередині кипить','Кричу «це несправедливо!»','Прошу після уроку пояснити критерії оцінки і показую свою роботу спокійно','Більше не намагаюсь — все одно несправедливо'],
+   ans:2,fb:'✓ Третій варіант. Ти ставиш питання, а не звинувачуєш. Після уроку і спокійно — правильно обраний момент. Кричати — закриває можливість почути тебе.'},
+  {scene:'Ти і друг посварились три дні тому і тепер не розмовляєте. Ти скучаєш але перший кроку не хочеш робити.',
+   q:'Що правда про цю ситуацію?',
+   opts:['Треба чекати поки він/-вона підійде — хто перший той програв','Написати «йди нафіг» щоб розрядити напругу','Написати «слухай, я скучаю за нашим спілкуванням. Можемо поговорити?» — перший крок не слабкість','Знайти нових друзів'],
+   ans:2,fb:'✓ Третій варіант. «Хто перший той програв» — дитяча логіка яка руйнує дружбу. Зробити перший крок до примирення — це сила, а не слабкість.'},
+];
+let scgI=0,scgSc=0,scgAns=false;
+function ldScg(){
+  const s=scg[scgI];document.getElementById('scgTl').textContent=`Ситуація ${scgI+1} з ${scg.length}`;
+  document.getElementById('scgPf').style.width=`${((scgI+1)/scg.length)*100}%`;
+  const q=document.getElementById('scgQ');q.innerHTML=`<div class="scg-scene"><strong>Ситуація</strong>${s.scene}</div>${s.q}`;
+  const o=document.getElementById('scgOpts');o.innerHTML='';
+  s.opts.forEach((op,i)=>{const b=document.createElement('button');b.className='scg-o';b.textContent=op;b.onclick=()=>anScg(i);o.appendChild(b);});
+  document.getElementById('scgFb').className='scg-fb';document.getElementById('scgNx').className='scg-nx';scgAns=false;
+}
+function anScg(i){if(scgAns)return;scgAns=true;const s=scg[scgI];document.querySelectorAll('.scg-o').forEach(b=>b.disabled=true);const fb=document.getElementById('scgFb');
+  if(i===s.ans){document.querySelectorAll('.scg-o')[i].classList.add('ok');fb.className='scg-fb ok show';scgSc++;document.getElementById('scgPts').textContent=scgSc+' балів';}
+  else{document.querySelectorAll('.scg-o')[i].classList.add('bad');document.querySelectorAll('.scg-o')[s.ans].classList.add('ok');fb.className='scg-fb bad show';}
+  fb.textContent=s.fb;document.getElementById('scgNx').className='scg-nx show';}
+function nxScg(){scgI++;if(scgI<scg.length){ldScg();return;}
+  document.getElementById('scgQ').textContent='';document.getElementById('scgOpts').innerHTML='';
+  document.getElementById('scgFb').className='scg-fb';document.getElementById('scgNx').className='scg-nx';
+  document.getElementById('scgTl').textContent='Завершено!';
+  const sc=document.getElementById('scgSc');sc.style.display='block';
+  const m=['Є над чим попрацювати 💙','Непогано! Ще трохи практики 🌱','Дуже добре! 🌟','Чемпіон/-ка спілкування! 🏆'];
+  sc.textContent=`${scgSc} з ${scg.length} — ${m[Math.min(Math.floor(scgSc/(scg.length/m.length)),m.length-1)]}`;}
+ldScg();
+
+// ── QUIZ ──
+const qz=[
+  {q:'Що таке «Я-повідомлення»?',
+   opts:['Коли кажеш «ти завжди...»','Коли говориш про свої відчуття без звинувачень: «я відчуваю... коли...»','Коли мовчиш і переживаєш','Коли пишеш смс замість розмови'],
+   ans:1,exp:'«Я-повідомлення» — це коли ти говориш про своє відчуття і потребу, а не атакуєш іншу людину. Це зменшує захисну реакцію і відкриває діалог.'},
+  {q:'Чим відрізняється конфлікт від непорозуміння?',
+   opts:['Нічим — це одне й те саме','Конфлікт — різні інтереси. Непорозуміння — різне розуміння однієї ситуації','Конфлікт — завжди голосний. Непорозуміння — тихе','Конфлікт — між друзями. Непорозуміння — з незнайомими'],
+   ans:1,exp:'Конфлікт виникає коли люди хочуть різного. Непорозуміння — коли по-різному тлумачать одне й те саме. Більшість «сварок» — насправді непорозуміння!'},
+  {q:'Яка емоція найчастіше «ховається» під злістю?',
+   opts:['Радість','Страх або образа','Нудьга','Здивування'],
+   ans:1,exp:'Злість — «вторинна» емоція. Під нею майже завжди є первинна: страх, образа або смуток. Якщо знайти «що під злістю» — легше пояснити собі і іншим.'},
+  {q:'Що краще зробити ПЕРШИМ коли виникає конфлікт?',
+   opts:['Одразу сказати всій правди','Зупинитись, охолонути і тільки потім говорити','Піти до вчителя','Написати в чат класу'],
+   ans:1,exp:'Перший крок — зупинитись і охолонути. Розмова в момент коли «кипить» рідко закінчується добре. Кілька дихань або пауза — і мозок знову може думати раціонально.'},
+  {q:'Яка фраза краще при конфлікті?',
+   opts:['«Ти завжди робиш так!»','«Всі знають що ти...»','«Я відчуваю себе знехтуваним/-ою коли ми домовляємось але ти не приходиш»','«Ти взагалі не думаєш про інших»'],
+   ans:2,exp:'Третій варіант — «Я-повідомлення». Ти говориш про конкретну ситуацію і своє відчуття. Узагальнення («завжди», «ніколи») і оцінки лише збільшують конфлікт.'},
+  {q:'Що означає «активне слухання»?',
+   opts:['Слухати музику активніше','Дати іншій людині говорити без перебивань і потім перевірити «чи правильно я зрозумів/-ла»','Кивати поки думаєш про своє','Записувати кожне слово'],
+   ans:1,exp:'Активне слухання — ти слухаєш щоб зрозуміти, а не щоб відповісти. Потім перефразовуєш: «Я зрозумів/-ла що тебе зачепило...» Це одразу знімає напругу.'},
+  {q:'Якщо сам/-а вирішити конфлікт не виходить — що найкраще зробити?',
+   opts:['Ображатись і мовчати','Розповісти всьому класу','Попросити допомогти дорослого якому довіряєш — це сила, не слабкість','Помститись'],
+   ans:2,exp:'Попросити допомоги — це зрілий крок. Медіатор (посередник) — людина що допомагає обом почути одне одного. Це не «ябеда» — це пошук рішення.'},
+  {q:'Чому важливо вибачитись коли ти помилився/-лась у конфлікті?',
+   opts:['Не важливо — вибачення це слабкість','Тому що це зменшить покарання','Вибачення відновлює довіру і показує що ти береш відповідальність — це ознака зрілості','Тому що так вимагають вчителі'],
+   ans:2,exp:'Справжнє вибачення — «я розумію що моя дія зробила тобі боляче і мені жаль» — відновлює стосунки. Це не слабкість а сила — ти береш відповідальність за свої дії.'},
+];
+let qzI=0,qzSc=0,qzAns=false;
+function ldQz(){const q=qz[qzI];document.getElementById('qzTl').textContent=`Питання ${qzI+1} з ${qz.length}`;document.getElementById('qzQ').textContent=q.q;
+  const o=document.getElementById('qzOpts');o.innerHTML='';
+  q.opts.forEach((op,i)=>{const b=document.createElement('button');b.className='qz-o';b.textContent=op;b.onclick=()=>anQz(i);o.appendChild(b);});
+  document.getElementById('qzFb').className='qz-fb';document.getElementById('qzNx').className='qz-nx';qzAns=false;}
+function anQz(i){if(qzAns)return;qzAns=true;const q=qz[qzI];document.querySelectorAll('.qz-o').forEach(b=>b.disabled=true);const fb=document.getElementById('qzFb');
+  if(i===q.ans){document.querySelectorAll('.qz-o')[i].classList.add('ok');fb.className='qz-fb ok show';qzSc++;document.getElementById('qzPts').textContent=qzSc+' балів';}
+  else{document.querySelectorAll('.qz-o')[i].classList.add('bad');document.querySelectorAll('.qz-o')[q.ans].classList.add('ok');fb.className='qz-fb bad show';}
+  fb.textContent=q.exp;document.getElementById('qzNx').className='qz-nx show';}
+function nxQz(){qzI++;if(qzI<qz.length){ldQz();return;}
+  document.getElementById('qzQ').textContent='';document.getElementById('qzOpts').innerHTML='';
+  document.getElementById('qzFb').className='qz-fb';document.getElementById('qzNx').className='qz-nx';
+  document.getElementById('qzTl').textContent='Готово!';
+  const sc=document.getElementById('qzSc');sc.style.display='block';
+  const m=['Читай ще раз 💙','Добре! 🌱','Відмінно! 🌟','Майстер/-иня! 🏆'];
+  sc.textContent=`${qzSc} з ${qz.length} — ${m[Math.min(Math.floor(qzSc/(qz.length/m.length)),m.length-1)]}`;}
+ldQz();
+
+// PLAN
+function genPlan(){
+  const v=id=>(document.getElementById(id).value.trim()||'—');
+  document.getElementById('planContent').innerHTML=`
+    <div class="pr-row"><span class="pr-l">Мій стиль</span><span>${v('p1')}</span></div>
+    <div class="pr-row"><span class="pr-l">Моя головна емоція</span><span>${v('p2')}</span></div>
+    <div class="pr-row"><span class="pr-l">Перший крок</span><span>${v('p3')}</span></div>
+    <div class="pr-row"><span class="pr-l">Моє Я-повідомлення</span><span>${v('p4')}</span></div>
+    <div class="pr-row"><span class="pr-l">Доросла якій довіряю</span><span>${v('p5')}</span></div>
+    <div class="pr-row"><span class="pr-l">Що хочу покращити</span><span>${v('p6')}</span></div>`;
+  document.getElementById('planRes').classList.add('show');
+}
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Що ще почитати чи подивитись</h2><div class="cards"><div><i>🧰</i><b>Слова замість кулаків</b><br><span>Практика<br>Розкажи, що відчуваєш і що хочеш</span></div><div><i>📞</i><b>116 111</b><br><span>Дитяча лінія<br>Безкоштовно, анонімно, цілодобово. Психологічна підтримка: 0 800 500 335</span></div></div><h3>Джерела, на які спирається урок</h3><details><summary>Показати список (9)</summary><ol><li>Glasl, F. (1982). The process of conflict escalation and roles of third parties. In G. B. J. Bomers &amp; R. B. Peterson (Eds.), <i>Conflict management and industrial relations</i>. Kluwer-Nijhoff.</li><li>Fisher, R., &amp; Ury, W. (1981). <i>Getting to Yes</i>. Houghton Mifflin.</li><li>Thomas, K. W., &amp; Kilmann, R. H. (1974). <i>Thomas-Kilmann Conflict Mode Instrument</i>. Xicom.</li><li>Gottman, J. M. (1994). <i>What Predicts Divorce?</i> Lawrence Erlbaum.</li><li>Lazare, A. (2004). <i>On Apology</i>. Oxford University Press.</li><li>Deutsch, M. (1973). <i>The Resolution of Conflict</i>. Yale University Press.</li><li>Johnson, D. W., &amp; Johnson, R. T. (1996). Conflict resolution and peer mediation programs in elementary and secondary schools: A review of the research. <i>Review of Educational Research, 66</i>(4), 459–506.</li><li>Olweus, D. (1993). <i>Bullying at School</i>. Blackwell.</li><li>Bower, S. A., &amp; Bower, G. H. (1976). <i>Asserting Yourself</i>. Addison-Wesley.</li></ol></details><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="07-5-6-lesson.html">← Тема 7</a></span><span><a href="09-5-6-lesson.html">Тема 9 →</a></span></div><a class="mo-fab" href="../index.html#t08">☰ До матриці</a></body>
+</html>

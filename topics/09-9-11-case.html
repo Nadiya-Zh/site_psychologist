@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Методичний кейс · Самооцінка · 9–11 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F8F5EE;--sf:#fff;--ink:#1D1A14;--tx:#38332A;--mu:#6D665A;--bd:#E6DFCF;--go:#8A6A1F;--go-l:#FAF1D9;--gr:#1C7A5C;--gr-l:#E5F5EE;--ro:#A8384A;--ro-l:#FCEAEC;--bl:#2E5E94;--bl-l:#E9F1FA;--vi:#5B45B8;--vi-l:#EFEBFA}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,sans-serif;background:var(--bg);color:var(--tx);font-size:15px;line-height:1.65}
+.hd{background:var(--ink);padding:1.1rem 1.5rem;position:sticky;top:0;z-index:50;color:#fff;font:700 .9rem Bitter,serif}
+.tabs{background:var(--sf);border-bottom:2px solid var(--bd);position:sticky;top:50px;z-index:40;overflow-x:auto;white-space:nowrap}
+.tb{background:none;border:none;border-bottom:3px solid transparent;padding:.85rem 1.1rem;font:700 .78rem Inter;color:var(--mu);cursor:pointer;margin-bottom:-2px}
+.tb.on{color:var(--go);border-color:var(--go)}
+.ph{background:linear-gradient(150deg,#0A0A0A,#2B2412);padding:3rem 1.5rem;color:#fff}
+.ph div{max-width:1000px;margin:0 auto}
+.ph small{letter-spacing:.2em;font-weight:700;color:#E8C877;font-size:.68rem}
+.ph h1{font:700 clamp(1.6rem,3.4vw,2.4rem) Bitter,serif;margin:.5rem 0}
+.ph p{color:rgba(255,255,255,.7);max-width:660px;font-size:.92rem}
+.panel{display:none}.panel.on{display:block}
+.wrap{max-width:1000px;margin:0 auto;padding:2.5rem 1.5rem}
+h2{font:700 1.35rem Bitter,serif;color:var(--ink);margin-bottom:.3rem}
+h3{font:700 1.02rem Bitter,serif;color:var(--ink);margin:1.6rem 0 .6rem}
+.ss{color:var(--mu);font-style:italic;font-size:.85rem;margin-bottom:1.4rem}
+.al{border-left:4px solid var(--go);background:var(--go-l);border-radius:8px;padding:.9rem 1.1rem;margin:.8rem 0;font-size:.86rem}
+.al b{display:block;font-size:.72rem;letter-spacing:.04em;margin-bottom:.1rem}
+.al.gr{border-color:var(--gr);background:var(--gr-l)}.al.ro{border-color:var(--ro);background:var(--ro-l)}.al.bl{border-color:var(--bl);background:var(--bl-l)}.al.vi{border-color:var(--vi);background:var(--vi-l)}
+.tl{border-left:2px solid var(--bd);margin:1.2rem 0 1.2rem .5rem;padding-left:1.4rem}
+.ti{margin-bottom:1.1rem;position:relative}
+.ti::before{content:'';position:absolute;left:-1.85rem;top:.4rem;width:10px;height:10px;border-radius:50%;background:var(--go)}
+.ti i{font-style:normal;font-weight:700;font-size:.68rem;color:var(--go);letter-spacing:.08em}
+.ti b{display:block;color:var(--ink)}.ti span{font-size:.85rem;color:var(--mu)}
+.scr{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:1rem 1.2rem;margin:1rem 0;position:relative}
+.scr::before{content:attr(data-l);position:absolute;top:-9px;left:12px;background:var(--go);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.08em;padding:.12rem .55rem;border-radius:3px}
+.scr p{font-style:italic;font-size:.88rem;color:var(--ink)}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.82rem;background:var(--sf)}
+th{background:var(--ink);color:#fff;text-align:left;padding:.55rem .8rem;font-size:.7rem}
+td{padding:.55rem .8rem;border-bottom:1px solid var(--bd);vertical-align:top}
+tr:nth-child(even) td{background:#FBF8F2}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.9rem;margin:1rem 0}
+.cd{background:var(--sf);border:1px solid var(--bd);border-radius:10px;padding:1.1rem 1.2rem}
+.cd h4{font:700 .92rem Bitter,serif;color:var(--ink);margin-bottom:.25rem}.cd p{font-size:.82rem;color:var(--mu)}
+.ab{border:1px solid var(--bd);border-radius:10px;overflow:hidden;margin:1rem 0;background:var(--sf)}
+.ab>b{display:block;padding:.65rem 1.1rem;color:#fff;font:700 .9rem Bitter,serif}
+.ab div{padding:.9rem 1.2rem;font-size:.84rem}.ab ol{padding-left:1.1rem;margin:.3rem 0}
+.ab em{display:block;margin-top:.4rem;color:var(--mu)}
+.rb{display:grid;grid-template-columns:1fr 70px;gap:.4rem .8rem;align-items:center;font-size:.84rem;padding:.4rem 0;border-bottom:1px solid var(--bd)}
+.rb select{padding:.3rem;border:1px solid #ccc;border-radius:6px;font:inherit}
+.rbres{margin-top:1rem;padding:1rem 1.2rem;border-radius:10px;background:var(--go-l);font-size:.9rem;display:none}
+.btn{background:var(--go);color:#fff;border:none;border-radius:8px;padding:.6rem 1.4rem;font:700 .85rem Inter;cursor:pointer;margin-top:.8rem}
+.ct{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.8rem;background:var(--gr-l);border:1px solid #B9DDCD;border-radius:10px;padding:1.1rem;margin:1rem 0}
+.ct b{font:700 1.05rem Bitter,serif;display:block;color:var(--ink)}.ct span{font-size:.78rem}
+.cb{border:1px solid var(--bd);border-radius:10px;overflow:hidden;margin:1rem 0;background:var(--sf)}
+.cb>b{display:block;padding:.6rem 1.1rem;color:#fff;font:700 .88rem Bitter,serif}
+.cb ol{padding:.9rem 1.2rem .9rem 2.2rem;font-size:.84rem}
+.df{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.9rem}
+.df div{border-radius:10px;padding:1rem;font-size:.82rem}.df b{display:block;margin-bottom:.3rem}.df ul{padding-left:1rem}
+</style>
+<link rel="stylesheet" href="../assets/psy.css">
+</head>
+<body><nav class="mo-nav"><a href="../index.html">← Кабінет психолога</a><span class="mo-t">Тема 9 · Самооцінка та впевненість у собі · 9–11 клас · Кейс психолога</span><span class="mo-g"><a href="09-5-6-case.html">5–6 клас</a><a href="09-7-8-case.html">7–8 клас</a><a href="09-9-11-case.html" class="on">9–11 клас</a><a href="09-b-case.html">Батьки</a><a href="09-9-11-lesson.html">⇄ Урок</a></span></nav>
+<div class="hd">◈ Методичний кейс · Самооцінка і впевненість у собі · 9–11 клас</div>
+<div class="ph"><div>
+  <small>КЕЙС ДЛЯ ПСИХОЛОГА / ПЕДАГОГА · 9–11 КЛАС · 45 ХВ</small>
+  <h1>Цінність без умов</h1>
+  <p>Хронометраж і скрипти, наукова база з обмеженнями, 6 активностей, діагностика (Розенберг, рефлексивний профіль, критерії направлення), диференціація 9/10/11, кризові протоколи.</p>
+</div></div>
+<div class="tabs">
+  <button class="tb on" onclick="sw('plan',this)">📅 Хронометраж і скрипти</button>
+  <button class="tb" onclick="sw('sci',this)">📚 Наукова база</button>
+  <button class="tb" onclick="sw('act',this)">🎭 Активності</button>
+  <button class="tb" onclick="sw('dia',this)">📊 Діагностика</button>
+  <button class="tb" onclick="sw('dif',this)">🎯 Диференціація</button>
+  <button class="tb" onclick="sw('cr',this)">🚨 Протоколи і рефлексія</button>
+</div>
+
+<div class="panel on" id="p-plan"><div class="wrap">
+  <h2>Хронометраж уроку</h2><p class="ss">45 хвилин · онлайн-урок + бесіда ведучого</p>
+  <div class="al ro"><b>Перед уроком</b>Підготуйте анонімну форму «Мені потрібна розмова», контакти 116 111 і 0 800 500 335. Профіль «умов цінності» — особиста рефлексія: не збирайте, не порівнюйте, не оцінюйте. Пам'ятайте про тиск НМТ і майбутнього вибору: тема може зачепити.</div>
+  <div class="tl">
+    <div class="ti"><i>00:00–05:00</i><b>Вступ</b><span>Питання без відповіді вголос: «Від чого сьогодні залежить, як ти до себе ставишся?» Короткий договір про безпеку.</span></div>
+    <div class="ti"><i>05:00–10:00</i><b>Блок 1: Самооцінка, залежна від умов</b><span>Модель Крокер. Дискусія: «Чим відрізняється «я цінний, бо...» від «я цінний»?»</span></div>
+    <div class="ti"><i>10:00–16:00</i><b>Блок 2: Профіль «умов цінності»</b><span>Індивідуально, без sharing. Ведучий проговорює: вища залежність ≠ «з вами щось не так», це привід розширити опори.</span></div>
+    <div class="ti"><i>16:00–22:00</i><b>Блок 3: Самозванець і перфекціонізм</b><span>Картки. Запитання: «Де ти помічаєш «або ідеально, або нічого»?»</span></div>
+    <div class="ti"><i>22:00–27:00</i><b>Блок 4: Самоспівчуття</b><span>Пояснення трьох складників. Коротка практика «паузи самоспівчуття» вголос (скрипт нижче).</span></div>
+    <div class="ti"><i>27:00–35:00</i><b>Блок 5: 8 дилем</b><span>Перед дилемою 8 — пауза, 116 111.</span></div>
+    <div class="ti"><i>35:00–40:00</i><b>Блок 6: Вікторина</b><span>9 питань, без оцінок.</span></div>
+    <div class="ti"><i>40:00–45:00</i><b>Блок 7: Протокол стійкості</b><span>Тиха робота, завершення, 15 хвилин після уроку.</span></div>
+  </div>
+  <h3>Скрипти</h3>
+  <div class="scr" data-l="ВІДКРИТТЯ"><p>«Сьогодні про те, як ти ставишся до себе, коли щось не виходить, і чому «просто вір у себе» не працює. Ми подивимось на те, що показують дослідження. Нічого збирати не буду.»</p></div>
+  <div class="scr" data-l="ПАУЗА САМОСПІВЧУТТЯ (1 ХВ)"><p>«Згадай щось, що зараз турбує, не найважче. Скажи про себе: «Мені зараз важко» (усвідомленість). «Це буває з людьми, я не один/-а» (спільна людяність). «Нехай я буду добрим/-ою до себе» (доброта). Зроби видих.»</p></div>
+  <div class="scr" data-l="ПЕРЕД ДИЛЕМОЮ 8"><p>«Наступна ситуація про тривалу безнадію. Якщо це «про тебе», підійди після уроку або напиши анонімно. 116 111 безкоштовно цілодобово. Просити про допомогу — сила.»</p></div>
+  <div class="scr" data-l="ЗАКРИТТЯ"><p>«Ти не мусиш заслуговувати на цінність результатами. Результати важливі, але вони не вичерпують тебе. Будуй опори в кількох місцях і став до себе як до друга.»</p></div>
+</div></div>
+
+<div class="panel" id="p-sci"><div class="wrap">
+  <h2>Наукова база</h2><p class="ss">Що відомо і де обмеження</p>
+  <div class="cg">
+    <div class="cd"><h4>Залежності самооцінки</h4><p>Crocker & Wolfe (2001): сфери, у які людина вкладає цінність (оцінки, схвалення, зовнішність, конкуренція, чеснота, сім'я). Висока залежність від сфери передбачає більшу нестабільність, стрес і гірші наслідки при невдачах. Crocker & Canevello (2008): «цілі підтримки» проти «цілей самообразу».</p></div>
+    <div class="cd"><h4>Самоспівчуття</h4><p>Neff (2003); Neff & Vonk (2009): стабільніше за самооцінку, менше залежить від успіху й порівнянь. Мета-аналізи (MacBeth & Gumley, 2012): помірний зв'язок із нижчими депресією й тривогою.</p></div>
+    <div class="cd"><h4>Перфекціонізм</h4><p>Hewitt & Flett: самоспрямований, соціально приписаний, спрямований на інших. Соціально приписаний та страх помилки тісніше пов'язані з тривогою, депресією й вигоранням; адаптивні високі стандарти менш шкідливі.</p></div>
+    <div class="cd"><h4>Синдром самозванця</h4><p>Clance & Imes (1978): не діагноз, а патерн мислення. Дані перевіряються переважно самозвітними шкалами; корисний як рефлексивна рамка.</p></div>
+    <div class="cd"><h4>Ідентичність</h4><p>Erikson: у 15–18 років центральне завдання пошуку «хто я». Відкладена визначеність нормальна й не потребує «вирішення» за один урок.</p></div>
+    <div class="cd"><h4>Не лише «підвищувати»</h4><p>Baumeister et al. (2003): сама висока самооцінка не покращує результатів; Brummelman et al. (2014): завищена похвала шкодить дітям з низькою самооцінкою. Основа — навички, досвід, самоспівчуття.</p></div>
+  </div>
+  <div class="al bl"><b>Обмеження</b>Самоспівчуття — не заміна терапії. Якщо за низькою самооцінкою стоять депресія, тривожний розлад, булінг, травма чи розлади харчової поведінки, потрібна індивідуальна допомога.</div>
+  <h3>Вікові особливості 14–17 років</h3>
+  <table><tr><th>Особливість</th><th>Наслідок для уроку</th></tr>
+  <tr><td>Тиск НМТ і вибору шляху</td><td>Нормалізація невизначеності; результат ≠ цінність</td></tr>
+  <tr><td>Романтичні стосунки, ризик залежності цінності від схвалення партнера</td><td>Тема меж; здорові стосунки не вимагають поступок цінності</td></tr>
+  <tr><td>Соціальні мережі, самопрезентація</td><td>Медіаграмотність без моралізаторства</td></tr>
+  <tr><td>Ризик депресії, тривоги, РХП підвищується</td><td>Уважність до сигналів, чіткі шляхи направлення</td></tr></table>
+</div></div>
+
+<div class="panel" id="p-act"><div class="wrap">
+  <h2>Активності для ведучого</h2><p class="ss">6 вправ для 9–11 класу</p>
+  <div class="ab"><b style="background:var(--go)">📊 1. Профіль умов цінності + діалог (12 хв)</b><div>Після профілю в парах: «Яка умова найсильніша? Що було б, якби вона зазнала невдачі? Яка інша опора мене тримала б?» <em>Партнер ставить запитання, а не радить.</em></div></div>
+  <div class="ab"><b style="background:var(--vi)">💬 2. Дебати «Висока самооцінка — самоціль?» (12 хв)</b><div>Дві групи готують аргументи «за» й «проти» високої самооцінки як цілі; потім міняються. <em>Результат: «багато опор, а не високий бал».</em></div></div>
+  <div class="ab"><b style="background:var(--gr)">💙 3. Лист собі від друга (10 хв)</b><div>Учень пише собі лист від імені друга, що знає його добре й зараз дізнався про його проблему. <em>Метод Нефф: 3 складники в тексті. Не збирається.</em></div></div>
+  <div class="ab"><b style="background:var(--bl)">🧭 4. Кейси НМТ / вибір шляху (10 хв)</b><div>Групи розбирають вигадану історію: результат нижчий за очікуваний. Що робить «критик», що робить «друг»? Які реальні варіанти? <em>Практика реалістичного мислення.</em></div></div>
+  <div class="ab"><b style="background:var(--ro)">🗣 5. Асертивність у стосунках (10 хв)</b><div>Рольові ситуації: тиск «довести почуття», знецінювання. Формула «Я-повідомлення» + межа. <em>Підкресліть: рольова гра добровільна.</em></div></div>
+  <div class="ab"><b style="background:var(--go)">🌐 6. Peer-teaching для 7–8 класу</b><div>Група 9–11 готує міні-лекцію «Самоспівчуття: що це і що не це» для 7–8 класу. <em>Закріплює знання, підсилює самоефективність.</em></div></div>
+</div></div>
+
+<div class="panel" id="p-dia"><div class="wrap">
+  <h2>Діагностика самооцінки</h2><p class="ss">Для шкільного психолога. Скринінг, не діагноз</p>
+  <div class="al ro"><b>Етичні межі</b>Діагностику проводить психолог за правилами закладу й, для неповнолітніх, за згодою батьків; учневі пояснюють мету і право відмовитись. Результати конфіденційні, не озвучуються класу. Низький показник — привід для розмови, а не ярлик.</div>
+
+  <h3>1. Шкала самооцінки Розенберга (RSES, 1965)</h3>
+  <div class="al bl"><b>Надійність і межі</b>Найвивченіший інструмент, добрі психометричні показники в підлітків і дорослих. Український текст нижче — робочий переклад без окремої української валідизації: для офіційних висновків візьміть затверджену версію. Пункти 6 і 9 чутливі: при низьких балах — індивідуальна розмова.</div>
+  <p style="font-size:.82rem;color:var(--mu);margin:.6rem 0">3 — повністю згоден/-на, 2 — згоден/-на, 1 — не згоден/-на, 0 — категорично не згоден/-на. Пункти 2, 5, 6, 8, 9 — у зворотному порядку (калькулятор враховує).</p>
+  <div id="rb"></div>
+  <button class="btn" onclick="calcRB()">Порахувати</button>
+  <div class="rbres" id="rbres"></div>
+  <div class="al"><b>Інтерпретація (за поширеною практикою)</b>0–30 балів. Приблизно 15–25 — нормальний діапазон; нижче 15 — нижча за норму (бесіда й спостереження); понад 25 — висока. Порівнюйте з динамікою учня.</div>
+
+  <h3>2. Додаткові інструменти (не відтворені тут через авторські права)</h3>
+  <table><tr><th>Що</th><th>Для чого</th><th>Де взяти</th></tr>
+  <tr><td>Шкала самоспівчуття Нефф (SCS або коротка SCS-SF)</td><td>Вимірювання самоспівчуття; для підлітків є адаптації</td><td>Безкоштовно для дослідницьких і освітніх цілей на self-compassion.org; уточнюйте умови й наявність українського перекладу</td></tr>
+  <tr><td>Contingencies of Self-Worth Scale (Crocker)</td><td>Стандартизована версія «залежностей самооцінки»</td><td>Сторінка Дженніфер Крокер / публікація Crocker et al. (2003); профіль в уроці — лише рефлексивний аналог</td></tr>
+  <tr><td>Скринінги депресії/тривоги (PHQ-A, GAD-7)</td><td>Оцінка при ознаках сумного настрою чи тривоги</td><td>Проводить підготовлений фахівець за протоколом; не «класне» опитування</td></tr></table>
+
+  <h3>3. Спостереження і критерії направлення</h3>
+  <table><tr><th>Ознаки</th><th>Дія</th></tr>
+  <tr><td>Знецінення, перфекціонізм, прокрастинація зі страху, самозванець</td><td>Бесіда, тренування самоспівчуття, «файл доказів»; за триваючого впливу — консультація психолога</td></tr>
+  <tr><td>Тривалий (2+ тижні) пригнічений настрій, втрата інтересів, зміна сну/апетиту, падіння функціонування</td><td>Направлення до фахівця для оцінки депресивного стану (лікар/психолог/психіатр)</td></tr>
+  <tr><td>Висловлювання про безнадію, смерть, самоушкодження</td><td>Протокол 3: негайна розмова, психолог і батьки, за потреби 103</td></tr>
+  <tr><td>Сильна зацикленість на вазі/формі тіла, обмеження їжі, компенсаторна поведінка</td><td>Не коментувати зовнішність; направлення до лікаря/фахівця з РХП</td></tr></table>
+  <div class="al"><b>Практично</b>Класно: лише анонімні «пульс-питання» (1–5) на початку й наприкінці. Індивідуальні методики — психолог, окремо, з наступною зустріччю.</div>
+</div></div>
+
+<div class="panel" id="p-dif"><div class="wrap">
+  <h2>Диференціація 9 / 10 / 11 клас</h2><p class="ss">Акценти за віком і потребами</p>
+  <div class="df">
+    <div style="background:var(--go-l)"><b>9 клас</b><ul><li>Вибір профілю/закладу, тиск «правильного вибору»</li><li>Самооцінка і однолітки</li><li>Акцент: опори, ідентичність, перфекціонізм</li></ul></div>
+    <div style="background:var(--gr-l)"><b>10 клас</b><ul><li>Романтичні стосунки, межі</li><li>Соцмережі, самопрезентація</li><li>Акцент: асертивність, самозванець</li></ul></div>
+    <div style="background:var(--bl-l)"><b>11 клас</b><ul><li>НМТ, вступ, майбутнє</li><li>Високий стрес і тривожність</li><li>Акцент: результат ≠ цінність; самоспівчуття; плани А/Б</li></ul></div>
+  </div>
+  <table><tr><th>Тип учня</th><th>Поведінка</th><th>Дія ведучого</th></tr>
+  <tr><td>Скептик</td><td>«Самодопомога — маячня»</td><td>Дайте дані й обмеження досліджень; запросіть перевірити практику</td></tr>
+  <tr><td>Високі досягнення, тривога</td><td>Відмінник/-ця з сильним страхом помилки</td><td>Підкресліть розрізнення стандартів і страху; індивідуальна розмова</td></tr>
+  <tr><td>Знецінює себе</td><td>«У мене нічого не вийде»</td><td>«Файл доказів»; самоспівчуття; при тривалості направлення</td></tr>
+  <tr><td>Мовчить, не бере участі</td><td>Пасивність</td><td>Не тисніть; після уроку запитайте приватно</td></tr>
+  <tr><td>Різка реакція на тему</td><td>Сльози, роздратування, виходить</td><td>Спокійно дозвольте вийти, зв'яжіться після уроку</td></tr></table>
+</div></div>
+
+<div class="panel" id="p-cr"><div class="wrap">
+  <h2>Кризові протоколи та рефлексія</h2><p class="ss">Алгоритми для педагога і психолога</p>
+  <div class="ct"><div><b>116 111</b><span>Дитяча лінія · безкоштовно · анонімно · цілодобово</span></div><div><b>0 800 500 335</b><span>Психологічна підтримка</span></div><div><b>102 / 103</b><span>Поліція / медики при загрозі</span></div></div>
+  <div class="cb"><b style="background:var(--go)">🟡 1 · Самознецінення і сильний перфекціонізм</b><ol><li>Вислухайте, не відмахуйтесь.</li><li>Розділіть «високі стандарти» і «страх помилки».</li><li>Запропонуйте психологічну консультацію; повідомте шкільного психолога.</li></ol></div>
+  <div class="cb"><b style="background:var(--bl)">🔵 2 · Булінг, кібербулінг, тиск у стосунках</b><ol><li>Підтримайте учня наодинці, збережіть докази (скріншоти).</li><li>Повідомте керівництво й батьків за процедурою закладу.</li><li>Не вимагайте публічного «примирення».</li><li>При насильстві в стосунках — залучіть психолога й, за потреби, правоохоронців.</li></ol></div>
+  <div class="cb"><b style="background:var(--ro)">🔴 3 · Думки про смерть, самоушкодження</b><ol><li>Приватно й прямо: «Ти думаєш про те, щоб заподіяти собі шкоду?»</li><li>Не залишайте самого/-у; не обіцяйте таємниці.</li><li>Шкільний психолог і батьки одразу; 103 при безпосередній загрозі.</li><li>Зафіксуйте сказане дослівно.</li></ol></div>
+  <div class="cb"><b style="background:var(--vi)">🟣 4 · Розлади харчової поведінки</b><ol><li>Сигнали: різке схуднення, обмеження їжі, зацикленість на вазі, ритуали, ізоляція за їжею.</li><li>Не коментуйте вагу й зовнішність; не хваліть схуднення.</li><li>Не ставте діагноз; направте учня й батьків до лікаря/фахівця з РХП.</li></ol></div>
+  <h3>Рефлексія</h3>
+  <table><tr><th>Exit ticket</th><th>Що дає</th></tr>
+  <tr><td>«Наскільки я на своєму боці» 1–5 (анонімно, на початку й наприкінці)</td><td>Груповий ефект</td></tr>
+  <tr><td>«Одна опора, яку хочу посилити»</td><td>Особистий намір</td></tr>
+  <tr><td>«Одна фраза до себе як до друга»</td><td>Закріплення самоспівчуття</td></tr>
+  <tr><td>«Мені потрібна розмова» (анонімно)</td><td>Безпечне звернення</td></tr></table>
+  <div class="al gr"><b>Подальша робота</b>Щотижня 3 хвилини «файлу доказів» або паузи самоспівчуття. Батьківські збори: «Як підтримувати підлітка перед НМТ». Peer-teaching 9–11 для 7–8. Наступні теми: «Стосунки і межі», «Вигорання перед НМТ».</div>
+  <div class="al"><b>Для вас</b>Тема самооцінки зачіпає й дорослих. Після важких розмов використовуйте підтримку колег або 0 800 500 335.</div>
+</div></div>
+
+<script>
+function sw(n,b){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));document.querySelectorAll('.tb').forEach(x=>x.classList.remove('on'));
+ document.getElementById('p-'+n).classList.add('on');b.classList.add('on');scrollTo({top:0,behavior:'smooth'});}
+const rs=[['Загалом я задоволений/-на собою',0],['Іноді я думаю, що я зовсім нікчемний/-на',1],['Я вважаю, що в мене є низка хороших якостей',0],['Я вмію робити все не гірше за більшість інших людей',0],['Мені, здається, нічим пишатися',1],['Іноді я почуваюсь абсолютно непотрібним/-ою',1],['Я вважаю себе гідною людиною, принаймні не гіршою за інших',0],['Мені хотілося б більше поважати себе',1],['Загалом я схильний/-на вважати себе невдахою',1],['Я ставлюсь до себе позитивно',0]];
+const rb=document.getElementById('rb');
+rs.forEach(([t,r],i)=>{const d=document.createElement('div');d.className='rb';
+ d.innerHTML=`<span>${i+1}. ${t}</span><select data-r="${r}"><option value="">—</option><option value="3">3</option><option value="2">2</option><option value="1">1</option><option value="0">0</option></select>`;rb.appendChild(d);});
+function calcRB(){const sel=[...rb.querySelectorAll('select')],out=document.getElementById('rbres');
+ if(sel.some(s=>s.value==='')){out.style.display='block';out.textContent='Відповідайте на всі 10 тверджень.';return;}
+ let sum=0,fl=[];sel.forEach((s,i)=>{const v=+s.value,sc=s.dataset.r==='1'?3-v:v;sum+=sc;if((i===5||i===8)&&sc<=1)fl.push(i+1);});
+ const lv=sum<15?'нижче нормального діапазону':sum<=25?'нормальний діапазон':'вище нормального діапазону';
+ out.style.display='block';out.innerHTML=`<b>${sum} / 30 — ${lv}</b><br>Це скринінг, а не діагноз.${fl.length?`<br><b style="color:#A8384A">Звернути увагу: пункти ${fl.join(' і ')} дали низькі бали. Потрібна індивідуальна бесіда.</b>`:''}`;}
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Джерела й що почитати</h2><h3>Використані джерела</h3><ol><li>Rosenberg, M. (1965). <i>Society and the Adolescent Self-Image</i>. Princeton University Press.</li><li>Baumeister, R. F., Campbell, J. D., Krueger, J. I., &amp; Vohs, K. D. (2003). Does high self-esteem cause better performance, interpersonal success, happiness, or healthier lifestyles? <i>Psychological Science in the Public Interest, 4</i>(1), 1–44.</li><li>Bandura, A. (1977). Self-efficacy: Toward a unifying theory of behavioral change. <i>Psychological Review, 84</i>(2), 191–215.</li><li>Dweck, C. S. (2006). <i>Mindset: The New Psychology of Success</i>. Random House. Критика ефектів: Sisk, V. F., et al. (2018). <i>Psychological Science, 29</i>(4), 549–571.</li><li>Mueller, C. M., &amp; Dweck, C. S. (1998). Praise for intelligence can undermine children’s motivation and performance. <i>Journal of Personality and Social Psychology, 75</i>(1), 33–52.</li><li>Brummelman, E., Thomaes, S., de Castro, B. O., Overbeek, G., &amp; Bushman, B. J. (2014). “That’s not just beautiful — that’s incredibly beautiful!” <i>Psychological Science, 25</i>(3), 728–735.</li><li>Neff, K. D. (2003). Self-compassion: An alternative conceptualization of a healthy attitude toward oneself. <i>Self and Identity, 2</i>(2), 85–101.</li><li>Neff, K. D., &amp; Vonk, R. (2009). Self-compassion versus global self-esteem. <i>Journal of Personality, 77</i>(1), 23–50.</li><li>MacBeth, A., &amp; Gumley, A. (2012). Exploring compassion: A meta-analysis of the association between self-compassion and psychopathology. <i>Clinical Psychology Review, 32</i>(6), 545–552.</li><li>Harter, S. (1999). <i>The Construction of the Self</i>. Guilford Press.</li><li>Robins, R. W., Trzesniewski, K. H., Tracy, J. L., Gosling, S. D., &amp; Potter, J. (2002). Global self-esteem across the life span. <i>Psychology and Aging, 17</i>(3), 423–434.</li><li>Orth, U., Erol, R. Y., &amp; Luciano, E. C. (2018). Development of self-esteem from age 4 to 94 years. <i>Psychological Bulletin, 144</i>(10), 1045–1080.</li><li>Crocker, J., &amp; Wolfe, C. T. (2001). Contingencies of self-worth. <i>Psychological Review, 108</i>(3), 593–623.</li><li>Crocker, J., &amp; Canevello, A. (2008). Creating and undermining social support in communal relationships. <i>Journal of Personality and Social Psychology, 95</i>(3), 555–575.</li><li>Clance, P. R., &amp; Imes, S. A. (1978). The imposter phenomenon in high achieving women. <i>Psychotherapy: Theory, Research &amp; Practice, 15</i>(3), 241–247.</li><li>Hewitt, P. L., &amp; Flett, G. L. (1991). Perfectionism in the self and social contexts. <i>Journal of Personality and Social Psychology, 60</i>(3), 456–470.</li><li>Gottman, J. M., Katz, L. F., &amp; Hooven, C. (1996). Parental meta-emotion philosophy and the emotional life of families. <i>Journal of Family Psychology, 10</i>(3), 243–268.</li><li>Baumrind, D. (1991). The influence of parenting style on adolescent competence and substance use. <i>Journal of Early Adolescence, 11</i>(1), 56–95.</li><li>Gilovich, T., Medvec, V. H., &amp; Savitsky, K. (2000). The spotlight effect in social judgment. <i>Journal of Personality and Social Psychology, 78</i>(2), 211–222.</li><li>Elkind, D. (1967). Egocentrism in adolescence. <i>Child Development, 38</i>(4), 1025–1034.</li><li>Festinger, L. (1954). A theory of social comparison processes. <i>Human Relations, 7</i>(2), 117–140.</li><li>Orben, A., &amp; Przybylski, A. K. (2019). The association between adolescent well-being and digital technology use. <i>Nature Human Behaviour, 3</i>, 173–182.</li></ol><h3>Що почитати фахівцеві</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>Self-Compassion</td><td>Neff K., 2011</td><td>Практики самоспівчуття</td></tr><tr><td>Mindset</td><td>Dweck C. S., 2006</td><td>Установка на зростання; про критику ефектів див. Sisk та ін. (2018)</td></tr><tr><td>Brainstorm</td><td>Siegel D. J., 2013</td><td>Про мозок підлітка</td></tr><tr><td>The Construction of the Self</td><td>Harter S., 1999</td><td>Розвиток самоуявлення</td></tr></table><h3>Що порадити батькам</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>How to Talk So Kids Will Listen &amp; Listen So Kids Will Talk</td><td>Faber A., Mazlish E.</td><td>Практичні фрази</td></tr><tr><td>Raising an Emotionally Intelligent Child</td><td>Gottman J., DeClaire J., 1997</td><td>Емоційне коучинг-спілкування</td></tr><tr><td>The Whole-Brain Child</td><td>Siegel D. J., Bryson T. P., 2011</td><td>Емоції дитини</td></tr></table><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="08-9-11-case.html">← Тема 8</a></span><span><a href="10-9-11-case.html">Тема 10 →</a></span></div><a class="mo-fab" href="../index.html#t09">☰ До матриці</a></body>
+</html>

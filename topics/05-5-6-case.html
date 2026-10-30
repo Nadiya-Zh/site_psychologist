@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Методичний кейс · Стрес і тіло · 5–6 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:    #F5F2EE;
+  --surf:  #FFFFFF;
+  --ink:   #1A1F2A;
+  --text:  #2D3748;
+  --muted: #718096;
+  --bd:    #E2DDD4;
+  --bds:   #C5BEB4;
+
+  --gr:   #1A7A5E; --gr-l: #E8F5F0; --gr-ll:#F2FAF7;
+  --or:   #B85820; --or-l: #FBF0EB;
+  --in:   #344E8C; --in-l: #EEF1FA;
+  --am:   #A86A0A; --am-l: #FBF3E6;
+  --pl:   #6B4E80; --pl-l: #F2EDF6;
+  --sl:   #3A5E80; --sl-l: #EBF2F8;
+  --ro:   #A0394A; --ro-l: #FDECEA;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.65;}
+
+.hdr{background:var(--ink);padding:.85rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.65rem;position:sticky;top:0;z-index:300;}
+.hbrand{font-family:'Bitter',serif;font-size:.88rem;font-weight:700;color:white;display:flex;align-items:center;gap:.5rem;}
+.hnav{display:flex;gap:.25rem;flex-wrap:wrap;}
+.hn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:.28rem .78rem;font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;color:rgba(255,255,255,.55);cursor:pointer;transition:all .2s;}
+.hn:hover{background:rgba(255,255,255,.14);color:white;}
+.hn.on{background:var(--gr);border-color:var(--gr);color:white;}
+
+.ph{background:linear-gradient(155deg,#0A1410 0%,#0E2018 50%,#1A1008 100%);padding:4rem 2rem;position:relative;overflow:hidden;}
+.ph::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(46,180,120,.2),transparent 70%);}
+.ph::after{content:'🌿';position:absolute;right:3rem;bottom:1.5rem;font-size:7rem;opacity:.07;pointer-events:none;}
+.ph-in{max-width:1060px;margin:0 auto;position:relative;z-index:1;}
+.ph-tag{font-size:.65rem;font-weight:700;letter-spacing:.22em;color:rgba(120,220,160,.65);margin-bottom:.8rem;}
+.ph h1{font-family:'Bitter',serif;font-size:clamp(1.7rem,3.2vw,2.6rem);font-weight:700;color:white;line-height:1.18;margin-bottom:.65rem;}
+.ph h1 span{color:#80E8A8;}
+.ph .sub{font-size:.92rem;font-weight:300;font-style:italic;color:rgba(255,255,255,.42);max-width:560px;margin-bottom:1.7rem;}
+.ph-chips{display:flex;gap:.5rem;flex-wrap:wrap;}
+.chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:50px;padding:.3rem .9rem;font-size:.71rem;font-weight:600;color:rgba(255,255,255,.62);display:flex;align-items:center;gap:.3rem;}
+
+.tabs{background:var(--surf);border-bottom:2px solid var(--bd);position:sticky;top:54px;z-index:200;overflow-x:auto;}
+.tabs-in{max-width:1060px;margin:0 auto;display:flex;}
+.tb{background:none;border:none;border-bottom:3px solid transparent;padding:.88rem 1.2rem;cursor:pointer;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;color:var(--muted);white-space:nowrap;transition:all .2s;display:flex;align-items:center;gap:.38rem;margin-bottom:-2px;}
+.tb:hover{color:var(--ink);}
+.tb.on{color:var(--gr);border-bottom-color:var(--gr);}
+
+.panel{display:none;}.panel.on{display:block;}
+.wrap{max-width:1060px;margin:0 auto;padding:3rem 2rem;}
+
+.sh{font-family:'Bitter',serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:.32rem;}
+.ss{font-size:.82rem;color:var(--muted);font-style:italic;margin-bottom:1.8rem;}
+hr.r{border:none;border-top:1px solid var(--bd);margin:2.3rem 0;}
+
+.card{background:var(--surf);border:1px solid var(--bd);border-radius:10px;padding:1.3rem 1.5rem;box-shadow:0 1px 3px rgba(0,0,0,.03);}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.95rem;margin:1.4rem 0;}
+.card .ci{font-size:1.5rem;margin-bottom:.45rem;}
+.card h3{font-family:'Bitter',serif;font-size:.92rem;font-weight:700;margin-bottom:.28rem;color:var(--ink);}
+.card p{font-size:.82rem;color:var(--muted);line-height:1.6;}
+
+.al{border-radius:9px;padding:1rem 1.3rem;margin:.85rem 0;display:flex;gap:.75rem;align-items:flex-start;}
+.al .ai{font-size:1.1rem;flex-shrink:0;margin-top:.1rem;}
+.al p{font-size:.83rem;line-height:1.65;}
+.al strong{font-weight:700;display:block;margin-bottom:.1rem;font-size:.71rem;letter-spacing:.04em;}
+.a-gr{background:var(--gr-l);border-left:4px solid var(--gr);}
+.a-or{background:var(--or-l);border-left:4px solid var(--or);}
+.a-in{background:var(--in-l);border-left:4px solid var(--in);}
+.a-am{background:var(--am-l);border-left:4px solid var(--am);}
+.a-pl{background:var(--pl-l);border-left:4px solid var(--pl);}
+.a-sl{background:var(--sl-l);border-left:4px solid var(--sl);}
+.a-ro{background:var(--ro-l);border-left:4px solid var(--ro);}
+
+.tl{padding-left:2.2rem;position:relative;margin:1.4rem 0;}
+.tl::before{content:'';position:absolute;left:.7rem;top:0;bottom:0;width:2px;background:var(--bd);}
+.ti{position:relative;margin-bottom:1.4rem;}
+.ti::before{content:'';position:absolute;left:-1.85rem;top:.32rem;width:12px;height:12px;border-radius:50%;background:var(--gr);border:3px solid var(--surf);box-shadow:0 0 0 2px var(--gr);}
+.ti-t{font-size:.64rem;font-weight:700;letter-spacing:.1em;color:var(--gr);margin-bottom:.12rem;}
+.ti-h{font-weight:700;font-size:.9rem;margin-bottom:.22rem;color:var(--ink);}
+.ti-b{font-size:.82rem;color:var(--muted);line-height:1.65;}
+
+.scr{background:var(--bg);border:1px solid var(--bd);border-radius:9px;padding:1.2rem 1.4rem;margin:.85rem 0;position:relative;}
+.scr::before{content:attr(data-lbl);position:absolute;top:-9px;left:.95rem;background:var(--gr);color:white;font-size:.58rem;font-weight:700;letter-spacing:.1em;padding:.15rem .6rem;border-radius:3px;}
+.scr.or::before{background:var(--or);}
+.scr.in::before{background:var(--in);}
+.scr.am::before{background:var(--am);}
+.scr.pl::before{background:var(--pl);}
+.scr p{font-size:.87rem;line-height:1.82;font-style:italic;color:var(--ink);}
+.scr p strong{font-style:normal;color:var(--gr);}
+.scr.or p strong{color:var(--or);}
+
+.tbl{width:100%;border-collapse:collapse;margin:1.1rem 0;font-size:.82rem;}
+.tbl th{background:var(--ink);color:white;text-align:left;padding:.62rem .92rem;font-weight:700;font-size:.7rem;letter-spacing:.04em;}
+.tbl td{padding:.62rem .92rem;border-bottom:1px solid var(--bd);vertical-align:top;line-height:1.65;}
+.tbl tr:nth-child(even) td{background:#FAF8F4;}
+.tbl tr:hover td{background:var(--gr-ll);}
+
+.pi{background:linear-gradient(135deg,var(--pl-l),#FAF8FF);border:1px solid #D4C6E8;border-radius:11px;padding:1.35rem 1.55rem;margin:1.4rem 0;position:relative;overflow:hidden;}
+.pi::after{content:'🧠';font-size:3.8rem;position:absolute;right:.7rem;bottom:-.3rem;opacity:.07;pointer-events:none;}
+.pi .pt{font-size:.64rem;font-weight:700;letter-spacing:.14em;color:var(--pl);margin-bottom:.45rem;}
+.pi p{font-size:.85rem;line-height:1.75;color:#3D2B5C;font-style:italic;}
+.pi .src{font-size:.71rem;color:#9B7EC8;margin-top:.5rem;font-style:normal;}
+
+.df3{display:grid;grid-template-columns:repeat(3,1fr);gap:.95rem;margin:1.4rem 0;}
+@media(max-width:660px){.df3{grid-template-columns:1fr;}}
+.dc{border-radius:9px;padding:1.1rem;}
+.dc h4{font-size:.75rem;font-weight:700;letter-spacing:.04em;margin-bottom:.55rem;}
+.dc ul{padding-left:1.05rem;font-size:.81rem;line-height:1.7;color:var(--muted);}
+.dc-a{background:#FFF8E6;border:1px solid #EDD878;}.dc-a h4{color:#8A6D00;}
+.dc-b{background:var(--gr-l);border:1px solid #9DCFBE;}.dc-b h4{color:#1E5244;}
+.dc-c{background:var(--in-l);border:1px solid #A8B8E8;}.dc-c h4{color:#2A3B80;}
+
+.crb{border:1px solid var(--bd);border-radius:9px;overflow:hidden;margin:1.4rem 0;}
+.crb-h{padding:.75rem 1.25rem;font-family:'Bitter',serif;font-size:.88rem;font-weight:700;display:flex;align-items:center;gap:.5rem;color:white;}
+.crb-b{padding:1.15rem 1.35rem;background:var(--surf);}
+.crb-b h4{font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.25rem;}
+.crb-b p{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:.5rem;}
+.crb-b ol,.crb-b ul{padding-left:1.1rem;font-size:.8rem;color:var(--text);line-height:1.85;}
+
+.ab{border:1px solid var(--bd);border-radius:9px;overflow:hidden;margin:1.4rem 0;}
+.ab-h{padding:.72rem 1.25rem;font-family:'Bitter',serif;font-size:.86rem;font-weight:700;display:flex;align-items:center;gap:.48rem;color:white;}
+.ab-b{padding:1.1rem 1.3rem;background:var(--surf);}
+.ab-b h4{font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.25rem;}
+.ab-b p{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:.48rem;}
+.ab-b ol,.ab-b ul{padding-left:1.05rem;font-size:.8rem;color:var(--text);line-height:1.8;}
+
+.contacts{background:linear-gradient(135deg,var(--gr-l),var(--gr-ll));border:1.5px solid rgba(26,122,94,.22);border-radius:11px;padding:1.35rem 1.55rem;margin:1.4rem 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.95rem;}
+.ct h4{font-size:.76rem;font-weight:700;color:var(--gr);margin-bottom:.28rem;}
+.ct p{font-size:.8rem;color:var(--text);line-height:1.6;}
+.ct .num{font-family:'Bitter',serif;font-size:1.08rem;font-weight:700;color:var(--ink);}
+
+.tag{display:inline-block;font-size:.65rem;font-weight:700;padding:.15rem .52rem;border-radius:3px;margin:.12rem;}
+.tgr{background:var(--gr-l);color:#1E5244;}.tor{background:var(--or-l);color:#7A3520;}
+.tin{background:var(--in-l);color:#2A3B80;}.tam{background:var(--am-l);color:#7A5800;}
+.tpl{background:var(--pl-l);color:#4A2B6A;}.tsl{background:var(--sl-l);color:#2A4A6A;}
+.tro{background:var(--ro-l);color:#7A2030;}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s;}
+.reveal.vis{opacity:1;transform:none;}
+</style>
+<link rel="stylesheet" href="../assets/psy.css">
+</head>
+<body><nav class="mo-nav"><a href="../index.html">← Кабінет психолога</a><span class="mo-t">Тема 5 · Стрес і тіло: як зняти напруження · 5–6 клас · Кейс психолога</span><span class="mo-g"><a href="05-5-6-case.html" class="on">5–6 клас</a><a href="05-7-8-case.html">7–8 клас</a><a href="05-9-11-case.html">9–11 клас</a><a href="05-b-case.html">Батьки</a><a href="05-5-6-lesson.html">⇄ Урок</a></span></nav>
+
+<div class="hdr">
+  <div class="hbrand">🌿 Методичний кейс · Стрес і тіло · 5–6 клас</div>
+  <div class="hnav">
+    <button class="hn on"  onclick="sw('plan')">📅 Хронометраж</button>
+    <button class="hn" onclick="sw('theory')">📚 Теорія</button>
+    <button class="hn" onclick="sw('activities')">🎭 Активності</button>
+    <button class="hn" onclick="sw('diff')">🎯 Диференціація</button>
+    <button class="hn" onclick="sw('crisis')">🚨 Протоколи</button>
+    <button class="hn" onclick="sw('scripts')">🗣️ Скрипти</button>
+    <button class="hn" onclick="sw('reflection')">💬 Рефлексія</button>
+  </div>
+</div>
+
+<div class="ph">
+  <div class="ph-in">
+    <div class="ph-tag">МЕТОДИЧНИЙ КЕЙС ДЛЯ ПЕДАГОГА / ПСИХОЛОГА · 5–6 КЛАС</div>
+    <h1>Стрес і тіло:<br><span>як зняти напруження</span></h1>
+    <p class="sub">Повний сценарій уроку з науковою базою, 6 активностями, скриптами дихальних технік, диференціацією, кризовими протоколами і рекомендаціями для 11–12-річних</p>
+    <div class="ph-chips">
+      <div class="chip">⏱ 45 хвилин</div>
+      <div class="chip">👦 5–6 клас (11–12 р.)</div>
+      <div class="chip">🫁 Дихальні техніки</div>
+      <div class="chip">🧍 Карта тіла</div>
+      <div class="chip">🌿 8 інструментів</div>
+      <div class="chip">🚨 Кризові протоколи</div>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tabs-in">
+    <button class="tb on" onclick="sw('plan')">📅 Хронометраж і скрипти</button>
+    <button class="tb" onclick="sw('theory')">📚 Наукова база</button>
+    <button class="tb" onclick="sw('activities')">🎭 Активності педагога</button>
+    <button class="tb" onclick="sw('diff')">🎯 Диференціація</button>
+    <button class="tb" onclick="sw('crisis')">🚨 Кризові протоколи</button>
+    <button class="tb" onclick="sw('scripts')">🗣️ Скрипти і фрази</button>
+    <button class="tb" onclick="sw('reflection')">💬 Рефлексія</button>
+  </div>
+</div>
+
+<!-- PLAN -->
+<div class="panel on" id="panel-plan">
+<div class="wrap">
+  <p class="sh reveal">Покроковий хронометраж уроку</p>
+  <p class="ss reveal">Деталізований сценарій для 5–6 класу з підказками педагогу</p>
+
+  <div class="al a-or reveal">
+    <span class="ai">📌</span>
+    <div><p><strong>Перед уроком</strong> Перевірте файл учня самостійно — пройдіть дихальну вправу. Для 5–6 класу урок про стрес може виявити дітей, які переживають хронічний стрес (школа, сім'я, або воєнний контекст). Будьте готові до розкриттів. Підготуйте: контакти 116 111, бланк направлення до психолога.</p></div>
+  </div>
+
+  <div class="tl reveal">
+    <div class="ti">
+      <div class="ti-t">00:00 — 06:00</div>
+      <div class="ti-h">Вступ: «Коли востаннє ти хвилювався/-лась?»</div>
+      <div class="ti-b">Не питайте «чи відчуваєш стрес» — питайте конкретно: <em>«Коли в цьому тижні тобі було хвилюватись або тривожно? Що це було?»</em> Хвилина письма або в чаті. 2–3 відповіді вголос. Потім: <em>«Стрес є у всіх. Сьогодні навчимось розуміти його і давати йому раду».</em></div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">06:00 — 13:00</div>
+      <div class="ti-h">Блок 1: Що таке стрес + сигнали тіла</div>
+      <div class="ti-b">Учні відмічають свої ознаки і натискають «перевірити профіль». Педагог зачитує порада психолога про «режим виживання». Запитайте: <em>«Хто впізнав у цьому списку себе?»</em> Нормалізуйте: <em>«Всі відповіді правильні — бо у кожного своя реакція».</em></div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">13:00 — 19:00</div>
+      <div class="ti-h">Блок 2: Карта тіла</div>
+      <div class="ti-b">Учні натискають на зони тіла. Педагог може провести паралельно офлайн: <em>«Де у вас живе стрес? Покажіть рукою».</em> Після: <em>«Тіло знає про стрес раніше, ніж ми думаємо про нього. Навчитись чути ці сигнали — перший крок».</em></div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">19:00 — 27:00</div>
+      <div class="ti-h">Блок 3: Дихальна вправа (інтерактивна)</div>
+      <div class="ti-b">Обов'язково проведіть разом — не залишайте учнів робити самостійно. <em>«Закрийте очі або подивіться в одну точку. Починаємо разом».</em> Техніка 4-7-8 — 3 цикли. Після: <em>«Як змінилось ваше тіло? Що відчули?»</em> Дайте 2–3 відповідям прозвучати.</div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">27:00 — 34:00</div>
+      <div class="ti-h">Блок 4: 8 інструментів + Сценарії</div>
+      <div class="ti-b">Учні відкривають інструменти і проходять сценарії. Педагог синхронно або учні самостійно. Особлива увага — сценарій 6 (стрес не проходить кілька днів). Перед ним: <em>«Якщо це питання не теоретичне — після уроку я поруч».</em></div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">34:00 — 40:00</div>
+      <div class="ti-h">Блок 5: Вікторина</div>
+      <div class="ti-b">7 питань. Акцент на питаннях про дихання і фізичну активність — практичні знання, а не теорія. Після вікторини: <em>«Що вас здивувало? Що ви не знали?»</em></div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">40:00 — 44:00</div>
+      <div class="ti-h">Блок 6: Мій особистий набір</div>
+      <div class="ti-b">4 хвилини у тиші. Нагадайте: <em>«Це тільки ваше. Але якщо хтось хоче поділитись — я рада/-ий почути».</em> Збережіть скріншот плану у телефон.</div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">44:00 — 45:00</div>
+      <div class="ti-h">Завершення</div>
+      <div class="ti-b">Прочитайте фінальне слово. Назвіть 116 111. Особисто: <em>«Я залишаюсь ще 10 хвилин. Хто хоче — підходьте».</em></div>
+    </div>
+  </div>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">Скрипти для уроку</p>
+
+  <div class="scr" data-lbl="ВІДКРИТТЯ">
+    <p><strong>«</strong>Хто з вас хоч раз відчував, що серце б'ється як шалене перед контрольною? Або живіт крутить перед виступом? Піднімайте руки... Це — стрес. І сьогодні ми не будемо від нього тікати. Ми з ним познайомимось і навчимось з ним домовлятись.<strong>»</strong></p>
+  </div>
+  <div class="scr" data-lbl="ПЕРЕД ДИХАННЯМ">
+    <p><strong>«</strong>Зараз ми зробимо щось незвичне для школи. Ми будемо дихати — але по-особливому. <strong>Заплющте очі або подивіться в одну точку.</strong> Ваше завдання — просто дихати разом зі мною. Нічого складного — тільки дихання.<strong>»</strong></p>
+  </div>
+  <div class="scr or" data-lbl="ПІСЛЯ ДИХАННЯ — РЕФЛЕКСІЯ">
+    <p><strong>«</strong>Відкрийте очі. Що змінилось? Як ваше тіло — до і після? Хто відчув різницю? <strong>Те, що ви щойно зробили — це не магія. Це біологія.</strong> Ви буквально переключили нервову систему з «тривога» на «спокій». І це можна зробити будь-де і будь-коли.<strong>»</strong></p>
+  </div>
+  <div class="scr or" data-lbl="ПЕРЕД СЦЕНАРІЄМ 6 — ПРО ТРИВАЛИЙ СТРЕС">
+    <p><strong>«</strong>Наступна ситуація — про стрес, який не проходить кілька тижнів. Якщо для когось із вас це не просто питання на уроці — я хочу, щоб ви знали: після уроку я тут. Або можна подзвонити на 116 111 — анонімно і безкоштовно.<strong>»</strong></p>
+  </div>
+  <div class="scr in" data-lbl="ЗАКРИТТЯ">
+    <p><strong>«</strong>Ви сьогодні познайомились зі стресом зсередини. Знаєте, де він живе в тілі і що з цим робити. Це — реальні інструменти. Один дихальний цикл — і ваша нервова система вже реагує. Пам'ятайте: просити допомоги, коли важко — це не слабкість.<strong>»</strong></p>
+  </div>
+</div>
+</div>
+
+<!-- THEORY -->
+<div class="panel" id="panel-theory">
+<div class="wrap">
+  <p class="sh reveal">Наукова база уроку</p>
+  <p class="ss reveal">Ключові концепції та дослідження для педагога</p>
+
+  <div class="pi reveal">
+    <div class="pt">🔬 Центральна концепція</div>
+    <p><strong>Реакція «бий-тікай-завмри» (Cannon, 1929) і роль блукаючого нерва (Porges, 1994):</strong> Стрес активує симпатичну нервову систему (кортизол, адреналін). Довгий видих активує блукаючий нерв і парасимпатичну систему (ацетилхолін) — серце сповільнюється, м'язи розслабляються. Тому дихання — найшвидший доступний інструмент саморегуляції.</p>
+    <div class="src">Cannon W.B. (1929). Bodily Changes in Pain, Hunger, Fear and Rage. Porges S.W. (1994). Polyvagal Theory.</div>
+  </div>
+
+  <div class="cg reveal">
+    <div class="card"><div class="ci">🫁</div><h3>Дихання і ВНС</h3><p>Видих довший за вдих → активується парасимпатична НС → сповільнення серцебиття. Техніка 4-7-8 (Andrew Weil) і квадратне дихання — клінічно перевірені методи зниження тривоги.</p></div>
+    <div class="card"><div class="ci">🗺️</div><h3>Карта емоцій у тілі</h3><p>Nummenmaa et al. (2014, Finland): 701 учасник із 5 культур намалювали однакові карти — де вони відчувають емоції в тілі. Страх — горло і груди, злість — голова і руки, депресія — все тіло темне. Стрес і тіло нерозривно пов'язані.</p></div>
+    <div class="card"><div class="ci">🏃</div><h3>Фізична активність і кортизол</h3><p>Після 20–30 хв помірної активності кортизол (гормон стресу) знижується на 20–30%, підвищується рівень ендорфінів і BDNF (фактор росту нейронів). Навіть 10 стрибків дають помітний ефект.</p></div>
+    <div class="card"><div class="ci">✍️</div><h3>Письмова рефлексія</h3><p>Pennebaker (1997): записування емоційного досвіду навіть 15 хв/день протягом 3–4 днів знижує тривогу, покращує імунну функцію і успішність. «Виписати» думки буквально звільняє ресурси робочої пам'яті.</p></div>
+    <div class="card"><div class="ci">🧊</div><h3>Метод холоду</h3><p>Занурення обличчя у холодну воду активує «нирковий рефлекс ссавців» (diving reflex) — ЧСС знижується на 10–25% за 30 секунд. Ефективно при панічних атаках і сильній тривозі.</p></div>
+    <div class="card"><div class="ci">💬</div><h3>Соціальна підтримка</h3><p>Taylor et al. (2000): «tend-and-befriend» реакція на стрес (особливо у жінок) — соціальний зв'язок знижує кортизол. Поговорити з кимось — не «ниття», а біологічно ефективний стрес-менеджмент.</p></div>
+  </div>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">Вікові особливості 11–12 років</p>
+  <div class="al a-gr reveal"><span class="ai">🌱</span><div><p><strong>Пік сприйнятливості до навчання саморегуляції</strong> 11–12 — вік, коли діти вже здатні розуміти механізми стресу (абстрактне мислення), але ще відкриті до дорослого керівництва. Ідеальний момент для формування навичок.</p></div></div>
+  <div class="al a-or reveal"><span class="ai">⚡</span><div><p><strong>Воєнний контекст і хронічний стрес</strong> Для українських дітей 2022–2025: сирени, евакуація, відсутність батька, новини — фонове хронічне навантаження на НС. Урок дає конкретні інструменти, а не лише розуміння.</p></div></div>
+  <div class="al a-in reveal"><span class="ai">🧠</span><div><p><strong>Соматизація</strong> У 11–12 р. психологічний стрес часто проявляється фізично: головний біль, болі в животі, безсоння. Батьки і педагоги часто сприймають це як симуляцію. Важливо: це реальна фізіологія.</p></div></div>
+  <div class="al a-am reveal"><span class="ai">👥</span><div><p><strong>Соціальний стрес — основний тригер</strong> Для цього віку головні стресори: стосунки з однолітками, переходи між класами/школами, перші конфлікти в романтичних/дружніх стосунках. Академічний стрес — на другому місці.</p></div></div>
+</div>
+</div>
+
+<!-- ACTIVITIES -->
+<div class="panel" id="panel-activities">
+<div class="wrap">
+  <p class="sh reveal">Активності педагога / психолога</p>
+  <p class="ss reveal">6 вправ для класу або онлайн — паралельно або замість файлу учня</p>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--gr)">🫁 Активність 1 · Дихальний концерт — всі разом <span class="tag tgr" style="margin-left:auto">8 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Провести групову дихальну практику — синхронне дихання знижує стрес через соціальну синхронію.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>Педагог показує — учні повторюють. <strong>Ніяких «почитайте самостійно»</strong> — дихання ефективне лише коли виконується.</li>
+        <li>Техніка 4-7-8: педагог рахує вголос повільно. 3 цикли разом.</li>
+        <li>Пауза 30 секунд. Потім: «Що змінилось? Де відчули різницю?»</li>
+        <li>Опційно: квадратне дихання (4-4-4-4) для тих, кому 4-7-8 складно.</li>
+      </ol>
+      <h4>Для онлайн:</h4><p>Включіть таймер на екрані. Попросіть вимкнути мікрофон і просто дихати разом.</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--or)">🧍 Активність 2 · «Стрес-термометр» — де зараз мій рівень? <span class="tag tor" style="margin-left:auto">5 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Навчити дітей усвідомлювати і оцінювати власний рівень стресу.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>Намалюйте або покажіть термометр від 0 до 10 на дошці.</li>
+        <li>Кожен учень жестом показує свій рівень (0–10 пальців).</li>
+        <li>Запитайте 2–3 учнів: «Що дає цей рівень? Що ти відчуваєш у тілі?»</li>
+        <li>Якщо хтось показує 8–10 — після уроку індивідуально.</li>
+      </ol>
+      <h4>Важливо:</h4><p>Не питайте «чому такий рівень» публічно. Рівень — особистий. Тільки «що відчуваєш».</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--in)">🤸 Активність 3 · «Стрес-шейк» — фізична розрядка <span class="tag tin" style="margin-left:auto">3 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Дати тілу фізично «витратити» накопичений стрес.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>Встаньте (або залишіться сидіти). Починаємо з рук: потрясіть руками 30 секунд.</li>
+        <li>Підніміть плечі до вух — затримайте 3 секунди — різко опустіть. Повторити 3 рази.</li>
+        <li>Помотайте головою «ні-ні» повільно 5 разів. Потім «так-так».</li>
+        <li>Зробіть 5 глибоких видихів через рот зі звуком «хааа».</li>
+      </ol>
+      <h4>Ефект:</h4><p>Навіть 3 хвилини руху знижують кортизол і підвищують настрій. Можна робити між будь-якими уроками.</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--am)">✋ Активність 4 · «5-4-3-2-1» — заземлення тут і зараз <span class="tag tam" style="margin-left:auto">5 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Навчити техніці заземлення, яку можна використовувати при тривозі або паніці.</p>
+      <h4>Хід — педагог веде вголос:</h4>
+      <ol>
+        <li>«Назвіть (подумки або вголос) 5 речей, які ви БАЧИТЕ прямо зараз»</li>
+        <li>«4 речі, які ви можете ТОРКНУТИСЬ — торкніться їх»</li>
+        <li>«3 звуки, які ви ЧУЄТЕ»</li>
+        <li>«2 запахи — або уявіть улюблений запах»</li>
+        <li>«1 смак — що ви відчуваєте на смак зараз?»</li>
+      </ol>
+      <h4>Пояснення для дітей:</h4><p>«Ця вправа переключає мозок з режиму «тривога» на режим «я тут і зараз». Коли думки крутяться — вона допомагає зупинитись».</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--pl)">✍️ Активність 5 · «Виплесни думки» — фрірайтинг 5 хвилин <span class="tag tpl" style="margin-left:auto">7 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Дати дітям досвід письмової рефлексії як інструменту зниження стресу.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>Кожен бере аркуш. <strong>Це не збирають, не перевіряють — можна порвати потім.</strong></li>
+        <li>«Напишіть все, що зараз у голові. Будь-що. Некрасиво, нелогічно — просто пишіть».</li>
+        <li>5 хвилин безперервного письма. Педагог теж пише.</li>
+        <li>Після: «Як відчуваєтесь? Легше, важче, однаково?»</li>
+      </ol>
+      <h4>Ефект:</h4><p>За Pennebaker: «виписування» думок звільняє когнітивні ресурси. Діти часто кажуть «ніби легше дихати».</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--sl)">🌿 Активність 6 · «Мій план стрес-менеджменту» — разом <span class="tag tsl" style="margin-left:auto">8 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Персоналізувати інструменти — не список для всіх, а мій особистий набір.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>Учні заповнюють свій план (в файлі або на аркуші).</li>
+        <li>Педагог запитує: «Хто хоче поділитись однією річчю зі свого плану?»</li>
+        <li>2–3 відповіді. Важливо: не оцінювати і не коригувати — всі інструменти дійсні.</li>
+        <li>Педагог ділиться своїм — «У мене теж є план. Моя техніка №1 — ...»</li>
+      </ol>
+      <h4>Ефект моделювання:</h4><p>Коли педагог ділиться власним стрес-менеджментом — діти бачать, що це нормально і важливо для дорослих теж.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- DIFF -->
+<div class="panel" id="panel-diff">
+<div class="wrap">
+  <p class="sh reveal">Диференційований підхід</p>
+  <p class="ss reveal">Адаптація для різних учнів і контекстів</p>
+
+  <div class="df3 reveal">
+    <div class="dc dc-a">
+      <h4>Потребує особливої підтримки</h4>
+      <ul>
+        <li>Не вимагайте публічних відповідей</li>
+        <li>Якщо відмовляється від дихання — не наполягайте</li>
+        <li>Запропонуйте намалювати замість писати</li>
+        <li>Стрес-термометр 8–10 → після уроку</li>
+        <li>При соматичних скаргах — не «симуляція»</li>
+      </ul>
+    </div>
+    <div class="dc dc-b">
+      <h4>Стандартна група</h4>
+      <ul>
+        <li>Повний формат за хронометражем</li>
+        <li>Всі дихальні техніки — разом</li>
+        <li>Стрес-шейк + 5-4-3-2-1</li>
+        <li>Персональний план — обов'язково</li>
+        <li>116 111 — назвати двічі</li>
+      </ul>
+    </div>
+    <div class="dc dc-c">
+      <h4>Активні / допитливі</h4>
+      <ul>
+        <li>Пояснення нейробіології стресу</li>
+        <li>Завдання: перевірити ЧСС до і після дихання</li>
+        <li>Дослідити: які є ще техніки</li>
+        <li>Підготувати мікро-урок для 3–4 класу</li>
+        <li>Провести «Стрес-шейк» для класу самостійно</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="r">
+
+  <table class="tbl reveal">
+    <thead><tr><th>Тип учня</th><th>Поведінка під час уроку</th><th>Дія педагога</th></tr></thead>
+    <tbody>
+      <tr><td><strong>«Все нормально»</strong></td><td>Заперечує, що відчуває стрес</td><td>Не наполягайте. «Добре, що у тебе все добре. Але інструменти стануть у пригоді».</td></tr>
+      <tr><td><strong>Гіперактивний/-а</strong></td><td>Жартує, заважає дихальній вправі</td><td>Дайте роль «хронометриста» або «інструктора» Стрес-шейку.</td></tr>
+      <tr><td><strong>Замкнутий/-а</strong></td><td>Мовчить, нічого не пише</td><td>Не тисніть. Після: «Як тобі урок? Що забрав/-ла?»</td></tr>
+      <tr><td><strong>Зі стрес-термометром 8–10</strong></td><td>Показує дуже високий рівень</td><td>Після уроку — наодинці. Протокол кризи при потребі.</td></tr>
+      <tr><td><strong>Плаче або розхвилювався/-лась</strong></td><td>Несподівана емоційна реакція</td><td>Тихо вийдіть разом. «Що сталось? Я тут і нікуди не поспішаю».</td></tr>
+    </tbody>
+  </table>
+
+  <div class="al a-or reveal">
+    <span class="ai">🇺🇦</span>
+    <div><p><strong>Воєнний контекст — особливі рекомендації</strong> Для класів, де є діти-переселенці або з родинами на фронті: уникайте прикладів із «сиренами» або «новинами» як стресорів у загальному обговоренні. Дайте учням самим обирати приклади. Будьте готові: урок може виявити приховане горе або ПТСР.</p></div>
+  </div>
+</div>
+</div>
+
+<!-- CRISIS -->
+<div class="panel" id="panel-crisis">
+<div class="wrap">
+  <p class="sh reveal">Кризові протоколи</p>
+  <p class="ss reveal">Алгоритми дій при розкриттях під час або після уроку</p>
+
+  <div class="al a-or reveal">
+    <span class="ai">⚠️</span>
+    <div><p><strong>Для педагога:</strong> Урок про стрес може «відкрити» дітей, що переживають хронічний стрес, тривожний розлад, ПТСР або сімейні кризи. Будьте готові залишитись після. Підготуйте: акт розкриття, контакти нижче.</p></div>
+  </div>
+
+  <div class="contacts reveal">
+    <div class="ct"><h4>Дитяча гаряча лінія</h4><div class="num">116 111</div><p>Безкоштовно · Анонімно · Цілодобово</p></div>
+    <div class="ct"><h4>Психологічна допомога</h4><div class="num">0 800 500 335</div><p>Безкоштовно з мобільного</p></div>
+    <div class="ct"><h4>Поліція / Медики</h4><div class="num">102 / 103</div><p>При загрозі або медичному стані</p></div>
+    <div class="ct"><h4>Шкільний психолог</h4><p>Перший крок при виявленні хронічного стресу або тривожного розладу</p></div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--or)">🟠 Протокол 1 · Учень у стані гострої тривоги або паніки на уроці</div>
+    <div class="crb-b">
+      <ol>
+        <li>Спокійний голос: <em>«Я тут. Ти в безпеці. Подивись на мене».</em></li>
+        <li>Техніка «5 пальців» — покажіть свою руку і ведіть через пальці: «Що ти бачиш? Що чуєш?»</li>
+        <li>Запропонуйте вийти — без привернення уваги класу.</li>
+        <li>Холодна вода на зап'ястя або обличчя — якщо є можливість.</li>
+        <li>Якщо не заспокоюється за 10 хв — телефонуйте батькам і 103.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--ro)">🔴 Протокол 2 · Розкриття хронічного стресу або кризи в сім'ї</div>
+    <div class="crb-b">
+      <ol>
+        <li>Вислухайте без переривань. <em>«Я рада/-ий, що ти розповів/-ла».</em></li>
+        <li>Не обіцяйте вирішити проблему — але обіцяйте підтримку.</li>
+        <li>З'ясуйте: чи є безпечна людина вдома? Чи є загроза безпеці?</li>
+        <li>Направте до шкільного психолога (якщо не ви) або продовжте роботу.</li>
+        <li>Повідомте класного керівника і адміністрацію при потребі.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--in)">🔵 Протокол 3 · Учень повідомляє про безсоння, головний біль, відмову від їжі (соматизація)</div>
+    <div class="crb-b">
+      <ol>
+        <li>НЕ кажіть «це від нервів, пройде само» — це знецінює.</li>
+        <li><em>«Твоє тіло таким чином говорить, що щось важко. Це серйозно».</em></li>
+        <li>Направте до лікаря для виключення медичної причини І до психолога.</li>
+        <li>Поінформуйте батьків — але м'яко, без «симуляції».</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--gr)">🟢 Протокол 4 · Дитина з ПТСР (воєнний контекст)</div>
+    <div class="crb-b">
+      <ol>
+        <li>Тема стресу може тригерувати дітей із травматичним досвідом. Сигнали: різкий плач, завмирання, фізична реакція на звуки.</li>
+        <li>Не примушуйте до вправ — запропонуйте альтернативу (намалювати, просто спостерігати).</li>
+        <li>Після: <em>«Ти можеш розповісти мені, що сталось? Або просто побути тут».</em></li>
+        <li>Направте до спеціаліста з травматерапії — не до загального шкільного психолога.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="pi reveal">
+    <div class="pt">💙 Про вас, педагогу</div>
+    <p>Вчителі — одна з найбільш стрес-навантажених професій. Урок про стрес може підняти і ваші власні теми. Після нього — зробіть свою дихальну вправу. Поговоріть з колегою. 0 800 500 335 — безкоштовно і для вас теж. Ваш стрес-менеджмент — не розкіш, а умова роботи.</p>
+  </div>
+</div>
+</div>
+
+<!-- SCRIPTS -->
+<div class="panel" id="panel-scripts">
+<div class="wrap">
+  <p class="sh reveal">Скрипти і готові фрази</p>
+  <p class="ss reveal">Конкретні слова для уроку, дихальних технік і складних ситуацій</p>
+
+  <div class="al a-gr reveal">
+    <span class="ai">💡</span>
+    <div><p>Скрипти розроблені з урахуванням вікових особливостей 11–12 р. і принципів trauma-informed підходу. Мета — нормалізувати стрес і дати практичні інструменти без зайвої «медичності».</p></div>
+  </div>
+
+  <p class="sh" style="font-size:1rem;margin:.8rem 0">Скрипти для дихальних технік</p>
+
+  <div class="scr" data-lbl="ТЕХНІКА 4-7-8">
+    <p>«Закрийте очі або подивіться в одну точку. Вдихайте носом — повільно рахуємо: <strong>1, 2, 3, 4.</strong> Затримайте дихання: <strong>1, 2, 3, 4, 5, 6, 7.</strong> Тепер видихайте ротом — повільно: <strong>1, 2, 3, 4, 5, 6, 7, 8.</strong> Молодці. Ще раз — разом.»</p>
+  </div>
+  <div class="scr" data-lbl="КВАДРАТНЕ ДИХАННЯ">
+    <p>«Уявіть квадрат. Вдихаємо по першій стороні — <strong>4 рахунки.</strong> Затримуємо по другій — <strong>4.</strong> Видихаємо по третій — <strong>4.</strong> Затримуємо порожнє — <strong>4.</strong> Квадрат завершено. Ще раз.»</p>
+  </div>
+  <div class="scr or" data-lbl="5-4-3-2-1 — ЗАЗЕМЛЕННЯ">
+    <p>«Озирніться навколо. Назвіть (подумки) <strong>5 речей, що бачите.</strong> Тепер <strong>4 речі, які можете торкнутись</strong> — торкніться їх. <strong>3 звуки, які чуєте.</strong> <strong>2 запахи</strong> — або уявіть улюблений. <strong>1 смак.</strong> Ви тут. Ви в безпеці.»</p>
+  </div>
+  <div class="scr am" data-lbl="СТРЕС-ШЕЙ — ІНСТРУКЦІЯ">
+    <p>«Встаньте, якщо можете. Потрясіть руками — ніби скидаєте воду. <strong>30 секунд.</strong> Підніміть плечі до вух — тримайте 3 секунди — різко кидайте вниз. Ще раз. Ще. Тепер покрутіть головою — повільно «ні-ні», потім «так-так». Зробіть 5 видихів зі звуком «хааа». Готово!»</p>
+  </div>
+
+  <hr class="r">
+
+  <p class="sh" style="font-size:1rem;margin:.8rem 0">Таблиця: «закриваючі» і «відкриваючі» фрази</p>
+
+  <table class="tbl reveal">
+    <thead><tr><th>❌ Закриваюча фраза</th><th>Чому шкодить</th><th>✅ Альтернатива</th></tr></thead>
+    <tbody>
+      <tr><td>«Та це дрібниця, не хвилюйся»</td><td>Знецінює досвід — дитина вчиться не довіряти своїм відчуттям</td><td>«Розкажи мені більше — що саме тебе хвилює?»</td></tr>
+      <tr><td>«Всі хвилюються перед контрольною»</td><td>Знову знецінює індивідуальний досвід</td><td>«Це важливо для тебе — і твої почуття правильні»</td></tr>
+      <tr><td>«Заспокойся!»</td><td>Неможливо виконати команду «заспокойся» — посилює тривогу</td><td>«Давай разом зробимо одне дихання»</td></tr>
+      <tr><td>«Ти симулюєш»</td><td>Соматичні симптоми стресу — реальна фізіологія</td><td>«Твоє тіло відчуває щось важке. Давай розберемось»</td></tr>
+      <tr><td>«Вдома розкажеш батькам»</td><td>Відкладає підтримку — дитина може замовкнути</td><td>«Я можу зараз побути поруч. Що тобі потрібно?»</td></tr>
+      <tr><td>«Ну і що — у всіх проблеми»</td><td>Обесцінює і ізолює</td><td>«Твоя ситуація важлива. Ти не самий/-а»</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- REFLECTION -->
+<div class="panel" id="panel-reflection">
+<div class="wrap">
+  <p class="sh reveal">Рефлексія і оцінка уроку</p>
+  <p class="ss reveal">Інструменти завершення, вимірювання результату і подальша робота</p>
+
+  <table class="tbl reveal">
+    <thead><tr><th>#</th><th>Exit Ticket</th><th>Питання</th><th>Що дає педагогу</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><span class="tag tgr">Одна техніка</span></td><td>«Одна техніка, яку я спробую сьогодні вдома»</td><td>Перевірка засвоєння практичних інструментів</td></tr>
+      <tr><td>2</td><td><span class="tag tor">Термометр до/після</span></td><td>«Мій рівень стресу на початку / в кінці уроку (0–10)»</td><td>Вимірює ефект уроку на стан учня</td></tr>
+      <tr><td>3</td><td><span class="tag tin">Одне відкриття</span></td><td>«Що мене здивувало сьогодні?»</td><td>Виявляє найефективніший контент</td></tr>
+      <tr><td>4</td><td><span class="tag tam">Анонімно</span></td><td>«Якщо є щось важке — напиши без імені»</td><td>Безпечний канал для розкриття</td></tr>
+      <tr><td>5</td><td><span class="tag tpl">Одне слово</span></td><td>«Одне слово про свій стан зараз»</td><td>Швидкий зріз емоційного стану класу</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="r">
+
+  <div class="cg reveal">
+    <div class="card"><div class="ci">🫁</div><h3>Практика дихання</h3><p>Через тиждень: скільки учнів спробували техніку? Запитайте на наступному уроці. Якщо менше 30% — проведіть ще раз разом.</p></div>
+    <div class="card"><div class="ci">📞</div><h3>Знання 116 111</h3><p>Скільки пам'ятають номер? Вивісіть у класі як нагадування поряд з іншими ресурсами.</p></div>
+    <div class="card"><div class="ci">🤝</div><h3>Звернення після</h3><p>Будь-яке звернення після уроку — знак довіри. Залишайтесь 10 хв завжди.</p></div>
+    <div class="card"><div class="ci">📝</div><h3>Анонімні нотатки</h3><p>Аналізуйте анонімні відповіді — там часто найважливіша інформація про клас.</p></div>
+  </div>
+
+  <div class="al a-gr reveal">
+    <span class="ai">📚</span>
+    <div><p><strong>Подальша робота:</strong> Наступні теми серії — «Емоційний компас», «Межі і повага», «Психологічна безпека». Батьківські збори: «Як розпізнати стрес у дитини і що робити». Практика: «Хвилина дихання» на початку кожного уроку — вся школа. Ресурси: ЮНІСЕФ «Психологічна підтримка дітей в умовах кризи», техніки Weil (4-7-8), Porges Polyvagal Theory.</p></div>
+  </div>
+
+  <div class="pi reveal">
+    <div class="pt">💙 Завершальне слово</div>
+    <p>Ви провели урок, після якого діти мають конкретні інструменти — не просто знання про стрес, а те, що можна зробити прямо зараз. Один дихальний цикл. Один струс рук. Одне написане речення. Це реальна зміна в реальному тілі. Ваша робота важлива — навіть якщо ви цього не бачите одразу.</p>
+  </div>
+</div>
+</div>
+
+<script>
+function sw(n){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.hn,.tb').forEach(b=>b.classList.remove('on'));
+  document.getElementById('panel-'+n).classList.add('on');
+  document.querySelectorAll('.hn,.tb').forEach(b=>{if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+n+"'"))b.classList.add('on');});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+const ro=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.07});
+document.querySelectorAll('.reveal').forEach(r=>ro.observe(r));
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Джерела й що почитати</h2><h3>Використані джерела</h3><ol><li>McEwen, B. S. (1998). Protective and damaging effects of stress mediators. <i>New England Journal of Medicine, 338</i>(3), 171–179.</li><li>Thayer, J. F., Åhs, F., Fredrikson, M., Sollers, J. J., &amp; Wager, T. D. (2012). A meta-analysis of heart rate variability and neuroimaging studies. <i>Neuroscience &amp; Biobehavioral Reviews, 36</i>(2), 747–756.</li><li>Sapolsky, R. M. (2004). <i>Why Zebras Don’t Get Ulcers</i> (3rd ed.). Henry Holt.</li><li>Porges, S. W. (2011). <i>The Polyvagal Theory</i>. W. W. Norton. (Теорія дискусійна: використовуйте як практичну метафору.)</li><li>Pennebaker, J. W. (1997). Writing about emotional experiences as a therapeutic process. <i>Psychological Science, 8</i>(3), 162–166.</li><li>Keller, A., Litzelman, K., Wisk, L. E., et al. (2012). Does the perception that stress affects health matter? <i>Health Psychology, 31</i>(5), 677–684.</li></ol><h3>Що почитати фахівцеві</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>Why Zebras Don’t Get Ulcers</td><td>Sapolsky R. M., 2004</td><td>Про фізіологію стресу</td></tr><tr><td>The Upside of Stress</td><td>McGonigal K., 2015</td><td>Ставлення до стресу; популярне</td></tr><tr><td>The Polyvagal Theory</td><td>Porges S. W., 2011</td><td>Дискусійна теорія; використовувати як практичну метафору</td></tr></table><h3>Що порадити батькам</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>How to Talk So Kids Will Listen &amp; Listen So Kids Will Talk</td><td>Faber A., Mazlish E.</td><td>Практичні фрази</td></tr><tr><td>Raising an Emotionally Intelligent Child</td><td>Gottman J., DeClaire J., 1997</td><td>Емоційне коучинг-спілкування</td></tr><tr><td>The Whole-Brain Child</td><td>Siegel D. J., Bryson T. P., 2011</td><td>Емоції дитини</td></tr></table><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="04-5-6-case.html">← Тема 4</a></span><span><a href="06-5-6-case.html">Тема 6 →</a></span></div><a class="mo-fab" href="../index.html#t05">☰ До матриці</a></body>
+</html>

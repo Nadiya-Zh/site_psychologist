@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Методичний кейс · Спокій під час кризи · 5–6 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:   #F5F2EC;
+  --surf: #FFFFFF;
+  --ink:  #1A1C24;
+  --text: #2D3348;
+  --muted:#6B7280;
+  --bd:   #E4DDD0;
+  --bds:  #C8BFB0;
+
+  --gr:  #1A6E52; --gr-l: #E6F2ED; --gr-ll:#F2F9F6;
+  --fo:  #1A5C38; --fo-l: #E6F0EB;
+  --am:  #A87800; --am-l: #FBF4E4; --am-ll:#FEF9EF;
+  --in:  #344888; --in-l: #EEF1F9;
+  --ro:  #A03848; --ro-l: #FDECEA;
+  --pl:  #6B4E88; --pl-l: #F0ECF8;
+  --sl:  #3A5E80; --sl-l: #EBF2F8;
+  --te:  #B84828; --te-l: #FBF0EB;
+  --tl:  #1A7070; --tl-l: #E6F3F3;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.65;}
+
+.hdr{background:var(--ink);padding:.85rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.65rem;position:sticky;top:0;z-index:300;}
+.hbrand{font-family:'Bitter',serif;font-size:.88rem;font-weight:700;color:white;display:flex;align-items:center;gap:.5rem;}
+.hnav{display:flex;gap:.25rem;flex-wrap:wrap;}
+.hn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:.28rem .78rem;font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;transition:all .2s;}
+.hn:hover{background:rgba(255,255,255,.14);color:white;}
+.hn.on{background:var(--gr);border-color:var(--gr);color:white;}
+
+.ph{background:linear-gradient(155deg,#060A12 0%,#0A1208 55%,#060A10 100%);padding:4rem 2rem;position:relative;overflow:hidden;}
+.ph::before{content:'';position:absolute;top:-60px;right:-60px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(46,184,136,.2),transparent 70%);}
+.ph::after{content:'🏠';position:absolute;right:3rem;bottom:1.5rem;font-size:7rem;opacity:.06;pointer-events:none;}
+.ph-in{max-width:1060px;margin:0 auto;position:relative;z-index:1;}
+.ph-tag{font-size:.65rem;font-weight:700;letter-spacing:.22em;color:rgba(100,220,160,.65);margin-bottom:.8rem;}
+.ph h1{font-family:'Bitter',serif;font-size:clamp(1.7rem,3.2vw,2.6rem);font-weight:700;color:white;line-height:1.18;margin-bottom:.65rem;}
+.ph h1 span{color:#80E8B0;}
+.ph .sub{font-size:.92rem;font-weight:300;font-style:italic;color:rgba(255,255,255,.42);max-width:620px;margin-bottom:1.7rem;}
+.ph-chips{display:flex;gap:.5rem;flex-wrap:wrap;}
+.chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:50px;padding:.3rem .9rem;font-size:.71rem;font-weight:600;color:rgba(255,255,255,.6);}
+
+.tabs{background:var(--surf);border-bottom:2px solid var(--bd);position:sticky;top:54px;z-index:200;overflow-x:auto;}
+.tabs-in{max-width:1060px;margin:0 auto;display:flex;}
+.tb{background:none;border:none;border-bottom:3px solid transparent;padding:.88rem 1.2rem;cursor:pointer;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;color:var(--muted);white-space:nowrap;transition:all .2s;margin-bottom:-2px;}
+.tb:hover{color:var(--ink);}
+.tb.on{color:var(--gr);border-bottom-color:var(--gr);}
+
+.panel{display:none;}.panel.on{display:block;}
+.wrap{max-width:1060px;margin:0 auto;padding:3rem 2rem;}
+
+.sh{font-family:'Bitter',serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:.32rem;}
+.ss{font-size:.82rem;color:var(--muted);font-style:italic;margin-bottom:1.8rem;}
+hr.r{border:none;border-top:1px solid var(--bd);margin:2.3rem 0;}
+
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.95rem;margin:1.4rem 0;}
+.card{background:var(--surf);border:1px solid var(--bd);border-radius:10px;padding:1.3rem 1.5rem;box-shadow:0 1px 3px rgba(0,0,0,.03);}
+.card .ci{font-size:1.5rem;margin-bottom:.45rem;}
+.card h3{font-family:'Bitter',serif;font-size:.92rem;font-weight:700;margin-bottom:.28rem;color:var(--ink);}
+.card p{font-size:.82rem;color:var(--muted);line-height:1.6;}
+
+.al{border-radius:9px;padding:1rem 1.3rem;margin:.85rem 0;display:flex;gap:.75rem;align-items:flex-start;}
+.al .ai{font-size:1.1rem;flex-shrink:0;margin-top:.05rem;}
+.al p{font-size:.83rem;line-height:1.65;}
+.al strong{font-weight:700;display:block;margin-bottom:.1rem;font-size:.71rem;letter-spacing:.04em;}
+.a-gr{background:var(--gr-l);border-left:4px solid var(--gr);}
+.a-am{background:var(--am-l);border-left:4px solid var(--am);}
+.a-in{background:var(--in-l);border-left:4px solid var(--in);}
+.a-ro{background:var(--ro-l);border-left:4px solid var(--ro);}
+.a-pl{background:var(--pl-l);border-left:4px solid var(--pl);}
+.a-sl{background:var(--sl-l);border-left:4px solid var(--sl);}
+.a-te{background:var(--te-l);border-left:4px solid var(--te);}
+.a-tl{background:var(--tl-l);border-left:4px solid var(--tl);}
+.a-fo{background:var(--fo-l);border-left:4px solid var(--fo);}
+
+.tl{padding-left:2.2rem;position:relative;margin:1.4rem 0;}
+.tl::before{content:'';position:absolute;left:.7rem;top:0;bottom:0;width:2px;background:var(--bd);}
+.ti{position:relative;margin-bottom:1.4rem;}
+.ti::before{content:'';position:absolute;left:-1.85rem;top:.32rem;width:12px;height:12px;border-radius:50%;background:var(--gr);border:3px solid var(--surf);box-shadow:0 0 0 2px var(--gr);}
+.ti-t{font-size:.64rem;font-weight:700;letter-spacing:.1em;color:var(--gr);margin-bottom:.12rem;}
+.ti-h{font-weight:700;font-size:.9rem;margin-bottom:.22rem;color:var(--ink);}
+.ti-b{font-size:.82rem;color:var(--muted);line-height:1.65;}
+.ti.am::before{background:var(--am);}.ti.am .ti-t{color:var(--am);}
+.ti.in::before{background:var(--in);}.ti.in .ti-t{color:var(--in);}
+.ti.ro::before{background:var(--ro);}.ti.ro .ti-t{color:var(--ro);}
+.ti.pl::before{background:var(--pl);}.ti.pl .ti-t{color:var(--pl);}
+
+.scr{background:var(--bg);border:1px solid var(--bd);border-radius:9px;padding:1.2rem 1.4rem;margin:.85rem 0;position:relative;}
+.scr::before{content:attr(data-lbl);position:absolute;top:-9px;left:.95rem;background:var(--gr);color:white;font-size:.58rem;font-weight:700;letter-spacing:.1em;padding:.15rem .6rem;border-radius:3px;}
+.scr.am::before{background:var(--am);}
+.scr.in::before{background:var(--in);}
+.scr.ro::before{background:var(--ro);}
+.scr.pl::before{background:var(--pl);}
+.scr.te::before{background:var(--te);}
+.scr.tl::before{background:var(--tl);}
+.scr p{font-size:.87rem;line-height:1.82;font-style:italic;color:var(--ink);}
+.scr p strong{font-style:normal;color:var(--gr);}
+.scr.am p strong{color:var(--am);}
+.scr.ro p strong{color:var(--ro);}
+.scr.te p strong{color:var(--te);}
+
+.tbl{width:100%;border-collapse:collapse;margin:1.1rem 0;font-size:.82rem;}
+.tbl th{background:var(--ink);color:white;text-align:left;padding:.62rem .92rem;font-weight:700;font-size:.7rem;letter-spacing:.04em;}
+.tbl td{padding:.62rem .92rem;border-bottom:1px solid var(--bd);vertical-align:top;line-height:1.65;}
+.tbl tr:nth-child(even) td{background:var(--am-ll);}
+.tbl tr:hover td{background:var(--am-l);}
+
+.pi{background:linear-gradient(135deg,var(--gr-l),var(--gr-ll));border:1px solid rgba(26,110,82,.25);border-radius:11px;padding:1.35rem 1.55rem;margin:1.4rem 0;position:relative;overflow:hidden;}
+.pi::after{content:'🌿';font-size:3.5rem;position:absolute;right:.7rem;bottom:-.3rem;opacity:.08;pointer-events:none;}
+.pi .pt{font-size:.64rem;font-weight:700;letter-spacing:.14em;color:var(--gr);margin-bottom:.45rem;}
+.pi p{font-size:.85rem;line-height:1.75;color:#0A2E1E;font-style:italic;}
+.pi .src{font-size:.71rem;color:#2A8060;margin-top:.5rem;font-style:normal;}
+
+.df3{display:grid;grid-template-columns:repeat(3,1fr);gap:.95rem;margin:1.4rem 0;}
+@media(max-width:660px){.df3{grid-template-columns:1fr;}}
+.dc{border-radius:9px;padding:1.1rem;}
+.dc h4{font-size:.75rem;font-weight:700;letter-spacing:.04em;margin-bottom:.55rem;}
+.dc ul{padding-left:1.05rem;font-size:.81rem;line-height:1.7;color:var(--muted);}
+.dc-a{background:#FFF8E6;border:1px solid #EDD878;}.dc-a h4{color:#8A6D00;}
+.dc-b{background:var(--gr-l);border:1px solid #9DCFBE;}.dc-b h4{color:#1E5244;}
+.dc-c{background:var(--in-l);border:1px solid #A8B8E8;}.dc-c h4{color:#2A3B80;}
+
+.crb{border:1px solid var(--bd);border-radius:9px;overflow:hidden;margin:1.4rem 0;}
+.crb-h{padding:.75rem 1.25rem;font-family:'Bitter',serif;font-size:.88rem;font-weight:700;display:flex;align-items:center;gap:.5rem;color:white;}
+.crb-b{padding:1.15rem 1.35rem;background:var(--surf);}
+.crb-b h4{font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.25rem;}
+.crb-b p{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:.5rem;}
+.crb-b ol,.crb-b ul{padding-left:1.1rem;font-size:.8rem;color:var(--text);line-height:1.85;}
+
+.ab{border:1px solid var(--bd);border-radius:9px;overflow:hidden;margin:1.4rem 0;}
+.ab-h{padding:.72rem 1.25rem;font-family:'Bitter',serif;font-size:.86rem;font-weight:700;display:flex;align-items:center;gap:.48rem;color:white;}
+.ab-b{padding:1.1rem 1.3rem;background:var(--surf);}
+.ab-b h4{font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.25rem;}
+.ab-b p{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:.48rem;}
+.ab-b ol,.ab-b ul{padding-left:1.05rem;font-size:.8rem;color:var(--text);line-height:1.8;}
+
+.contacts{background:linear-gradient(135deg,var(--gr-l),var(--gr-ll));border:1.5px solid rgba(26,110,82,.22);border-radius:11px;padding:1.35rem 1.55rem;margin:1.4rem 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.95rem;}
+.ct h4{font-size:.76rem;font-weight:700;color:var(--gr);margin-bottom:.28rem;}
+.ct p{font-size:.8rem;color:var(--text);line-height:1.6;}
+.ct .num{font-family:'Bitter',serif;font-size:1.08rem;font-weight:700;color:var(--ink);}
+
+.tag{display:inline-block;font-size:.65rem;font-weight:700;padding:.15rem .52rem;border-radius:3px;margin:.12rem;}
+.tgr{background:var(--gr-l);color:#1A5244;}.tam{background:var(--am-l);color:#7A5800;}
+.tin{background:var(--in-l);color:#2A3870;}.tro{background:var(--ro-l);color:#7A2030;}
+.tpl{background:var(--pl-l);color:#4A2B6A;}.tsl{background:var(--sl-l);color:#2A4A6A;}
+.tte{background:var(--te-l);color:#8A3010;}.ttl{background:var(--tl-l);color:#1A5050;}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s;}
+.reveal.vis{opacity:1;transform:none;}
+</style>
+<link rel="stylesheet" href="../assets/psy.css">
+</head>
+<body><nav class="mo-nav"><a href="../index.html">← Кабінет психолога</a><span class="mo-t">Тема 7 · Як зберегти спокій під час кризових подій · 5–6 клас · Кейс психолога</span><span class="mo-g"><a href="07-5-6-case.html" class="on">5–6 клас</a><a href="07-7-8-case.html">7–8 клас</a><a href="07-9-11-case.html">9–11 клас</a><a href="07-b-case.html">Батьки</a><a href="07-5-6-lesson.html">⇄ Урок</a></span></nav>
+
+<div class="hdr">
+  <div class="hbrand">🏠 Методичний кейс · Спокій під час кризи · 5–6 клас</div>
+  <div class="hnav">
+    <button class="hn on"  onclick="sw('plan')">📅 Хронометраж</button>
+    <button class="hn" onclick="sw('theory')">📚 Теорія</button>
+    <button class="hn" onclick="sw('activities')">🎭 Активності</button>
+    <button class="hn" onclick="sw('diff')">🎯 Диференціація</button>
+    <button class="hn" onclick="sw('crisis')">🚨 Протоколи</button>
+    <button class="hn" onclick="sw('scripts')">🗣️ Скрипти</button>
+    <button class="hn" onclick="sw('reflection')">💬 Рефлексія</button>
+  </div>
+</div>
+
+<div class="ph">
+  <div class="ph-in">
+    <div class="ph-tag">МЕТОДИЧНИЙ КЕЙС ДЛЯ ПЕДАГОГА / ПСИХОЛОГА · 5–6 КЛАС</div>
+    <h1>Як зберегти спокій<br><span>під час кризових подій</span></h1>
+    <p class="sub">Trauma-informed підхід · Поліваготонія Порджеса · Три зони стану · Сенсорне заземлення · ПТС-профілактика · Кризові протоколи для воєнного контексту · Повні скрипти</p>
+    <div class="ph-chips">
+      <div class="chip">⏱ 45 хвилин</div>
+      <div class="chip">🌿 Trauma-informed</div>
+      <div class="chip">🌊 Поліваготонія</div>
+      <div class="chip">🫁 3 дихальні техніки</div>
+      <div class="chip">✋ Сенсорне заземлення</div>
+      <div class="chip">🚨 Кризові протоколи</div>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tabs-in">
+    <button class="tb on" onclick="sw('plan')">📅 Хронометраж і скрипти</button>
+    <button class="tb" onclick="sw('theory')">📚 Наукова база</button>
+    <button class="tb" onclick="sw('activities')">🎭 Активності педагога</button>
+    <button class="tb" onclick="sw('diff')">🎯 Диференціація</button>
+    <button class="tb" onclick="sw('crisis')">🚨 Кризові протоколи</button>
+    <button class="tb" onclick="sw('scripts')">🗣️ Скрипти і фрази</button>
+    <button class="tb" onclick="sw('reflection')">💬 Рефлексія</button>
+  </div>
+</div>
+
+<!-- ══ PLAN ══ -->
+<div class="panel on" id="panel-plan">
+<div class="wrap">
+  <p class="sh reveal">Покроковий хронометраж уроку</p>
+  <p class="ss reveal">Trauma-informed сценарій для 5–6 класу у воєнному контексті</p>
+
+  <div class="al a-ro reveal">
+    <span class="ai">📌</span>
+    <div><p><strong>Перед уроком — критично важливо</strong> Цей урок — найвищий ризик актуалізації травматичного досвіду у всій серії. Учні 5–6 класу в Україні 2022–2025 мають різний рівень травматизації: від легкого стресу до клінічного ПТСР. Підготуйте: контакти 116 111, план дій при гострій кризі, дозвіл залишити клас без пояснень для будь-якого учня, «куточок спокою» у класі (фізичний або символічний). Перевірте власний стан — ваша регуляція передається учням.</p></div>
+  </div>
+
+  <div class="tl reveal">
+    <div class="ti">
+      <div class="ti-t">00:00 — 07:00</div>
+      <div class="ti-h">Вступ: «Маяк» і налаштування безпеки</div>
+      <div class="ti-b">Починайте не зі змісту, а зі стану класу. Коротке «сканування»: <em>«Поставте пальцем на парті від 1 до 5 — як ви зараз? 1 = добре, 5 = важко».</em> Анонімно. Педагог оцінює клас. Якщо більшість 4–5 — адаптуйте урок: більше практики, менше теорії. Потім: <em>«Сьогодні ми говоримо про те як бути маяком для себе — навіть коли буря».</em></div>
+    </div>
+    <div class="ti am">
+      <div class="ti-t">07:00 — 14:00 · БЛОК 1</div>
+      <div class="ti-h">Реакції тіла при кризі — нормалізація</div>
+      <div class="ti-b">Учні відмічають сигнали тіла. Педагог: <em>«Хто відмітив серцебиття? Тремтіння? Хочеться сховатись? — підніміть руку. Чудово. Це нормальні реакції нормальної нервової системи».</em> Зупиніться на «завмиранні»: <em>«Ніби онімів/-ла і не міг/-ла рухатись? Це теж захист. Це не боягузтво».</em> Травматична реакція «завмирання» часто викликає сором — нормалізуйте її першою.</div>
+    </div>
+    <div class="ti in">
+      <div class="ti-t">14:00 — 22:00 · БЛОК 2</div>
+      <div class="ti-h">Три зони + хвилеметр</div>
+      <div class="ti-b">Три зони — коротко і з образами: маяк (безпека), хвилі (мобілізація), буря (завмирання). Хвилеметр — учні оцінюють себе зараз. Педагог: <em>«Де ви зараз? Хвиля 3 чи 8? Запам'ятайте цю цифру — перевіримо в кінці».</em> Якщо хтось поставив 8–10 — негайно підійдіть після блоку або дайте сигнал «можеш вийти».</div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">22:00 — 30:00 · БЛОК 3</div>
+      <div class="ti-h">Дихання — обов'язково разом</div>
+      <div class="ti-b">Проведіть всі три техніки разом. Почніть з «безпеки 4-4-6»: <em>«Це ваша найважливіша техніка — запам'ятайте її на все життя. 4 вдих, 4 затримка, 6 видих».</em> Після першої техніки: <em>«Відчули щось? Де в тілі?»</em> Педагог теж дихає — не лише показує.</div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">30:00 — 37:00 · БЛОК 4</div>
+      <div class="ti-h">Заземлення 5-4-3-2-1 — практика в класі</div>
+      <div class="ti-b">Проведіть заземлення разом голосом: <em>«Назвіть вголос або тихо 5 речей які бачите прямо зараз».</em> Дайте 30 сек. Потім 4, 3, 2, 1. Закінчіть «корінням»: <em>«Обидві ступні на підлозі. Відчуйте як підлога тримає вас».</em> Після: <em>«Де тепер ваша хвиля — та сама цифра чи змінилась?»</em></div>
+    </div>
+    <div class="ti am">
+      <div class="ti-t">37:00 — 43:00 · БЛОК 5–7</div>
+      <div class="ti-h">Сценарії + вікторина + план безпеки</div>
+      <div class="ti-b">Сценарії — синхронно або самостійно. План безпеки — 5 хвилин у тиші. Педагог теж заповнює свій: <em>«Я теж маю свій план — моя техніка №1 це...».</em> Моделювання критично важливе для trauma-informed підходу.</div>
+    </div>
+    <div class="ti ro">
+      <div class="ti-t">43:00 — 45:00</div>
+      <div class="ti-h">Завершення — «повернення до маяка»</div>
+      <div class="ti-b">Спільне дихання 4-4-6 — 2 цикли разом. 116 111 — двічі. <em>«Я залишаюсь 10 хвилин. Якщо хочеш поговорити — тут».</em> Анонімний ящик або папірці.</div>
+    </div>
+  </div>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">Ключові скрипти</p>
+
+  <div class="scr" data-lbl="ВІДКРИТТЯ">
+    <p><strong>«</strong>Сьогодні ми говоримо про те що відбувається всередині нас коли стає страшно. Не «як не боятись» — а <strong>що робити коли боїшся</strong>. Це різні речі. Боятись при небезпеці — нормально. А знати що робити — це і є мужність.<strong>»</strong></p>
+  </div>
+  <div class="scr am" data-lbl="НОРМАЛІЗАЦІЯ «ЗАВМИРАННЯ»">
+    <p><strong>«</strong>Хтось після страшного звуку ставав як камінь — не міг/-ла рухатись або говорити? Це називається «завмирання». <strong>Це не боягузтво і не слабкість.</strong> Це дуже давній захисний механізм — коли загроза занадто велика, тіло «вимикається». Це теж мужність тіла.<strong>»</strong></p>
+  </div>
+  <div class="scr" data-lbl="ПІСЛЯ ЗАЗЕМЛЕННЯ">
+    <p><strong>«</strong>Хто відчув що щось змінилось — підніміть руку? Може стало трохи спокійніше? А може помітили що-то в тілі? Те що ви щойно зробили — це те саме що роблять рятувальники, пілоти і лікарі щоб залишатись спокійними в кризі. Ця техніка — ваша.<strong>»</strong></p>
+  </div>
+  <div class="scr ro" data-lbl="ПЕРЕД ПЛАНОМ БЕЗПЕКИ">
+    <p><strong>«</strong>Зараз ми складемо особистий план безпеки. Не про де сховатись фізично — а про те що робити всередині. Коли стає страшно — мозок не думає добре. <strong>Готовий план — це обхідний шлях навколо паніки.</strong> Це ваш маяк.<strong>»</strong></p>
+  </div>
+  <div class="scr tl" data-lbl="ЗАКРИТТЯ">
+    <p><strong>«</strong>Ви сьогодні навчились трьом речам: розпізнавати свій стан, повертатись до спокою через дихання і заземлення, і мати план. <strong>Це реальні інструменти — не «думай позитивно».</strong> І якщо страх не відступає — 116 111 або до мене.<strong>»</strong></p>
+  </div>
+</div>
+</div>
+
+<!-- ══ THEORY ══ -->
+<div class="panel" id="panel-theory">
+<div class="wrap">
+  <p class="sh reveal">Наукова база уроку</p>
+  <p class="ss reveal">Trauma-informed підхід · Поліваготонія · ПТС-профілактика · Контекст України 2022–2025</p>
+
+  <div class="pi reveal">
+    <div class="pt">🔬 Центральна концепція</div>
+    <p><strong>Поліваготонія Порджеса (1994) — «три стани» нервової системи:</strong> Вентральний вагус (безпека і зв'язок = «маяк»), симпатика (мобілізація = «хвилі»), дорсальний вагус (завмирання = «буря»). Кожен стан — захист, не патологія. Trauma-informed підхід: спочатку стабілізація (повернення до вентрального вагусу), потім навчання. Урок побудований саме за цим принципом: перший блок — нормалізація і безпека, потім техніки.</p>
+    <div class="src">Porges S.W. (1994). The Polyvagal Theory. Neurobiology of Trauma. van der Kolk B. (2014). The Body Keeps the Score. NICE (2018): Guidelines for PTSD. ВООЗ (2021): Psychological First Aid.</div>
+  </div>
+
+  <div class="cg reveal">
+    <div class="card"><div class="ci">🌊</div><h3>Три зони (Порджес)</h3><p>Вентральний вагус: безпека, зв'язок, навчання. Симпатика: «бій або втеча», мобілізація. Дорсальний вагус: завмирання, «вимикання». Послідовність відновлення: буря → хвилі → маяк — через дихання, рух і соціальний контакт.</p></div>
+    <div class="card"><div class="ci">🫁</div><h3>Дихання і блукаючий нерв</h3><p>Видих довший за вдих стимулює блукаючий нерв (vagus nerve) → активація парасимпатики → зниження ЧСС і кортизолу. Техніка 4-4-6: видих 6 сек — оптимальний для швидкої регуляції. Huberman Lab (2023): фізіологічне зітхання — найшвидша техніка.</p></div>
+    <div class="card"><div class="ci">✋</div><h3>Сенсорне заземлення</h3><p>5-4-3-2-1: переключення обробки з лімбічної системи до кори через сенсорну увагу до теперішнього. Флешбеки і панічні атаки «живуть» в уявному майбутньому або минулому — заземлення повертає в «тут і зараз» де загрози немає.</p></div>
+    <div class="card"><div class="ci">🧠</div><h3>Психологічна перша допомога</h3><p>ВООЗ (2021) PFA: п'ять принципів — безпека, спокій, само- і колективна ефективність, зв'язок, надія. Урок реалізує всі п'ять: безпека (три зони), спокій (дихання), ефективність (план), зв'язок (116 111), надія (образ маяка).</p></div>
+    <div class="card"><div class="ci">🇺🇦</div><h3>Воєнний контекст</h3><p>ВООЗ Україна (2022–2024): до 40% дітей мають симптоми ПТСР після воєнних подій. Але 60–70% мають природну резилієнтність. Урок — профілактика і підтримка резилієнтності, а не терапія. Ключ: нормалізація реакцій + конкретні навички + безпечний дорослий поруч.</p></div>
+    <div class="card"><div class="ci">🛡️</div><h3>Trauma-informed підхід</h3><p>Принципи TIA (SAMHSA): безпека, довіра, вибір, співпраця, наснаження, культурна чутливість. В уроці: право вийти без пояснень, анонімна оцінка стану, вибір техніки дихання, педагог теж практикує поруч.</p></div>
+  </div>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">Три дихальні техніки — механізми</p>
+
+  <table class="tbl reveal">
+    <thead><tr><th>Техніка</th><th>Механізм</th><th>Коли застосовувати</th><th>Для кого НЕ підходить</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Безпека 4-4-6</strong></td><td>Довгий видих (6 сек) → vagus → парасимпатика → ЧСС↓</td><td>Перша допомога при страху, сирені, паніці</td><td>При дисоціації: затримка посилює відрив</td></tr>
+      <tr><td><strong>Квадрат 4-4-4-4</strong></td><td>Рівні фази → баланс симпатики і парасимпатики → стабілізація</td><td>Помірний стрес, перед важливою дією</td><td>Гостра паніка: потрібен пріоритет видиху</td></tr>
+      <tr><td><strong>Фізіологічне зітхання</strong></td><td>Подвійний вдих → максимальне розкриття альвеол → скидання CO₂ → vagus</td><td>Миттєве зниження гострої тривоги (30–60 сек)</td><td>Гіпервентиляція: подвійний вдих посилить</td></tr>
+    </tbody>
+  </table>
+
+  <div class="al a-ro reveal"><span class="ai">⚠️</span><div><p><strong>Для учнів з ПТСР або після гострої травми:</strong> Дихання з затримкою (4-4-6, квадрат) може посилити дисоціацію або спровокувати флешбек. При ознаках дисоціації — зупиніться і перейдіть до заземлення рухом: «потрусіть руками», «притисніть ступні до підлоги». Заземлення ніколи не шкодить.</p></div></div>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">Вікові особливості 11–12 років при кризі</p>
+
+  <div class="al a-gr reveal"><span class="ai">🧠</span><div><p><strong>Магічне мислення і провина</strong> 11–12 р. часто схильні до персоналізації кризових подій: «це через мене», «якби я поводився/-лась інакше». Важливо прямо і чітко нормалізувати: «Ти не причина того що трапилось. Криза — не твоя вина».</p></div></div>
+  <div class="al a-am reveal"><span class="ai">📱</span><div><p><strong>Цифровий стрес при кризі</strong> 11–12 р. при кризі схильні занурюватись у телефон — або нескінченні новини, або навпаки ігри як втеча. Обидва патерни посилюють дисрегуляцію. Урок формує альтернативу: конкретні техніки замість телефону.</p></div></div>
+  <div class="al a-in reveal"><span class="ai">👥</span><div><p><strong>Соціальна регуляція важлива</strong> Для 5–6 класу peer-контакт — потужний регулятор. Після кризи: бути поруч з однокласниками, навіть без слів, знижує кортизол. Заземлення в групі ефективніше ніж самостійно.</p></div></div>
+  <div class="al a-pl reveal"><span class="ai">🇺🇦</span><div><p><strong>Відмінності реакцій залежно від досвіду</strong> В одному класі можуть бути: учні з окупованих або прифронтових районів (можливий ПТСР), внутрішньо переміщені (горювання і втрата), учні що не зазнали прямих подій (менша травматизація, але тривога від новин). Диференціація критична.</p></div></div>
+</div>
+</div>
+
+<!-- ══ ACTIVITIES ══ -->
+<div class="panel" id="panel-activities">
+<div class="wrap">
+  <p class="sh reveal">Активності педагога / психолога</p>
+  <p class="ss reveal">6 trauma-informed вправ для 5–6 класу</p>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--gr)">🌊 Активність 1 · «Де я на хвилі» — групова термометрія <span class="tag tgr" style="margin-left:auto">5 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Анонімно оцінити стан класу — і дати учням мову для власного стану.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>Кожен пише цифру 1–10 на папірці (анонімно).</li>
+        <li>Педагог збирає, рахує середнє і оголошує: «Наш клас сьогодні приблизно на 4 — між маяком і хвилями».</li>
+        <li>Запитати: «Хто хоче поділитись — що ця цифра означає для вас?» Ніякого примусу.</li>
+      </ol>
+      <h4>Важливо:</h4><p>Якщо середнє 7+, адаптуйте урок: зробіть більше практики дихання і менше теорії. При 8–9 — зупиніть урок і проведіть групове заземлення.</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--am)">🫁 Активність 2 · Дихання разом — педагог веде голосом <span class="tag tam" style="margin-left:auto">8 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Провести групове дихання з вимірюванням ефекту.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>Вимірювання пульсу (або «відчуй серцебиття рукою на грудях»).</li>
+        <li>Педагог веде «безпеку 4-4-6» голосом: «Вдих — і-раз, і-два, і-три, і-чотири. Затримай...» тощо. Педагог дихає разом — не тільки рахує.</li>
+        <li>Повторити 5 циклів.</li>
+        <li>Вимірювання пульсу після. Порівняти.</li>
+      </ol>
+      <h4>Ключовий меседж:</h4><p>«Ви щойно виміряли ефект вашого блукаючого нерва. Ваше тіло відповіло на ваш свідомий вибір — це і є сила».</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--in)">✋ Активність 3 · Заземлення «5-4-3-2-1» — голосом по класу <span class="tag tin" style="margin-left:auto">7 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Провести повне сенсорне заземлення — дати відчути ефект «тут і зараз».</p>
+      <h4>Хід (педагог веде повільно):</h4>
+      <ol>
+        <li>«Подивіться навколо і назвіть вголос п'ять речей які бачите» — 30 сек.</li>
+        <li>«Торкніться чотирьох різних поверхонь і скажіть яка на дотик» — 30 сек.</li>
+        <li>«Прислухайтесь — три звуки прямо зараз» — 30 сек.</li>
+        <li>«Понюхайте руку або одяг — два відчуття» — 20 сек.</li>
+        <li>«Один смак у роті прямо зараз» — 15 сек.</li>
+        <li>«Обидві ступні на підлозі. Відчуйте як підлога вас тримає».</li>
+      </ol>
+      <h4>Після:</h4><p>«Де тепер ваша хвиля? Хто відчув що цифра змінилась?»</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--tl)">🏠 Активність 4 · «Мій маяк» — малюємо безпечне місце <span class="tag ttl" style="margin-left:auto">8 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Активувати внутрішній ресурс через образ безпечного місця — класична trauma-informed техніка.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>«Намалюйте або напишіть своє «безпечне місце» — реальне або уявне. Де вам добре і спокійно?»</li>
+        <li>5 хвилин тиші. Тиха музика за бажанням педагога.</li>
+        <li>«Де це місце? Що там є? Як воно пахне?» — хто хоче, ділиться.</li>
+        <li>«Ви можете повертатись сюди будь-коли — навіть на 30 секунд закривши очі».</li>
+      </ol>
+      <h4>Наука:</h4><p>Активація образу безпечного місця знижує активність мигдалини і активує вентральний вагус через уяву. Ефект підтверджений при роботі з ПТСР (van der Kolk, 2014).</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--pl)">💬 Активність 5 · «Що я кажу собі» — рятівні фрази <span class="tag tpl" style="margin-left:auto">6 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Скласти особисту «фразу підтримки» — якір для гострого стресу.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>«Що б ви хотіли почути від найближчої людини коли дуже страшно? Напишіть це собі».</li>
+        <li>Приклади: «Я в безпеці прямо зараз», «Це пройде», «Я вже пережив/-ла важкі моменти», «Я не самий/-а».</li>
+        <li>Хто хоче — зачитує вголос. Клас мовчки слухає.</li>
+        <li>«Ця фраза — у вашому плані безпеки. Повторюйте її під час наступної бурі».</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--gr)">🤝 Активність 6 · «Маяки для одне одного» — peer-підтримка <span class="tag tgr" style="margin-left:auto">5 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Активувати соціальну підтримку як ресурс — найпотужніший буфер при кризі.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>В парах: «Розкажи другу/-подрузі свою техніку №1 — яку вибрав/-ла для свого плану безпеки».</li>
+        <li>«Домовтесь: якщо під час кризи стане важко — можна сказати «мені потрібна хвилина» і зробити дихання разом».</li>
+        <li>«Ваш однокласник/-ця може бути вашим маяком — і ви — його/її».</li>
+      </ol>
+      <h4>Наука:</h4><p>Taylor (2000) «tend-and-befriend»: соціальна підтримка при кризі підвищує окситоцин і знижує кортизол. Для 5–6 класу: навіть мовчазна присутність однолітка — потужний регулятор.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══ DIFF ══ -->
+<div class="panel" id="panel-diff">
+<div class="wrap">
+  <p class="sh reveal">Диференційований підхід</p>
+  <p class="ss reveal">Адаптація для різних рівнів травматизації і реакцій</p>
+
+  <div class="df3 reveal">
+    <div class="dc dc-a">
+      <h4>Помірний стрес (більшість)</h4>
+      <ul>
+        <li>Повний формат уроку</li>
+        <li>Всі три техніки дихання</li>
+        <li>Заземлення 5-4-3-2-1 разом</li>
+        <li>Повний план безпеки</li>
+        <li>116 111 — назвати</li>
+      </ul>
+    </div>
+    <div class="dc dc-b">
+      <h4>Ознаки підвищеної тривоги</h4>
+      <ul>
+        <li>Більше практики, менше теорії</li>
+        <li>Тільки «безпека 4-4-6» і заземлення</li>
+        <li>«Маяк» — малюємо безпечне місце</li>
+        <li>Після уроку — поговорити особисто</li>
+        <li>Направити до психолога</li>
+      </ul>
+    </div>
+    <div class="dc dc-c">
+      <h4>Ознаки гострої травми / ПТСР</h4>
+      <ul>
+        <li>НЕ примушувати до участі</li>
+        <li>Тільки заземлення — без затримки дихання</li>
+        <li>Рух: трусіть руками, ходіть</li>
+        <li>Фізична присутність дорослого</li>
+        <li>Направити до травматерапевта</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="r">
+
+  <table class="tbl reveal">
+    <thead><tr><th>Реакція учня на уроці</th><th>Ознака</th><th>Дія педагога</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Заморозився/-лась під час дихання</strong></td><td>Дисоціація або завмирання</td><td>Зупиніть дихання. Тихо: «Відчуй підлогу під ногами». Потрусіть разом руками. Не залишайте самого/самої.</td></tr>
+      <tr><td><strong>Плаче після «малювання маяка»</strong></td><td>Відкрилась втрата безпечного місця</td><td>Тихо поруч. «Ти не повинен/-на пояснювати. Я тут». Після — особисто.</td></tr>
+      <tr><td><strong>Відмовляється брати участь</strong></td><td>Уникання як захист</td><td>«Можеш просто спостерігати. Ніякого примусу». Після — підійдіть.</td></tr>
+      <tr><td><strong>Жартує або відволікає клас</strong></td><td>Гумор як захист від тривоги</td><td>Без осуду. «Гумор — теж спосіб справлятись». Після — наодинці.</td></tr>
+      <tr><td><strong>Говорить про конкретний страшний досвід при класі</strong></td><td>Потреба у свідку</td><td>«Дякую що поділився/-лась. Давай поговоримо після — це важливо».</td></tr>
+      <tr><td><strong>Хвиля 8–10 на хвилеметрі</strong></td><td>Гострий стрес або криза</td><td>Підійдіть між блоками. «Ти написав/-ла 8. Я хочу переконатись що ти в порядку». Протокол при потребі.</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- ══ CRISIS ══ -->
+<div class="panel" id="panel-crisis">
+<div class="wrap">
+  <p class="sh reveal">Кризові протоколи</p>
+  <p class="ss reveal">Специфічні для теми «кризові події» — найважливіші в серії</p>
+
+  <div class="al a-ro reveal">
+    <span class="ai">🚨</span>
+    <div><p><strong>Цей урок — найвищий ризик актуалізації травматичного досвіду у всій серії.</strong> Тема кризових подій безпосередньо торкається пережитого. Сирени, вибухи, евакуація, втрата дому або близьких — для частини учнів це не «навчальний матеріал», а їхнє реальне вчора. Будьте готові до будь-якої реакції.</p></div>
+  </div>
+
+  <div class="contacts reveal">
+    <div class="ct"><h4>Дитяча гаряча лінія</h4><div class="num">116 111</div><p>Анонімно · Безкоштовно · 24/7</p></div>
+    <div class="ct"><h4>Психологічна підтримка</h4><div class="num">0 800 500 335</div><p>Для педагога теж</p></div>
+    <div class="ct"><h4>Медики / Поліція</h4><div class="num">103 / 102</div><p>При медичному стані або загрозі</p></div>
+    <div class="ct"><h4>Травматерапевт</h4><p>При ознаках ПТСР — EMDR або соматична терапія. Не загальний психолог без досвіду травми.</p></div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--te)">🟠 Протокол 1 · Флешбек або гостра дисоціація під час уроку</div>
+    <div class="crb-b">
+      <h4>Ознаки:</h4><p>«Завмер/-ла», порожній погляд, не реагує на ім'я, дихання зупинилось або дуже часте, не розпізнає де він/вона.</p>
+      <ol>
+        <li>НЕ кричіть і не трясіть. Тихий спокійний голос: «[ім'я], я тут. Ти в класі. Ти в безпеці».</li>
+        <li>Фізичне заземлення: «Відчуй підлогу під ногами. Ось стілець — торкнись його». Якщо дозволяє — рука на плечі.</li>
+        <li>Не залишати самого/самої. Вивести з класу тихо.</li>
+        <li>Якщо не повертається 5+ хв → 103.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--am)">🟡 Протокол 2 · Гостра паніка або гіпервентиляція</div>
+    <div class="crb-b">
+      <ol>
+        <li>Спокійний низький голос: «Ти в безпеці. Я тут. Це пройде».</li>
+        <li>НЕ кажіть «дихай нормально» або «заспокойся» — неможлива команда.</li>
+        <li>Покажіть фізіологічне зітхання самі — без слів: два вдихи, довгий видих.</li>
+        <li>«5 речей які ти бачиш» — ведіть голосом повільно.</li>
+        <li>Якщо не заспокоюється 10+ хв → батьки → 103.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--ro)">🔴 Протокол 3 · Розкриття травматичного досвіду</div>
+    <div class="crb-b">
+      <p>Учень розповідає про конкретну кризову подію — пережиту або втрату.</p>
+      <ol>
+        <li>Вислухайте без переривань. НЕ намагайтесь «вирішити» або «заспокоїти» одразу.</li>
+        <li>«Дякую що розповів/-ла. Потрібно було багато сміливості».</li>
+        <li>Після уроку — наодинці: «Те що ти пережив/-ла — серйозно. Ти заслуговуєш підтримку».</li>
+        <li>Направте до шкільного психолога або травматерапевта (EMDR, соматична терапія).</li>
+        <li>Батькам: «Ваша дитина пережила травматичний досвід і потребує фахової підтримки».</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--ro)">🔴 Протокол 4 · Суїцидальні думки</div>
+    <div class="crb-b">
+      <p>Може виникнути при темі «кризові події» якщо учень переживає горювання або довготривалий стрес.</p>
+      <ol>
+        <li>НЕ залишати самого/самої.</li>
+        <li>Приватно, спокійно: «Ти сказав/-ла щось важливе. Ти думаєш про те щоб заподіяти собі шкоду?»</li>
+        <li>Шкільний психолог + батьки + за потреби 103.</li>
+        <li>116 111 — для учня прямо зараз якщо є доступ до телефону.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="pi reveal">
+    <div class="pt">💙 Для вас, педагогу — вторинна травматизація</div>
+    <p>Робота з дітьми які пережили кризу — один із найважчих видів педагогічної роботи. Вторинна травматизація (vicarious traumatization) реальна: ви поглинаєте чужий біль. Після важкого уроку — ваша власна регуляція критична. Поговоріть з колегою, супервізором або зателефонуйте на 0 800 500 335. Ваша стабільність — умова безпеки класу.</p>
+  </div>
+</div>
+</div>
+
+<!-- ══ SCRIPTS ══ -->
+<div class="panel" id="panel-scripts">
+<div class="wrap">
+  <p class="sh reveal">Скрипти і готові фрази</p>
+  <p class="ss reveal">Точні слова для ведення практики і важких моментів</p>
+
+  <p class="sh" style="font-size:1rem;margin:.8rem 0">Ведення дихання «безпека 4-4-6»</p>
+  <div class="scr" data-lbl="ПОВНИЙ СКРИПТ ДИХАННЯ">
+    <p>«Займіть зручне положення. Обидві ступні на підлозі. Руки на колінах або на парті — як зручно. Якщо хочете — заплющте очі. Якщо ні — дивіться в одну точку перед собою.<br><br>Вдих носом — і-раз, і-два, і-три, <strong>і-чотири.</strong> Затримайте — і-раз, і-два, і-три, <strong>і-чотири.</strong> Видих ротом — повільно-повільно — і-раз, і-два, і-три, і-чотири, і-п'ять, <strong>і-шість.</strong><br><br>Знову. Вдих... [продовжуйте]. Після п'яти циклів: «Відкрийте очі. Де тепер ваша хвиля? Хто відчув різницю?»</p>
+  </div>
+
+  <p class="sh" style="font-size:1rem;margin:.8rem 0">Скрипт заземлення 5-4-3-2-1</p>
+  <div class="scr am" data-lbl="ПОВНИЙ СКРИПТ ЗАЗЕМЛЕННЯ">
+    <p>«Залишайтесь де є — можна сидіти або стояти. <strong>П'ять речей які ви бачите прямо зараз</strong> — назвіть вголос або тихо собі. [30 сек пауза]. <strong>Чотири речі яких ви торкаєтесь</strong> — відчуйте текстуру. [25 сек]. <strong>Три звуки які ви чуєте</strong> — прислухайтесь. [25 сек]. <strong>Два запахи або відчуття в носі</strong> — можна понюхати руку. [20 сек]. <strong>Один смак у роті прямо зараз.</strong> [15 сек].<br><br>І наостанок: <strong>обидві ступні рівно на підлозі. Відчуйте тиск — підлога тримає вас</strong>. Ви тут. Ви в безпеці.»</p>
+  </div>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1rem;margin:.8rem 0">Таблиця фраз — закриваючих і відкриваючих</p>
+
+  <table class="tbl reveal">
+    <thead><tr><th>❌ Не казати</th><th>Чому шкодить</th><th>✓ Краще</th></tr></thead>
+    <tbody>
+      <tr><td>«Не бійся»</td><td>Знецінює реальний страх і неможливо виконати</td><td>«Боятись при небезпеці — нормально. Що відчуваєш в тілі?»</td></tr>
+      <tr><td>«Все буде добре»</td><td>Обіцянка яку не можете гарантувати — знижує довіру</td><td>«Прямо зараз ти в безпеці. Я тут поруч»</td></tr>
+      <tr><td>«Ти такий/-а сміливий/-а»</td><td>Перфекціоністський тиск — «маю бути сміливим/-ою»</td><td>«Ти справляєшся — навіть коли важко»</td></tr>
+      <tr><td>«Заспокойся»</td><td>Під час гіпервентиляції — неможлива і шкідлива команда</td><td>[мовчки показати власне дихання — два вдихи, довгий видих]</td></tr>
+      <tr><td>«Це вже в минулому»</td><td>При ПТСР тіло «не знає» що це минуле — флешбек реальний</td><td>«Те що ти відчуваєш — реальне. Ти тут, зараз, в безпеці»</td></tr>
+      <tr><td>«Інші пережили гірше»</td><td>Порівняння знецінює і ізолює</td><td>«Твій досвід — твій. Він не стає меншим від чужого»</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+<!-- ══ REFLECTION ══ -->
+<div class="panel" id="panel-reflection">
+<div class="wrap">
+  <p class="sh reveal">Рефлексія і оцінка уроку</p>
+  <p class="ss reveal">Інструменти завершення і подальша робота</p>
+
+  <table class="tbl reveal">
+    <thead><tr><th>#</th><th>Exit Ticket</th><th>Питання</th><th>Що дає педагогу</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><span class="tag tgr">Хвиля до/після</span></td><td>«Моя хвиля на початку і в кінці» (анонімно)</td><td>Вимірювання ефекту практики</td></tr>
+      <tr><td>2</td><td><span class="tag tam">Техніка №1</span></td><td>«Яку техніку поставлю в план безпеки?»</td><td>Персоналізація і намір</td></tr>
+      <tr><td>3</td><td><span class="tag tin">Фраза підтримки</span></td><td>«Моя фраза яку скажу собі коли страшно»</td><td>Рятівний якір</td></tr>
+      <tr><td>4</td><td><span class="tag tro">SOS анонімно</span></td><td>«Мені потрібна розмова» — папірець без імені</td><td>Безпечне звернення</td></tr>
+      <tr><td>5</td><td><span class="tag ttl">Мій маяк</span></td><td>«Моє безпечне місце» — одне слово</td><td>Ресурс для наступних сесій</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="r">
+
+  <div class="cg reveal">
+    <div class="card"><div class="ci">🌊</div><h3>Хвиля через тиждень</h3><p>«Хто застосував дихання або заземлення в реальній ситуації?» — ця розмова важливіша за урок. Навіть один приклад — показати всім.</p></div>
+    <div class="card"><div class="ci">📞</div><h3>116 111</h3><p>Для 5–6 у воєнному контексті: знання цього номеру може врятувати. Перевіряйте що пам'ятають — вивісьте у класі.</p></div>
+    <div class="card"><div class="ci">🏠</div><h3>Після уроку завжди</h3><p>Залишайтесь 10 хвилин. Цей урок — найвищий ризик відкладеного розкриття: учень підходить вже після звінка.</p></div>
+    <div class="card"><div class="ci">💙</div><h3>Ваш власний стан</h3><p>Після цього уроку — перевірте себе. Що ви відчуваєте? Якщо важко — 0 800 500 335. Ваша регуляція — умова безпеки класу.</p></div>
+  </div>
+
+  <div class="al a-gr reveal">
+    <span class="ai">📚</span>
+    <div><p><strong>Подальша робота:</strong> Щотижнева «хвилина заземлення» на початку класного часу. Анонімний ящик для звернень — постійний. Peer-підтримка: «маяки для одне одного» — відпрацьовувати. Батьківські збори: «Як підтримати дитину після кризи вдома». Ресурси: van der Kolk B. «The Body Keeps the Score», Levine P. «Waking the Tiger», ВООЗ «Psychological First Aid» (безкоштовно онлайн українською). Самостійна підготовка педагога: тренінг психологічної першої допомоги (PFA).</p></div>
+  </div>
+
+  <div class="pi reveal">
+    <div class="pt">💙 Завершальне слово</div>
+    <p>Ви провели один із найважливіших уроків у цій серії — і один із найважчих. Тема кризових подій в Україні 2022–2025 — не академічна. Це реальне вчора ваших учнів. Ви не можете прибрати те що вони пережили. Але ви дали їм мову для цього досвіду, інструменти і відчуття що поруч є дорослий який не злякався. Це — достатньо. І це — важливо.</p>
+  </div>
+</div>
+</div>
+
+<script>
+function sw(n){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.hn,.tb').forEach(b=>b.classList.remove('on'));
+  document.getElementById('panel-'+n).classList.add('on');
+  document.querySelectorAll('.hn,.tb').forEach(b=>{if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+n+"'"))b.classList.add('on');});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+const ro=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.07});
+document.querySelectorAll('.reveal').forEach(r=>ro.observe(r));
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Джерела й що почитати</h2><h3>Використані джерела</h3><ol><li>van der Kolk, B. (2014). <i>The Body Keeps the Score</i>. Viking.</li><li>World Health Organization (2011). <i>Psychological First Aid: Guide for Field Workers</i>. WHO.</li><li>SAMHSA (2014). <i>Trauma-Informed Care in Behavioral Health Services</i> (TIP 57).</li><li>Hobfoll, S. E., Watson, P., Bell, C. C., et al. (2007). Five essential elements of immediate and mid-term mass trauma intervention: Empirical evidence. <i>Psychiatry, 70</i>(4), 283–315.</li><li>National Child Traumatic Stress Network. <i>Parent Guidelines for Helping Children After a Disaster</i> (nctsn.org).</li><li>Bonanno, G. A. (2004). Loss, trauma, and human resilience: Have we underestimated the human capacity to thrive after extremely aversive events? <i>American Psychologist, 59</i>(1), 20–28.</li><li>Masten, A. S. (2014). <i>Ordinary Magic: Resilience in Development</i>. Guilford Press.</li></ol><h3>Що почитати фахівцеві</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>Psychological First Aid: Guide for Field Workers</td><td>WHO, 2011</td><td>Принципи «дивись, слухай, з'єднуй»</td></tr><tr><td>Parent Guidelines for Helping Children After a Disaster</td><td>NCTSN (nctsn.org)</td><td>Практичні поради</td></tr><tr><td>The Body Keeps the Score</td><td>van der Kolk B., 2014</td><td>Популярний огляд; частина тверджень дискусійна</td></tr><tr><td>Ordinary Magic</td><td>Masten A. S., 2014</td><td>Стійкість</td></tr></table><h3>Що порадити батькам</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>How to Talk So Kids Will Listen &amp; Listen So Kids Will Talk</td><td>Faber A., Mazlish E.</td><td>Практичні фрази</td></tr><tr><td>Raising an Emotionally Intelligent Child</td><td>Gottman J., DeClaire J., 1997</td><td>Емоційне коучинг-спілкування</td></tr><tr><td>The Whole-Brain Child</td><td>Siegel D. J., Bryson T. P., 2011</td><td>Емоції дитини</td></tr></table><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="06-5-6-case.html">← Тема 6</a></span><span><a href="08-5-6-case.html">Тема 8 →</a></span></div><a class="mo-fab" href="../index.html#t07">☰ До матриці</a></body>
+</html>

@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Наші кордони · 7–8 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:     #090C12;
+  --s1:     #0F1320;
+  --s2:     #141A2C;
+  --s3:     #1A2238;
+  --purple: #7C5FCC;
+  --pur-l:  rgba(124,95,204,.12);
+  --blue:   #3B8FE8;
+  --blue-l: rgba(59,143,232,.1);
+  --cream:  #EDE89E;
+  --cream-l:rgba(237,232,158,.08);
+  --rose:   #E05878;
+  --rose-l: rgba(224,88,120,.1);
+  --teal:   #2EBFA0;
+  --teal-l: rgba(46,191,160,.1);
+  --text:   #E8E2D8;
+  --muted:  rgba(232,226,216,.5);
+  --dim:    rgba(232,226,216,.28);
+  --bd:     rgba(255,255,255,.07);
+  --bd2:    rgba(255,255,255,.14);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+
+/* BG */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 45% at 10% 20%,rgba(124,95,204,.16) 0%,transparent 65%),
+    radial-gradient(ellipse 45% 50% at 88% 80%,rgba(59,143,232,.12) 0%,transparent 60%),
+    radial-gradient(ellipse 35% 30% at 60% 45%,rgba(46,191,160,.06) 0%,transparent 55%);
+}
+
+/* GRID TEXTURE */
+body::after{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);
+  background-size:56px 56px;
+}
+
+/* PROG */
+.prog{position:fixed;top:0;left:0;height:2px;z-index:500;background:linear-gradient(90deg,var(--purple),var(--blue),var(--teal));transition:width .3s ease;width:0%;}
+
+/* NAV */
+.snav{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.55rem;z-index:300;}
+.snd{width:6px;height:6px;border-radius:50%;background:var(--bd2);border:none;cursor:pointer;padding:0;transition:all .3s;}
+.snd.on{background:var(--purple);transform:scale(1.7);}
+
+/* HERO */
+.hero{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 1.5rem;text-align:center;}
+
+/* coordinate cross */
+.coord-bg{position:absolute;inset:0;pointer-events:none;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.coord-bg svg{width:min(100vw,800px);height:min(100vw,800px);opacity:.06;}
+
+.hero-label{font-size:.68rem;font-weight:500;letter-spacing:.22em;color:var(--purple);margin-bottom:1.4rem;display:flex;align-items:center;gap:.7rem;justify-content:center;}
+.hero-label::before,.hero-label::after{content:'';width:32px;height:1px;background:var(--purple);opacity:.6;}
+
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.8rem,7.5vw,6rem);font-weight:700;line-height:1.02;color:var(--text);margin-bottom:1.2rem;letter-spacing:-.03em;}
+.hero h1 .accent{display:block;color:var(--purple);}
+.hero h1 .sub-h{display:block;font-size:.38em;font-weight:300;color:var(--muted);letter-spacing:.02em;margin-top:.5rem;}
+
+.hero-desc{font-size:.97rem;font-weight:300;line-height:1.88;color:var(--muted);max-width:440px;margin:0 auto 2.5rem;}
+
+.meta-row{display:flex;gap:1.8rem;justify-content:center;flex-wrap:wrap;font-size:.7rem;font-weight:500;letter-spacing:.08em;color:var(--dim);text-transform:uppercase;padding-top:2rem;border-top:1px solid var(--bd);max-width:500px;margin:0 auto;}
+
+.scroll-ind{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;font-size:.62rem;letter-spacing:.12em;color:var(--dim);}
+.scroll-ind .bar{width:1px;height:52px;background:linear-gradient(to bottom,var(--purple),transparent);animation:barDrop 2.5s ease-in-out infinite;}
+@keyframes barDrop{0%,100%{opacity:.25;transform:scaleY(.4)translateY(-14px);}50%{opacity:1;transform:scaleY(1)translateY(0);}}
+
+/* SECTIONS */
+.sec{position:relative;z-index:2;max-width:860px;margin:0 auto;padding:6rem 1.5rem;}
+.div{max-width:860px;margin:0 auto;height:1px;background:linear-gradient(90deg,transparent,var(--bd2),transparent);position:relative;z-index:2;}
+.div::after{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:6px;height:6px;border-radius:50%;background:var(--purple);opacity:.4;}
+
+.sec-num{font-size:.68rem;font-weight:500;letter-spacing:.18em;color:var(--purple);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem;}
+.sec-num::after{content:'';width:28px;height:1px;background:var(--purple);opacity:.5;}
+
+h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.9rem,4vw,3rem);font-weight:700;line-height:1.12;color:var(--text);margin-bottom:1rem;letter-spacing:-.02em;}
+h2 em{font-style:normal;color:var(--cream);}
+.lead{font-size:.96rem;font-weight:300;line-height:1.9;color:var(--muted);max-width:640px;margin-bottom:2rem;}
+
+/* PSYCHO */
+.psycho{border-left:2px solid var(--teal);padding:1.5rem 1.8rem;margin:2rem 0;background:linear-gradient(90deg,rgba(46,191,160,.05),transparent);}
+.psy-who{font-size:.63rem;font-weight:500;letter-spacing:.18em;color:var(--teal);margin-bottom:.6rem;text-transform:uppercase;}
+.psycho p{font-size:.92rem;line-height:1.87;color:rgba(232,226,216,.78);font-style:italic;}
+
+/* BOUNDARY TYPES */
+.btype-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:1px;background:var(--bd);margin:1.8rem 0;border:1px solid var(--bd);}
+.btype{background:var(--s1);padding:1.4rem;cursor:pointer;transition:background .2s;position:relative;overflow:hidden;}
+.btype:hover{background:var(--s2);}
+.btype.sel{background:var(--pur-l);}
+.btype.sel .bt-title{color:var(--purple);}
+.btype .sel-mark{position:absolute;top:.6rem;right:.7rem;font-size:.75rem;color:var(--purple);opacity:0;transition:opacity .2s;}
+.btype.sel .sel-mark{opacity:1;}
+.bt-ico{font-size:1.6rem;margin-bottom:.55rem;display:block;opacity:.8;}
+.bt-title{font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:.25rem;transition:color .2s;}
+.bt-body{font-size:.77rem;font-weight:300;color:var(--muted);line-height:1.55;}
+
+/* SPECTRUM SLIDERS */
+.spectrum-wrap{margin:2rem 0;}
+.spec-item{margin-bottom:1.5rem;}
+.spec-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;}
+.spec-label{font-size:.82rem;font-weight:500;color:var(--text);}
+.spec-val{font-size:.75rem;font-weight:600;color:var(--purple);}
+.spec-slider{-webkit-appearance:none;width:100%;height:4px;border-radius:2px;outline:none;cursor:pointer;margin-bottom:.3rem;}
+.spec-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;cursor:pointer;border:2px solid var(--bg);}
+.spec-note{font-size:.74rem;color:var(--muted);font-style:italic;}
+
+/* MANIPULATION ACCORDION */
+.manip-list{margin:2rem 0;}
+.mi{border-bottom:1px solid var(--bd);}
+.mi-head{display:flex;align-items:center;gap:.9rem;padding:1.1rem 0;cursor:pointer;}
+.mi-head:hover .mi-title{color:var(--cream);}
+.mi-num{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:300;color:var(--dim);min-width:2.2rem;}
+.mi-title{font-size:.9rem;font-weight:600;color:var(--text);flex:1;transition:color .2s;}
+.mi-tag{font-size:.64rem;font-weight:600;letter-spacing:.06em;padding:.18rem .52rem;border-radius:3px;}
+.mi-arr{font-size:.7rem;color:var(--dim);transition:transform .25s;}
+.mi.open .mi-arr{transform:rotate(90deg);}
+.mi-body{display:none;padding:0 0 1.5rem 3.1rem;font-size:.86rem;font-weight:300;line-height:1.88;color:var(--muted);}
+.mi.open .mi-body{display:block;}
+.mi-signal{margin-top:.8rem;padding:.7rem 1rem;background:var(--s2);border-left:2px solid var(--cream);font-size:.79rem;color:var(--muted);}
+.mi-action{margin-top:.6rem;padding:.7rem 1rem;background:rgba(46,191,160,.06);border-left:2px solid var(--teal);font-size:.79rem;color:var(--muted);}
+
+/* SCENARIOS */
+.sc-shell{background:var(--s1);border:1px solid var(--bd);border-radius:2px;margin:1.8rem 0;overflow:hidden;}
+.sc-hdr{padding:1rem 1.5rem;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;}
+.sc-hdr-title{font-family:'Space Grotesk',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;}
+.sc-score-inline{font-size:.72rem;font-weight:600;color:var(--purple);}
+.sc-prog-bar{height:2px;background:var(--bd);}
+.sc-prog-fill{height:100%;background:var(--teal);transition:width .4s ease;}
+.sc-body{padding:2rem;}
+.sc-q{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:500;line-height:1.6;color:var(--text);margin-bottom:1.4rem;}
+.sc-opts{display:flex;flex-direction:column;gap:.5rem;}
+.sc-opt{background:var(--s2);border:1px solid var(--bd);padding:.82rem 1.1rem;font-family:'Inter',sans-serif;font-size:.86rem;font-weight:300;cursor:pointer;text-align:left;color:var(--muted);transition:all .2s;}
+.sc-opt:hover{border-color:var(--bd2);color:var(--text);background:var(--s3);}
+.sc-opt.ok{border-color:var(--teal);background:var(--teal-l);color:var(--teal);}
+.sc-opt.bad{border-color:var(--rose);background:var(--rose-l);color:var(--rose);}
+.sc-opt:disabled{cursor:not-allowed;}
+.sc-fb{font-size:.84rem;font-weight:300;padding:.9rem 1.1rem;border-left:2px solid var(--bd2);margin-top:1rem;display:none;line-height:1.75;color:var(--muted);}
+.sc-fb.show{display:block;}
+.sc-fb.ok{border-color:var(--teal);}
+.sc-fb.bad{border-color:var(--rose);}
+.sc-next{display:none;margin-top:1rem;background:none;border:1px solid var(--purple);padding:.55rem 1.7rem;font-family:'Inter',sans-serif;font-size:.8rem;font-weight:500;color:var(--purple);cursor:pointer;transition:all .2s;letter-spacing:.04em;}
+.sc-next:hover{background:var(--purple);color:white;}
+.sc-next.show{display:inline-block;}
+.sc-score{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:var(--cream);text-align:center;margin-top:1.5rem;display:none;}
+
+/* DIGITAL SAFETY */
+.dig-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:1.5rem 0;}
+@media(max-width:520px){.dig-grid{grid-template-columns:1fr;}}
+.dig-col{padding:1.4rem;border:1px solid var(--bd);}
+.dig-col h3{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.9rem;padding-bottom:.6rem;border-bottom:1px solid var(--bd);}
+.dig-col.do h3{color:var(--teal);}
+.dig-col.dont h3{color:var(--rose);}
+.dig-col ul{list-style:none;padding:0;}
+.dig-col ul li{font-size:.82rem;font-weight:300;color:var(--muted);padding:.38rem 0;border-bottom:1px solid var(--bd);display:flex;gap:.5rem;align-items:flex-start;line-height:1.5;}
+.dig-col ul li:last-child{border:none;}
+.dig-col.do ul li::before{content:'↗';color:var(--teal);flex-shrink:0;}
+.dig-col.dont ul li::before{content:'↘';color:var(--rose);flex-shrink:0;}
+
+/* QUIZ */
+.quiz-shell{border:1px solid var(--bd);margin:1.8rem 0;}
+.qz-top{padding:.9rem 1.5rem;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;}
+.qz-prog{font-size:.7rem;font-weight:500;letter-spacing:.09em;color:var(--dim);}
+.qz-pts{font-size:.7rem;font-weight:600;color:var(--purple);}
+.qz-body{padding:2rem 1.5rem;}
+.qz-q{font-family:'Space Grotesk',sans-serif;font-size:1.08rem;font-weight:500;line-height:1.55;color:var(--text);margin-bottom:1.3rem;}
+.qz-opts{display:flex;flex-direction:column;gap:.45rem;}
+.qz-o{background:var(--s1);border:1px solid var(--bd);padding:.8rem 1.1rem;font-family:'Inter',sans-serif;font-size:.86rem;font-weight:300;cursor:pointer;text-align:left;color:var(--muted);transition:all .2s;}
+.qz-o:hover{border-color:var(--bd2);color:var(--text);background:var(--s2);}
+.qz-o.ok{border-color:var(--teal);background:var(--teal-l);color:var(--teal);font-weight:500;}
+.qz-o.bad{border-color:var(--rose);background:var(--rose-l);color:var(--rose);}
+.qz-o:disabled{cursor:not-allowed;}
+.qz-fb{font-size:.83rem;font-weight:300;padding:.8rem 1rem;border-left:2px solid var(--bd2);margin-top:.8rem;display:none;line-height:1.75;color:var(--muted);}
+.qz-fb.show{display:block;}
+.qz-fb.ok{border-color:var(--teal);}
+.qz-fb.bad{border-color:var(--rose);}
+.qz-next{display:none;margin-top:.9rem;background:none;border:1px solid var(--cream);padding:.5rem 1.5rem;font-family:'Inter',sans-serif;font-size:.78rem;color:var(--cream);cursor:pointer;transition:all .2s;font-weight:500;}
+.qz-next:hover{background:var(--cream);color:var(--bg);}
+.qz-next.show{display:inline-block;}
+.qz-score{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:var(--cream);text-align:center;margin-top:1.5rem;display:none;padding:1rem;}
+
+/* AWARENESS GRID */
+.aware-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:1px;background:var(--bd);margin:1.5rem 0;border:1px solid var(--bd);}
+.aw-card{background:var(--s1);padding:1.3rem;cursor:pointer;transition:background .2s;}
+.aw-card:hover{background:var(--s2);}
+.aw-card.open{background:var(--s2);}
+.aw-card.open .aw-title{color:var(--cream);}
+.aw-icon{font-size:1.4rem;margin-bottom:.5rem;display:block;opacity:.75;}
+.aw-title{font-size:.83rem;font-weight:600;color:var(--text);margin-bottom:.25rem;transition:color .2s;}
+.aw-body{font-size:.77rem;font-weight:300;color:var(--muted);line-height:1.58;display:none;}
+.aw-card.open .aw-body{display:block;}
+
+/* PLAN */
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--bd);border:1px solid var(--bd);margin:1.5rem 0;}
+.pf{background:var(--s1);padding:1.4rem;}
+.pf label{font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:.5rem;}
+.pf-in{width:100%;background:transparent;border:none;border-bottom:1px solid var(--bd2);padding:.5rem 0;font-family:'Inter',sans-serif;font-size:.84rem;color:var(--text);outline:none;resize:none;transition:border-color .2s;line-height:1.6;}
+.pf-in:focus{border-color:var(--purple);}
+.pf-in::placeholder{color:var(--dim);}
+.plan-btn{background:var(--purple);color:white;border:none;padding:.75rem 2.2rem;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;display:block;margin:1.5rem auto 0;transition:all .25s;box-shadow:0 8px 24px rgba(124,95,204,.25);}
+.plan-btn:hover{background:#6A4FBB;}
+.plan-result{display:none;margin-top:1.5rem;background:var(--s1);border:1px solid var(--bd2);padding:2rem;}
+.plan-result.show{display:block;}
+.plan-result h3{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:600;color:var(--text);text-align:center;margin-bottom:1.2rem;}
+.pr-row{display:flex;gap:1rem;padding:.6rem 0;border-bottom:1px solid var(--bd);font-size:.83rem;font-weight:300;}
+.pr-row:last-child{border:none;}
+.pr-l{color:var(--dim);font-size:.7rem;font-weight:600;letter-spacing:.06em;min-width:140px;}
+
+/* FINAL */
+.final-wrap{position:relative;z-index:2;max-width:660px;margin:0 auto;text-align:center;padding:5rem 1.5rem 7rem;}
+.final-mark{font-family:'Space Grotesk',sans-serif;font-size:4.5rem;font-weight:300;color:var(--purple);opacity:.3;line-height:1;margin-bottom:1.5rem;display:block;}
+.final-cert{border:1px solid var(--bd2);padding:2rem;margin:2rem 0;text-align:left;}
+.fc-l{font-size:.62rem;font-weight:600;letter-spacing:.14em;color:var(--dim);margin-bottom:.4rem;text-transform:uppercase;}
+.fc-v{font-family:'Space Grotesk',sans-serif;font-size:.92rem;font-weight:400;color:var(--text);line-height:1.65;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s;}
+.reveal.vis{opacity:1;transform:none;}
+</style>
+<link rel="stylesheet" href="../assets/psy.css">
+</head>
+<body><nav class="mo-nav"><a href="../index.html">← Кабінет психолога</a><span class="mo-t">Тема 4 · Наші кордони: повага до себе та інших · 7–8 клас · Урок</span><span class="mo-g"><a href="04-5-6-lesson.html">5–6 клас</a><a href="04-7-8-lesson.html" class="on">7–8 клас</a><a href="04-9-11-lesson.html">9–11 клас</a><a href="04-b-lesson.html">Батьки</a><a href="04-7-8-case.html">⇄ Кейс</a></span></nav>
+<div class="prog" id="prog"></div>
+
+<nav class="snav" id="sNav">
+  <button class="snd on" data-i="0"></button>
+  <button class="snd" data-i="1"></button>
+  <button class="snd" data-i="2"></button>
+  <button class="snd" data-i="3"></button>
+  <button class="snd" data-i="4"></button>
+  <button class="snd" data-i="5"></button>
+  <button class="snd" data-i="6"></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="s0">
+  <div class="coord-bg">
+    <svg viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="400" y1="0" x2="400" y2="800" stroke="white" stroke-width=".8"/>
+      <line x1="0" y1="400" x2="800" y2="400" stroke="white" stroke-width=".8"/>
+      <circle cx="400" cy="400" r="80" stroke="white" stroke-width=".6"/>
+      <circle cx="400" cy="400" r="160" stroke="white" stroke-width=".5"/>
+      <circle cx="400" cy="400" r="260" stroke="white" stroke-width=".4"/>
+      <circle cx="400" cy="400" r="370" stroke="white" stroke-width=".3" stroke-dasharray="4 8"/>
+      <!-- axis arrows -->
+      <path d="M400 20 L393 36 L407 36 Z" fill="white" opacity=".4"/>
+      <path d="M400 780 L393 764 L407 764 Z" fill="white" opacity=".4"/>
+      <path d="M20 400 L36 393 L36 407 Z" fill="white" opacity=".4"/>
+      <path d="M780 400 L764 393 L764 407 Z" fill="white" opacity=".4"/>
+    </svg>
+  </div>
+  <div class="hero-label">Онлайн-урок · 7–8 клас</div>
+  <h1>
+    <span class="accent">Наші кордони</span>
+    <span class="sub-h">повага до себе та інших</span>
+  </h1>
+  <p class="hero-desc">Де твоя лінія? Як її захистити — і поважати чужу. Без маніпуляцій, без провини, без «я так мав/-ла зробити»</p>
+  <div class="meta-row">
+    <span>⌚ 45 хв</span>
+    <span>◎ 6 типів меж</span>
+    <span>▲ 8 сценаріїв</span>
+    <span>◈ цифрова безпека</span>
+    <span>◇ мій план</span>
+  </div>
+  <div class="scroll-ind"><span>scroll</span><div class="bar"></div></div>
+</section>
+
+<!-- S1: ЩО ТАКЕ КОРДОНИ -->
+<div class="div"></div>
+<section class="sec reveal" id="s1">
+  <div class="sec-num">01 — Теорія</div>
+  <h2>Межі — це не<br><em>стіни і не тюрми</em></h2>
+  <p class="lead">Особиста межа — це місце, де закінчується «я» і починається «інший». Не правило, яке хтось нав'язав. Не спосіб відштовхнути людей. Це твоя внутрішня система координат: що для тебе окей, а що — ні.</p>
+
+  <div class="psycho">
+    <div class="psy-who">Порада психолога · Підліткова специфіка</div>
+    <p>У 7–8 класі межі особливо складні: думка однолітків сильна, є бажання «вписатись», і водночас — перші стосунки, де межі потрібні як ніколи. Більшість підлітків не порушують межі з бажання нашкодити — вони просто не вміють їх бачити. Знати назви — вже половина захисту.</p>
+  </div>
+
+  <p style="font-size:.8rem;font-weight:500;letter-spacing:.06em;color:var(--dim);text-transform:uppercase;margin-bottom:1rem">Натисни на тип — відчуй різницю:</p>
+  <div class="btype-grid">
+    <div class="btype" onclick="this.classList.toggle('sel')">
+      <span class="sel-mark">✓</span>
+      <span class="bt-ico">🧍</span>
+      <div class="bt-title">Фізичні</div>
+      <div class="bt-body">Тіло, простір, торкання. «Не обіймай без дозволу» — це норма, а не грубість.</div>
+    </div>
+    <div class="btype" onclick="this.classList.toggle('sel')">
+      <span class="sel-mark">✓</span>
+      <span class="bt-ico">💬</span>
+      <div class="bt-title">Емоційні</div>
+      <div class="bt-body">Ти не відповідаєш за чужі почуття і не зобов'язаний/-а управляти чужим настроєм.</div>
+    </div>
+    <div class="btype" onclick="this.classList.toggle('sel')">
+      <span class="sel-mark">✓</span>
+      <span class="bt-ico">🧠</span>
+      <div class="bt-title">Розумові</div>
+      <div class="bt-body">Право думати інакше, мати власну думку, не погоджуватись. «Всі так думають» — не аргумент.</div>
+    </div>
+    <div class="btype" onclick="this.classList.toggle('sel')">
+      <span class="sel-mark">✓</span>
+      <span class="bt-ico">🔐</span>
+      <div class="bt-title">Приватність</div>
+      <div class="bt-body">Переписка, щоденник, паролі, таємниці — твоє, без дозволу нікому не доступне.</div>
+    </div>
+    <div class="btype" onclick="this.classList.toggle('sel')">
+      <span class="sel-mark">✓</span>
+      <span class="bt-ico">📱</span>
+      <div class="bt-title">Цифрові</div>
+      <div class="bt-body">Фото, акаунти, геолокація, переписка. Онлайн — теж реальність, де є межі.</div>
+    </div>
+    <div class="btype" onclick="this.classList.toggle('sel')">
+      <span class="sel-mark">✓</span>
+      <span class="bt-ico">💕</span>
+      <div class="bt-title">У стосунках</div>
+      <div class="bt-body">Що окей в романтичних і дружніх стосунках — і що ні. Навіть «разом» не означає «без меж».</div>
+    </div>
+  </div>
+</section>
+
+<!-- S2: СПЕКТР -->
+<div class="div"></div>
+<section class="sec reveal" id="s2">
+  <div class="sec-num">02 — Карта</div>
+  <h2>Де мої межі <em>зараз?</em></h2>
+  <p class="lead">Посунь кожен повзунок — відмітьте, де ти на цьому спектрі. Немає правильної відповіді — є твоя відповідь.</p>
+
+  <div class="psycho">
+    <div class="psy-who">Порада психолога · Про «розмиті» межі</div>
+    <p>Межі бувають надто жорсткими (ніхто близько — ізоляція), надто м'якими (пускаю всіх — виснаження) і гнучкими (відкриваюсь поступово, залежно від довіри). Мета не «будь відкритим» і не «закрийся від усіх» — а навчитись свідомо вибирати. Відчути сигнали тіла, коли щось не так — це ключова навичка.</p>
+  </div>
+
+  <div class="spectrum-wrap">
+    <div class="spec-item">
+      <div class="spec-header">
+        <span class="spec-label">🧍 Фізичний простір</span>
+        <span class="spec-val" id="sv0">60%</span>
+      </div>
+      <input type="range" min="0" max="100" value="60" class="spec-slider" style="background:linear-gradient(to right,var(--purple) 60%,var(--bd2) 60%)" oninput="updateSpec(this,0,'var(--purple)')">
+      <div class="spec-note" id="sn0">Загалом відчуваю свій простір — але складно говорити про це вголос</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-header">
+        <span class="spec-label">💬 Емоційні межі</span>
+        <span class="spec-val" id="sv1">40%</span>
+      </div>
+      <input type="range" min="0" max="100" value="40" class="spec-slider" style="background:linear-gradient(to right,var(--blue) 40%,var(--bd2) 40%)" oninput="updateSpec(this,1,'var(--blue)')">
+      <div class="spec-note" id="sn1">Часто беру на себе відповідальність за чужий настрій</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-header">
+        <span class="spec-label">📱 Онлайн-межі</span>
+        <span class="spec-val" id="sv2">55%</span>
+      </div>
+      <input type="range" min="0" max="100" value="55" class="spec-slider" style="background:linear-gradient(to right,var(--teal) 55%,var(--bd2) 55%)" oninput="updateSpec(this,2,'var(--teal)')">
+      <div class="spec-note" id="sn2">Знаю про приватність, але не завжди застосовую</div>
+    </div>
+    <div class="spec-item">
+      <div class="spec-header">
+        <span class="spec-label">💕 Межі в стосунках</span>
+        <span class="spec-val" id="sv3">35%</span>
+      </div>
+      <input type="range" min="0" max="100" value="35" class="spec-slider" style="background:linear-gradient(to right,var(--cream) 35%,var(--bd2) 35%)" oninput="updateSpec(this,3,'var(--cream)')">
+      <div class="spec-note" id="sn3">Складно казати «ні» близьким — боюсь образити</div>
+    </div>
+  </div>
+</section>
+
+<!-- S3: МАНІПУЛЯЦІЇ -->
+<div class="div"></div>
+<section class="sec reveal" id="s3">
+  <div class="sec-num">03 — Просвіта</div>
+  <h2>Як виглядає<br><em>порушення меж</em></h2>
+  <p class="lead">Межі порушують не завжди агресивно. Часто — м'яко, поступово, і ти не одразу розумієш, що сталось. Натисни на кожен тип.</p>
+
+  <div class="psycho">
+    <div class="psy-who">Порада психолога · Про «незручне відчуття»</div>
+    <p>Твій організм знає раніше за тебе. Тяжкість у грудях, бажання замовкнути, «щось не так» — це не перебільшення. Це сигнал. Навчання розрізняти «мені некомфортно» від «я боюсь когось образити» — це одна з найважливіших навичок підліткового віку.</p>
+  </div>
+
+  <div class="manip-list">
+    <div class="mi">
+      <div class="mi-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="mi-num">01</span><span class="mi-title">Газлайтинг</span>
+        <span class="mi-tag" style="background:var(--rose-l);color:var(--rose)">Когнітивний</span>
+        <span class="mi-arr">▶</span>
+      </div>
+      <div class="mi-body">
+        «Та ти вигадуєш», «ніхто так не думає», «ти занадто чутливий/-а». Мета — змусити тебе сумніватись у власних відчуттях. Якщо після кожної розмови з людиною ти відчуваєш провину за свою реакцію — це газлайтинг.
+        <div class="mi-signal">⚑ Сигнал: «Я ніби неправий/-а у своїх власних почуттях — хоча нічого не зробив/-ла».</div>
+        <div class="mi-action">↗ Дія: Запиши, що сталось. Газлайтинг не тримається перед конкретними фактами.</div>
+      </div>
+    </div>
+    <div class="mi">
+      <div class="mi-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="mi-num">02</span><span class="mi-title">Умовна дружба / любов</span>
+        <span class="mi-tag" style="background:var(--cream-l);color:var(--cream)">Емоційний</span>
+        <span class="mi-arr">▶</span>
+      </div>
+      <div class="mi-body">
+        «Якщо ти мій/-я справжній/-я друг/-ка — ти це зробиш». «Якби ти мене любив/-ла — ти б не відмовив/-ла». Стосунки використовуються як важіль тиску. Справжня дружба не ставить таких умов.
+        <div class="mi-signal">⚑ Сигнал: Ти регулярно робиш щось, щоб «зберегти» стосунки, а не тому що хочеш.</div>
+        <div class="mi-action">↗ Дія: «Якщо ти мій/-я справжній/-я друг/-ка — ти поважатимеш моє «ні»».</div>
+      </div>
+    </div>
+    <div class="mi">
+      <div class="mi-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="mi-num">03</span><span class="mi-title">Соціальний тиск</span>
+        <span class="mi-tag" style="background:var(--blue-l);color:var(--blue)">Груповий</span>
+        <span class="mi-arr">▶</span>
+      </div>
+      <div class="mi-body">
+        «Всі так роблять», «не будь занудою», «ти один/-а не хочеш». Тиск через групу — найсильніший в підлітковому віці. «Всі» — перебільшення: насправді ті, хто так не робить, просто мовчать.
+        <div class="mi-signal">⚑ Сигнал: «Я не хочу, але якщо не зроблю — буду «поза групою»».</div>
+        <div class="mi-action">↗ Дія: Запитай сам/-а себе: «Якби ніхто не дивився — я б це зробив/-ла?»</div>
+      </div>
+    </div>
+    <div class="mi">
+      <div class="mi-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="mi-num">04</span><span class="mi-title">Таємниця як контроль</span>
+        <span class="mi-tag" style="background:var(--pur-l);color:var(--purple)">Прихований</span>
+        <span class="mi-arr">▶</span>
+      </div>
+      <div class="mi-body">
+        «Нікому не кажи» — коли мета не конфіденційність, а ізоляція. Якщо таємниця тяготить, пов'язана з безпекою або змушує брехати — це вже не таємниця, яку варто зберігати.
+        <div class="mi-signal">⚑ Сигнал: Таємниця заважає спати, викликає тривогу, відрізає тебе від близьких.</div>
+        <div class="mi-action">↗ Дія: Таємниця, що стосується безпеки — розповідається довіреному дорослому. Це не зрада.</div>
+      </div>
+    </div>
+    <div class="mi">
+      <div class="mi-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="mi-num">05</span><span class="mi-title">Знецінення та сором</span>
+        <span class="mi-tag" style="background:var(--rose-l);color:var(--rose)">Словесний</span>
+        <span class="mi-arr">▶</span>
+      </div>
+      <div class="mi-body">
+        Публічне висміювання, прізвиська, «жарти» про зовнішність або поведінку. «Та я жартую» — не знімає відповідальності. Реакція на жарт — власна, і вона не обговорюється.
+        <div class="mi-signal">⚑ Сигнал: Після «жарту» тобі боляче, але тебе переконують, що ти не маєш права ображатись.</div>
+        <div class="mi-action">↗ Дія: «Мені боляче від цього — і моя реакція не обговорюється».</div>
+      </div>
+    </div>
+    <div class="mi">
+      <div class="mi-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="mi-num">06</span><span class="mi-title">Цифровий тиск</span>
+        <span class="mi-tag" style="background:var(--blue-l);color:var(--blue)">Онлайн</span>
+        <span class="mi-arr">▶</span>
+      </div>
+      <div class="mi-body">
+        Прохання надіслати фото, поставити геолокацію, надати доступ до акаунту. Шантаж зображеннями (сексторшн). «Якщо не покажеш — значить, приховуєш». Цифровий примус — злочин.
+        <div class="mi-signal">⚑ Сигнал: Щось онлайн змушує тебе робити те, чого ти не хочеш, під тиском або загрозою.</div>
+        <div class="mi-action">↗ Дія: Не роби нічого під тиском. Зблокуй, збережи скріншот, розкажи дорослому або 116 111.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S4: СЦЕНАРІЇ -->
+<div class="div"></div>
+<section class="sec reveal" id="s4">
+  <div class="sec-num">04 — Практика</div>
+  <h2><em>8 ситуацій:</em><br>твій вибір</h2>
+  <p class="lead">Реальні ситуації 7–8 класника. Вибери відповідь — дізнайся, що за нею стоїть.</p>
+
+  <div class="sc-shell">
+    <div class="sc-hdr">
+      <span class="sc-hdr-title" id="scHdrTitle">Ситуація 1 / 8</span>
+      <span class="sc-score-inline" id="scScInline">0 pts</span>
+    </div>
+    <div class="sc-prog-bar"><div class="sc-prog-fill" id="scFill" style="width:12%"></div></div>
+    <div class="sc-body">
+      <div class="sc-q" id="scQ"></div>
+      <div class="sc-opts" id="scOpts"></div>
+      <div class="sc-fb" id="scFb"></div>
+      <button class="sc-next" id="scNext" onclick="nextSc()">Наступна →</button>
+      <div class="sc-score" id="scScore"></div>
+    </div>
+  </div>
+</section>
+
+<!-- S5: ЦИФРОВА БЕЗПЕКА -->
+<div class="div"></div>
+<section class="sec reveal" id="s5">
+  <div class="sec-num">05 — Цифрова безпека</div>
+  <h2>Межі в <em>онлайн-просторі</em></h2>
+  <p class="lead">Онлайн — не «несправжнє». Маніпуляції, тиск і загрози там такі ж реальні. А іноді — небезпечніші, бо анонімні. Натисни на картку — дізнайся більше.</p>
+
+  <div class="psycho">
+    <div class="psy-who">Порада психолога · Про цифрову ідентичність</div>
+    <p>У 7–8 класі онлайн-простір — другий соціальний світ. Те, що публікується — залишається. Те, що надсилається — може бути збережено. Цифрова межа — це не параноя. Це гігієна, як миття рук.</p>
+  </div>
+
+  <div class="aware-grid">
+    <div class="aw-card" onclick="this.classList.toggle('open')">
+      <span class="aw-icon">📍</span>
+      <div class="aw-title">Геолокація</div>
+      <div class="aw-body">Не публікуй точне місцезнаходження в сторіс у реальному часі. Незнайомі не мають знати, де ти зараз.</div>
+    </div>
+    <div class="aw-card" onclick="this.classList.toggle('open')">
+      <span class="aw-icon">📸</span>
+      <div class="aw-title">Особисті фото</div>
+      <div class="aw-body">Не надсилай особистих або інтимних фото незнайомим — або знайомим, яким не стовідсотково довіряєш. Раз надіслане — не повернути.</div>
+    </div>
+    <div class="aw-card" onclick="this.classList.toggle('open')">
+      <span class="aw-icon">🔒</span>
+      <div class="aw-title">Паролі та акаунти</div>
+      <div class="aw-body">Пароль — навіть від «найкращого друга» — не для передачі. Поважати приватність — це не підозра, це повага.</div>
+    </div>
+    <div class="aw-card" onclick="this.classList.toggle('open')">
+      <span class="aw-icon">⊗</span>
+      <div class="aw-title">Сексторшн</div>
+      <div class="aw-body">Якщо тебе шантажують фото — не плати і не надсилай більше. Одразу: зблокуй, скріншот, 116 111 або кіберполіція. Ти — жертва злочину.</div>
+    </div>
+    <div class="aw-card" onclick="this.classList.toggle('open')">
+      <span class="aw-icon">🌐</span>
+      <div class="aw-title">Цифровий слід</div>
+      <div class="aw-body">Все опубліковане залишається — навіть «видалене». Перед публікацією: «Чи хочу, щоб це бачили через 5 років?»</div>
+    </div>
+    <div class="aw-card" onclick="this.classList.toggle('open')">
+      <span class="aw-icon">👤</span>
+      <div class="aw-title">Незнайомі онлайн</div>
+      <div class="aw-body">«Ти особлива/-ий», «ніхто тебе не розуміє так як я» від незнайомого — патерн грумінгу. Справжня близькість будується роками, а не тижнями листування.</div>
+    </div>
+  </div>
+
+  <div class="dig-grid">
+    <div class="dig-col do">
+      <h3>Роби</h3>
+      <ul>
+        <li>Перевіряй налаштування приватності акаунтів</li>
+        <li>Зберігай скріншоти підозрілих повідомлень</li>
+        <li>Розповідай довіреній людині про нові онлайн-контакти</li>
+        <li>Знай: 116 111 і cyberpolice.gov.ua — твої інструменти</li>
+        <li>Довіряй «незручному відчуттю» в онлайн-розмовах</li>
+      </ul>
+    </div>
+    <div class="dig-col dont">
+      <h3>Не роби</h3>
+      <ul>
+        <li>Не ділись адресою, школою, маршрутами</li>
+        <li>Не надсилай особисті фото під тиском</li>
+        <li>Не вір, що «ми ж так добре спілкуємось — можна довіряти»</li>
+        <li>Не мовч, якщо тебе шантажують онлайн</li>
+        <li>Не зустрічайся з онлайн-знайомим без дорослого</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- S6: ВІКТОРИНА -->
+<div class="div"></div>
+<section class="sec reveal" id="s6">
+  <div class="sec-num">06 — Вікторина</div>
+  <h2>8 запитань:<br><em>перевір себе</em></h2>
+  <p class="lead">Про межі, маніпуляції, права і цифрову безпеку. Без підказок — лише твоє мислення.</p>
+
+  <div class="quiz-shell">
+    <div class="qz-top">
+      <span class="qz-prog" id="qzProg">01 / 08</span>
+      <span class="qz-pts" id="qzPts">0 pts</span>
+    </div>
+    <div class="qz-body">
+      <div class="qz-q" id="qzQ"></div>
+      <div class="qz-opts" id="qzOpts"></div>
+      <div class="qz-fb" id="qzFb"></div>
+      <button class="qz-next" id="qzNext" onclick="nextQz()">Далі →</button>
+      <div class="qz-score" id="qzScore"></div>
+    </div>
+  </div>
+</section>
+
+<!-- S7: МІЙ ПЛАН -->
+<div class="div"></div>
+<section class="sec reveal" id="s7">
+  <div class="sec-num">07 — Практика</div>
+  <h2>Мої особисті<br><em>межі</em></h2>
+  <p class="lead">Заповни і збережи. У момент коли тиснуть — цей список нагадає тобі, де ти стоїш.</p>
+
+  <div class="psycho">
+    <div class="psy-who">Порада психолога · Про «план на кризу»</div>
+    <p>Коли на тебе тиснуть — мозок часто «заморожується». Заздалегідь складений список власних меж і фраз-відповідей — це твоя точка опори. Не потрібно думати в момент тиску: ти вже знаєш, що скажеш.</p>
+  </div>
+
+  <div class="plan-grid">
+    <div class="pf">
+      <label>Мої червоні лінії</label>
+      <textarea class="pf-in" id="pf1" rows="3" placeholder="Що для мене точно НЕ ок…"></textarea>
+    </div>
+    <div class="pf">
+      <label>Моя людина довіри</label>
+      <input class="pf-in" type="text" id="pf2" placeholder="До кого прийти, якщо важко…">
+      <br><br>
+      <label>Екстрений контакт</label>
+      <input class="pf-in" type="text" id="pf3" value="116 111 — безкоштовно, анонімно">
+    </div>
+    <div class="pf">
+      <label>Моя фраза-захист</label>
+      <textarea class="pf-in" id="pf4" rows="3" placeholder="«Ні, і мені не потрібно пояснювати чому»…"></textarea>
+    </div>
+    <div class="pf">
+      <label>Якщо тиснуть онлайн</label>
+      <textarea class="pf-in" id="pf5" rows="3" placeholder="Блокую, скріншот, кажу дорослому…"></textarea>
+    </div>
+  </div>
+  <button class="plan-btn" onclick="genPlan()">Зберегти мій план меж</button>
+  <div class="plan-result" id="planResult">
+    <h3>◎ Мій план особистих меж</h3>
+    <div id="planContent"></div>
+    <p style="font-size:.72rem;color:var(--dim);text-align:center;margin-top:1.3rem;letter-spacing:.07em">ЗРОБИ СКРІНШОТ · ЗБЕРЕЖИ</p>
+  </div>
+</section>
+
+<!-- FINAL -->
+<div class="div"></div>
+<div class="final-wrap reveal">
+  <span class="final-mark">◎</span>
+  <div class="sec-num" style="justify-content:center">Урок завершено</div>
+  <h2>Твої межі —<br><em>твоя точка опори</em></h2>
+  <p class="lead" style="text-align:center;margin:0 auto 2rem">Ти дізнався/-лась про типи меж, маніпуляції, цифрову безпеку і склав/-ла свій план. Це — реальні інструменти.</p>
+  <div class="final-cert">
+    <div class="fc-l">Компетенції</div>
+    <div class="fc-v">Розрізнення 6 типів меж · Розпізнавання маніпуляцій · Цифрова безпека · Асертивна відмова · Кризовий план</div>
+    <br>
+    <div class="fc-l">Якщо потрібна допомога</div>
+    <div class="fc-v">116 111 — цілодобово, анонімно, безкоштовно</div>
+  </div>
+  <div class="psycho" style="text-align:left">
+    <div class="psy-who">Порада психолога · Фінальна порада</div>
+    <p>«Ні» — це повне речення. Тобі не потрібно виправдовуватись, пояснювати і вибачатись за свої межі. Людина, яка тебе поважає, прийме це «ні» — навіть якщо спочатку засмутиться. Якщо ні — це сигнал про неї, не про тебе.</p>
+  </div>
+</div>
+
+<script>
+// NAV
+const sIds=['s0','s1','s2','s3','s4','s5','s6','s7'];
+const snds=document.querySelectorAll('.snd');
+snds.forEach(d=>d.addEventListener('click',()=>document.getElementById(sIds[+d.dataset.i])?.scrollIntoView({behavior:'smooth'})));
+window.addEventListener('scroll',()=>{
+  const pct=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  document.getElementById('prog').style.width=pct+'%';
+  sIds.forEach((id,i)=>{
+    const el=document.getElementById(id);if(!el)return;
+    const r=el.getBoundingClientRect();
+    if(r.top<=window.innerHeight*.55&&r.bottom>=window.innerHeight*.45){snds.forEach(d=>d.classList.remove('on'));snds[i]?.classList.add('on');}
+  });
+});
+document.querySelectorAll('.reveal').forEach(r=>new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.06}).observe(r));
+
+// SPECTRUM
+const specNotes=[
+  ['Ще важко відчути де мій простір','Загалом знаю, але складно говорити про це','Добре відчуваю і захищаю фізичний простір'],
+  ['Регулярно беру чужий настрій на себе','Іноді можу відмежуватись від чужих емоцій','Чітко розрізняю свої і чужі почуття'],
+  ['Майже не думаю про онлайн-приватність','Знаю основи, не завжди застосовую','Усвідомлено керую своїм цифровим простором'],
+  ['Майже не можу казати «ні» близьким','Іноді вдається захистити межі в стосунках','Можу спокійно і чітко казати «ні» навіть близьким'],
+];
+function updateSpec(inp,idx,color){
+  const v=+inp.value;
+  inp.style.background=`linear-gradient(to right,${color} ${v}%,var(--bd2) ${v}%)`;
+  document.getElementById('sv'+idx).textContent=v+'%';
+  const notes=specNotes[idx];
+  document.getElementById('sn'+idx).textContent=notes[v<34?0:v<68?1:2];
+}
+
+// SCENARIOS
+const scenarios=[
+  {q:'Партнер/-ка постійно перевіряє твій телефон і каже: «Якби ти мене любив/-ла — дав/-ла б пароль». Що відповідаєш?',
+   opts:['Даю — бо не хочу конфлікту','«Любов — не про паролі. Мій телефон — мій особистий простір»','Даю, але ображаюсь','Кидаю стосунки одразу'],
+   ans:1,fb:'Паролі — частина приватності, а не любовна перевірка. «Якщо ти мене любиш» як аргумент — маніпуляція умовною любов\'ю.'},
+  {q:'Друг поширив у чаті твоє приватне повідомлення «для сміху». Що робиш?',
+   opts:['Мовчу — вже не змінити','Кажу йому прямо: «Це моя приватність. Прошу вибачення і видалити»','Роблю те саме у відповідь','Розповідаю всьому класу про нього'],
+   ans:1,fb:'Пряма чесна розмова — найефективніша. Відповідна агресія не відновить межу, а посилить конфлікт.'},
+  {q:'Компанія тисне: «Усі йдуть — тільки ти «правильний/-а»». Ти не хочеш. Що кажеш?',
+   opts:['Іду — щоб не бути «поза»','«Ні, мені це некомфортно — і це моє рішення»','Вигадую відмовку','Злюсь і йду взагалі'],
+   ans:1,fb:'«Всі так роблять» — статистично неправда і маніпуляція. Тверде «ні» без виправдань — найсильніша позиція.'},
+  {q:'Незнайомий онлайн просить надіслати фото: «Ми ж так добре спілкуємось». Що робиш?',
+   opts:['Надсилаю — він/-а ж ввічливий/-а','Не надсилаю. Якщо наполягає — блокую і розповідаю дорослому','Надсилаю «звичайне» — нічого особливого','Питаю чому'],
+   ans:1,fb:'Приємне спілкування онлайн — не підстава для особистих фото. Наполягання — тривожний сигнал. Блок і дорослий — правильна дія.'},
+  {q:'Тобі кажуть «не ображайся — я просто жартую» після публічного приниження. Твоя реакція?',
+   opts:['Вдаю що не ображаюсь','«Жарт не скасовує ефект. Мені боляче — і це не обговорюється»','Кричу у відповідь','Ображаюсь і мовчу тижнями'],
+   ans:1,fb:'«Я жартую» не знімає відповідальності. Твоя реакція на біль — законна. Говорити про це чітко і спокійно — асертивність.'},
+  {q:'Тебе шантажують фото онлайн. Що робиш насамперед?',
+   opts:['Надсилаю ще — щоб припинили','Не надсилаю більше нічого. Блокую, скріншот, одразу до кіберполіції або 116 111','Платю — щоб зупинились','Чекаю, може самі зупиняться'],
+   ans:1,fb:'Оплата або нові фото — ніколи не зупиняють шантаж. Ти — жертва злочину. Сексторшн в Україні кримінально переслідується. Cyberpolice.gov.ua або 102.'},
+  {q:'Дорослий у сім\'ї торкається тебе так, що тобі некомфортно. Що правильно?',
+   opts:['Мовчу — він/-а ж рідний/-а','Кажу «стоп», виходжу, розповідаю іншому довіреному дорослому або 116 111','Думаю, що сам/-а винен/-на','Терплю — так треба'],
+   ans:1,fb:'Ніхто — включно з родичами — не має права на тіло, якщо тобі некомфортно. «Стоп» + довірена особа або 116 111 — правильна послідовність.'},
+  {q:'Твій стан різко погіршився: тривога, ізоляція, відчуття «не справлюсь». Що робиш?',
+   opts:['Мовчу — нікого не хочу турбувати','Кажу довіреній людині або телефоную 116 111','Шукаю поради у незнайомців онлайн','Чекаю, може пройде само'],
+   ans:1,fb:'Попросити допомоги — не слабкість. 116 111 — анонімно, безкоштовно, цілодобово. Мовчання у кризі — найгірший вибір.'},
+];
+let scI=0,scSc=0,scAns=false;
+function loadSc(){
+  const s=scenarios[scI];
+  document.getElementById('scHdrTitle').textContent=`Ситуація ${scI+1} / ${scenarios.length}`;
+  document.getElementById('scFill').style.width=`${((scI+1)/scenarios.length)*100}%`;
+  document.getElementById('scQ').textContent=s.q;
+  const o=document.getElementById('scOpts');o.innerHTML='';
+  s.opts.forEach((op,i)=>{const b=document.createElement('button');b.className='sc-opt';b.textContent=op;b.onclick=()=>ansSc(i);o.appendChild(b);});
+  document.getElementById('scFb').className='sc-fb';
+  document.getElementById('scNext').className='sc-next';
+  scAns=false;
+}
+function ansSc(i){
+  if(scAns)return;scAns=true;
+  const s=scenarios[scI];
+  document.querySelectorAll('.sc-opt').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('scFb');
+  if(i===s.ans){document.querySelectorAll('.sc-opt')[i].classList.add('ok');fb.className='sc-fb ok show';scSc++;document.getElementById('scScInline').textContent=scSc+' pts';}
+  else{document.querySelectorAll('.sc-opt')[i].classList.add('bad');document.querySelectorAll('.sc-opt')[s.ans].classList.add('ok');fb.className='sc-fb bad show';}
+  fb.textContent=s.fb;document.getElementById('scNext').className='sc-next show';
+}
+function nextSc(){
+  scI++;
+  if(scI<scenarios.length){loadSc();return;}
+  document.getElementById('scQ').textContent='';document.getElementById('scOpts').innerHTML='';
+  document.getElementById('scFb').className='sc-fb';document.getElementById('scNext').className='sc-next';
+  document.getElementById('scHdrTitle').textContent='Завершено';
+  const sc=document.getElementById('scScore');sc.style.display='block';
+  const msgs=['Є над чим подумати ▲','Ти вже орієнтуєшся ◎','Добре! Критичне мислення на рівні ◈','Бездоганно — ти знаєш свої межі ◉'];
+  const t=Math.min(Math.floor(scSc/(scenarios.length/msgs.length)),msgs.length-1);
+  sc.textContent=`${scSc} / ${scenarios.length} — ${msgs[t]}`;
+}
+loadSc();
+
+// QUIZ
+const qzData=[
+  {q:'Що таке особиста межа?',opts:['Правило, яке встановлюють батьки','Місце де закінчується «я» і починається «інший» — що для мене окей, а що ні','Відстань між людьми','Закон у школі'],ans:1,exp:'Особиста межа — внутрішня система координат. Не правило зовні, а відчуття зсередини.'},
+  {q:'Що таке газлайтинг?',opts:['Техніка медитації','Маніпуляція, що змушує сумніватись у власному сприйнятті реальності','Вид кібербулінгу','Синонім тиску'],ans:1,exp:'Газлайтинг — «ти вигадуєш», «ти занадто чутливий/-а». Мета — підважити довіру до власних відчуттів.'},
+  {q:'«Якщо ти мій/-я друг/-ка — ти це зробиш» — це…',opts:['Нормальна перевірка дружби','Маніпуляція через умовну любов / дружбу','Щира просьба','Жарт'],ans:1,exp:'Справжня дружба не ставить умов «якщо любиш — зробиш». Це емоційний шантаж.'},
+  {q:'Що робити, якщо тебе шантажують фото онлайн?',opts:['Надіслати ще — щоб зупинились','Не надсилати нічого, заблокувати, зберегти докази, звернутись до кіберполіції','Поговорити з шантажистом','Проігнорувати'],ans:1,exp:'Оплата або нові фото ніколи не зупиняють шантаж. Сексторшн — злочин. Cyberpolice.gov.ua або 102.'},
+  {q:'Право казати «ні» без пояснень — це…',opts:['Грубість','Одне з базових особистих прав кожної людини','Слабкість','Егоїзм'],ans:1,exp:'«Ні» — це повне речення. Тобі не потрібно виправдовуватись за власні межі перед будь-ким.'},
+  {q:'Якщо таємниця пов\'язана з чиєюсь безпекою — що правильно?',opts:['Зберегти — таємниця є таємниця','Розповісти довіреному дорослому — це захист, а не зрада','Розповісти всім одразу','Вирішити самому/-ій'],ans:1,exp:'Таємниця про безпеку — не та, яку треба зберігати. Розповідь дорослому — це турбота, а не зрада.'},
+  {q:'Що таке асертивність?',opts:['Агресивна поведінка','Вміння відстоювати межі спокійно — без агресії і без підпорядкування','Пасивна поведінка','Уникнення конфліктів'],ans:1,exp:'Асертивність — золота середина. Ні агресія, ні підкорення. Чітко, спокійно, з повагою до себе.'},
+  {q:'Що значить «цифровий слід»?',opts:['Слід від мишки на екрані','Сукупність даних, залишених онлайн — включно зі «видаленими»','Вид вірусу','Тип кіберзагрози'],ans:1,exp:'Все опубліковане залишається — в кешах, скріншотах, архівах. Цифровий слід формується роками.'},
+];
+let qzI=0,qzSc=0,qzAns=false;
+function loadQz(){
+  const q=qzData[qzI];
+  document.getElementById('qzProg').textContent=`${String(qzI+1).padStart(2,'0')} / ${String(qzData.length).padStart(2,'0')}`;
+  document.getElementById('qzQ').textContent=q.q;
+  const o=document.getElementById('qzOpts');o.innerHTML='';
+  q.opts.forEach((op,i)=>{const b=document.createElement('button');b.className='qz-o';b.textContent=op;b.onclick=()=>ansQz(i);o.appendChild(b);});
+  document.getElementById('qzFb').className='qz-fb';document.getElementById('qzNext').className='qz-next';qzAns=false;
+}
+function ansQz(i){
+  if(qzAns)return;qzAns=true;
+  const q=qzData[qzI];
+  document.querySelectorAll('.qz-o').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('qzFb');
+  if(i===q.ans){document.querySelectorAll('.qz-o')[i].classList.add('ok');fb.className='qz-fb ok show';qzSc++;document.getElementById('qzPts').textContent=qzSc+' pts';}
+  else{document.querySelectorAll('.qz-o')[i].classList.add('bad');document.querySelectorAll('.qz-o')[q.ans].classList.add('ok');fb.className='qz-fb bad show';}
+  fb.textContent=q.exp;document.getElementById('qzNext').className='qz-next show';
+}
+function nextQz(){
+  qzI++;
+  if(qzI<qzData.length){loadQz();return;}
+  document.getElementById('qzQ').textContent='';document.getElementById('qzOpts').innerHTML='';
+  document.getElementById('qzFb').className='qz-fb';document.getElementById('qzNext').className='qz-next';
+  document.getElementById('qzProg').textContent='done';
+  const sc=document.getElementById('qzScore');sc.style.display='block';
+  const msgs=['Є над чим попрацювати ▲','Ти знаєш ключові поняття ◎','Сильна база ◈','Бездоганно ◉'];
+  const t=Math.min(Math.floor(qzSc/(qzData.length/msgs.length)),msgs.length-1);
+  sc.textContent=`${qzSc} / ${qzData.length} — ${msgs[t]}`;
+}
+loadQz();
+
+// PLAN
+function genPlan(){
+  const v=id=>document.getElementById(id).value.trim()||'—';
+  document.getElementById('planContent').innerHTML=`
+    <div class="pr-row"><span class="pr-l">Мої червоні лінії</span><span>${v('pf1')}</span></div>
+    <div class="pr-row"><span class="pr-l">Людина довіри</span><span>${v('pf2')}</span></div>
+    <div class="pr-row"><span class="pr-l">Контакт допомоги</span><span>${v('pf3')}</span></div>
+    <div class="pr-row"><span class="pr-l">Фраза-захист</span><span>${v('pf4')}</span></div>
+    <div class="pr-row"><span class="pr-l">Дії при онлайн-тиску</span><span>${v('pf5')}</span></div>`;
+  document.getElementById('planResult').classList.add('show');
+}
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Що ще почитати чи подивитись</h2><div class="cards"><div><i>🧰</i><b>Фрази «ні»</b><br><span>Практика<br>Потренуй із другом чи дорослим 3 короткі фрази</span></div><div><i>📞</i><b>116 111</b><br><span>Дитяча лінія<br>Безкоштовно, анонімно, цілодобово. Психологічна підтримка: 0 800 500 335</span></div></div><h3>Джерела, на які спирається урок</h3><details><summary>Показати список (4)</summary><ol><li>Ryan, R. M., &amp; Deci, E. L. (2000). Self-determination theory and the facilitation of intrinsic motivation, social development, and well-being. <i>American Psychologist, 55</i>(1), 68–78.</li><li>Barber, B. K. (1996). Parental psychological control: Revisiting a neglected construct. <i>Child Development, 67</i>(6), 3296–3319.</li><li>Soenens, B., &amp; Vansteenkiste, M. (2010). A theoretical upgrade of the concept of parental psychological control. <i>Developmental Review, 30</i>(1), 74–99.</li><li>Walsh, K., Zwi, K., Woolfenden, S., &amp; Shlonsky, A. (2015). School-based education programmes for the prevention of child sexual abuse. <i>Cochrane Database of Systematic Reviews</i>, (4), CD004380.</li></ol></details><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="03-7-8-lesson.html">← Тема 3</a></span><span><a href="05-7-8-lesson.html">Тема 5 →</a></span></div><a class="mo-fab" href="../index.html#t04">☰ До матриці</a></body>
+</html>

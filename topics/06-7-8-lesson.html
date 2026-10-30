@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Сила моєї думки · 7–8 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:    #070A0E;
+  --s1:    #0C1018;
+  --s2:    #121820;
+  --s3:    #181F2A;
+  --teal:  #20C8A0;
+  --te-l:  rgba(32,200,160,.11);
+  --te-ll: rgba(32,200,160,.05);
+  --amber: #D89828;
+  --am-l:  rgba(216,152,40,.1);
+  --lav:   #9880D8;
+  --la-l:  rgba(152,128,216,.1);
+  --rose:  #D85070;
+  --ro-l:  rgba(216,80,112,.09);
+  --blue:  #4898E0;
+  --bl-l:  rgba(72,152,224,.09);
+  --text:  #E8E2D8;
+  --muted: rgba(232,226,216,.48);
+  --dim:   rgba(232,226,216,.26);
+  --bd:    rgba(255,255,255,.07);
+  --bd2:   rgba(255,255,255,.13);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 55% 48% at 10% 18%,rgba(32,200,160,.15) 0%,transparent 65%),
+    radial-gradient(ellipse 48% 52% at 88% 80%,rgba(152,128,216,.12) 0%,transparent 62%),
+    radial-gradient(ellipse 38% 32% at 55% 46%,rgba(216,152,40,.06) 0%,transparent 55%);}
+
+/* neural network BG */
+.neural-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.neural-bg svg{width:100%;height:100%;opacity:.04;}
+
+.prog{position:fixed;top:0;left:0;height:2px;z-index:500;background:linear-gradient(90deg,var(--teal),var(--amber),var(--lav));transition:width .3s;width:0%;}
+
+.snav{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.55rem;z-index:300;}
+.snd{width:6px;height:6px;border-radius:50%;background:var(--bd2);border:none;cursor:pointer;padding:0;transition:all .3s;}
+.snd.on{background:var(--teal);transform:scale(1.7);}
+
+/* ── HERO ── */
+.hero{position:relative;z-index:2;min-height:100vh;display:grid;grid-template-rows:1fr auto;padding:4rem 3rem 3rem;}
+.hero-top{display:flex;flex-direction:column;justify-content:flex-end;}
+.hero-label{font-size:.64rem;font-weight:500;letter-spacing:.22em;color:var(--teal);margin-bottom:1.2rem;text-transform:uppercase;}
+.hero h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.8rem,7.5vw,6.5rem);font-weight:700;line-height:.98;color:var(--text);letter-spacing:-.03em;margin-bottom:1.8rem;}
+.hero h1 .t1{color:var(--teal);}
+.hero h1 .t2{color:var(--amber);}
+.hero-bottom{border-top:1px solid var(--bd2);padding-top:1.5rem;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.hero-desc{font-size:.92rem;font-weight:300;line-height:1.9;color:var(--muted);max-width:400px;}
+.hero-pills{display:flex;flex-direction:column;gap:.4rem;align-items:flex-end;}
+.hp{font-size:.65rem;font-weight:500;letter-spacing:.07em;color:var(--dim);text-transform:uppercase;}
+
+/* ── SECTIONS ── */
+.sec{position:relative;z-index:2;max-width:880px;margin:0 auto;padding:6rem 2rem;}
+.divl{max-width:880px;margin:0 auto;height:1px;background:linear-gradient(90deg,var(--teal),rgba(216,152,40,.3),transparent);position:relative;z-index:2;opacity:.35;}
+
+.lbl{font-size:.62rem;font-weight:500;letter-spacing:.2em;color:var(--teal);margin-bottom:.9rem;text-transform:uppercase;display:flex;align-items:center;gap:.55rem;}
+.lbl::after{content:'';width:24px;height:1px;background:var(--teal);opacity:.5;}
+
+h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.9rem,4vw,3rem);font-weight:700;line-height:1.1;color:var(--text);margin-bottom:1.1rem;letter-spacing:-.02em;}
+h2 em{font-style:normal;color:var(--teal);}
+h2 strong{color:var(--amber);}
+
+.lead{font-size:.95rem;font-weight:300;line-height:1.9;color:var(--muted);max-width:660px;margin-bottom:2rem;}
+
+/* PSYCHO */
+.psy{border-left:2px solid var(--teal);padding:1.4rem 2rem;margin:2rem 0;background:var(--te-ll);}
+.psy-who{font-size:.62rem;font-weight:500;letter-spacing:.18em;color:var(--teal);margin-bottom:.6rem;text-transform:uppercase;}
+.psy p{font-size:.92rem;font-weight:300;line-height:1.9;color:rgba(232,226,216,.78);font-style:italic;}
+
+/* ANXIETY SCALE */
+.anx-scale{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin:1.5rem 0;}
+.anx-cell{aspect-ratio:1;border-radius:4px;cursor:pointer;transition:all .2s;background:var(--s2);border:1px solid var(--bd);}
+.anx-cell:hover{transform:scale(1.1);}
+.anx-cell.filled{background:var(--teal);border-color:var(--teal);}
+.anx-cell.filled.high{background:var(--amber);border-color:var(--amber);}
+.anx-cell.filled.crit{background:var(--rose);border-color:var(--rose);}
+.anx-labels{display:flex;justify-content:space-between;font-size:.7rem;color:var(--dim);margin-bottom:.5rem;}
+.anx-result{font-size:.88rem;font-weight:300;color:var(--muted);margin-top:.8rem;font-style:italic;min-height:1.5rem;}
+
+/* COGNITIVE DISTORTIONS ACCORDION */
+.cd-list{margin:2rem 0;}
+.cd-item{border-bottom:1px solid var(--bd);}
+.cd-head{display:flex;align-items:center;gap:.9rem;padding:1.1rem 0;cursor:pointer;}
+.cd-head:hover .cd-title{color:var(--amber);}
+.cd-num{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:300;color:var(--dim);min-width:2.2rem;}
+.cd-title{font-size:.9rem;font-weight:600;color:var(--text);flex:1;transition:color .2s;}
+.cd-tag{font-size:.63rem;font-weight:600;letter-spacing:.05em;padding:.17rem .52rem;border-radius:3px;}
+.cd-arr{font-size:.68rem;color:var(--dim);transition:transform .25s;}
+.cd-item.open .cd-arr{transform:rotate(90deg);}
+.cd-body{display:none;padding:0 0 1.5rem 3.1rem;font-size:.87rem;font-weight:300;line-height:1.88;color:var(--muted);}
+.cd-item.open .cd-body{display:block;}
+.cd-ex{margin:.7rem 0;padding:.7rem 1rem;background:var(--s2);border-left:1px solid var(--amber);font-size:.81rem;color:var(--muted);}
+.cd-counter{margin-top:.6rem;padding:.7rem 1rem;background:var(--te-ll);border-left:1px solid var(--teal);font-size:.81rem;color:var(--muted);}
+
+/* THOUGHT RECORD */
+.tr-wrap{background:var(--s1);border:1px solid var(--bd);padding:2rem;margin:2rem 0;}
+.tr-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--bd);margin-bottom:1.2rem;}
+.trc{background:var(--s2);padding:1.2rem;}
+.trc-letter{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;line-height:1;margin-bottom:.3rem;}
+.trc-name{font-size:.65rem;font-weight:500;letter-spacing:.1em;color:var(--dim);margin-bottom:.6rem;text-transform:uppercase;}
+.trc-desc{font-size:.76rem;font-weight:300;color:var(--muted);line-height:1.55;margin-bottom:.8rem;}
+.trc-in{width:100%;background:transparent;border:none;border-bottom:1px solid var(--bd2);padding:.5rem 0;font-family:'Inter',sans-serif;font-size:.84rem;color:var(--text);outline:none;resize:none;transition:border-color .2s;line-height:1.6;}
+.trc-in:focus{border-color:var(--teal);}
+.trc-in::placeholder{color:var(--dim);}
+.tr-btn{background:var(--teal);color:var(--bg);border:none;padding:.7rem 2rem;font-family:'Inter',sans-serif;font-size:.86rem;font-weight:600;cursor:pointer;display:block;margin:.5rem auto 0;transition:all .25s;box-shadow:0 6px 20px rgba(32,200,160,.22);}
+.tr-btn:hover{background:#18A888;}
+.tr-result{display:none;margin-top:1.2rem;background:var(--s3);padding:1.4rem;font-size:.86rem;line-height:1.82;color:var(--muted);}
+.tr-result.show{display:block;}
+.tr-result strong{color:var(--amber);font-family:'Space Grotesk',sans-serif;font-size:.7rem;letter-spacing:.08em;display:block;margin:-.3rem 0 .3rem;}
+
+/* SOCRATIC QUESTIONING */
+.sq-wrap{margin:2rem 0;}
+.sq-q{background:var(--s1);border:1px solid var(--bd);padding:1.4rem;margin-bottom:.7rem;cursor:pointer;display:flex;align-items:flex-start;gap:1rem;transition:background .2s;}
+.sq-q:hover{background:var(--s2);}
+.sq-q.open{background:var(--s2);border-left:2px solid var(--teal);}
+.sq-q-n{font-family:'Space Grotesk',sans-serif;font-size:.7rem;font-weight:500;color:var(--dim);min-width:1.8rem;padding-top:.1rem;}
+.sq-q-text{font-size:.88rem;font-weight:500;color:var(--text);}
+.sq-q-exp{font-size:.8rem;font-weight:300;color:var(--muted);display:none;margin-top:.6rem;line-height:1.75;}
+.sq-q.open .sq-q-exp{display:block;}
+
+/* SCENARIOS */
+.sc-shell{border:1px solid var(--bd);margin:2rem 0;}
+.sc-top{padding:.9rem 1.4rem;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;}
+.sc-tl{font-size:.62rem;font-weight:500;letter-spacing:.18em;color:var(--dim);text-transform:uppercase;}
+.sc-pp{font-size:.7rem;font-weight:600;color:var(--teal);}
+.sc-pb{height:2px;background:var(--bd);}
+.sc-pf{height:100%;background:var(--teal);transition:width .4s;}
+.sc-body{padding:2rem 1.5rem;}
+.sc-q{font-family:'Space Grotesk',sans-serif;font-size:1.02rem;font-weight:600;line-height:1.55;color:var(--text);margin-bottom:1.4rem;}
+.sc-opts{display:flex;flex-direction:column;gap:.45rem;}
+.sc-o{background:var(--s1);border:1px solid var(--bd);padding:.8rem 1.1rem;font-family:'Inter',sans-serif;font-size:.86rem;font-weight:300;cursor:pointer;text-align:left;color:var(--muted);transition:all .2s;}
+.sc-o:hover{border-color:var(--bd2);color:var(--text);background:var(--s2);}
+.sc-o.ok{border-color:var(--teal);background:var(--te-l);color:var(--teal);}
+.sc-o.bad{border-color:var(--rose);background:var(--ro-l);color:var(--rose);}
+.sc-o:disabled{cursor:not-allowed;}
+.sc-fb{font-size:.84rem;font-weight:300;padding:.85rem 1.1rem;border-left:1px solid var(--bd2);margin-top:1rem;display:none;line-height:1.78;color:var(--muted);}
+.sc-fb.show{display:block;}.sc-fb.ok{border-color:var(--teal);}.sc-fb.bad{border-color:var(--rose);}
+.sc-nx{display:none;margin-top:1rem;background:none;border:1px solid var(--bd2);padding:.5rem 1.5rem;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:500;color:var(--muted);cursor:pointer;transition:all .2s;}
+.sc-nx:hover{border-color:var(--teal);color:var(--teal);}.sc-nx.show{display:inline-block;}
+.sc-sc{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--amber);text-align:center;margin-top:1.5rem;display:none;}
+
+/* EXPOSURE LADDER */
+.ladder{margin:2rem 0;}
+.rung{display:flex;align-items:center;gap:1rem;margin-bottom:.7rem;cursor:pointer;}
+.rung-num{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:300;color:var(--dim);min-width:2.2rem;line-height:1;}
+.rung-bar{flex:1;background:var(--s1);border:1px solid var(--bd);padding:.9rem 1.1rem;transition:all .2s;}
+.rung:hover .rung-bar{border-color:var(--bd2);}
+.rung.done .rung-bar{border-color:var(--teal);background:var(--te-ll);}
+.rung.done .rung-num{color:var(--teal);}
+.rung-t{font-size:.86rem;font-weight:500;color:var(--text);}
+.rung-d{font-size:.76rem;font-weight:300;color:var(--muted);margin-top:.2rem;}
+.rung-check{font-size:.8rem;color:var(--teal);opacity:0;transition:opacity .2s;}
+.rung.done .rung-check{opacity:1;}
+
+/* QUIZ */
+.qz-wrap{border:1px solid var(--bd);margin:2rem 0;}
+.qz-top{padding:.85rem 1.4rem;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;}
+.qz-pt{font-size:.64rem;font-weight:500;letter-spacing:.1em;color:var(--dim);}
+.qz-pp{font-size:.64rem;font-weight:600;color:var(--teal);}
+.qz-body{padding:2rem 1.5rem;}
+.qz-q{font-family:'Space Grotesk',sans-serif;font-size:1.02rem;font-weight:600;line-height:1.5;color:var(--text);margin-bottom:1.3rem;}
+.qz-opts{display:flex;flex-direction:column;gap:.42rem;}
+.qz-o{background:var(--s1);border:1px solid var(--bd);padding:.78rem 1.1rem;font-family:'Inter',sans-serif;font-size:.86rem;font-weight:300;cursor:pointer;text-align:left;color:var(--muted);transition:all .2s;}
+.qz-o:hover{border-color:var(--bd2);color:var(--text);background:var(--s2);}
+.qz-o.ok{border-color:var(--teal);background:var(--te-l);color:var(--teal);font-weight:500;}
+.qz-o.bad{border-color:var(--rose);background:var(--ro-l);color:var(--rose);}
+.qz-o:disabled{cursor:not-allowed;}
+.qz-fb{font-size:.83rem;font-weight:300;padding:.8rem 1rem;border-left:1px solid var(--bd2);margin-top:.8rem;display:none;line-height:1.78;color:var(--muted);}
+.qz-fb.show{display:block;}.qz-fb.ok{border-color:var(--teal);}.qz-fb.bad{border-color:var(--rose);}
+.qz-nx{display:none;margin-top:.9rem;background:none;border:1px solid var(--bd2);padding:.48rem 1.5rem;font-family:'Inter',sans-serif;font-size:.76rem;color:var(--muted);cursor:pointer;transition:all .2s;}
+.qz-nx:hover{border-color:var(--amber);color:var(--amber);}.qz-nx.show{display:inline-block;}
+.qz-sc{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--amber);text-align:center;margin-top:1.5rem;display:none;padding:1rem;}
+
+/* PLAN */
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:1px;background:var(--bd);border:1px solid var(--bd);margin:1.5rem 0;}
+.pf{background:var(--s1);padding:1.4rem;}
+.pf label{font-size:.6rem;font-weight:500;letter-spacing:.12em;color:var(--dim);display:block;margin-bottom:.5rem;text-transform:uppercase;}
+.pf-in{width:100%;background:transparent;border:none;border-bottom:1px solid var(--bd2);padding:.5rem 0;font-family:'Inter',sans-serif;font-size:.84rem;color:var(--text);outline:none;resize:none;transition:border-color .2s;line-height:1.6;}
+.pf-in:focus{border-color:var(--teal);}
+.pf-in::placeholder{color:var(--dim);}
+.plan-btn{background:var(--teal);color:var(--bg);border:none;padding:.72rem 2.2rem;font-family:'Inter',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;display:block;margin:1.5rem auto 0;transition:all .25s;letter-spacing:.03em;}
+.plan-btn:hover{background:#18A888;}
+.plan-res{display:none;margin-top:1.5rem;background:var(--s1);border:1px solid var(--bd2);padding:2rem;}
+.plan-res.show{display:block;}
+.plan-res h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:600;color:var(--text);text-align:center;margin-bottom:1.1rem;}
+.pr-r{display:flex;gap:1rem;padding:.55rem 0;border-bottom:1px solid var(--bd);font-size:.83rem;font-weight:300;line-height:1.65;}
+.pr-r:last-child{border:none;}
+.pr-l{color:var(--dim);font-size:.68rem;font-weight:500;letter-spacing:.06em;min-width:145px;}
+
+/* FINAL */
+.final{position:relative;z-index:2;max-width:700px;margin:0 auto;padding:5rem 2rem 8rem;}
+.final-n{font-family:'Space Grotesk',sans-serif;font-size:.6rem;font-weight:500;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin-bottom:1.5rem;}
+.final-cert{border:1px solid var(--bd2);padding:2rem;margin:2rem 0;}
+.fcl{font-size:.6rem;font-weight:500;letter-spacing:.14em;color:var(--dim);margin-bottom:.4rem;text-transform:uppercase;}
+.fcv{font-family:'Space Grotesk',sans-serif;font-size:.9rem;font-weight:400;color:var(--text);line-height:1.65;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s;}
+.reveal.vis{opacity:1;transform:none;}
+</style>
+<link rel="stylesheet" href="../assets/psy.css">
+</head>
+<body><nav class="mo-nav"><a href="../index.html">← Кабінет психолога</a><span class="mo-t">Тема 6 · Сила моєї думки: долаємо тривогу · 7–8 клас · Урок</span><span class="mo-g"><a href="06-5-6-lesson.html">5–6 клас</a><a href="06-7-8-lesson.html" class="on">7–8 клас</a><a href="06-9-11-lesson.html">9–11 клас</a><a href="06-b-lesson.html">Батьки</a><a href="06-7-8-case.html">⇄ Кейс</a></span></nav>
+<div class="prog" id="prog"></div>
+
+<!-- neural background -->
+<div class="neural-bg">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="white" stroke-width=".8" fill="none">
+      <line x1="200" y1="150" x2="450" y2="300"/><line x1="450" y1="300" x2="700" y2="200"/>
+      <line x1="700" y1="200" x2="950" y2="350"/><line x1="450" y1="300" x2="600" y2="500"/>
+      <line x1="600" y1="500" x2="800" y2="600"/><line x1="200" y1="150" x2="350" y2="50"/>
+      <line x1="350" y1="50" x2="550" y2="120"/><line x1="950" y1="350" x2="1100" y2="250"/>
+      <line x1="800" y1="600" x2="1000" y2="700"/><line x1="100" y1="400" x2="300" y2="500"/>
+      <line x1="300" y1="500" x2="450" y2="300"/><line x1="700" y1="200" x2="750" y2="50"/>
+    </g>
+    <g fill="white">
+      <circle cx="200" cy="150" r="3"/><circle cx="450" cy="300" r="4"/><circle cx="700" cy="200" r="3.5"/>
+      <circle cx="950" cy="350" r="3"/><circle cx="600" cy="500" r="4"/><circle cx="800" cy="600" r="3"/>
+      <circle cx="350" cy="50" r="2.5"/><circle cx="550" cy="120" r="2.5"/><circle cx="1100" cy="250" r="2.5"/>
+      <circle cx="100" cy="400" r="2.5"/><circle cx="300" cy="500" r="3"/><circle cx="750" cy="50" r="2.5"/>
+      <circle cx="1000" cy="700" r="2.5"/>
+    </g>
+  </svg>
+</div>
+
+<nav class="snav">
+  <button class="snd on" data-i="0"></button>
+  <button class="snd" data-i="1"></button>
+  <button class="snd" data-i="2"></button>
+  <button class="snd" data-i="3"></button>
+  <button class="snd" data-i="4"></button>
+  <button class="snd" data-i="5"></button>
+  <button class="snd" data-i="6"></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="s0">
+  <div class="hero-top">
+    <div class="hero-label">Онлайн-урок · 7–8 клас · Психологічна просвіта</div>
+    <h1>
+      <span class="t1">Сила</span><br>
+      моєї<br>
+      <span class="t2">думки</span>
+    </h1>
+  </div>
+  <div class="hero-bottom">
+    <p class="hero-desc">Нейронаука тривоги, пастки мислення і КПТ-інструменти — без спрощень, з реальними техніками</p>
+    <div class="hero-pills">
+      <span class="hp">⌚ 45 хвилин</span>
+      <span class="hp">◈ 7 спотворень</span>
+      <span class="hp">▲ Сократів діалог</span>
+      <span class="hp">◎ 9 сценаріїв</span>
+      <span class="hp">◇ Thought record</span>
+    </div>
+  </div>
+</section>
+
+<!-- S1: ЩО ТАКЕ ТРИВОГА — НЕЙРОНАУКА -->
+<div class="divl"></div>
+<section class="sec reveal" id="s1">
+  <div class="lbl">01 — Нейронаука</div>
+  <h2>Тривога — це <em>нейробіологія</em></h2>
+  <p class="lead">Тривога не у твоєму характері — вона в нейронних ланцюгах. Мигдалина (amygdala) «захоплює управління» ще до того як ти встигаєш подумати. Розуміти це — значить мати доступ до цього.</p>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Про мигдалину і кору</div>
+    <p>При тривозі мигдалина блокує префронтальну кору — «думаючий» мозок. Це еволюційний захист: при загрозі думати повільно небезпечно. Але при соціальній тривозі, тривозі перед іспитом або тривозі «що про мене думають» — цей захист стрілять «з гармати по горобцях». КПТ вчить кору знову брати контроль.</p>
+  </div>
+
+  <p style="font-size:.78rem;font-weight:500;letter-spacing:.08em;color:var(--dim);text-transform:uppercase;margin-bottom:.8rem">Оціни свій рівень тривоги прямо зараз:</p>
+  <div class="anx-labels"><span>0 — спокій</span><span>10 — максимум</span></div>
+  <div class="anx-scale" id="anxScale"></div>
+  <div class="anx-result" id="anxResult"></div>
+</section>
+
+<!-- S2: КОГНІТИВНІ СПОТВОРЕННЯ -->
+<div class="divl"></div>
+<section class="sec reveal" id="s2">
+  <div class="lbl">02 — КПТ</div>
+  <h2>7 когнітивних <em>спотворень</em></h2>
+  <p class="lead">Когнітивне спотворення — автоматична думка, яка систематично перекручує реальність. Вони виникають без запрошення і звучать як правда. Але їх можна розпізнати і оспорити.</p>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Бек і автоматичні думки</div>
+    <p>Аарон Бек (1979) виявив: при тривозі і депресії мозок виробляє «автоматичні негативні думки» — швидкі, автоматичні, правдоподібні, але перекручені. КПТ починається з їх розпізнавання. Як тільки ти бачиш «це катастрофізація» — вона вже має менше влади.</p>
+  </div>
+
+  <div class="cd-list">
+    <div class="cd-item">
+      <div class="cd-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="cd-num">01</span><span class="cd-title">Катастрофізація</span>
+        <span class="cd-tag" style="background:var(--ro-l);color:var(--rose)">Найпоширеніша</span>
+        <span class="cd-arr">▶</span>
+      </div>
+      <div class="cd-body">
+        Перетворення будь-якого негативу на катастрофу. «Мені поставили 3 → я провалю рік → не вступлю до університету → зруйную собі життя». Мозок малює найгірший сценарій як єдино можливий.
+        <div class="cd-ex">💭 «Якщо я помилюсь перед класом — вони пам'ятатимуть це вічно»</div>
+        <div class="cd-counter">◈ Контрзапитання: «Яка реальна ймовірність найгіршого? А що насправді найімовірніше?»</div>
+      </div>
+    </div>
+    <div class="cd-item">
+      <div class="cd-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="cd-num">02</span><span class="cd-title">Читання думок</span>
+        <span class="cd-tag" style="background:var(--am-l);color:var(--amber)">Соціальна тривога</span>
+        <span class="cd-arr">▶</span>
+      </div>
+      <div class="cd-body">
+        Ти вирішуєш що думають інші — зазвичай погане — без доказів. Телепатія не реальна, але мозок в режимі тривоги переконаний що «знає».
+        <div class="cd-ex">💭 «Він/-вона дивиться на мене — значить критикує мій одяг»</div>
+        <div class="cd-counter">◈ Контрзапитання: «Які є реальні докази? Чи є інші пояснення цього погляду?»</div>
+      </div>
+    </div>
+    <div class="cd-item">
+      <div class="cd-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="cd-num">03</span><span class="cd-title">Персоналізація</span>
+        <span class="cd-tag" style="background:var(--la-l);color:var(--lav)">Самозвинувачення</span>
+        <span class="cd-arr">▶</span>
+      </div>
+      <div class="cd-body">
+        Брати відповідальність за все що йде не так навколо. «Вчитель в поганому настрої → через мене». «Компанія загальмувала → я всіх затягую».
+        <div class="cd-ex">💭 «Мій друг сьогодні мовчазний — я щось не так сказав/-ла»</div>
+        <div class="cd-counter">◈ Контрзапитання: «Які є інші причини? Чи дійсно я відповідаю за чужий стан?»</div>
+      </div>
+    </div>
+    <div class="cd-item">
+      <div class="cd-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="cd-num">04</span><span class="cd-title">«Все або нічого»</span>
+        <span class="cd-tag" style="background:var(--te-l);color:var(--teal)">Перфекціонізм</span>
+        <span class="cd-arr">▶</span>
+      </div>
+      <div class="cd-body">
+        Бачити тільки крайнощі — без будь-якої середини. «Я або успішний/-а, або невдаха». «Або всі мене люблять, або я відкинутий/-а».
+        <div class="cd-ex">💭 «Я не ідеально виступив/-ла — значить це був провал»</div>
+        <div class="cd-counter">◈ Контрзапитання: «Де на шкалі від 0 до 100 це насправді знаходиться?»</div>
+      </div>
+    </div>
+    <div class="cd-item">
+      <div class="cd-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="cd-num">05</span><span class="cd-title">Надузагальнення</span>
+        <span class="cd-tag" style="background:var(--bl-l);color:var(--blue)">Патерн</span>
+        <span class="cd-arr">▶</span>
+      </div>
+      <div class="cd-body">
+        З одного випадку робити глобальний висновок. «Один раз не вийшло → «я ніколи не зможу»». «Хтось образив → «всі люди такі»».
+        <div class="cd-ex">💭 «Я один раз злякався/-лась виступати — значить я ніколи не подолаю страх»</div>
+        <div class="cd-counter">◈ Контрзапитання: «Один приклад — це достатньо для такого висновку? Які є контрприклади?»</div>
+      </div>
+    </div>
+    <div class="cd-item">
+      <div class="cd-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="cd-num">06</span><span class="cd-title">Емоційне мислення</span>
+        <span class="cd-tag" style="background:var(--am-l);color:var(--amber)">Почуття = факт</span>
+        <span class="cd-arr">▶</span>
+      </div>
+      <div class="cd-body">
+        «Я відчуваю → значить це правда». «Я відчуваю себе невдахою → значить я невдаха». «Мені страшно → значить небезпечно». Почуття — реальні, але вони не завжди відображають реальність.
+        <div class="cd-ex">💭 «Мені тривожно перед виступом — значить він точно пройде погано»</div>
+        <div class="cd-counter">◈ Контрзапитання: «Почуття — це інформація, не доказ. Які є факти незалежно від відчуттів?»</div>
+      </div>
+    </div>
+    <div class="cd-item">
+      <div class="cd-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="cd-num">07</span><span class="cd-title">Знецінення позитивного</span>
+        <span class="cd-tag" style="background:var(--ro-l);color:var(--rose)">Фільтр</span>
+        <span class="cd-arr">▶</span>
+      </div>
+      <div class="cd-body">
+        Відкидати хороші речі як «не рахуються». «Мене похвалили → вони просто ввічливі». «Вийшло добре → це тому що легко було». Позитив ніколи не «проходить» крізь фільтр.
+        <div class="cd-ex">💭 «Отримав/-ла відмінну оцінку — просто пощастило, це нічого не значить»</div>
+        <div class="cd-counter">◈ Контрзапитання: «Якщо позитивне не рахується — чому негативне рахується? Де логіка?»</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S3: THOUGHT RECORD -->
+<div class="divl"></div>
+<section class="sec reveal" id="s3">
+  <div class="lbl">03 — Інструмент КПТ</div>
+  <h2><em>Thought Record</em> — розбираємо думку</h2>
+  <p class="lead">Протокол роботи з автоматичними думками. Заповни свою ситуацію — і подивись на неї по-іншому.</p>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Про Thought Record</div>
+    <p>Щоденник думок (Thought Record) — основний інструмент КПТ. Він переключає мозок з «емоційного режиму» в «аналітичний». Сам процес заповнення — вже терапевтичний: коли думка виходить з голови на папір, вона перестає бути «ти» і стає «просто думкою».</p>
+  </div>
+
+  <div class="tr-wrap">
+    <div class="tr-cols">
+      <div class="trc">
+        <div class="trc-letter" style="color:var(--rose)">С</div>
+        <div class="trc-name">Ситуація</div>
+        <div class="trc-desc">Що сталось? Хто, де, коли — без оцінки</div>
+        <textarea class="trc-in" id="trS" rows="3" placeholder="Опиши ситуацію фактами…"></textarea>
+      </div>
+      <div class="trc">
+        <div class="trc-letter" style="color:var(--amber)">Д</div>
+        <div class="trc-name">Автоматична думка</div>
+        <div class="trc-desc">Яка думка з'явилась? Як сильно вірю: 0–100%</div>
+        <textarea class="trc-in" id="trD" rows="3" placeholder="«Я точно провалюсь…» Сила: ___% "></textarea>
+      </div>
+      <div class="trc">
+        <div class="trc-letter" style="color:var(--lav)">Е</div>
+        <div class="trc-name">Емоція і тіло</div>
+        <div class="trc-desc">Що відчуваєш? Де в тілі? Сила 0–100%</div>
+        <textarea class="trc-in" id="trE" rows="3" placeholder="Тривога 80%, серце б'ється…"></textarea>
+      </div>
+      <div class="trc">
+        <div class="trc-letter" style="color:var(--teal)">А</div>
+        <div class="trc-name">Альтернативна думка</div>
+        <div class="trc-desc">Реалістичніша думка — не позитивна, а точна</div>
+        <textarea class="trc-in" id="trA" rows="3" placeholder="Більш збалансований погляд…"></textarea>
+      </div>
+    </div>
+    <button class="tr-btn" onclick="genTR()">Проаналізувати мою ситуацію →</button>
+    <div class="tr-result" id="trRes"></div>
+  </div>
+</section>
+
+<!-- S4: СОКРАТІВ ДІАЛОГ -->
+<div class="divl"></div>
+<section class="sec reveal" id="s4">
+  <div class="lbl">04 — Техніка</div>
+  <h2>Сократів <em>діалог</em> із тривогою</h2>
+  <p class="lead">Замість «не хвилюйся» — ставити тривозі правильні запитання. Кожне відкриває простір між «думкою» і «реальністю». Натисни на кожне питання.</p>
+
+  <div class="sq-wrap">
+    <div class="sq-q" onclick="this.classList.toggle('open')">
+      <span class="sq-q-n">01</span>
+      <div><div class="sq-q-text">Які є докази що ця думка правдива?</div><div class="sq-q-exp">Мозок під тривогою збирає лише «докази за» і ігнорує «докази проти». Завдання: свідомо шукати обидва. Запиши в два стовпці — і побачиш диспропорцію.</div></div>
+    </div>
+    <div class="sq-q" onclick="this.classList.toggle('open')">
+      <span class="sq-q-n">02</span>
+      <div><div class="sq-q-text">Які є докази проти?</div><div class="sq-q-exp">Часто саме цей список — набагато довший. Але мозок в тривозі його «не бачить». Виписати — значить зробити видимим.</div></div>
+    </div>
+    <div class="sq-q" onclick="this.classList.toggle('open')">
+      <span class="sq-q-n">03</span>
+      <div><div class="sq-q-text">Яке найреалістичніше пояснення?</div><div class="sq-q-exp">Не найоптимістичніше і не найпесимістичніше — а найімовірніше. Яка ймовірність кожного сценарію в реальності (від 0 до 100%)?</div></div>
+    </div>
+    <div class="sq-q" onclick="this.classList.toggle('open')">
+      <span class="sq-q-n">04</span>
+      <div><div class="sq-q-text">Що я скажу другу/-подрузі в такій самій ситуації?</div><div class="sq-q-exp">Ми зазвичай думаємо про себе набагато суворіше ніж про людей яких любимо. «Правило друга» — замінює самокритику справедливим поглядом.</div></div>
+    </div>
+    <div class="sq-q" onclick="this.classList.toggle('open')">
+      <span class="sq-q-n">05</span>
+      <div><div class="sq-q-text">Чи буде це важливо через 5 років?</div><div class="sq-q-exp">Перспектива часу — потужне знаряддя проти катастрофізації. «Якщо я забуду про це через тиждень — чи варто воно такої сили тривоги сьогодні?»</div></div>
+    </div>
+    <div class="sq-q" onclick="this.classList.toggle('open')">
+      <span class="sq-q-n">06</span>
+      <div><div class="sq-q-text">Що я можу зробити — і що поза моїм контролем?</div><div class="sq-q-exp">Розмежування контролю — ключ. Тривога часто фокусується на тому чого ми не контролюємо. Перемістити увагу на те, що можна зробити — конкретний і ефективний крок.</div></div>
+    </div>
+    <div class="sq-q" onclick="this.classList.toggle('open')">
+      <span class="sq-q-n">07</span>
+      <div><div class="sq-q-text">Яке когнітивне спотворення тут ховається?</div><div class="sq-q-exp">Назвати спотворення — наполовину його нейтралізувати. «Це катастрофізація» або «це читання думок» — і думка вже не така монолітна. Назва дає владу.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- S5: ГРАДУЙОВАНА ЕКСПОЗИЦІЯ -->
+<div class="divl"></div>
+<section class="sec reveal" id="s5">
+  <div class="lbl">05 — Техніка КПТ</div>
+  <h2>Драбина <em>страху</em></h2>
+  <p class="lead">Уникання підтримує тривогу. Поступова зустріч зі страхом — знижує її. Натисни на кожну сходинку щоб «пройти» її.</p>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Про градуйовану експозицію</div>
+    <p>Уникання здається рятівником — і є ловушкою. Кожного разу коли уникаємо, тривога отримує підтвердження: «загроза реальна». Градуйована експозиція — поступове наближення до страху від найлегшого до найважчого. Після кожного кроку тривога знижується — мозок вчиться: «я впорався/-лась».</p>
+  </div>
+
+  <p style="font-size:.78rem;color:var(--dim);margin-bottom:1.2rem;font-style:italic">Приклад: соціальна тривога і страх виступати. Натисни — «пройди» сходинку:</p>
+  <div class="ladder" id="ladder">
+    <div class="rung" onclick="this.classList.toggle('done')"><span class="rung-num">1</span><div class="rung-bar"><div class="rung-t">Відповісти на одне запитання в малій групі</div><div class="rung-d">Тривога ~20/100 — стартова точка</div></div><span class="rung-check">✓</span></div>
+    <div class="rung" onclick="this.classList.toggle('done')"><span class="rung-num">2</span><div class="rung-bar"><div class="rung-t">Поставити запитання вчителю після уроку</div><div class="rung-d">Тривога ~35/100</div></div><span class="rung-check">✓</span></div>
+    <div class="rung" onclick="this.classList.toggle('done')"><span class="rung-num">3</span><div class="rung-bar"><div class="rung-t">Відповісти на уроці добровільно один раз</div><div class="rung-d">Тривога ~50/100</div></div><span class="rung-check">✓</span></div>
+    <div class="rung" onclick="this.classList.toggle('done')"><span class="rung-num">4</span><div class="rung-bar"><div class="rung-t">Виступити з коротким повідомленням (2 хв)</div><div class="rung-d">Тривога ~65/100</div></div><span class="rung-check">✓</span></div>
+    <div class="rung" onclick="this.classList.toggle('done')"><span class="rung-num">5</span><div class="rung-bar"><div class="rung-t">Виступ на уроці перед усім класом</div><div class="rung-d">Тривога ~80/100</div></div><span class="rung-check">✓</span></div>
+    <div class="rung" onclick="this.classList.toggle('done')"><span class="rung-num">6</span><div class="rung-bar"><div class="rung-t">Виступ з презентацією перед класом</div><div class="rung-d">Тривога ~90/100 — вершина сходинки</div></div><span class="rung-check">✓</span></div>
+  </div>
+  <p style="font-size:.8rem;color:var(--dim);margin-top:.5rem;font-style:italic">Твоя драбина може мати інший страх — принцип той самий: від 20% до 90%, крок за кроком.</p>
+</section>
+
+<!-- S6: СЦЕНАРІЇ -->
+<div class="divl"></div>
+<section class="sec reveal" id="s6">
+  <div class="lbl">06 — Дилеми</div>
+  <h2><em>9 дилем:</em> КПТ у дії</h2>
+  <p class="lead">Реальні підліткові ситуації. Вибери найефективнішу відповідь — дізнайся механізм.</p>
+
+  <div class="sc-shell">
+    <div class="sc-top"><span class="sc-tl" id="scTl">Дилема 1 / 9</span><span class="sc-pp" id="scPp">0 pts</span></div>
+    <div class="sc-pb"><div class="sc-pf" id="scPf" style="width:11%"></div></div>
+    <div class="sc-body">
+      <div class="sc-q" id="scQ"></div>
+      <div class="sc-opts" id="scOpts"></div>
+      <div class="sc-fb" id="scFb"></div>
+      <button class="sc-nx" id="scNx" onclick="nxSc()">Наступна →</button>
+      <div class="sc-sc" id="scSc"></div>
+    </div>
+  </div>
+</section>
+
+<!-- S7: ВІКТОРИНА -->
+<div class="divl"></div>
+<section class="sec reveal" id="s7">
+  <div class="lbl">07 — Вікторина</div>
+  <h2>9 запитань <em>без підказок</em></h2>
+  <p class="lead">КПТ, когнітивні спотворення і техніки — з науковим обґрунтуванням.</p>
+
+  <div class="qz-wrap">
+    <div class="qz-top"><span class="qz-pt" id="qzPt">01 / 09</span><span class="qz-pp" id="qzPp">0 pts</span></div>
+    <div class="qz-body">
+      <div class="qz-q" id="qzQ"></div>
+      <div class="qz-opts" id="qzOpts"></div>
+      <div class="qz-fb" id="qzFb"></div>
+      <button class="qz-nx" id="qzNx" onclick="nxQz()">Далі →</button>
+      <div class="qz-sc" id="qzSc"></div>
+    </div>
+  </div>
+</section>
+
+<!-- S8: ПЛАН -->
+<div class="divl"></div>
+<section class="sec reveal" id="s8">
+  <div class="lbl">08 — Практика</div>
+  <h2>Мій <em>антитривожний</em> план</h2>
+  <p class="lead">Конкретний план для реального кризового моменту.</p>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Про готовий план</div>
+    <p>При гострій тривозі мозок не генерує рішень — він заблокований. Готовий план — це обхідний шлях: ти вже знаєш що робити і просто виконуєш. Це та сама логіка, що у пожежному протоколі. Склади зараз — щоб не думати потім.</p>
+  </div>
+
+  <div class="plan-grid">
+    <div class="pf">
+      <label>Мій головний тригер тривоги</label>
+      <textarea class="pf-in" id="p1" rows="2" placeholder="Що запускає мою тривогу найчастіше…"></textarea>
+    </div>
+    <div class="pf">
+      <label>Моє когнітивне спотворення №1</label>
+      <input class="pf-in" type="text" id="p2" placeholder="Катастрофізація / читання думок…">
+      <br><br>
+      <label>Контрзапитання до нього</label>
+      <input class="pf-in" type="text" id="p3" placeholder="«Які докази проти?»…">
+    </div>
+    <div class="pf">
+      <label>Моя техніка №1 при гострій тривозі</label>
+      <input class="pf-in" type="text" id="p4" placeholder="Дихання / 5-4-3-2-1 / thought record…">
+      <br><br>
+      <label>Людина довіри</label>
+      <input class="pf-in" type="text" id="p5" placeholder="До кого звернусь…">
+    </div>
+    <div class="pf">
+      <label>Якщо тривога дуже сильна і тривала</label>
+      <textarea class="pf-in" id="p6" rows="2" placeholder="Розповім дорослому, 116 111…"></textarea>
+      <br>
+      <label>Контакт</label>
+      <input class="pf-in" type="text" id="p7" value="116 111 — анонімно, цілодобово">
+    </div>
+  </div>
+  <button class="plan-btn" onclick="genPlan()">Зберегти мій план →</button>
+  <div class="plan-res" id="planRes">
+    <h3>◈ Мій антитривожний план</h3>
+    <div id="planContent"></div>
+    <p style="font-size:.7rem;color:var(--dim);text-align:center;margin-top:1.2rem;letter-spacing:.08em">СКРІНШОТ → ЗБЕРЕЖИ → ЧИТАЙ КОЛИ ВАЖКО</p>
+  </div>
+</section>
+
+<!-- FINAL -->
+<div class="divl"></div>
+<div class="final reveal">
+  <div class="final-n">Урок завершено</div>
+  <h2>Думки — не <em>факти</em></h2>
+  <p class="lead" style="margin-bottom:2rem">Ти знаєш 7 когнітивних спотворень, Thought Record, Сократів діалог і маєш план. Це реальний КПТ-інструментарій.</p>
+  <div class="final-cert">
+    <div class="fcl">Компетенції</div>
+    <div class="fcv">7 когнітивних спотворень · Thought Record · Сократів діалог · Градуйована експозиція · Кризовий план</div>
+    <br>
+    <div class="fcl">Якщо важко</div>
+    <div class="fcv">116 111 — анонімно · Думки — не факти · Тривога — не вирок</div>
+  </div>
+  <div class="psy" style="text-align:left">
+    <div class="psy-who">Порада психолога · Фінальна порада</div>
+    <p>Тривога — один із найдосліджуваніших станів у психології. І один із найкраще тих, що піддаються роботі. КПТ змінює нейронні зв'язки — буквально. Кожного разу коли ти оспорюєш автоматичну думку, ти тренуєш префронтальну кору. Якщо тривога хронічна — це не слабкість. Це сигнал звернутись по допомогу. 116 111 або до людини якій довіряєш.</p>
+  </div>
+</div>
+
+<script>
+// NAV
+const sIds=['s0','s1','s2','s3','s4','s5','s6','s7','s8'];
+const snds=document.querySelectorAll('.snd');
+snds.forEach(d=>d.addEventListener('click',()=>document.getElementById(sIds[+d.dataset.i])?.scrollIntoView({behavior:'smooth'})));
+window.addEventListener('scroll',()=>{
+  const p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  document.getElementById('prog').style.width=p+'%';
+  sIds.forEach((id,i)=>{const el=document.getElementById(id);if(!el)return;const r=el.getBoundingClientRect();if(r.top<=window.innerHeight*.55&&r.bottom>=window.innerHeight*.45){snds.forEach(d=>d.classList.remove('on'));snds[i]?.classList.add('on');}});
+});
+document.querySelectorAll('.reveal').forEach(r=>new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.06}).observe(r));
+
+// ANXIETY SCALE
+const scale=document.getElementById('anxScale');
+for(let i=1;i<=10;i++){
+  const c=document.createElement('div');c.className='anx-cell';c.dataset.v=i;
+  c.onclick=()=>{
+    const v=+c.dataset.v;
+    document.querySelectorAll('.anx-cell').forEach(x=>{
+      const xv=+x.dataset.v;
+      x.classList.toggle('filled',xv<=v);
+      x.classList.toggle('high',xv<=v&&v>=6&&v<=8);
+      x.classList.toggle('crit',xv<=v&&v>=9);
+    });
+    const msgs=['Практично спокій — добре',
+      'Дуже низький рівень тривоги','Низький — легке фонове хвилювання',
+      'Помірна тривога — нормально в нових ситуаціях','Помірна — тіло щось сигналізує',
+      'Підвищена — варто застосувати техніку','Висока — зверни увагу',
+      'Досить висока — гарний момент попрактикувати Thought Record',
+      'Сильна тривога — дихання або 5-4-3-2-1 прямо зараз','Дуже сильна — якщо тримається довго: 116 111 або дорослий'];
+    document.getElementById('anxResult').textContent=`${v}/10 — ${msgs[v-1]}`;
+  };
+  scale.appendChild(c);
+}
+
+// THOUGHT RECORD
+const cdTypes=['катастрофізація','читання думок','персоналізація','«все або нічого»','надузагальнення','емоційне мислення','знецінення позитивного'];
+function detectCD(text){
+  const t=text.toLowerCase();
+  if(t.includes('завжди')||t.includes('ніколи')||t.includes('все')||t.includes('кінець'))return'Схоже на катастрофізацію або надузагальнення';
+  if(t.includes('думають')||t.includes('вважають')||t.includes('знаю що'))return'Схоже на читання думок';
+  if(t.includes('через мене')||t.includes('моя вина'))return'Схоже на персоналізацію';
+  if(t.includes('провалив')||t.includes('ідеально')||t.includes('повністю'))return'Схоже на «все або нічого»';
+  if(t.includes('відчуваю тому')||t.includes('значить я'))return'Схоже на емоційне мислення';
+  return'Перевір: яке когнітивне спотворення тут ховається?';
+}
+function genTR(){
+  const s=document.getElementById('trS').value.trim()||'—';
+  const d=document.getElementById('trD').value.trim()||'—';
+  const e=document.getElementById('trE').value.trim()||'—';
+  const a=document.getElementById('trA').value.trim()||'—';
+  const cd=d!=='—'?detectCD(d):'Заповни поле «автоматична думка»';
+  document.getElementById('trRes').innerHTML=`
+    <div><strong>Ситуація</strong>${s}</div>
+    <div style="margin-top:.7rem"><strong>Автоматична думка</strong>${d}</div>
+    <div style="margin-top:.7rem;padding:.6rem .9rem;background:var(--s1);border-left:1px solid var(--amber)"><span style="color:var(--amber);font-size:.7rem;letter-spacing:.06em;font-weight:500">◈ АНАЛІЗ ДУМКИ</span><br>${cd}</div>
+    <div style="margin-top:.7rem"><strong>Емоція</strong>${e}</div>
+    <div style="margin-top:.7rem"><strong>Альтернативна думка</strong>${a!=='—'?a:'Спробуй відповісти на питання: «Яка думка була б реалістичнішою?»'}</div>
+    <div style="margin-top:.8rem;padding:.6rem .9rem;background:var(--te-ll);border-left:1px solid var(--teal)"><span style="color:var(--teal);font-size:.7rem;letter-spacing:.06em;font-weight:500">◈ НАСТУПНИЙ КРОК</span><br>Оціни силу початкової думки ще раз (0–100%). Чи змінилась вона після аналізу?</div>`;
+  document.getElementById('trRes').classList.add('show');
+}
+
+// SCENARIOS
+const sc=[
+  {q:'Ти відповів/-ла на уроці і зробив/-ла помилку. Хтось засміявся. Яка думка допомагає?',
+   opts:['«Всі тепер думатимуть що я нічого не знаю»','«Помилки — нормальна частина навчання. Я не можу знати думки інших»','«Це катастрофа — буду уникати відповідей»','«Значить я тупий/-а»'],
+   ans:1,fb:'Читання думок + катастрофізація у варіантах 1, 3, 4. Варіант 2 — реалістична оцінка без спотворення.'},
+  {q:'Перед важливим іспитом з\'являється думка: «Я точно провалюсь». Яке найефективніше КПТ-питання?',
+   opts:['«Треба просто заспокоїтись»','«Які є докази за і проти цієї думки? Яка реальна ймовірність провалу?»','«Намагатись не думати про це»','«Всі провалюються — це нормально»'],
+   ans:1,fb:'Сократів діалог — шукаємо докази з обох сторін. Придушення думок (варіант 3) за парадоксом Вегнера підсилює їх.'},
+  {q:'Друг/-ка не написав/-ла цілий день. Яка автоматична думка — пастка?',
+   opts:['«Напевно зайнятий/-а або телефон на беззвучному»','«Щось трапилось — може йому/їй потрібна допомога»','«Він/вона мене ненавидить і ніколи більше не напише»','«Перевірю пізніше, можливо є причина»'],
+   ans:2,fb:'«Ненавидить і ніколи» — надузагальнення + катастрофізація. Відсутність відповіді має сотні причин, жодна не ця.'},
+  {q:'Ти отримав/-ла похвалу від вчителя. Думка: «Вона просто ввічлива, це не рахується». Це — ?',
+   opts:['Реалістична оцінка','Знецінення позитивного','Персоналізація','Емоційне мислення'],
+   ans:1,fb:'Знецінення позитивного — класичне спотворення перфекціонізму. Якщо позитив «не рахується», а негатив — «рахується», питання не в реальності, а в фільтрі.'},
+  {q:'Соціальна тривога заважає піти на вечірку. Найефективніша КПТ-стратегія?',
+   opts:['Уникнути — і тривога пройде','Повністю ігнорувати тривогу','Поступова експозиція: спочатку менш тривожні ситуації, потім складніші','Примусити себе одразу в саму складну ситуацію'],
+   ans:2,fb:'Градуйована експозиція — основа КПТ при соціальній тривозі. Уникання (варіант 1) підтримує тривогу. Надто різкий крок (варіант 4) може посилити.'},
+  {q:'«Мені тривожно перед виступом — значить він точно пройде погано». Яке спотворення?',
+   opts:['Катастрофізація','Емоційне мислення','Читання думок','Персоналізація'],
+   ans:1,fb:'Емоційне мислення: «я відчуваю → значить це правда». Тривога перед виступом — нормальна реакція, вона не передбачає результат. Спортсмени теж хвилюються — і виступають.'},
+  {q:'Після помилки думаєш: «Я завжди все псую — я нікчема». Яке спотворення?',
+   opts:['Знецінення позитивного','Емоційне мислення','Надузагальнення + «все або нічого»','Персоналізація'],
+   ans:2,fb:'«Завжди» — надузагальнення з одного випадку. «Нікчема» — «все або нічого». Контрзапитання: «Скільки разів я НЕ псував/-ла? Один випадок — не патерн».'},
+  {q:'Тривога не відступає тижнями і заважає жити нормально. Правильна дія:',
+   opts:['Чекати поки само пройде','Намагатись думати позитивно','Розповісти довіреній людині і/або звернутись за допомогою (116 111, психолог)','Уникати ситуацій що тривожать'],
+   ans:2,fb:'Хронічна тривога що заважає функціонувати — сигнал для фахової допомоги. Уникання (варіант 4) підтримує тривогу. Позитивне мислення без роботи з думками — не КПТ.'},
+  {q:'«Правило друга» в КПТ означає:',
+   opts:['Просити друга вирішити проблему','Думати про себе так само співчутливо і реалістично, як ти б думав/-ла про близького друга в тій самій ситуації','Не говорити другу про свою тривогу','Порівнювати себе з другом'],
+   ans:1,fb:'Self-compassion як КПТ-техніка: ми зазвичай набагато суворіші до себе ніж до інших. «Правило друга» виявляє цю диспропорцію і виправляє її.'},
+];
+let scI=0,scSc=0,scAns=false;
+function ldSc(){
+  const s=sc[scI];document.getElementById('scTl').textContent=`Дилема ${scI+1} / ${sc.length}`;
+  document.getElementById('scPf').style.width=`${((scI+1)/sc.length)*100}%`;
+  document.getElementById('scQ').textContent=s.q;
+  const o=document.getElementById('scOpts');o.innerHTML='';
+  s.opts.forEach((op,i)=>{const b=document.createElement('button');b.className='sc-o';b.textContent=op;b.onclick=()=>anSc(i);o.appendChild(b);});
+  document.getElementById('scFb').className='sc-fb';document.getElementById('scNx').className='sc-nx';scAns=false;
+}
+function anSc(i){
+  if(scAns)return;scAns=true;
+  const s=sc[scI];document.querySelectorAll('.sc-o').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('scFb');
+  if(i===s.ans){document.querySelectorAll('.sc-o')[i].classList.add('ok');fb.className='sc-fb ok show';scSc++;document.getElementById('scPp').textContent=scSc+' pts';}
+  else{document.querySelectorAll('.sc-o')[i].classList.add('bad');document.querySelectorAll('.sc-o')[s.ans].classList.add('ok');fb.className='sc-fb bad show';}
+  fb.textContent=s.fb;document.getElementById('scNx').className='sc-nx show';
+}
+function nxSc(){
+  scI++;if(scI<sc.length){ldSc();return;}
+  document.getElementById('scQ').textContent='';document.getElementById('scOpts').innerHTML='';
+  document.getElementById('scFb').className='sc-fb';document.getElementById('scNx').className='sc-nx';
+  document.getElementById('scTl').textContent='Завершено';
+  const s=document.getElementById('scSc');s.style.display='block';
+  const m=['Є над чим подумати ▲','КПТ-мислення розвивається ◎','Сильний рівень ◈','Бездоганно ◉'];
+  s.textContent=`${scSc} / ${sc.length} — ${m[Math.min(Math.floor(scSc/(sc.length/m.length)),m.length-1)]}`;
+}
+ldSc();
+
+// QUIZ
+const qz=[
+  {q:'Що таке «когнітивне спотворення» (Бек, 1979)?',opts:['Помилка в правописі','Автоматична думка що систематично перекручує реальність і підсилює тривогу','Вид пам\'яті','Стан мозку під час сну'],ans:1,exp:'Аарон Бек виявив: при тривозі і депресії мозок автоматично виробляє думки, які перекручують реальність. Розпізнавання — перший крок КПТ.'},
+  {q:'Що відбувається з префронтальною корою під час гострої тривоги?',opts:['Вона активується більше','Вона пригнічується мигдалиною — «думаючий» мозок тимчасово заблокований','Нічого не змінюється','Вона контролює мигдалину'],ans:1,exp:'LeDoux (1996): мигдалина «захоплює управління» при загрозі. Тому «взяти себе в руки» в момент паніки не виходить — кора заблокована. Дихання і КПТ-техніки допомагають її реактивувати.'},
+  {q:'«Я одного разу провалив/-ла іспит — значить я завжди провалюватиму» — яке спотворення?',opts:['Персоналізація','Читання думок','Надузагальнення','Емоційне мислення'],ans:2,exp:'Надузагальнення: з одного випадку — глобальний висновок. «Завжди» і «ніколи» — маркери цього спотворення. Один приклад не є статистикою.'},
+  {q:'Чому уникання посилює тривогу?',opts:['Воно не посилює — допомагає','Тривога отримує підтвердження «загроза реальна» і закріплюється нейронно','Тому що при уникненні більше думаєш','Уникання завжди шкідливе'],ans:1,exp:'Кожне уникання підтверджує: «загроза реальна і некерована». Градуйована експозиція розриває цей цикл: мозок вчиться що може впоратись.'},
+  {q:'«Правило друга» в КПТ — це:',opts:['Просити друга дати пораду','Думати про себе так само співчутливо як про близького друга в тій самій ситуації','Ділитись планами з другом','Уникати самокритики'],ans:1,exp:'Self-compassion (Neff, 2003): ми зазвичай набагато суворіші до себе. «Правило друга» виправляє цю диспропорцію — і це доведено знижує тривогу.'},
+  {q:'«Thought Record» (щоденник думок) — для чого?',opts:['Записувати позитивні думки','Відстежувати ситуації, автоматичні думки, емоції і альтернативні думки для їх оспорювання','Практикувати подяку','Готуватись до сну'],ans:1,exp:'Thought Record — основний КПТ-інструмент. Переключає мозок з «емоційного» в «аналітичний» режим. Сам процес виписування вже терапевтичний.'},
+  {q:'«Мені страшно → значить небезпечно». Яке спотворення?',opts:['Катастрофізація','Персоналізація','Емоційне мислення','Знецінення позитивного'],ans:2,exp:'Емоційне мислення: почуття сприймається як доказ реальності. Тривога перед виступом не передбачає поганий результат — це лише сигнал нервової системи.'},
+  {q:'Що таке «градуйована експозиція»?',opts:['Різке занурення в найстрашнішу ситуацію','Повне уникання страхів','Поступове наближення до страху — від найлегших ситуацій до найважчих','Медитація з закритими очима'],ans:2,exp:'Градуйована експозиція — основа КПТ при фобіях і соціальній тривозі. Після кожного кроку тривога знижується: мозок вчиться «я впорався/-лась».'},
+  {q:'Сократів діалог з тривогою — це:',opts:['Сперечатись з собою','Ставити тривозі конкретні запитання про докази, альтернативи і реальну ймовірність — щоб знайти точнішу думку','Говорити вголос свої думки','Філософська практика медитації'],ans:1,exp:'Сократів метод в КПТ: не придушувати думку, а досліджувати її питаннями. Мета — не «позитивна думка», а точніша і реалістичніша.'},
+];
+let qzI=0,qzSc=0,qzAns=false;
+function ldQz(){
+  const q=qz[qzI];document.getElementById('qzPt').textContent=`${String(qzI+1).padStart(2,'0')} / ${String(qz.length).padStart(2,'0')}`;
+  document.getElementById('qzQ').textContent=q.q;
+  const o=document.getElementById('qzOpts');o.innerHTML='';
+  q.opts.forEach((op,i)=>{const b=document.createElement('button');b.className='qz-o';b.textContent=op;b.onclick=()=>anQz(i);o.appendChild(b);});
+  document.getElementById('qzFb').className='qz-fb';document.getElementById('qzNx').className='qz-nx';qzAns=false;
+}
+function anQz(i){
+  if(qzAns)return;qzAns=true;
+  const q=qz[qzI];document.querySelectorAll('.qz-o').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('qzFb');
+  if(i===q.ans){document.querySelectorAll('.qz-o')[i].classList.add('ok');fb.className='qz-fb ok show';qzSc++;document.getElementById('qzPp').textContent=qzSc+' pts';}
+  else{document.querySelectorAll('.qz-o')[i].classList.add('bad');document.querySelectorAll('.qz-o')[q.ans].classList.add('ok');fb.className='qz-fb bad show';}
+  fb.textContent=q.exp;document.getElementById('qzNx').className='qz-nx show';
+}
+function nxQz(){
+  qzI++;if(qzI<qz.length){ldQz();return;}
+  document.getElementById('qzQ').textContent='';document.getElementById('qzOpts').innerHTML='';
+  document.getElementById('qzFb').className='qz-fb';document.getElementById('qzNx').className='qz-nx';
+  document.getElementById('qzPt').textContent='done';
+  const s=document.getElementById('qzSc');s.style.display='block';
+  const m=['Продовжуй вчитись ▲','КПТ-база є ◎','Сильний рівень ◈','Відмінно ◉'];
+  s.textContent=`${qzSc} / ${qz.length} — ${m[Math.min(Math.floor(qzSc/(qz.length/m.length)),m.length-1)]}`;
+}
+ldQz();
+
+// PLAN
+function genPlan(){
+  const v=id=>document.getElementById(id).value.trim()||'—';
+  document.getElementById('planContent').innerHTML=`
+    <div class="pr-r"><span class="pr-l">Головний тригер</span><span>${v('p1')}</span></div>
+    <div class="pr-r"><span class="pr-l">Спотворення №1</span><span>${v('p2')}</span></div>
+    <div class="pr-r"><span class="pr-l">Контрзапитання</span><span>${v('p3')}</span></div>
+    <div class="pr-r"><span class="pr-l">Техніка заспокоєння</span><span>${v('p4')}</span></div>
+    <div class="pr-r"><span class="pr-l">Людина довіри</span><span>${v('p5')}</span></div>
+    <div class="pr-r"><span class="pr-l">При тривалій тривозі</span><span>${v('p6')}</span></div>
+    <div class="pr-r"><span class="pr-l">Контакт при кризі</span><span>${v('p7')}</span></div>`;
+  document.getElementById('planRes').classList.add('show');
+}
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Що ще почитати чи подивитись</h2><div class="cards"><div><i>🎬</i><b>Inside Out 2 (2024)</b><br><span>Pixar, мультфільм<br>Про тривогу й підлітковий вік; привід для розмови</span></div><div><i>📖</i><b>The Anxiety Workbook for Teens</b><br><span>Lisa M. Schab, 2008<br>Практичні вправи для підлітків</span></div><div><i>📞</i><b>116 111</b><br><span>Дитяча лінія<br>Безкоштовно, анонімно, цілодобово. Психологічна підтримка: 0 800 500 335</span></div></div><h3>Джерела, на які спирається урок</h3><details><summary>Показати список (8)</summary><ol><li>Beck, A. T., Rush, A. J., Shaw, B. F., &amp; Emery, G. (1979). <i>Cognitive Therapy of Depression</i>. Guilford Press.</li><li>LeDoux, J. (1996). <i>The Emotional Brain</i>. Simon &amp; Schuster.</li><li>Hofmann, S. G., Asnaani, A., Vonk, I. J. J., Sawyer, A. T., &amp; Fang, A. (2012). The efficacy of cognitive behavioral therapy: A review of meta-analyses. <i>Cognitive Therapy and Research, 36</i>(5), 427–440.</li><li>Greenberger, D., &amp; Padesky, C. A. (1995). <i>Mind Over Mood</i>. Guilford Press.</li><li>Hayes, S. C., Strosahl, K. D., &amp; Wilson, K. G. (1999). <i>Acceptance and Commitment Therapy</i>. Guilford Press.</li><li>Wells, A. (2009). <i>Metacognitive Therapy for Anxiety and Depression</i>. Guilford Press.</li><li>Wegner, D. M., Schneider, D. J., Carter, S. R., &amp; White, T. L. (1987). Paradoxical effects of thought suppression. <i>Journal of Personality and Social Psychology, 53</i>(1), 5–13.</li><li>Craske, M. G., Kircanski, K., Zelikowsky, M., et al. (2008). Optimizing inhibitory learning during exposure therapy. <i>Behaviour Research and Therapy, 46</i>(1), 5–27.</li></ol></details><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="05-7-8-lesson.html">← Тема 5</a></span><span><a href="07-7-8-lesson.html">Тема 7 →</a></span></div><a class="mo-fab" href="../index.html#t06">☰ До матриці</a></body>
+</html>

@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Методичний кейс · Стрес і тіло · 9–11 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:    #F7F4EE;
+  --surf:  #FFFFFF;
+  --ink:   #1A1C22;
+  --text:  #2D3240;
+  --muted: #6B7280;
+  --bd:    #E4DDD2;
+  --bds:   #C8BFB2;
+
+  --am:   #A86800; --am-l: #FBF3E4; --am-ll:#FDF8EF;
+  --gr:   #1A7A5E; --gr-l: #E8F5F0; --gr-ll:#F2FAF7;
+  --sl:   #3A5E80; --sl-l: #EBF2F8;
+  --in:   #344E8C; --in-l: #EEF1FA;
+  --ro:   #A0394A; --ro-l: #FDECEA;
+  --pl:   #6B4E80; --pl-l: #F2EDF6;
+  --te:   #1A7070; --te-l: #E6F4F4;
+  --ru:   #B84020; --ru-l: #FBF0EB;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.65;}
+
+/* ── HDR ── */
+.hdr{background:var(--ink);padding:.85rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.65rem;position:sticky;top:0;z-index:300;}
+.hbrand{font-family:'Bitter',serif;font-size:.88rem;font-weight:700;color:white;display:flex;align-items:center;gap:.5rem;}
+.hnav{display:flex;gap:.25rem;flex-wrap:wrap;}
+.hn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:.28rem .78rem;font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;color:rgba(255,255,255,.55);cursor:pointer;transition:all .2s;}
+.hn:hover{background:rgba(255,255,255,.14);color:white;}
+.hn.on{background:var(--am);border-color:var(--am);color:white;}
+
+/* ── HERO ── */
+.ph{background:linear-gradient(155deg,#0A0A08 0%,#180E00 55%,#100808 100%);padding:4rem 2rem;position:relative;overflow:hidden;}
+.ph::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(184,120,0,.22),transparent 70%);}
+.ph::after{content:'◈';position:absolute;right:3rem;bottom:1.5rem;font-size:8rem;opacity:.04;color:white;font-family:sans-serif;pointer-events:none;}
+.ph-in{max-width:1060px;margin:0 auto;position:relative;z-index:1;}
+.ph-tag{font-size:.65rem;font-weight:700;letter-spacing:.22em;color:rgba(220,170,80,.65);margin-bottom:.8rem;}
+.ph h1{font-family:'Bitter',serif;font-size:clamp(1.7rem,3.2vw,2.6rem);font-weight:700;color:white;line-height:1.18;margin-bottom:.65rem;}
+.ph h1 span{color:#E8C870;}
+.ph .sub{font-size:.92rem;font-weight:300;font-style:italic;color:rgba(255,255,255,.42);max-width:640px;margin-bottom:1.7rem;}
+.ph-chips{display:flex;gap:.5rem;flex-wrap:wrap;}
+.chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:50px;padding:.3rem .9rem;font-size:.71rem;font-weight:600;color:rgba(255,255,255,.62);}
+
+/* ── TABS ── */
+.tabs{background:var(--surf);border-bottom:2px solid var(--bd);position:sticky;top:54px;z-index:200;overflow-x:auto;}
+.tabs-in{max-width:1060px;margin:0 auto;display:flex;}
+.tb{background:none;border:none;border-bottom:3px solid transparent;padding:.88rem 1.2rem;cursor:pointer;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;color:var(--muted);white-space:nowrap;transition:all .2s;display:flex;align-items:center;gap:.38rem;margin-bottom:-2px;}
+.tb:hover{color:var(--ink);}
+.tb.on{color:var(--am);border-bottom-color:var(--am);}
+
+.panel{display:none;}.panel.on{display:block;}
+.wrap{max-width:1060px;margin:0 auto;padding:3rem 2rem;}
+
+/* ── TYPE ── */
+.sh{font-family:'Bitter',serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:.32rem;}
+.ss{font-size:.82rem;color:var(--muted);font-style:italic;margin-bottom:1.8rem;}
+hr.r{border:none;border-top:1px solid var(--bd);margin:2.3rem 0;}
+
+/* ── CARDS ── */
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.95rem;margin:1.4rem 0;}
+.card{background:var(--surf);border:1px solid var(--bd);border-radius:10px;padding:1.3rem 1.5rem;box-shadow:0 1px 3px rgba(0,0,0,.03);}
+.card .ci{font-size:1.5rem;margin-bottom:.45rem;}
+.card h3{font-family:'Bitter',serif;font-size:.92rem;font-weight:700;margin-bottom:.28rem;color:var(--ink);}
+.card p{font-size:.82rem;color:var(--muted);line-height:1.6;}
+
+/* ── ALERTS ── */
+.al{border-radius:9px;padding:1rem 1.3rem;margin:.85rem 0;display:flex;gap:.75rem;align-items:flex-start;}
+.al .ai{font-size:1.1rem;flex-shrink:0;margin-top:.1rem;}
+.al p{font-size:.83rem;line-height:1.65;}
+.al strong{font-weight:700;display:block;margin-bottom:.1rem;font-size:.71rem;letter-spacing:.04em;}
+.a-am{background:var(--am-l);border-left:4px solid var(--am);}
+.a-gr{background:var(--gr-l);border-left:4px solid var(--gr);}
+.a-sl{background:var(--sl-l);border-left:4px solid var(--sl);}
+.a-in{background:var(--in-l);border-left:4px solid var(--in);}
+.a-ro{background:var(--ro-l);border-left:4px solid var(--ro);}
+.a-pl{background:var(--pl-l);border-left:4px solid var(--pl);}
+.a-te{background:var(--te-l);border-left:4px solid var(--te);}
+.a-ru{background:var(--ru-l);border-left:4px solid var(--ru);}
+
+/* ── TIMELINE ── */
+.tl{padding-left:2.2rem;position:relative;margin:1.4rem 0;}
+.tl::before{content:'';position:absolute;left:.7rem;top:0;bottom:0;width:2px;background:var(--bd);}
+.ti{position:relative;margin-bottom:1.4rem;}
+.ti::before{content:'';position:absolute;left:-1.85rem;top:.32rem;width:12px;height:12px;border-radius:50%;background:var(--am);border:3px solid var(--surf);box-shadow:0 0 0 2px var(--am);}
+.ti-t{font-size:.64rem;font-weight:700;letter-spacing:.1em;color:var(--am);margin-bottom:.12rem;}
+.ti-h{font-weight:700;font-size:.9rem;margin-bottom:.22rem;color:var(--ink);}
+.ti-b{font-size:.82rem;color:var(--muted);line-height:1.65;}
+
+/* ── SCRIPTS ── */
+.scr{background:var(--bg);border:1px solid var(--bd);border-radius:9px;padding:1.2rem 1.4rem;margin:.85rem 0;position:relative;}
+.scr::before{content:attr(data-lbl);position:absolute;top:-9px;left:.95rem;background:var(--am);color:white;font-size:.58rem;font-weight:700;letter-spacing:.1em;padding:.15rem .6rem;border-radius:3px;}
+.scr.gr::before{background:var(--gr);}
+.scr.sl::before{background:var(--sl);}
+.scr.in::before{background:var(--in);}
+.scr.pl::before{background:var(--pl);}
+.scr.ru::before{background:var(--ru);}
+.scr p{font-size:.87rem;line-height:1.82;font-style:italic;color:var(--ink);}
+.scr p strong{font-style:normal;color:var(--am);}
+.scr.gr p strong{color:var(--gr);}
+.scr.ru p strong{color:var(--ru);}
+
+/* ── TABLE ── */
+.tbl{width:100%;border-collapse:collapse;margin:1.1rem 0;font-size:.82rem;}
+.tbl th{background:var(--ink);color:white;text-align:left;padding:.62rem .92rem;font-weight:700;font-size:.7rem;letter-spacing:.04em;}
+.tbl td{padding:.62rem .92rem;border-bottom:1px solid var(--bd);vertical-align:top;line-height:1.65;}
+.tbl tr:nth-child(even) td{background:var(--am-ll);}
+.tbl tr:hover td{background:var(--am-l);}
+
+/* ── PI (science block) ── */
+.pi{background:linear-gradient(135deg,var(--am-l),var(--am-ll));border:1px solid rgba(168,104,0,.25);border-radius:11px;padding:1.35rem 1.55rem;margin:1.4rem 0;position:relative;overflow:hidden;}
+.pi::after{content:'🧠';font-size:3.8rem;position:absolute;right:.7rem;bottom:-.3rem;opacity:.07;pointer-events:none;}
+.pi .pt{font-size:.64rem;font-weight:700;letter-spacing:.14em;color:var(--am);margin-bottom:.45rem;}
+.pi p{font-size:.85rem;line-height:1.75;color:#3D2A00;font-style:italic;}
+.pi .src{font-size:.71rem;color:#8A6820;margin-top:.5rem;font-style:normal;}
+
+/* ── DIFF GRID ── */
+.df3{display:grid;grid-template-columns:repeat(3,1fr);gap:.95rem;margin:1.4rem 0;}
+@media(max-width:660px){.df3{grid-template-columns:1fr;}}
+.dc{border-radius:9px;padding:1.1rem;}
+.dc h4{font-size:.75rem;font-weight:700;letter-spacing:.04em;margin-bottom:.55rem;}
+.dc ul{padding-left:1.05rem;font-size:.81rem;line-height:1.7;color:var(--muted);}
+.dc-a{background:#FFF8E6;border:1px solid #EDD878;}.dc-a h4{color:#8A6D00;}
+.dc-b{background:var(--gr-l);border:1px solid #9DCFBE;}.dc-b h4{color:#1E5244;}
+.dc-c{background:var(--in-l);border:1px solid #A8B8E8;}.dc-c h4{color:#2A3B80;}
+
+/* ── CLASS TABS ── */
+.ct-tabs{display:flex;gap:.35rem;margin-bottom:1.2rem;flex-wrap:wrap;}
+.ct-btn{background:var(--surf);border:1px solid var(--bd);border-radius:6px;padding:.35rem .88rem;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;color:var(--muted);cursor:pointer;transition:all .2s;}
+.ct-btn:hover{border-color:var(--bds);color:var(--ink);}
+.ct-btn.on{background:var(--am);border-color:var(--am);color:white;}
+.ct-panel{display:none;}.ct-panel.on{display:block;}
+
+/* ── CRISIS BOX ── */
+.crb{border:1px solid var(--bd);border-radius:9px;overflow:hidden;margin:1.4rem 0;}
+.crb-h{padding:.75rem 1.25rem;font-family:'Bitter',serif;font-size:.88rem;font-weight:700;display:flex;align-items:center;gap:.5rem;color:white;}
+.crb-b{padding:1.15rem 1.35rem;background:var(--surf);}
+.crb-b h4{font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.25rem;}
+.crb-b p{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:.5rem;}
+.crb-b ol,.crb-b ul{padding-left:1.1rem;font-size:.8rem;color:var(--text);line-height:1.85;}
+
+/* ── ACT BOX ── */
+.ab{border:1px solid var(--bd);border-radius:9px;overflow:hidden;margin:1.4rem 0;}
+.ab-h{padding:.72rem 1.25rem;font-family:'Bitter',serif;font-size:.86rem;font-weight:700;display:flex;align-items:center;gap:.48rem;color:white;}
+.ab-b{padding:1.1rem 1.3rem;background:var(--surf);}
+.ab-b h4{font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.25rem;}
+.ab-b p{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:.48rem;}
+.ab-b ol,.ab-b ul{padding-left:1.05rem;font-size:.8rem;color:var(--text);line-height:1.8;}
+
+/* ── CONTACTS ── */
+.contacts{background:linear-gradient(135deg,var(--gr-l),var(--gr-ll));border:1.5px solid rgba(26,122,94,.22);border-radius:11px;padding:1.35rem 1.55rem;margin:1.4rem 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.95rem;}
+.ct h4{font-size:.76rem;font-weight:700;color:var(--gr);margin-bottom:.28rem;}
+.ct p{font-size:.8rem;color:var(--text);line-height:1.6;}
+.ct .num{font-family:'Bitter',serif;font-size:1.08rem;font-weight:700;color:var(--ink);}
+
+/* ── TAGS ── */
+.tag{display:inline-block;font-size:.65rem;font-weight:700;padding:.15rem .52rem;border-radius:3px;margin:.12rem;}
+.tam{background:var(--am-l);color:#7A5000;}.tgr{background:var(--gr-l);color:#1E5244;}
+.tsl{background:var(--sl-l);color:#2A4A6A;}.tin{background:var(--in-l);color:#2A3B80;}
+.tpl{background:var(--pl-l);color:#4A2B6A;}.tte{background:var(--te-l);color:#1A5050;}
+.tro{background:var(--ro-l);color:#7A2030;}.tru{background:var(--ru-l);color:#8A3010;}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s;}
+.reveal.vis{opacity:1;transform:none;}
+</style>
+<link rel="stylesheet" href="../assets/psy.css">
+</head>
+<body><nav class="mo-nav"><a href="../index.html">← Кабінет психолога</a><span class="mo-t">Тема 5 · Стрес і тіло: як зняти напруження · 9–11 клас · Кейс психолога</span><span class="mo-g"><a href="05-5-6-case.html">5–6 клас</a><a href="05-7-8-case.html">7–8 клас</a><a href="05-9-11-case.html" class="on">9–11 клас</a><a href="05-b-case.html">Батьки</a><a href="05-9-11-lesson.html">⇄ Урок</a></span></nav>
+
+<div class="hdr">
+  <div class="hbrand">◈ Методичний кейс · Стрес і тіло · 9–11 клас</div>
+  <div class="hnav">
+    <button class="hn on"  onclick="sw('plan')">📅 Хронометраж</button>
+    <button class="hn" onclick="sw('theory')">📚 Теорія</button>
+    <button class="hn" onclick="sw('activities')">🎭 Активності</button>
+    <button class="hn" onclick="sw('diff')">🎯 Диференціація</button>
+    <button class="hn" onclick="sw('crisis')">🚨 Протоколи</button>
+    <button class="hn" onclick="sw('scripts')">🗣️ Скрипти</button>
+    <button class="hn" onclick="sw('reflection')">💬 Рефлексія</button>
+  </div>
+</div>
+
+<div class="ph">
+  <div class="ph-in">
+    <div class="ph-tag">МЕТОДИЧНИЙ КЕЙС ДЛЯ ПЕДАГОГА / ПСИХОЛОГА · 9–11 КЛАС</div>
+    <h1>Стрес і тіло:<br><span>як зняти напруження</span></h1>
+    <p class="sub">Найглибша наукова база серії: вісь HPA · allostatic load (McEwen) · HRV (Thayer) · нейропластичність (Sapolsky) · Pennebaker protocol · когнітивне переосмислення (McGonigal) · соціальна буферизація (Taylor) · мигдалина (LeDoux). Диференціація 9/10/11 клас. Кризові протоколи. Повні скрипти.</p>
+    <div class="ph-chips">
+      <div class="chip">⏱ 45 хвилин</div>
+      <div class="chip">🔬 10 наукових концепцій</div>
+      <div class="chip">🫁 4 дихальні техніки</div>
+      <div class="chip">📊 HRV вимірювання</div>
+      <div class="chip">📝 Pennebaker-щоденник</div>
+      <div class="chip">🚨 Кризові протоколи</div>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <div class="tabs-in">
+    <button class="tb on" onclick="sw('plan')">📅 Хронометраж і скрипти</button>
+    <button class="tb" onclick="sw('theory')">📚 Наукова база</button>
+    <button class="tb" onclick="sw('activities')">🎭 Активності педагога</button>
+    <button class="tb" onclick="sw('diff')">🎯 Диференціація за класом</button>
+    <button class="tb" onclick="sw('crisis')">🚨 Кризові протоколи</button>
+    <button class="tb" onclick="sw('scripts')">🗣️ Скрипти і фрази</button>
+    <button class="tb" onclick="sw('reflection')">💬 Рефлексія</button>
+  </div>
+</div>
+
+<!-- ══════════════ PLAN ══════════════ -->
+<div class="panel on" id="panel-plan">
+<div class="wrap">
+
+  <p class="sh reveal">Покроковий хронометраж уроку</p>
+  <p class="ss reveal">Деталізований сценарій для 9–11 класу з науковими підказками педагогу</p>
+
+  <div class="al a-ru reveal">
+    <span class="ai">📌</span>
+    <div><p><strong>Перед уроком — обов'язково</strong> Для 9–11 класу урок про стрес має найбільший ризик реальних розкриттів: хронічний стрес, тривожний розлад, субклінічний ПТСР (воєнний контекст), суїцидальні думки. Пройдіть файл учня повністю. Підготуйте: акт розкриття, контакти 116 111 і 0 800 500 335, список місцевих фахівців. Оцініть клас на фактори ризику.</p></div>
+  </div>
+
+  <div class="tl reveal">
+    <div class="ti">
+      <div class="ti-t">00:00 — 06:00</div>
+      <div class="ti-h">Вступ: «Ваш особистий стрес-профіль»</div>
+      <div class="ti-b">Для 9–11 — без «хто відчуває стрес». Одразу: <em>«Оцініть на 0–10: ваш середній рівень стресу за останні 2 тижні. Запишіть. І — де саме це відчувається в тілі: конкретна зона».</em> Хвилина. Потім: <em>«Сьогодні розберемось що з цим робити — з нейробіологічним обґрунтуванням, а не загальними порадами».</em></div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">06:00 — 14:00</div>
+      <div class="ti-h">Блок 1–2: Самооцінка + 7 нейронаукових концепцій</div>
+      <div class="ti-b">Учні рухають повзунки і відкривають наукові блоки самостійно. Педагог коментує ключові: <em>«Зупиніться на Allostatic Load — це науковий термін для «виснаження». Якщо ви відчуваєте «я вже не можу» — це буквально вимірювана фізіологія, а не слабкість».</em> Зупиніться на HRV — запропонуйте виміряти смартфоном.</div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">14:00 — 22:00</div>
+      <div class="ti-h">Блок 3: 4 дихальні техніки</div>
+      <div class="ti-b">Обов'язково провести разом — щонайменше 2 техніки. Почніть з фізіологічного зітхання: <em>«Це найшвидша техніка — 2 подвійні вдихи і довгий видих. Стенфордська нейролабораторія підтвердила: це найефективніший спосіб різко знизити тривогу».</em> Потім Coherence 5.5 — обов'язково, вона перевірена на ЧСС. Після кожної: вимірювання пульсу.</div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">22:00 — 31:00</div>
+      <div class="ti-h">Блок 4–5: Методи саморегуляції + 9 сценаріїв-дилем</div>
+      <div class="ti-b">Учні читають таблицю методів самостійно. Педагог акцентує: <em>«Зверніть увагу на колонку «час ефекту» — вона вчить реалістичним очікуванням. Дихання дає ефект за хвилини, нейропластичність — за тижні».</em> Сценарії — синхронно або самостійно. Особлива увага — сценарій 8 (думки про «непотрібність»). Пауза перед ним.</div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">31:00 — 38:00</div>
+      <div class="ti-h">Блок 6: Вікторина (9 питань)</div>
+      <div class="ti-b">9 питань з першоджерелами. Для 9–11 — запитуйте після кожного правильного: <em>«Хто зміг би пояснити механізм своїми словами?»</em> Це «рівень 2» — розуміння, а не просто правильна відповідь.</div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">38:00 — 44:00</div>
+      <div class="ti-h">Блок 7: Pennebaker-щоденник + Кризовий план</div>
+      <div class="ti-b">6 хвилин у повній тиші. <em>«Це не домашнє завдання. Це ваш документ — для кризового моменту. Мозок під гострим стресом не генерує рішень — він заблокований. Написаний план обходить цей блок».</em> Педагог теж пише свій план.</div>
+    </div>
+    <div class="ti">
+      <div class="ti-t">44:00 — 45:00</div>
+      <div class="ti-h">Завершення</div>
+      <div class="ti-b">Прочитайте фінальне слово з файлу учня вголос. 116 111 — назвіть двічі. <em>«Я залишаюсь 15 хвилин. Будь-яке питання — анонімно або особисто».</em> Залишайтесь фізично.</div>
+    </div>
+  </div>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">Скрипти для уроку</p>
+
+  <div class="scr" data-lbl="ВІДКРИТТЯ — 9–11 КЛАС">
+    <p><strong>«</strong>Сьогодні ми говоримо про стрес як нейробіологів, а не як пацієнтів. Вісь HPA, allostatic load, варіабельність серцевого ритму — це не страшні слова, це ваш мозок і тіло. Хто знає свій механізм — має до нього доступ. Почнемо.<strong>»</strong></p>
+  </div>
+
+  <div class="scr" data-lbl="ПРО ALLOSTATIC LOAD">
+    <p><strong>«</strong>McEwen (1998) ввів поняття alostatic load — «ціна адаптації». Це кумулятивне зношування тіла від хронічного стресу. <strong>«Я вже не можу» — це не скарга, це вимірювана фізіологія.</strong> Маркери: кортизол, CRP, ЧСС у спокої, якість сну. Урок сьогодні — про те, як знизити цей «рахунок».<strong>»</strong></p>
+  </div>
+
+  <div class="scr gr" data-lbl="ПРО КОГНІТИВНЕ ПЕРЕОСМИСЛЕННЯ (McGonigal)">
+    <p><strong>«</strong>Stanford, 2013: 30 000 людей протягом 8 років. <strong>Ті хто вважав стрес шкідливим і мали його багато — мали підвищену смертність. Ті хто мали стільки ж стресу, але не вважали його шкідливим — ні.</strong> Інтерпретація буквально змінює фізіологічну відповідь. Це не позитивне мислення — це нейробіологія сприйняття.<strong>»</strong></p>
+  </div>
+
+  <div class="scr" data-lbl="ПЕРЕД ДИЛЕМОЮ 8 (КРИЗА)">
+    <p><strong>«</strong>Наступна ситуація — про момент коли дуже важко і здається що нема виходу. Якщо для когось у цій кімнаті це зараз не просто теоретичне питання — я хочу, щоб ви знали: 116 111 анонімно, цілодобово. І я тут після уроку.<strong>»</strong></p>
+  </div>
+
+  <div class="scr ru" data-lbl="ЗАКРИТТЯ">
+    <p><strong>«</strong>Ви щойно вивчили більше нейробіології стресу, ніж більшість людей дізнається за все життя. Вісь HPA. Allostatic load. HRV. Pennebaker. McGonigal. Це реальні інструменти. <strong>А якщо стрес не відпускає — 116 111. Попросити допомоги — найефективніша стратегія саморегуляції.</strong><strong>»</strong></p>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════ THEORY ══════════════ -->
+<div class="panel" id="panel-theory">
+<div class="wrap">
+
+  <p class="sh reveal">Наукова база — найглибша в серії</p>
+  <p class="ss reveal">10 ключових концепцій з першоджерелами і педагогічними поясненнями</p>
+
+  <div class="pi reveal">
+    <div class="pt">🔬 Центральна концепція</div>
+    <p><strong>Allostatic Load (McEwen, 1998):</strong> Тіло адаптується до стресу через «алостаз» — динамічну рівновагу. Але хронічний стрес накопичує «ціну адаптації» — allostatic load. Вимірюється через кортизол у слині, ЧСС у спокої, АТ, запальні маркери (CRP), якість сну. Урок дає інструменти зниження цього «рахунку» — через HRV, дихання, Pennebaker, соціальну підтримку.</p>
+    <div class="src">McEwen B.S. (1998). Stress, adaptation, and disease: Allostasis and allostatic load. Annals of the New York Academy of Sciences, 840, 33–44.</div>
+  </div>
+
+  <div class="cg reveal">
+    <div class="card">
+      <div class="ci">🚨</div>
+      <h3>Мигдалина — швидкий шлях LeDoux</h3>
+      <p>LeDoux (1996): «низький шлях» — мигдалина реагує на загрозу за 12 мс через таламус, до кори (свідомість). Тому «мене накрило» — буквально: кора ще не обробила, а тіло вже відреагувало. Дихання активує PFC через vagus і гальмує мигдалину.</p>
+    </div>
+    <div class="card">
+      <div class="ci">📊</div>
+      <h3>HRV — Thayer (2012)</h3>
+      <p>Варіабельність серцевого ритму — золотий стандарт вимірювання саморегуляції. Низький HRV = хронічний стрес, погана емоційна регуляція. Дихання Coherence (5.5 цикли/хв) максимально підвищує HRV. Вимірюється смартфоном — ефектна демонстрація.</p>
+    </div>
+    <div class="card">
+      <div class="ci">🧠</div>
+      <h3>Нейропластичність — Sapolsky</h3>
+      <p>Sapolsky (2004): хронічний кортизол атрофує гіпокамп (–20% у хронічному стресі). Але нейропластичність дозволяє відновлення: аеробні вправи, медитація і новизна стимулюють BDNF — «добриво для мозку». Зміна можлива — і вимірювана.</p>
+    </div>
+    <div class="card">
+      <div class="ci">✍️</div>
+      <h3>Pennebaker Protocol (1997)</h3>
+      <p>Структурований expressive writing: 15–20 хв, 3–4 дні. Знижує кортизол, покращує імунну функцію, академічну успішність. Механізм: вербалізація активує PFC → пригнічує мигдалину (Lieberman, 2007). «Написати» = «перемкнути мозок».</p>
+    </div>
+    <div class="card">
+      <div class="ci">🔄</div>
+      <h3>Когнітивне переосмислення — McGonigal</h3>
+      <p>Stanford (2013), n=30 000: люди, які вважали стрес «корисним», мали нижчу смертність навіть при надвисокому стресі. Механізм: DHEA (гормон «зростання») підвищується при переосмисленні, кортизол — знижується. Ratio кортизол/DHEA — маркер здорової стресової відповіді.</p>
+    </div>
+    <div class="card">
+      <div class="ci">👥</div>
+      <h3>Соціальна буферизація — Taylor (2000)</h3>
+      <p>Taylor et al.: «tend-and-befriend» — еволюційна стрес-реакція через соціальний зв'язок. Окситоцин пригнічує мигдалину і знижує кортизол. 10 хвилин контакту з довіреною людиною = вимірювана зміна нейрохімії. Ізоляція — підсилювач стресу.</p>
+    </div>
+    <div class="card">
+      <div class="ci">🌊</div>
+      <h3>Поліваготонія — Porges (1994)</h3>
+      <p>Три стани НС: вентральний вагус (безпека), симпатика (мобілізація), дорсальний вагус (завмирання/shutdown). Дихання, спів, зоровий контакт → активують вентральний вагус → стан «безпека і зв'язок». Основа trauma-informed підходу.</p>
+    </div>
+    <div class="card">
+      <div class="ci">💊</div>
+      <h3>Вісь HPA і кортизол</h3>
+      <p>Гіпоталамус → гіпофіз (CRH, ACTH) → наднирники (кортизол). Кортизоловий цикл порушується при хронічному стресі: ранній пік → денна втома → вечірній сплеск → безсоння. Дихання, рух і сон нормалізують цикл.</p>
+    </div>
+    <div class="card">
+      <div class="ci">🏃</div>
+      <h3>Рух і BDNF</h3>
+      <p>Ratey (2008) «Spark»: аеробні вправи підвищують BDNF (brain-derived neurotrophic factor) — стимулюють ріст нейронів у гіпокампі. 20–30 хв помірної активності = антидепресантний ефект без побічних дій. Ефект тривалий, накопичувальний.</p>
+    </div>
+    <div class="card">
+      <div class="ci">❄️</div>
+      <h3>Фізіологічне зітхання — Huberman</h3>
+      <p>Стенфорд (Huberman Lab, 2023): подвійний вдих носом + довгий видих — найшвидший спосіб різко знизити ЧСС і рівень тривоги. Механізм: максимальне розкриття альвеол → швидке скидання CO₂ → активація блукаючого нерва.</p>
+    </div>
+  </div>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">Вікові особливості 14–17 років</p>
+
+  <div class="al a-am reveal"><span class="ai">⚡</span><div><p><strong>Підлітковий мозок в режимі «максимум»</strong> Siegel (2013): мигдалина гіперактивна, PFC незріла до ~25 р. Підлітки буквально відчувають стрес інтенсивніше — нейробіологічно. Це не «драма» — це структурна особливість. Урок дає PFC-інструменти.</p></div></div>
+  <div class="al a-ru reveal"><span class="ai">🇺🇦</span><div><p><strong>Воєнний контекст — хронічний allostatic load</strong> Для українських підлітків 2022–2025: сирени, евакуація, втрати, цифрове перевантаження новинами — хронічна активація HPA осі. Частина учнів може мати ПТСР або субклінічну депресію. Урок легалізує звернення і дає перші інструменти.</p></div></div>
+  <div class="al a-pl reveal"><span class="ai">🎓</span><div><p><strong>Академічний стрес — специфіка старшої школи</strong> ЗНО, вступ, кар'єрні рішення — унікальні стресори 9–11 класу. Доведено: передіспитна тривога знижує когнітивний перформанс на 10–20%. Дихання і когнітивне переосмислення мають безпосередній вплив на результати.</p></div></div>
+  <div class="al a-sl reveal"><span class="ai">📱</span><div><p><strong>Цифровий стрес і FOMO</strong> Безперервні сповіщення підтримують хронічну симпатичну активацію. Алгоритми соцмереж оптимізовані на емоційну реакцію — тривогу і злість. Цифрова гігієна — частина стрес-менеджменту для цього покоління.</p></div></div>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">Таблиця: 8 методів саморегуляції з механізмами</p>
+
+  <table class="tbl reveal">
+    <thead><tr><th>Метод</th><th>Нейробіологічний механізм</th><th>Час ефекту</th><th>Рівень доказовості</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Coherence 5.5 (дихання)</strong></td><td>5.5 цикли/хв → максимізація HRV → баланс симпатика/парасимпатика</td><td>2–5 хв</td><td>★★★★★ RCT</td></tr>
+      <tr><td><strong>4-7-8 (дихання)</strong></td><td>Видих 8 сек → стимуляція vagus → зниження ЧСС</td><td>2–4 хв</td><td>★★★★ клінічні</td></tr>
+      <tr><td><strong>Фізіологічне зітхання</strong></td><td>Подвійний вдих → скидання CO₂ → активація парасимпатики</td><td>30–60 сек</td><td>★★★★★ RCT Stanford</td></tr>
+      <tr><td><strong>Аеробні вправи</strong></td><td>BDNF ↑, кортизол ↓, ендорфіни ↑, GABA ↑</td><td>20–30 хв; ефект — тижні</td><td>★★★★★ метааналізи</td></tr>
+      <tr><td><strong>Pennebaker writing</strong></td><td>Вербалізація → PFC активація → мигдалина пригнічується</td><td>15 хв; ефект — дні</td><td>★★★★★ RCT</td></tr>
+      <tr><td><strong>Когнітивне переосмислення</strong></td><td>PFC переоцінює загрозу → мигдалина знижує активацію → DHEA↑/кортизол↓</td><td>хвилини–тижні</td><td>★★★★ McGonigal</td></tr>
+      <tr><td><strong>Соціальна підтримка</strong></td><td>Окситоцин → мигдалина ↓, кортизол ↓, серотонін ↑</td><td>10 хв; ефект — години</td><td>★★★★★ Taylor</td></tr>
+      <tr><td><strong>Сон (7–9 год)</strong></td><td>Очищення від кортизолу і аденозину, відновлення PFC і гіпокампу</td><td>1 ніч; ефект — кумулятивний</td><td>★★★★★ Walker</td></tr>
+    </tbody>
+  </table>
+
+</div>
+</div>
+
+<!-- ══════════════ ACTIVITIES ══════════════ -->
+<div class="panel" id="panel-activities">
+<div class="wrap">
+
+  <p class="sh reveal">Активності педагога / психолога</p>
+  <p class="ss reveal">6 вправ для 9–11 класу — науково обґрунтовані, без спрощень</p>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--am)">◈ Активність 1 · «Виміряти свій HRV» — пульс і нейронаука <span class="tag tam" style="margin-left:auto">8 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Зробити HRV вимірювальним і наочним — для 9–11 класу наука без даних не переконує.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>Кожен вимірює пульс 30 сек (пальцем на зап'ясті або health-app). Записує ЧСС.</li>
+        <li>Coherence 5.5: 5 хв дихання 5.5 сек вдих / 5.5 сек видих (педагог веде вголос).</li>
+        <li>Вимірює пульс знову. Порівнює.</li>
+        <li>На дошці: збираємо середнє по класу. До / після. Різниця — скільки ударів?</li>
+      </ol>
+      <h4>Ключовий меседж:</h4><p>«Ви щойно виміряли ефект вашого блукаючого нерва в реальному часі. Це те саме, що вимірюють в клінічних дослідженнях HRV».</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--gr)">✍️ Активність 2 · Pennebaker-сесія — 15 хвилин письма <span class="tag tgr" style="margin-left:auto">17 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Провести повноцінну Pennebaker-сесію — доказову практику зниження стресу.</p>
+      <h4>Структура (поетапно):</h4>
+      <ol>
+        <li><strong>«Ситуація»</strong> (3 хв): «Опишіть конкретну стресову ситуацію — без оцінок, тільки факти»</li>
+        <li><strong>«Тіло і відчуття»</strong> (3 хв): «Що відчували тоді і тепер, коли пишете?»</li>
+        <li><strong>«Думки і смисл»</strong> (4 хв): «Що ця ситуація для вас означає? Що ви з неї взяли?»</li>
+        <li><strong>«Наступний крок»</strong> (2 хв): «Одна конкретна дія яку зробите після сьогодні»</li>
+      </ol>
+      <h4>Важливо:</h4><p>НЕ збирати. НЕ оцінювати. Запропонувати порвати або зберегти — особистий вибір. Після — 2 хв тиші, потім запитайте: «Хто відчув різницю — куди?» (3 колонки: легше / важче / без змін).</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--sl)">🔄 Активність 3 · «Переосмислення» — когнітивний рефреймінг <span class="tag tsl" style="margin-left:auto">10 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Відпрацювати техніку когнітивного переосмислення McGonigal в парах.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>В парах. Один описує стресор (ЗНО, конфлікт, невизначеність).</li>
+        <li>Другий ставить питання: «Що це говорить про те, що для тебе важливо?» «Яка навичка розвивається через цей виклик?» «Що ти дізнаєшся про себе?»</li>
+        <li>Мета не «все добре» — мета «знайти іншу рамку без заперечення болю».</li>
+        <li>Обговорення: «Це не про те, що стрес не реальний. Це про те, що ваша інтерпретація — теж реальна і вимірювана».</li>
+      </ol>
+      <h4>Ключовий інсайт:</h4><p>«Переосмислення ≠ токсичний позитив. Переосмислення = свідомо обраний кут зору. Це навичка, а не заперечення».</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--in)">📊 Активність 4 · «Мій allostatic load» — самооцінка <span class="tag tin" style="margin-left:auto">8 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Персоналізований аналіз стрес-навантаження через наукову модель McEwen.</p>
+      <h4>Учні анонімно оцінюють 0–5:</h4>
+      <ul>
+        <li>Якість сну (5 = відмінна)</li>
+        <li>Фізична активність (5 = регулярна)</li>
+        <li>Соціальна підтримка (5 = є близькі люди)</li>
+        <li>Когнітивне навантаження (5 = під контролем)</li>
+        <li>Емоційна виснаженість (5 = відсутня)</li>
+      </ul>
+      <h4>Сума:</h4><p>20–25 = низький alostatic load. 10–19 = помірний. 0–9 = сигнал. Анонімно: педагог збирає карти, оголошує загальну картину без імен.</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--te)">🌐 Активність 5 · Цифровий детокс — мозок онлайн і офлайн <span class="tag tte" style="margin-left:auto">7 хв</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Усвідомити вплив цифрового середовища на стрес і HRV.</p>
+      <h4>Хід:</h4>
+      <ol>
+        <li>Обговорення: «Коли ви востаннє були більше 2 годин без телефону? Як відчули?»</li>
+        <li>Наука: безперервні сповіщення підтримують хронічну симпатичну активацію. Blue light гальмує мелатонін. FOMO підвищує кортизол.</li>
+        <li>Практика: 1 день без телефону після 21:00 — що зміниться? Угода — спробувати цього тижня.</li>
+      </ol>
+      <h4>Ключовий меседж:</h4><p>«Алгоритми соцмереж оптимізовані на вашу увагу через емоційну реакцію — тривогу, злість, FOMO. Цифрова гігієна = стрес-менеджмент».</p>
+    </div>
+  </div>
+
+  <div class="ab reveal">
+    <div class="ab-h" style="background:var(--pl)">🔬 Активність 6 · Peer-teaching + «Нейробіологічний ТЕД» <span class="tag tpl" style="margin-left:auto">наступний урок</span></div>
+    <div class="ab-b">
+      <h4>Мета:</h4><p>Закріпити матеріал через пояснення — найефективніший спосіб засвоєння (Feynman technique).</p>
+      <h4>Хід:</h4>
+      <p>Групи 9–11 класу готують 5-хвилинні «нейробіологічні ТЕД-токи»: «Що таке allostatic load», «Чому дихання заспокоює — пояснення через HRV», «McGonigal: стрес як союзник». Педагог — фасилітатор і «критичний слухач». Записати або провести для молодших класів.</p>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════ DIFF ══════════════ -->
+<div class="panel" id="panel-diff">
+<div class="wrap">
+
+  <p class="sh reveal">Диференціація за класом</p>
+  <p class="ss reveal">9, 10 і 11 клас — різний контекст стресу, різна глибина і різний акцент</p>
+
+  <div class="ct-tabs">
+    <button class="ct-btn on" onclick="swCt('c9')">9 клас (14–15 р.)</button>
+    <button class="ct-btn" onclick="swCt('c10')">10 клас (15–16 р.)</button>
+    <button class="ct-btn" onclick="swCt('c11')">11 клас (16–17 р.)</button>
+  </div>
+
+  <div class="ct-panel on" id="ct-c9">
+    <div class="al a-am"><span class="ai">⚑</span><div><p><strong>Контекст 9 класу</strong> Перехід до старшої школи, перші серйозні романтичні стосунки, невизначеність з майбутнім. Стресори: соціальне прийняття, перші «дорослі» відповідальності. Нейронаука — новий контент, захоплює. ЗНО ще не тисне максимально.</p></div></div>
+    <div class="df3">
+      <div class="dc dc-a"><h4>Акцент уроку</h4><ul><li>Базова нейронаука HPA і кортизол</li><li>Дихання — обов'язково всі 4 техніки</li><li>Щоденник стресу — коротка форма</li><li>Соціальна буферизація</li><li>116 111 — обов'язково назвати</li></ul></div>
+      <div class="dc dc-b"><h4>Що спростити</h4><ul><li>Allostatic load — базово</li><li>HRV — концепція без виміру</li><li>Pennebaker — 10 хв замість повної сесії</li></ul></div>
+      <div class="dc dc-c"><h4>Що додати</h4><ul><li>Вимірювання пульсу до/після</li><li>«Стрес-термометр» на початку уроку</li><li>Анонімний ящик питань</li></ul></div>
+    </div>
+  </div>
+
+  <div class="ct-panel" id="ct-c10">
+    <div class="al a-sl"><span class="ai">⚑</span><div><p><strong>Контекст 10 класу</strong> Середина старшої школи — перший рік реального вступного тиску. Багато учнів починають вже відчувати burnout від навантаження. Частина — з досвідом хронічного стресу, що тримається місяцями. Ідеальний час для повного нейронаукового уроку.</p></div></div>
+    <div class="df3">
+      <div class="dc dc-a"><h4>Акцент уроку</h4><ul><li>Allostatic load — центральна концепція</li><li>HRV — виміряти обов'язково</li><li>Повна Pennebaker-сесія</li><li>Когнітивне переосмислення ЗНО</li><li>Цифровий стрес</li></ul></div>
+      <div class="dc dc-b"><h4>Враховувати</h4><ul><li>Академічне вигорання — реально</li><li>Частина може спати &lt; 6 год</li><li>Після Pennebaker — залишитись</li><li>«Стрес-профіль» класу — зібрати</li></ul></div>
+      <div class="dc dc-c"><h4>Додати</h4><ul><li>Аналіз allostatic load особисто</li><li>McGonigal рефреймінг — вправа в парах</li><li>Кризовий план — детально</li></ul></div>
+    </div>
+  </div>
+
+  <div class="ct-panel" id="ct-c11">
+    <div class="al a-ro"><span class="ai">⚑</span><div><p><strong>Контекст 11 класу</strong> Максимальний стрес серії. ЗНО, вступ, відчуття «останнього шансу», можливо — виїзд з країни, розлучення з друзями. Частина учнів у хронічному стресі або субклінічній депресії. Найважливіший урок — і найделікатніший.</p></div></div>
+    <div class="df3">
+      <div class="dc dc-a"><h4>Акцент уроку</h4><ul><li>Повний формат без спрощень</li><li>Allostatic load і burnout</li><li>Всі 4 дихальні техніки</li><li>Pennebaker — повна сесія</li><li>Кризовий план — обов'язково</li></ul></div>
+      <div class="dc dc-b"><h4>Критично важливо</h4><ul><li>Залишатись після уроку 20 хв</li><li>Сигнали суїцидальних думок — бути готовим</li><li>ЗНО-тривога: не мінімізувати</li><li>Peer-teaching для молодших класів</li></ul></div>
+      <div class="dc dc-c"><h4>Додати</h4><ul><li>McGonigal: ЗНО як тренування, не вирок</li><li>Саполскі: нейропластичність і відновлення</li><li>«Лист собі після ЗНО» — вправа</li><li>Ресурси після випуску</li></ul></div>
+    </div>
+  </div>
+
+  <hr class="r">
+
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">За типом учня — для всіх класів</p>
+
+  <table class="tbl reveal">
+    <thead><tr><th>Тип</th><th>Поведінка на уроці</th><th>Дія педагога</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Скептик-раціоналіст</strong></td><td>«Це не доведено», «психологія не наука»</td><td>Дайте дані: «Давайте виміряємо ЧСС до і після. Цифри — ваша відповідь». RCT і метааналізи — на рівних.</td></tr>
+      <tr><td><strong>Емоційно відкритий/-а</strong></td><td>Після Pennebaker — плаче або ділиться забагато</td><td>Вдячність без оцінки. Після: «Ця розмова варта продовження — наодинці».</td></tr>
+      <tr><td><strong>Хронічно вигорілий/-а</strong></td><td>Апатія, «вже нічого не допоможе», низький allostatic load</td><td>Не тисніть. Після: «Ти сказав/-ла «вже нічого». Мені важливо це почути. Розкажи більше».</td></tr>
+      <tr><td><strong>Тривожний/-а при диханні</strong></td><td>Затримка дихання викликає паніку або дискомфорт</td><td>«Просте 4-6» без затримки. «Деяким техніки з затримкою не підходять — це нормально».</td></tr>
+      <tr><td><strong>Сигнал суїцидальних думок</strong></td><td>Написав/-ла у щоденнику або після дилеми 8</td><td>НЕ залишати. Після уроку — наодинці. Протокол. 103 при потребі.</td></tr>
+    </tbody>
+  </table>
+
+</div>
+</div>
+
+<!-- ══════════════ CRISIS ══════════════ -->
+<div class="panel" id="panel-crisis">
+<div class="wrap">
+
+  <p class="sh reveal">Кризові протоколи</p>
+  <p class="ss reveal">Найповніші протоколи серії — для найстаршого і найвразливішого класу</p>
+
+  <div class="al a-ru reveal">
+    <span class="ai">⚠️</span>
+    <div><p><strong>Для педагога:</strong> 9–11 клас — максимальний ризик розкриттів при урокові про стрес. Pennebaker-сесія, дилема 8 і «allostatic load» самооцінка — три найбільших тригери. Підготуйтесь: акт розкриття, всі контакти нижче, заміна на наступний урок. Після важкого розкриття — ваша власна підтримка теж критична.</p></div>
+  </div>
+
+  <div class="contacts reveal">
+    <div class="ct"><h4>Дитяча гаряча лінія</h4><div class="num">116 111</div><p>Безкоштовно · Анонімно · Цілодобово</p></div>
+    <div class="ct"><h4>Психологічна підтримка</h4><div class="num">0 800 500 335</div><p>Безкоштовно — для педагога теж</p></div>
+    <div class="ct"><h4>Поліція / Медики</h4><div class="num">102 / 103</div><p>При загрозі або медичному стані</p></div>
+    <div class="ct"><h4>Кіберполіція</h4><p>cyberpolice.gov.ua<br>При онлайн-загрозах</p></div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--ro)">🔴 Протокол 1 · Суїцидальні думки або висловлювання</div>
+    <div class="crb-b">
+      <ol>
+        <li>Приватна розмова — одразу після виявлення. НЕ при класі.</li>
+        <li>Запитайте прямо і спокійно: <em>«Ти думаєш про те, щоб заподіяти собі шкоду або піти з життя?»</em></li>
+        <li>Слухайте. НЕ мінімізуйте. НЕ кажіть «все буде добре».</li>
+        <li>Оцініть: «Чи є у тебе план? Чи є доступ до засобів?» — наявність плану = вищий ризик.</li>
+        <li>НЕ залишайте самого/самої до кінця дня — фізично.</li>
+        <li>Шкільний психолог + батьки + за потреби 103.</li>
+        <li>Документуйте дослівно одразу після.</li>
+      </ol>
+      <h4>Чого НЕ казати:</h4>
+      <ul><li>«Ти просто хочеш уваги» — навіть якщо так думаєте</li><li>«Подумай про маму/батьків» — посилює провину і ризик</li><li>«У тебе є ради для цього» — знецінює</li></ul>
+    </div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--ru)">🟠 Протокол 2 · Гостра панічна атака або дисоціація</div>
+    <div class="crb-b">
+      <ol>
+        <li>Вийдіть разом тихо. Сядьте поруч — не навпроти.</li>
+        <li>Спокійний голос: <em>«Ти в безпеці. Я тут. Це пройде».</em></li>
+        <li>НЕ кажіть «дихай» голосно — це посилює тривогу. Самі дихайте видимо і повільно.</li>
+        <li>Фізіологічне зітхання: покажіть жестом — два вдихи, довгий видих.</li>
+        <li>Після заспокоєння: «5 речей які ти бачиш прямо зараз».</li>
+        <li>Якщо не заспокоюється 15+ хв — 103.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--am)">🟡 Протокол 3 · Хронічний стрес / burnout / академічне вигорання</div>
+    <div class="crb-b">
+      <ol>
+        <li>Вислухайте без переривань. НЕ мінімізуйте («у всіх так перед ЗНО»).</li>
+        <li><em>«Ти описуєш класичні ознаки вигорання. Це не слабкість — це фізіологія. І це вирішується».</em></li>
+        <li>З'ясуйте: сон? їжа? фізична активність? соціальна ізоляція?</li>
+        <li>Направте до шкільного психолога або дитячого лікаря.</li>
+        <li>Батькам: «Ваша дитина потребує зниження навантаження і підтримки — не тиску».</li>
+        <li>Продовжуйте моніторинг.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="crb reveal">
+    <div class="crb-h" style="background:var(--sl)">🔵 Протокол 4 · ПТСР або травматична реакція (воєнний контекст)</div>
+    <div class="crb-b">
+      <ol>
+        <li>Сигнали при уроці: завмирання, флешбек, дисоціація, гіперзбудження при звуках або темах.</li>
+        <li>НЕ примушуйте до затримки дихання — посилює дисоціацію. «Просте 4-6» або: «відчуй стілець під тобою, підлогу під ногами».</li>
+        <li>Після уроку: <em>«Я помітив/-ла що тобі було важко. Ти не зобов'язаний/-а пояснювати. Але я тут».</em></li>
+        <li>Направте до травматерапевта — EMDR або соматична терапія. НЕ до загального психолога без досвіду травми.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="pi reveal">
+    <div class="pt">💙 Для вас, педагогу — після важкого уроку</div>
+    <p>Ви провели урок, який торкнувся реального болю реальних людей. Це витратно — і це нормально. Після: зробіть своє дихання, поговоріть з колегою або зателефонуйте на 0 800 500 335. Педагогічне вигорання — реальне і вимірюване. Ваш стан — умова якісної роботи, не слабкість.</p>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════ SCRIPTS ══════════════ -->
+<div class="panel" id="panel-scripts">
+<div class="wrap">
+
+  <p class="sh reveal">Скрипти і готові фрази</p>
+  <p class="ss reveal">Точні слова для 4 дихальних технік, важких моментів і нейронаукових пояснень</p>
+
+  <div class="al a-am reveal">
+    <span class="ai">💡</span>
+    <div><p>Скрипти розроблені для рівноправної розмови між дорослими — мова науки, а не патерналізм. Для 9–11 класу важливо: пояснювати механізм, а не просити «просто довіряти».</p></div>
+  </div>
+
+  <p class="sh" style="font-size:1rem;margin:.8rem 0">4 дихальні техніки — точні скрипти</p>
+
+  <div class="scr" data-lbl="COHERENCE 5.5 — HRV максимізація">
+    <p>«Вдихайте носом рівно <strong>5.5 секунди.</strong> Видихайте ротом або носом рівно <strong>5.5 секунди.</strong> Рахунок: і-раз, і-два, і-три, і-чотири, і-п'ять, і-пів. Намагайтесь щоб вдих і видих були однакової довжини і плавності. Це точна частота максимізації HRV — 5.5 циклів на хвилину. Продовжуємо 5 хвилин.»</p>
+  </div>
+
+  <div class="scr" data-lbl="4-7-8 — блукаючий нерв">
+    <p>«Вдих носом: <strong>1, 2, 3, 4.</strong> Затримайте: <strong>1, 2, 3, 4, 5, 6, 7.</strong> Видих ротом — повільно зі звуком: <strong>1, 2, 3, 4, 5, 6, 7, 8.</strong> Якщо затримка 7 секунд важка — скоротіть пропорційно: 3-5-6. Головне: видих ≥ вдиху. Повторимо 4 цикли.»</p>
+  </div>
+
+  <div class="scr gr" data-lbl="ФІЗІОЛОГІЧНЕ ЗІТХАННЯ — Stanford, найшвидша техніка">
+    <p>«Вдихніть носом звичайно — потім <strong>ще один короткий вдих зверху,</strong> щоб максимально заповнити легені. Тепер <strong>довгий повільний видих ротом — 6–8 секунд.</strong> Повторіть 2–3 рази. Це найшвидша техніка: за 30–60 секунд відчуєте ефект. Дослідження Stanford 2023 — найефективніша для гострої тривоги.»</p>
+  </div>
+
+  <div class="scr sl" data-lbl="КВАДРАТНЕ — баланс НС">
+    <p>«Уявіть квадрат. Вдих по першій стороні — <strong>4 рахунки.</strong> Пауза по другій — <strong>4.</strong> Видих по третій — <strong>4.</strong> Пауза порожнього по четвертій — <strong>4.</strong> Квадрат = один цикл. Ця техніка балансує симпатику і парасимпатику рівномірно — підходить при помірному стресі і для концентрації.»</p>
+  </div>
+
+  <hr class="r">
+
+  <p class="sh" style="font-size:1rem;margin:.8rem 0">Таблиця: «закриваючих» і «відкриваючих» фраз</p>
+
+  <table class="tbl reveal">
+    <thead><tr><th>❌ Закриваюча фраза</th><th>Нейробіологічна проблема</th><th>✅ Відкриваюча альтернатива</th></tr></thead>
+    <tbody>
+      <tr><td>«Заспокойся»</td><td>PFC пригнічена під стресом — команда невиконана, тривога зростає</td><td>«Давай разом зробимо одне дихання»</td></tr>
+      <tr><td>«Перед ЗНО всі нервують»</td><td>Нормалізація без підтримки = ізоляція і знецінення</td><td>«Твій рівень тривоги конкретний. Що конкретно найбільше тисне?»</td></tr>
+      <tr><td>«Ти сильний/-а — впораєшся»</td><td>Перекладає відповідальність і блокує прохання про допомогу</td><td>«Ти справді багато тримаєш. Що б допомогло зараз?»</td></tr>
+      <tr><td>«Це просто стрес — пройде»</td><td>Мінімізує allostatic load — хронічний стрес не «проходить» сам</td><td>«Якщо це триває більше місяця — варто поговорити з фахівцем»</td></tr>
+      <tr><td>«Не думай про це»</td><td>Wegner ironic monitoring: спроба не думати посилює думку</td><td>«Запиши все що думаєш — 15 хвилин. Мозок відпустить»</td></tr>
+      <tr><td>«Інші ще важче живуть»</td><td>Порівняння знецінює і не знижує кортизол ані на одиницю</td><td>«Твій біль — твій. Він не стає меншим від чужого»</td></tr>
+    </tbody>
+  </table>
+
+</div>
+</div>
+
+<!-- ══════════════ REFLECTION ══════════════ -->
+<div class="panel" id="panel-reflection">
+<div class="wrap">
+
+  <p class="sh reveal">Рефлексія і оцінка уроку</p>
+  <p class="ss reveal">Інструменти завершення, вимірювання результату і стратегія подальшої роботи</p>
+
+  <table class="tbl reveal">
+    <thead><tr><th>#</th><th>Exit Ticket</th><th>Питання</th><th>Що дає педагогу</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><span class="tag tam">Один механізм</span></td><td>«Одна нейронаукова концепція, яку зміг/-ла б пояснити другу»</td><td>Рівень 2: розуміння, а не запам'ятовування</td></tr>
+      <tr><td>2</td><td><span class="tag tgr">HRV до/після</span></td><td>«Різниця пульсу до і після Coherence (цифра)»</td><td>Вимірюваний індивідуальний ефект дихання</td></tr>
+      <tr><td>3</td><td><span class="tag tsl">Мій alostatic load</span></td><td>«Моя сума 0–25 сьогодні» (анонімно)</td><td>Реальна картина стрес-навантаження класу</td></tr>
+      <tr><td>4</td><td><span class="tag tin">Мій план</span></td><td>«Одна конкретна зміна яку зроблю цього тижня»</td><td>Специфічний намір → вища ймовірність дії</td></tr>
+      <tr><td>5</td><td><span class="tag tro">SOS-сигнал</span></td><td>Учень передає записку «мені потрібна розмова» непомітно</td><td>Безпечне звернення без публічності</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="r">
+
+  <div class="cg reveal">
+    <div class="card"><div class="ci">📊</div><h3>HRV до/після</h3><p>Збирайте середні цифри — і порівнюйте між класами і між уроками. Клас із низьким ефектом дихання = вищий allostatic load. Показник для глибшої роботи.</p></div>
+    <div class="card"><div class="ci">🫁</div><h3>Практика дихання</h3><p>Через 2 тижні: «Хто застосував дихання в реальній ситуації? Що сталось?» Ця розмова важливіша за вікторину. Конкретні кейси — найкраще закріплення.</p></div>
+    <div class="card"><div class="ci">📝</div><h3>Pennebaker-відгуки</h3><p>Анонімно: «легше / важче / без змін» після письма. Якщо 30%+ «важче» — клас потребує більш інтенсивної підтримки. Не залишайте це без уваги.</p></div>
+    <div class="card"><div class="ci">📞</div><h3>116 111 через тиждень</h3><p>Запитайте: скільки пам'ятають номер? Якщо менше 70% — повторіть і вивісьте. Для 11 класу — критичний ресурс у кризі ЗНО.</p></div>
+  </div>
+
+  <div class="al a-gr reveal">
+    <span class="ai">📚</span>
+    <div><p><strong>Подальша робота:</strong> Peer-teaching — «Нейробіологічні ТЕД-токи» для 7–8 класу. Батьківські збори: «Стрес підлітка перед ЗНО — нейробіологія і що робити батькам». Allostatic load моніторинг класу щомісяця. Peer support: старшокласники — молодшим. Ресурси для самостійного вивчення: McGonigal «How to make stress your friend» (TED), Sapolsky «Why Zebras Don't Get Ulcers», Walker «Why We Sleep», Huberman Lab podcast — епізоди про стрес і дихання.</p></div>
+  </div>
+
+  <div class="pi reveal">
+    <div class="pt">💙 Завершальне слово</div>
+    <p>Ви провели найглибший урок серії. Allostatic load, HRV, Pennebaker, McGonigal, Sapolsky — це не слова для вікторини. Це реальні інструменти, які ваші учні можуть використовувати у справжній кризі — перед ЗНО, у важку ніч, коли здається що нема виходу. Хтось із цього класу використає одну з цих технік і відчує різницю. Ви це зробили. Дякуємо.</p>
+  </div>
+
+</div>
+</div>
+
+<script>
+function sw(n){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.hn,.tb').forEach(b=>b.classList.remove('on'));
+  document.getElementById('panel-'+n).classList.add('on');
+  document.querySelectorAll('.hn,.tb').forEach(b=>{if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+n+"'"))b.classList.add('on');});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function swCt(n){
+  document.querySelectorAll('.ct-panel').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.ct-btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById('ct-'+n).classList.add('on');
+  document.querySelectorAll('.ct-btn').forEach(b=>{if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+n+"'"))b.classList.add('on');});
+}
+const ro=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.07});
+document.querySelectorAll('.reveal').forEach(r=>ro.observe(r));
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Джерела й що почитати</h2><h3>Використані джерела</h3><ol><li>McEwen, B. S. (1998). Protective and damaging effects of stress mediators. <i>New England Journal of Medicine, 338</i>(3), 171–179.</li><li>Thayer, J. F., Åhs, F., Fredrikson, M., Sollers, J. J., &amp; Wager, T. D. (2012). A meta-analysis of heart rate variability and neuroimaging studies. <i>Neuroscience &amp; Biobehavioral Reviews, 36</i>(2), 747–756.</li><li>Sapolsky, R. M. (2004). <i>Why Zebras Don’t Get Ulcers</i> (3rd ed.). Henry Holt.</li><li>Porges, S. W. (2011). <i>The Polyvagal Theory</i>. W. W. Norton. (Теорія дискусійна: використовуйте як практичну метафору.)</li><li>Pennebaker, J. W. (1997). Writing about emotional experiences as a therapeutic process. <i>Psychological Science, 8</i>(3), 162–166.</li><li>Keller, A., Litzelman, K., Wisk, L. E., et al. (2012). Does the perception that stress affects health matter? <i>Health Psychology, 31</i>(5), 677–684.</li></ol><h3>Що почитати фахівцеві</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>Why Zebras Don’t Get Ulcers</td><td>Sapolsky R. M., 2004</td><td>Про фізіологію стресу</td></tr><tr><td>The Upside of Stress</td><td>McGonigal K., 2015</td><td>Ставлення до стресу; популярне</td></tr><tr><td>The Polyvagal Theory</td><td>Porges S. W., 2011</td><td>Дискусійна теорія; використовувати як практичну метафору</td></tr></table><h3>Що порадити батькам</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>How to Talk So Kids Will Listen &amp; Listen So Kids Will Talk</td><td>Faber A., Mazlish E.</td><td>Практичні фрази</td></tr><tr><td>Raising an Emotionally Intelligent Child</td><td>Gottman J., DeClaire J., 1997</td><td>Емоційне коучинг-спілкування</td></tr><tr><td>The Whole-Brain Child</td><td>Siegel D. J., Bryson T. P., 2011</td><td>Емоції дитини</td></tr></table><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="04-9-11-case.html">← Тема 4</a></span><span><a href="06-9-11-case.html">Тема 6 →</a></span></div><a class="mo-fab" href="../index.html#t05">☰ До матриці</a></body>
+</html>

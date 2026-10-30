@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Методичний кейс · Конфлікт чи непорозуміння · 7–8 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F2EC;--surf:#FFFFFF;--ink:#1A1C26;--text:#2D3348;--muted:#6B7280;--bd:#E4DDD0;
+  --cy:#1A7E98;--cy-l:#E2F2F7;--cy-ll:#F0F8FB;
+  --am:#A87800;--am-l:#FBF4E4;--am-ll:#FEF9EF;
+  --co:#C84838;--co-l:#FDECEA;--co-ll:#FEF5F4;
+  --gr:#1A6E52;--gr-l:#E6F2ED;--gr-ll:#F2F9F6;
+  --vi:#6B4EA8;--vi-l:#EEEAFA;--vi-ll:#F5F3FC;
+  --ro:#A03848;--ro-l:#FDECEA;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.65;}
+.hdr{background:var(--ink);padding:.85rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.65rem;position:sticky;top:0;z-index:300;}
+.hbrand{font-family:'Bitter',serif;font-size:.88rem;font-weight:700;color:white;}
+.hnav{display:flex;gap:.25rem;flex-wrap:wrap;}
+.hn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:.28rem .78rem;font-family:'Inter',sans-serif;font-size:.72rem;font-weight:600;color:rgba(255,255,255,.5);cursor:pointer;transition:all .2s;}
+.hn:hover{background:rgba(255,255,255,.14);color:white;}.hn.on{background:var(--cy);border-color:var(--cy);color:white;}
+.ph{background:linear-gradient(155deg,#060A12 0%,#0A1420 55%,#060A12 100%);padding:4rem 2rem;position:relative;overflow:hidden;}
+.ph::before{content:'';position:absolute;top:-60px;right:-60px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(56,200,232,.2),transparent 70%);}
+.ph-in{max-width:1060px;margin:0 auto;position:relative;z-index:1;}
+.ph-tag{font-size:.65rem;font-weight:700;letter-spacing:.22em;color:rgba(100,210,235,.65);margin-bottom:.8rem;}
+.ph h1{font-family:'Bitter',serif;font-size:clamp(1.7rem,3.2vw,2.6rem);font-weight:700;color:white;line-height:1.18;margin-bottom:.65rem;}
+.ph h1 .a{color:#6DDCF0;}.ph h1 .b{color:#F0C060;}
+.ph .sub{font-size:.92rem;font-weight:300;font-style:italic;color:rgba(255,255,255,.42);max-width:660px;margin-bottom:1.7rem;}
+.ph-chips{display:flex;gap:.5rem;flex-wrap:wrap;}
+.chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:50px;padding:.3rem .9rem;font-size:.71rem;font-weight:600;color:rgba(255,255,255,.6);}
+.tabs{background:var(--surf);border-bottom:2px solid var(--bd);position:sticky;top:54px;z-index:200;overflow-x:auto;}
+.tabs-in{max-width:1060px;margin:0 auto;display:flex;}
+.tb{background:none;border:none;border-bottom:3px solid transparent;padding:.88rem 1.2rem;cursor:pointer;font-family:'Inter',sans-serif;font-size:.78rem;font-weight:700;color:var(--muted);white-space:nowrap;transition:all .2s;margin-bottom:-2px;}
+.tb:hover{color:var(--ink);}.tb.on{color:var(--cy);border-bottom-color:var(--cy);}
+.panel{display:none;}.panel.on{display:block;}
+.wrap{max-width:1060px;margin:0 auto;padding:3rem 2rem;}
+.sh{font-family:'Bitter',serif;font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:.32rem;}
+.ss{font-size:.82rem;color:var(--muted);font-style:italic;margin-bottom:1.8rem;}
+hr.r{border:none;border-top:1px solid var(--bd);margin:2.3rem 0;}
+.al{border-radius:9px;padding:1rem 1.3rem;margin:.85rem 0;display:flex;gap:.75rem;align-items:flex-start;}
+.al .ai{font-size:1.1rem;flex-shrink:0;margin-top:.05rem;}
+.al p{font-size:.83rem;line-height:1.65;}
+.al strong{font-weight:700;display:block;margin-bottom:.1rem;font-size:.71rem;letter-spacing:.04em;}
+.a-cy{background:var(--cy-l);border-left:4px solid var(--cy);}
+.a-am{background:var(--am-l);border-left:4px solid var(--am);}
+.a-co{background:var(--co-l);border-left:4px solid var(--co);}
+.a-gr{background:var(--gr-l);border-left:4px solid var(--gr);}
+.a-vi{background:var(--vi-l);border-left:4px solid var(--vi);}
+.a-ro{background:var(--ro-l);border-left:4px solid var(--ro);}
+.tl-wrap{padding-left:2.2rem;position:relative;margin:1.4rem 0;}
+.tl-wrap::before{content:'';position:absolute;left:.7rem;top:0;bottom:0;width:2px;background:var(--bd);}
+.ti{position:relative;margin-bottom:1.4rem;}
+.ti::before{content:'';position:absolute;left:-1.85rem;top:.32rem;width:12px;height:12px;border-radius:50%;background:var(--cy);border:3px solid var(--surf);box-shadow:0 0 0 2px var(--cy);}
+.ti.am::before{background:var(--am);box-shadow:0 0 0 2px var(--am);}.ti.co::before{background:var(--co);box-shadow:0 0 0 2px var(--co);}
+.ti.vi::before{background:var(--vi);box-shadow:0 0 0 2px var(--vi);}.ti.gr::before{background:var(--gr);box-shadow:0 0 0 2px var(--gr);}
+.ti-t{font-size:.64rem;font-weight:700;letter-spacing:.1em;color:var(--cy);margin-bottom:.12rem;}
+.ti.am .ti-t{color:var(--am);}.ti.co .ti-t{color:var(--co);}.ti.vi .ti-t{color:var(--vi);}.ti.gr .ti-t{color:var(--gr);}
+.ti-h{font-weight:700;font-size:.9rem;margin-bottom:.22rem;color:var(--ink);}
+.ti-b{font-size:.82rem;color:var(--muted);line-height:1.65;}
+.scr{background:var(--bg);border:1px solid var(--bd);border-radius:9px;padding:1.2rem 1.4rem;margin:.85rem 0;position:relative;}
+.scr::before{content:attr(data-lbl);position:absolute;top:-9px;left:.95rem;background:var(--cy);color:white;font-size:.58rem;font-weight:700;letter-spacing:.1em;padding:.15rem .6rem;border-radius:3px;}
+.scr.am::before{background:var(--am);}.scr.co::before{background:var(--co);}.scr.vi::before{background:var(--vi);}.scr.gr::before{background:var(--gr);}
+.scr p{font-size:.87rem;line-height:1.85;font-style:italic;color:var(--ink);}
+.scr p strong{font-style:normal;color:var(--cy);}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.95rem;margin:1.4rem 0;}
+.card{background:var(--surf);border:1px solid var(--bd);border-radius:10px;padding:1.3rem 1.5rem;}
+.card .ci{font-size:1.5rem;margin-bottom:.45rem;}
+.card h3{font-family:'Bitter',serif;font-size:.92rem;font-weight:700;margin-bottom:.28rem;color:var(--ink);}
+.card p{font-size:.82rem;color:var(--muted);line-height:1.6;}
+.tbl{width:100%;border-collapse:collapse;margin:1.1rem 0;font-size:.82rem;}
+.tbl th{background:var(--ink);color:white;text-align:left;padding:.62rem .92rem;font-weight:700;font-size:.7rem;letter-spacing:.04em;}
+.tbl td{padding:.62rem .92rem;border-bottom:1px solid var(--bd);vertical-align:top;line-height:1.65;}
+.tbl tr:nth-child(even) td{background:var(--cy-ll);}.tbl tr:hover td{background:var(--cy-l);}
+.pi{background:linear-gradient(135deg,var(--cy-l),var(--cy-ll));border:1px solid rgba(26,126,152,.25);border-radius:11px;padding:1.35rem 1.55rem;margin:1.4rem 0;position:relative;overflow:hidden;}
+.pi .pt{font-size:.64rem;font-weight:700;letter-spacing:.14em;color:var(--cy);margin-bottom:.45rem;}
+.pi p{font-size:.85rem;line-height:1.75;color:#082830;font-style:italic;}
+.pi .src{font-size:.71rem;color:#2A6070;margin-top:.5rem;font-style:normal;}
+.ab{border:1px solid var(--bd);border-radius:9px;overflow:hidden;margin:1.4rem 0;}
+.ab-h{padding:.72rem 1.25rem;font-family:'Bitter',serif;font-size:.86rem;font-weight:700;display:flex;align-items:center;gap:.48rem;color:white;}
+.ab-b{padding:1.1rem 1.3rem;background:var(--surf);}
+.ab-b h4{font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.25rem;}
+.ab-b p{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:.48rem;}
+.ab-b ol,.ab-b ul{padding-left:1.05rem;font-size:.8rem;color:var(--text);line-height:1.8;}
+.crb{border:1px solid var(--bd);border-radius:9px;overflow:hidden;margin:1.4rem 0;}
+.crb-h{padding:.75rem 1.25rem;font-family:'Bitter',serif;font-size:.88rem;font-weight:700;display:flex;align-items:center;gap:.5rem;color:white;}
+.crb-b{padding:1.15rem 1.35rem;background:var(--surf);}
+.crb-b h4{font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.25rem;}
+.crb-b p{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:.5rem;}
+.crb-b ol{padding-left:1.1rem;font-size:.8rem;color:var(--text);line-height:1.85;}
+.contacts{background:linear-gradient(135deg,var(--gr-l),var(--gr-ll));border:1.5px solid rgba(26,110,82,.22);border-radius:11px;padding:1.35rem 1.55rem;margin:1.4rem 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.95rem;}
+.ct h4{font-size:.76rem;font-weight:700;color:var(--gr);margin-bottom:.28rem;}
+.ct p{font-size:.8rem;color:var(--text);line-height:1.6;}
+.ct .num{font-family:'Bitter',serif;font-size:1.08rem;font-weight:700;color:var(--ink);}
+.dg{background:var(--surf);border:1.5px solid var(--bd);border-radius:12px;padding:1.5rem;margin:1.4rem 0;}
+.dg-t{font-family:'Bitter',serif;font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.3rem;}
+.dg-s{font-size:.78rem;color:var(--muted);margin-bottom:1rem;line-height:1.6;}
+.dg-i{padding:.6rem 0;border-bottom:1px solid var(--bd);display:flex;gap:.8rem;font-size:.82rem;line-height:1.6;}
+.dg-i:last-of-type{border:none;}.dg-n{font-size:.7rem;font-weight:700;color:var(--cy);min-width:2rem;}.dg-q{flex:1;}.dg-sc{font-size:.7rem;font-weight:600;color:var(--muted);min-width:100px;text-align:right;}
+.st-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:.8rem;margin:1.4rem 0;}
+.st{border-radius:10px;padding:1.2rem;border:1.5px solid transparent;}
+.st h4{font-size:.86rem;font-weight:700;margin-bottom:.25rem;}.st p{font-size:.78rem;font-weight:300;color:var(--muted);line-height:1.6;}
+.st small{display:block;font-size:.72rem;font-weight:600;margin-top:.4rem;font-style:italic;color:var(--text);}
+.st.a{background:var(--co-ll);border-color:rgba(200,72,56,.2);}.st.a h4{color:var(--co);}
+.st.b{background:var(--gr-ll);border-color:rgba(26,110,82,.2);}.st.b h4{color:var(--gr);}
+.st.c{background:var(--am-ll);border-color:rgba(168,120,0,.2);}.st.c h4{color:var(--am);}
+.st.d{background:var(--vi-ll);border-color:rgba(107,78,168,.2);}.st.d h4{color:var(--vi);}
+.st.e{background:var(--cy-ll);border-color:rgba(26,126,152,.2);}.st.e h4{color:var(--cy);}
+.tag{display:inline-block;font-size:.65rem;font-weight:700;padding:.15rem .52rem;border-radius:3px;margin:.12rem;}
+.tcy{background:var(--cy-l);color:#0A4A5A;}.tam{background:var(--am-l);color:#7A5800;}.tco{background:var(--co-l);color:#7A2010;}.tgr{background:var(--gr-l);color:#1A5244;}.tvi{background:var(--vi-l);color:#4A2B8A;}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s;}
+.reveal.vis{opacity:1;transform:none;}
+</style>
+<link rel="stylesheet" href="../assets/psy.css">
+</head>
+<body><nav class="mo-nav"><a href="../index.html">← Кабінет психолога</a><span class="mo-t">Тема 8 · Конфлікт чи непорозуміння: шукаємо вихід · 7–8 клас · Кейс психолога</span><span class="mo-g"><a href="08-5-6-case.html">5–6 клас</a><a href="08-7-8-case.html" class="on">7–8 клас</a><a href="08-9-11-case.html">9–11 клас</a><a href="08-b-case.html">Батьки</a><a href="08-7-8-lesson.html">⇄ Урок</a></span></nav>
+<div class="hdr">
+  <div class="hbrand">◈ Методичний кейс · Конфлікт чи непорозуміння · 7–8 клас</div>
+  <div class="hnav">
+    <button class="hn on" onclick="sw('plan')">📅 Хронометраж</button>
+    <button class="hn" onclick="sw('theory')">📚 Теорія</button>
+    <button class="hn" onclick="sw('diag')">🔬 Діагностика</button>
+    <button class="hn" onclick="sw('act')">🎭 Активності</button>
+    <button class="hn" onclick="sw('diff')">🎯 Диференціація</button>
+    <button class="hn" onclick="sw('crisis')">🚨 Протоколи</button>
+    <button class="hn" onclick="sw('scripts')">🗣️ Скрипти</button>
+  </div>
+</div>
+
+<div class="ph"><div class="ph-in">
+  <div class="ph-tag">МЕТОДИЧНИЙ КЕЙС · ПСИХОЛОГ / ПЕДАГОГ · 7–8 КЛАС</div>
+  <h1><span class="a">Конфлікт</span> чи <span class="b">непорозуміння</span>:<br>від ескалації до домовленості</h1>
+  <p class="sub">Драбина ескалації (Glasl) · Позиції та інтереси (Fisher & Ury) · Модель Томаса–Кілманна · NVC (Rosenberg) · Цифрові конфлікти · Діагностика соціального клімату · Протоколи булінгу й кібербулінгу</p>
+  <div class="ph-chips"><div class="chip">⏱ 45 хвилин</div><div class="chip">🪜 Ескалація</div><div class="chip">🧊 Позиція vs інтерес</div><div class="chip">🧪 TKI-тест</div><div class="chip">💬 NVC-конструктор</div><div class="chip">🔬 4 діагностики</div><div class="chip">🚨 5 протоколів</div></div>
+</div></div>
+
+<div class="tabs"><div class="tabs-in">
+  <button class="tb on" onclick="sw('plan')">📅 Хронометраж і скрипти</button>
+  <button class="tb" onclick="sw('theory')">📚 Наукова база</button>
+  <button class="tb" onclick="sw('diag')">🔬 Діагностика</button>
+  <button class="tb" onclick="sw('act')">🎭 Активності педагога</button>
+  <button class="tb" onclick="sw('diff')">🎯 Диференціація</button>
+  <button class="tb" onclick="sw('crisis')">🚨 Кризові протоколи</button>
+  <button class="tb" onclick="sw('scripts')">🗣️ Скрипти і фрази</button>
+</div></div>
+
+<!-- PLAN -->
+<div class="panel on" id="panel-plan"><div class="wrap">
+  <p class="sh reveal">Покроковий хронометраж · 45 хвилин</p>
+  <p class="ss reveal">Для 7–8 класу: більше аналізу й переговорів, менше «моралі»</p>
+  <div class="al a-co reveal"><span class="ai">📌</span><div><p><strong>Перед уроком</strong> Зверніть увагу на актуальні конфлікти у класі. Якщо є гостра ескалація між конкретними учнями або ознаки булінгу, урок не замінює втручання: проведіть спершу індивідуальну роботу. Підготуйте анонімний ящик, роздруковані картки «позиція/інтерес», контакти 116 111. Домовтесь у класі: приклади без імен, жодних «розборів» конкретних людей під час уроку.</p></div></div>
+  <div class="tl-wrap reveal">
+    <div class="ti"><div class="ti-t">00:00 — 06:00</div><div class="ti-h">Вхід: гра «Конфлікт чи непорозуміння?» + фоновий скринінг</div><div class="ti-b">5 коротких ситуацій, учні голосують «К» або «Н». Результат показує, наскільки клас розрізняє. Анонімна шкала «Мій рівень напруги у класі цього тижня 1–10» (картки). Для педагога це перша діагностична точка.</div></div>
+    <div class="ti am"><div class="ti-t">06:00 — 15:00 · БЛОК 1–2</div><div class="ti-h">Різниця типів + драбина ескалації</div><div class="ti-b">Пояснення різниці (3 хв). Драбина ескалації: учні знаходять у собі «на якій сходинці я зазвичай помічаю конфлікт». <em>«Хто помічає на першій? На третій? На п'ятій?»</em> Нормалізуйте: більшість помічає пізно. Мета: навчитись помічати раніше.</div></div>
+    <div class="ti co"><div class="ti-t">15:00 — 23:00 · БЛОК 3</div><div class="ti-h">Айсберг: позиція vs інтерес</div><div class="ti-b">Розбір 2–3 ситуацій у парах: «що вимагає кожен» і «навіщо йому це». Фасилітуйте до моменту, коли пара скаже: «А їхні інтереси можна поєднати». Це центральний «аха-момент» уроку.</div></div>
+    <div class="ti gr"><div class="ti-t">23:00 — 30:00 · БЛОК 4</div><div class="ti-h">Тест стилів TKI + обговорення</div><div class="ti-b">Учні проходять 10 ситуацій (у додатку або на картках). Результат — приватний. Обговорення без публічного «зізнання»: <em>«Який стиль, на вашу думку, найчастіше використовують люди у вашому віці — і чому?»</em> Наголос: немає «поганих» стилів, є «невдалий вибір у ситуації».</div></div>
+    <div class="ti vi"><div class="ti-t">30:00 — 38:00 · БЛОК 5–6</div><div class="ti-h">NVC-конструктор + цифрові конфлікти</div><div class="ti-b">Пари складають «Я-повідомлення» з готових частин, потім самі формулюють для своєї ситуації. Цифрові конфлікти: 3 чати, які можна прочитати двома способами. Ключ: «уточни, а не дописуй».</div></div>
+    <div class="ti"><div class="ti-t">38:00 — 43:00 · БЛОК 7–8</div><div class="ti-h">Дилеми / вікторина (вибірково) + протокол</div><div class="ti-b">З 9 дилем оберіть 3–4 для обговорення, решту вдома. Особистий протокол — 3 хвилини тиші. Вікторина — як домашнє завдання або швидкий фінал.</div></div>
+    <div class="ti co"><div class="ti-t">43:00 — 45:00</div><div class="ti-h">Завершення + канал звернення</div><div class="ti-b">Чітко: <em>«Переговори працюють між рівними. Якщо хтось систематично принижує — це не конфлікт, це цькування, і потрібен дорослий»</em>. Анонімна скринька, 116 111, час після уроку.</div></div>
+  </div>
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">Ключові скрипти</p>
+  <div class="scr" data-lbl="ВІДКРИТТЯ"><p><strong>«</strong>Згадайте суперечку цього тижня. Тепер питання: це була сутичка інтересів чи ми по-різному зрозуміли одне одного? Я не вимагаю відповіді вголос. <strong>Просто запам'ятайте: від діагнозу залежить, що робити.</strong> Непорозуміння лікується одним уточненням. Конфлікт потребує домовленості.<strong>»</strong></p></div>
+  <div class="scr am" data-lbl="ДРАБИНА ЕСКАЛАЦІЇ">
+    <p><strong>«</strong>Конфлікт піднімається сходами. Напруга, позиції, ярлики, коаліції, пошкодження. Чим нижче зупинимось, тим дешевше. <strong>Питання до себе: на якій сходинці я зазвичай помічаю, що вже в конфлікті?</strong> Тіло знає раніше за голову: щелепи, жар, хочеться писати «все, досить».<strong>»</strong></p></div>
+  <div class="scr co" data-lbl="ПОЗИЦІЯ І ІНТЕРЕС">
+    <p><strong>«</strong>Дві дівчинки сперечаються за апельсин. Кожна каже «він мій». Позиції несумісні. Компроміс — розрізати навпіл. Але одна хотіла сік, а друга цедру для пирога. <strong>Інтереси були сумісні — всі могли отримати все.</strong> Тому питання номер один у конфлікті: «чому це для тебе важливо?»<strong>»</strong></p></div>
+  <div class="scr vi" data-lbl="ПРО МЕЖІ ПЕРЕГОВОРІВ — ОБОВ'ЯЗКОВО">
+    <p><strong>«</strong>Усе що ми сьогодні вчили — для ситуацій, де сторони приблизно рівні. <strong>Якщо одна людина системно принижує іншу — це булінг, а не конфлікт. І жертва не зобов'язана «домовлятись» з тим, хто її ображає.</strong> У такому випадку — до дорослого. Це не ябедництво. Це безпека.<strong>»</strong></p></div>
+</div></div>
+
+<!-- THEORY -->
+<div class="panel" id="panel-theory"><div class="wrap">
+  <p class="sh reveal">Наукова база уроку</p>
+  <p class="ss reveal">Теорія конфлікту · Переговори · Комунікація · Вікові особливості 12–14 р.</p>
+  <div class="pi reveal"><div class="pt">🔬 Концептуальна рамка уроку</div><p><strong>1. Типологія:</strong> конфлікт (несумісні цілі/інтереси) vs непорозуміння (когнітивна/комунікативна помилка), за Deutsch (1973). <strong>2. Ескалація:</strong> драбина Глазля (Glasl, 1982) — зміна рівня від «напруги» до «взаємного руйнування», де після певної точки сторони самі не здатні зупинитись. <strong>3. Переговори:</strong> «позиції vs інтереси» (Fisher & Ury, «Getting to Yes», 1981). <strong>4. Стилі:</strong> Thomas & Kilmann (1974): п'ять стилів у двох вимірах (напористість/кооперативність). <strong>5. Комунікація:</strong> NVC (Rosenberg, 1999): спостереження → почуття → потреба → прохання. <strong>6. Групова динаміка:</strong> peer-mediation і restorative practices (Zehr, 1990; Morrison, 2007).</p><div class="src">Deutsch M. (1973). The Resolution of Conflict. Glasl F. (1982). The process of conflict escalation. Fisher R., Ury W. (1981). Getting to Yes. Thomas K., Kilmann R. (1974). TKI. Rosenberg M. (1999). Nonviolent Communication. Johnson D.W., Johnson R.T. (2005). Peacemakers programme. Gottman J. (1994). What Predicts Divorce.</div></div>
+
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.8rem">П'ять стилів (TKI)</p>
+  <div class="st-grid reveal">
+    <div class="st a"><h4>⚔️ Суперництво</h4><p>Висока напористість, низька кооперативність</p><small>Корисно: безпека, терміновість, принципи</small></div>
+    <div class="st b"><h4>🌟 Співпраця</h4><p>Висока напористість і кооперативність</p><small>Корисно: близькі стосунки, складні питання</small></div>
+    <div class="st c"><h4>🤝 Компроміс</h4><p>Середні обидва виміри</p><small>Корисно: обмежений час, рівні позиції</small></div>
+    <div class="st d"><h4>🐢 Уникання</h4><p>Низькі обидва виміри</p><small>Корисно: дрібниця, потрібна пауза</small></div>
+    <div class="st e"><h4>🕊️ Пристосування</h4><p>Низька напористість, висока кооперативність</p><small>Корисно: питання важливіше для іншого</small></div>
+  </div>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.8rem">Драбина ескалації: педагогічна карта</p>
+  <table class="tbl reveal">
+    <thead><tr><th>Рівень</th><th>Що відбувається</th><th>Що робить педагог</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1. Напруга</strong></td><td>Різниця поглядів, легке роздратування</td><td>Нормалізувати. Навчити уточнювати. Втручання мінімальне.</td></tr>
+      <tr><td><strong>2. Позиції</strong></td><td>«Або так, або ніяк». Вимоги замість потреб</td><td>Питання «чому це важливо?» Допомога знайти інтерес.</td></tr>
+      <tr><td><strong>3. Ярлики</strong></td><td>Особисті образи, «ти такий»</td><td>Повернути до ситуації: «що конкретно сталось?» Пауза.</td></tr>
+      <tr><td><strong>4. Коаліції</strong></td><td>Групи, чати, «хто з нами»</td><td>Розвести групи. Робота з лідерами. Можлива медіація груп.</td></tr>
+      <tr><td><strong>5. Руйнування</strong></td><td>Помста, цькування, приниження</td><td>Вже не «навчальна ситуація». Втручання дорослих, протокол, батьки, адміністрація.</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.8rem">Вікові особливості 12–14 років</p>
+  <div class="cg reveal">
+    <div class="card"><div class="ci">🧠</div><h3>Нейророзвиток</h3><p>Мигдалина гіперактивна, префронтальна кора ще формується (Siegel, 2013). Підліток відчуває загрозу сильніше, а гальмування слабше. «Зупинись і охолонь» — не «порада», а необхідність.</p></div>
+    <div class="card"><div class="ci">👥</div><h3>Групи і статус</h3><p>Peer-статус — основна валюта. Конфлікти часто «обслуговують» статус: публічне приниження, коаліції, чат як арена. Тому «публічне вибачення» часто погіршує ситуацію.</p></div>
+    <div class="card"><div class="ci">📱</div><h3>Цифрова арена</h3><p>Чат — місце, де ескалація йде швидше і без гальм (ефект онлайн-розгальмування, Suler, 2004). Відсутні інтонація й міміка → мозок «дописує» загрозу.</p></div>
+    <div class="card"><div class="ci">⚖️</div><h3>Справедливість</h3><p>Особлива чутливість до несправедливості («так нечесно»). Це ресурс для медіації, якщо процедура відчувається як чесна, а не покарання.</p></div>
+    <div class="card"><div class="ci">🛡️</div><h3>Булінг vs конфлікт</h3><p>Olweus: булінг = навмисна шкода + повторюваність + нерівність сил. Максимальний ризик саме в 12–14 років. Медіація при булінгу не підходить.</p></div>
+    <div class="card"><div class="ci">🇺🇦</div><h3>Воєнний контекст</h3><p>Хронічний стрес знижує поріг роздратування. Частина конфліктів — «вторинні»: злість, що шукає виходу. Враховуйте переміщення, втрати, різний досвід учнів.</p></div>
+  </div>
+</div></div>
+
+<!-- DIAGNOSTICS -->
+<div class="panel" id="panel-diag"><div class="wrap">
+  <p class="sh reveal">Діагностика</p>
+  <p class="ss reveal">Чотири інструменти: стиль конфлікту, клімат класу, скринінг булінгу, спостереження</p>
+  <div class="al a-am reveal"><span class="ai">⚖️</span><div><p><strong>Про надійність і валідність — чесно</strong> Нижче — <strong style="display:inline">адаптовані скринінгові інструменти</strong> для освітньої роботи, засновані на валідних теоретичних моделях (Thomas–Kilmann, Olweus, Moreno). Вони не є стандартизованими версіями з українськими нормами. Результати використовуються для орієнтації, групової картини та рішень «чи потрібна поглиблена оцінка», але <strong style="display:inline">не для постановки діагнозів чи ярликів конкретним учням</strong>. Для офіційної діагностики стилю використовуйте ліцензований TKI (CPP). Для булінгу — повну версію Olweus Bully/Victim Questionnaire (за наявності ліцензії).</p></div></div>
+
+  <div class="dg reveal"><div class="dg-t">🧪 Інструмент 1 · Короткий тест стилів (10 ситуацій, учнівський додаток)</div><div class="dg-s">Адаптація моделі TKI, forced-choice, 5 варіантів у кожній ситуації. Час: 5–6 хв. Результат приватний, не оцінюється.</div>
+    <div class="dg-i"><span class="dg-n">Що вимірює</span><div class="dg-q">Тенденцію вибору між суперництвом, співпрацею, компромісом, ухиленням, пристосуванням у типових шкільних ситуаціях (конфлікт з другом, оцінка, чат, групова робота).</div><span class="dg-sc">5 шкал по 0–10</span></div>
+    <div class="dg-i"><span class="dg-n">Інтерпр.</span><div class="dg-q">Профіль по класу корисніший за індивідуальний. Якщо у класі домінують «Уникання» + «Пристосування» (>50%) → ризик прихованої напруги й булінгу. Якщо «Суперництво» (>35%) → висока відкрита конфліктність.</div><span class="dg-sc">Груповий аналіз</span></div>
+    <div class="dg-i"><span class="dg-n">Обмеж.</span><div class="dg-q">Самозвіт підлягає соціальній бажаності; короткий формат; ситуативність стилів. Не є діагнозом особистості.</div><span class="dg-sc"></span></div>
+  </div>
+
+  <div class="dg reveal"><div class="dg-t">🌡️ Інструмент 2 · Клімат класу (анонімна шкала, 8 тверджень)</div><div class="dg-s">Шкала 1–5 (1 = зовсім не так, 5 = цілком так). Час: 4 хв. Двічі: до серії уроків і через 4–6 тижнів.</div>
+    <div class="dg-i"><span class="dg-n">1</span><div class="dg-q">У класі мене зазвичай чують і поважають.</div><span class="dg-sc">1 2 3 4 5</span></div>
+    <div class="dg-i"><span class="dg-n">2</span><div class="dg-q">Якщо у мене конфлікт, я знаю, до кого звернутись по допомогу.</div><span class="dg-sc">1 2 3 4 5</span></div>
+    <div class="dg-i"><span class="dg-n">3</span><div class="dg-q">У нашому класі конфлікти зазвичай вирішують розмовою.</div><span class="dg-sc">1 2 3 4 5</span></div>
+    <div class="dg-i"><span class="dg-n">4</span><div class="dg-q">Мене зазвичай не виключають із групових розмов або чатів.</div><span class="dg-sc">1 2 3 4 5</span></div>
+    <div class="dg-i"><span class="dg-n">5</span><div class="dg-q">Мені не страшно сказати свою думку, навіть якщо вона відрізняється.</div><span class="dg-sc">1 2 3 4 5</span></div>
+    <div class="dg-i"><span class="dg-n">6*</span><div class="dg-q">У класі є люди, яких я боюсь або уникаю. (зворотна шкала)</div><span class="dg-sc">5 4 3 2 1</span></div>
+    <div class="dg-i"><span class="dg-n">7*</span><div class="dg-q">Нас часто ділять на «своїх» і «чужих». (зворотна шкала)</div><span class="dg-sc">5 4 3 2 1</span></div>
+    <div class="dg-i"><span class="dg-n">8</span><div class="dg-q">Я відчуваю себе безпечно у цьому класі.</div><span class="dg-sc">1 2 3 4 5</span></div>
+    <div class="al a-gr" style="margin-top:.8rem"><span class="ai">📈</span><div><p><strong>Обробка:</strong> середнє по класу по кожному пункту. Пункти 6 і 7 інвертуються. Середнє ≥ 3.8 — сприятливий клімат; 3.0–3.7 — зона уваги; &lt;3.0 — потрібна системна робота. Дивіться розподіл, а не лише середнє: кілька відповідей «1» на пунктах 5 і 8 важливіші за гарне середнє.</p></div></div>
+  </div>
+
+  <div class="dg reveal"><div class="dg-t">🛡️ Інструмент 3 · Скринінг булінгу (за мотивами Olweus, 6 пунктів)</div><div class="dg-s">Анонімно. Час: 5 хв. Двічі на рік. Використовувати визначення: навмисне, повторюване, нерівність сил.</div>
+    <div class="dg-i"><span class="dg-n">1</span><div class="dg-q">Як часто за останні 2 місяці з тебе систематично насміхались, ображали або виключали?</div><span class="dg-sc">Ніколи/1–2 рази/2–3 на міс./щотижня/щодня</span></div>
+    <div class="dg-i"><span class="dg-n">2</span><div class="dg-q">Які форми: словесні, фізичні, соціальне виключення, онлайн?</div><span class="dg-sc">Множинний вибір</span></div>
+    <div class="dg-i"><span class="dg-n">3</span><div class="dg-q">Чи було тобі важко себе захистити?</div><span class="dg-sc">Так / Ні / Не знаю</span></div>
+    <div class="dg-i"><span class="dg-n">4</span><div class="dg-q">Чи розповідав/-ла ти дорослому? Якщо ні — чому?</div><span class="dg-sc">Так / Ні + причина</span></div>
+    <div class="dg-i"><span class="dg-n">5</span><div class="dg-q">Чи було, що ти сам/-а ображав/-ла або виключав/-ла когось?</div><span class="dg-sc">Ніколи/Раз-два/Часто</span></div>
+    <div class="dg-i"><span class="dg-n">6</span><div class="dg-q">Чи бачив/-ла ти, як ображають когось іншого? Що ти зробив/-ла?</div><span class="dg-sc">Відкрита відповідь</span></div>
+    <div class="al a-ro" style="margin-top:.8rem"><span class="ai">⚠️</span><div><p><strong>Пороги дії:</strong> відповідь «2–3 рази на місяць або частіше» на п.1 + «Так» на п.3 = індивідуальна розмова й протокол №1 того ж тижня (стандартна міжнародна практика для визначення булінгу). Будь-яка згадка про самоушкодження в коментарях — негайна реакція. Фіксуйте, не «розслідуйте» на уроці.</p></div></div>
+  </div>
+
+  <div class="dg reveal"><div class="dg-t">👁️ Інструмент 4 · Структуроване спостереження (педагог, 2–4 тижні)</div><div class="dg-s">Після кожного уроку 2 хв. Шкала 0–3 (0 = не було, 3 = часто/гостро).</div>
+    <table class="tbl"><thead><tr><th>Показник</th><th>Тиждень 1</th><th>2</th><th>3</th><th>4</th></tr></thead><tbody>
+      <tr><td>Образи / принизливі коментарі між учнями</td><td>□</td><td>□</td><td>□</td><td>□</td></tr>
+      <tr><td>Виключення з груп / ізоляція конкретних учнів</td><td>□</td><td>□</td><td>□</td><td>□</td></tr>
+      <tr><td>Учні вирішують суперечки без залучення дорослого</td><td>□</td><td>□</td><td>□</td><td>□</td></tr>
+      <tr><td>Використання «Я-повідомлень» / уточнювальних запитань</td><td>□</td><td>□</td><td>□</td><td>□</td></tr>
+      <tr><td>Звернення учнів до дорослого щодо конфліктів</td><td>□</td><td>□</td><td>□</td><td>□</td></tr>
+    </tbody></table>
+    <div class="al a-cy" style="margin-top:.8rem"><span class="ai">🔎</span><div><p>Шукайте динаміку, а не абсолютні числа: зниження пунктів 1–2 й зростання 3–5 за 4 тижні — реальний ефект. Спостереження одного педагога суб'єктивне. Для надійності порівняйте з оцінками іншого дорослого (класний керівник, психолог).</p></div></div>
+  </div>
+</div></div>
+
+<!-- ACTIVITIES -->
+<div class="panel" id="panel-act"><div class="wrap">
+  <p class="sh reveal">Активності педагога / психолога</p>
+  <p class="ss reveal">6 вправ для 7–8 класу</p>
+
+  <div class="ab reveal"><div class="ab-h" style="background:var(--cy)">🪜 Активність 1 · «Сходи» — фізична драбина ескалації <span class="tag tcy" style="margin-left:auto">8 хв</span></div><div class="ab-b"><h4>Мета:</h4><p>Відчути ескалацію тілом і знайти «точки виходу».</p><h4>Хід:</h4><ol><li>Розставте 5 стільців/аркушів «сходинками». Двоє учнів грають сварку.</li><li>На кожній репліці вони «піднімаються» на сходинку, репліки погіршуються.</li><li>Педагог каже «Стоп» на довільній сходинці: клас пропонує, що можна сказати щоб «спуститись».</li><li>Учасники пробують нову реплику й «спускаються».</li></ol><h4>Обговорення:</h4><p>«Що змінилось у тілі на 4-й сходинці? Чи можливо було зупинитись?»</p></div></div>
+
+  <div class="ab reveal"><div class="ab-h" style="background:var(--am)">🍊 Активність 2 · «Апельсин» — позиції й інтереси <span class="tag tam" style="margin-left:auto">10 хв</span></div><div class="ab-b"><h4>Мета:</h4><p>Переживати, як з «несумісних позицій» народжується спільне рішення.</p><h4>Хід:</h4><ol><li>Пари отримують карточки з прихованою інформацією: A хоче сік (з апельсина), Б хоче цедру. Кожен знає лише свою потребу.</li><li>Вони «переговорюють». Більшість ділять навпіл.</li><li>Ведучий відкриває: інтереси були різні, можна було отримати все.</li><li>Обговорення: «Що допомогло/завадило дізнатись інтерес?»</li></ol><h4>Наука:</h4><p>Класична вправа з Harvard Negotiation Project (Fisher & Ury). Показує цінність питання «чому це для тебе важливо?».</p></div></div>
+
+  <div class="ab reveal"><div class="ab-h" style="background:var(--gr)">💬 Активність 3 · «Переклад» — з атаки на NVC <span class="tag tgr" style="margin-left:auto">8 хв</span></div><div class="ab-b"><h4>Мета:</h4><p>Практика переформулювання у безпечному режимі.</p><h4>Хід:</h4><ol><li>Педагог називає фразу-атаку: «Ти знову все зіпсував!».</li><li>Групи по 3 «перекладають» через 4 кроки NVC.</li><li>Одна група читає, клас оцінює: «Є факт? Є почуття? Є потреба? Є конкретне прохання?».</li><li>Повторити з 3 фразами, потім учні пропонують власні (з реального життя, без імен).</li></ol></div></div>
+
+  <div class="ab reveal"><div class="ab-h" style="background:var(--vi)">📱 Активність 4 · «Прочитай двічі» — цифрові непорозуміння <span class="tag tvi" style="margin-left:auto">7 хв</span></div><div class="ab-b"><h4>Мета:</h4><p>Усвідомити, що текст без інтонації має кілька прочитань.</p><h4>Хід:</h4><ol><li>На екрані повідомлення: «Ок», «Ну добре», «Як хочеш».</li><li>Дві групи читають їх «радісно» і «ображено». Клас вгадує тон.</li><li>Обговорення: «Звідки береться впевненість, що ми знаємо тон?»</li><li>Правило класу: «Якщо сумніваюсь — питаю, не дописую».</li></ol></div></div>
+
+  <div class="ab reveal"><div class="ab-h" style="background:var(--co)">🕊️ Активність 5 · Peer-mediation: тренінг для 3–4 учнів <span class="tag tco" style="margin-left:auto">окремо</span></div><div class="ab-b"><h4>Мета:</h4><p>Підготувати учнів-«медіаторів» для дрібних конфліктів (за програмою Peacemakers).</p><h4>Умови:</h4><ul><li>Добровільно. Не «найкращі учні», а ті, кому довіряють.</li><li>Тренінг 4–6 занять: слухання, нейтральність, структура медіації, межі (булінг не медіюється).</li><li>Супервізія психолога обов'язкова.</li></ul><h4>Структура розмови:</h4><p>1) Правила. 2) Кожен розповідає. 3) Медіатор перефразовує. 4) Інтереси. 5) Варіанти. 6) Домовленість на папері.</p><h4>Застереження:</h4><p>Peer-медіація — лише для рівних конфліктів. При булінгу, образах із елементами влади, загрозах — тільки дорослі.</p></div></div>
+
+  <div class="ab reveal"><div class="ab-h" style="background:var(--cy)">📮 Активність 6 · «Скринька» + «Календар домовленостей» <span class="tag tcy" style="margin-left:auto">постійно</span></div><div class="ab-b"><h4>Хід:</h4><p>Анонімна скринька для звернень. Раз на 2 тижні — 10 хв «класне коло»: «Що було складно у спілкуванні? Що вдалось?». Домовленості фіксуються у «календарі» на дошці й переглядаються.</p><h4>Наука:</h4><p>Restorative circles (Zehr, 1990; Morrison, 2007): регулярні кола, а не лише реакція на інциденти, знижують рівень конфліктності й підвищують відчуття приналежності.</p></div></div>
+</div></div>
+
+<!-- DIFF -->
+<div class="panel" id="panel-diff"><div class="wrap">
+  <p class="sh reveal">Диференційований підхід</p>
+  <p class="ss reveal">За класним кліматом, станом учня і типом ситуації</p>
+  <table class="tbl reveal">
+    <thead><tr><th>Профіль</th><th>Ознаки</th><th>Адаптація уроку</th><th>Подальша робота</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Сприятливий клімат</strong></td><td>Конфлікти рідкі, вирішуються розмовою</td><td>Повний формат, акцент на peer-mediation</td><td>Підготовка учнів-медіаторів</td></tr>
+      <tr><td><strong>Тиха напруга</strong></td><td>Уникання, мовчання, чати «поза школою»</td><td>Більше парної роботи, анонімних форм. Менше публічних відповідей</td><td>Діагностика клімату, скринінг булінгу</td></tr>
+      <tr><td><strong>Відкрита конфліктність</strong></td><td>Часті сварки, ескалація, образи</td><td>Драбина і «Сходи»; жорсткі правила; коротші блоки; перерви на рух</td><td>Класні кола, медіація, робота з лідерами</td></tr>
+      <tr><td><strong>Груповий конфлікт</strong></td><td>Два табори, «чорні списки»</td><td>Змішані пари/команди, спільна задача. Не «розбирати» табори публічно</td><td>Restorative circle для класу, залучення батьків</td></tr>
+      <tr><td><strong>Підозра на булінг</strong></td><td>Один учень систематично виключений/принижений</td><td>Урок — як рамка. Не обговорювати конкретику на уроці</td><td>Протокол 1, окремо з жертвою, агресором, свідками</td></tr>
+    </tbody>
+  </table>
+  <hr class="r">
+  <p class="sh" style="font-size:1.1rem;margin-bottom:.9rem">Реакції учнів під час уроку</p>
+  <table class="tbl reveal">
+    <thead><tr><th>Реакція</th><th>Можливе пояснення</th><th>Дія педагога</th></tr></thead>
+    <tbody>
+      <tr><td><strong>«Це все дитячі штучки»</strong></td><td>Захисна девальвація; страх «виглядати слабким»</td><td>Дати дані й власний приклад: «Я теж користуюсь цим на роботі». Запросити перевірити на практиці.</td></tr>
+      <tr><td><strong>Шалено «грає» агресора у вправі</strong></td><td>Реальний досвід або потреба в ролі</td><td>Зупинити «Стоп». Поміняти ролі. Після — окрема розмова.</td></tr>
+      <tr><td><strong>Мовчить / відсторонений на «позиції й інтереси»</strong></td><td>Потенційно болюча ситуація (конфлікт вдома)</td><td>Не тиснути. Після — «Ти хотів/-ла щось додати?»</td></tr>
+      <tr><td><strong>Починає «розбирати» конкретну людину у класі</strong></td><td>Реальний незавершений конфлікт</td><td>Зупинити: «Ми не розбираємо людей. Давай поговоримо після».</td></tr>
+      <tr><td><strong>Каже: «Мене достали, хочу, щоб він зник»</strong></td><td>Емоційна ескалація / можливий булінг</td><td>Приватна розмова після уроку. Уточнити.</td></tr>
+    </tbody>
+  </table>
+</div></div>
+
+<!-- CRISIS -->
+<div class="panel" id="panel-crisis"><div class="wrap">
+  <p class="sh reveal">Кризові протоколи</p>
+  <p class="ss reveal">Булінг · Кібербулінг · Фізична ескалація · Самоушкодження · Конфлікт «вдома»</p>
+  <div class="al a-ro reveal"><span class="ai">🚨</span><div><p><strong>Відомо з практики:</strong> урок про конфлікти нерідко стає моментом, коли учень вперше розповідає про цькування. Будьте готові до розмови після уроку, а не лише до самого заняття. Юридичний контекст: у школі діють нормативні вимоги щодо реагування на булінг (закон про протидію булінгу, процедури закладу). Знайте порядок звітування у вашому закладі.</p></div></div>
+  <div class="contacts reveal">
+    <div class="ct"><h4>Дитяча гаряча лінія</h4><div class="num">116 111</div><p>Анонімно · Безкоштовно · 24/7</p></div>
+    <div class="ct"><h4>Підтримка дорослих</h4><div class="num">0 800 500 335</div><p>Педагогам і батькам</p></div>
+    <div class="ct"><h4>Поліція / Медики</h4><div class="num">102 / 103</div><p>Загроза життю, травми, злочинні дії</p></div>
+    <div class="ct"><h4>Кіберполіція</h4><p>cyberpolice.gov.ua · при шантажі, погрозах, поширенні інтимних зображень</p></div>
+  </div>
+
+  <div class="crb reveal"><div class="crb-h" style="background:var(--ro)">🔴 Протокол 1 · Учень розкриває булінг (він/вона жертва)</div><div class="crb-b"><ol><li>Вислухати без переривань. «Дякую, що розповів/-ла. Ти не винен/-на».</li><li>Не обіцяти секретності: «Я мушу допомогти, тому розповім тим, хто зможе захистити. Ми разом вирішимо кому і як».</li><li>Зафіксувати: що, коли, де, хто, свідки (його словами).</li><li>Того ж дня — психолог/адміністрація за процедурою закладу; повідомити батьків.</li><li>НЕ проводити «примирення» і «медіацію» між жертвою та агресором.</li><li>Окремі розмови з агресором (робота з мотивами, наслідки) і свідками.</li><li>Відстежувати: безпека жертви на перервах, у чатах, дорозі.</li></ol></div></div>
+
+  <div class="crb reveal"><div class="crb-h" style="background:var(--co)">🟠 Протокол 2 · Фізична ескалація під час або після уроку</div><div class="crb-b"><ol><li>Розвести фізично, якщо безпечно; інакше покликати інших дорослих.</li><li>Спокійний голос, мінімум слів: «Стоп. Розійдіться».</li><li>Оцінити травми; при потребі — 103 / медсестра.</li><li>Окремі кімнати, 10–15 хв охолодження, потім розмова з кожним окремо.</li><li>Адміністрація, батьки обох сторін, документація.</li></ol></div></div>
+
+  <div class="crb reveal"><div class="crb-h" style="background:var(--am)">🟡 Протокол 3 · Кібербулінг, шантаж, погрози, поширення зображень</div><div class="crb-b"><ol><li>Збережіть докази: скріншоти з датою/відправником, посилання. Не видаляти.</li><li>Не відповідати агресору, не пересилати інтимні зображення (навіть для «доказу» — залучайте поліцію).</li><li>Скарга до платформи, блокування.</li><li>Батьки + адміністрація + психолог.</li><li>При погрозах, шантажі, зображеннях інтимного характеру: 102 і кіберполіція.</li></ol></div></div>
+
+  <div class="crb reveal"><div class="crb-h" style="background:var(--vi)">🟣 Протокол 4 · Висловлення про самоушкодження або безнадію на тлі конфлікту</div><div class="crb-b"><ol><li>Не залишати самого/самої.</li><li>Приватно і прямо: «Ти сказав/-ла важливе. Ти думаєш про те, щоб заподіяти собі шкоду?»</li><li>Шкільний психолог, батьки. При безпосередній загрозі: 103, 112.</li><li>116 111 для учня прямо зараз.</li><li>Тема конфлікту — другорядна; пріоритет — безпека.</li></ol></div></div>
+
+  <div class="crb reveal"><div class="crb-h" style="background:var(--cy)">🔵 Протокол 5 · Учень розповідає про конфлікти вдома (насильство, ігнорування)</div><div class="crb-b"><p>Тема конфліктів може «відкрити» сімейні ситуації. Вам не потрібно розслідувати, але потрібно діяти.</p><ol><li>Вислухати, не обіцяти таємності.</li><li>Якщо є ознаки фізичного/емоційного насильства чи загрози безпеці — зобов'язання щодо повідомлення (служба у справах дітей, поліція за процедурою). Дізнайтесь вимоги вашого закладу.</li><li>Психолог — того ж дня. Безпечний дорослий поруч.</li><li>116 111 і для дитини.</li></ol></div></div>
+
+  <div class="pi reveal"><div class="pt">💙 Для вас, педагогу</div><p>Урок про конфлікти буває важким особисто: ви можете впізнати власні паттерни, або у вашому колективі нині конфлікт. Це нормально. Не носіть усе самі: колега, супервізор, 0 800 500 335. Власна регуляція — умова безпеки класу.</p></div>
+</div></div>
+
+<!-- SCRIPTS -->
+<div class="panel" id="panel-scripts"><div class="wrap">
+  <p class="sh reveal">Скрипти і фрази</p>
+  <p class="ss reveal">Для медіації, фасилітації й власних конфліктів із класом</p>
+  <p class="sh" style="font-size:1rem;margin:.8rem 0">Структура розмови-медіації (дорослий або навчений медіатор)</p>
+  <div class="scr gr" data-lbl="КРОК 1 · ПРАВИЛА"><p>«Ми тут, щоб розібратись, а не щоб вирішити, хто поганий. Говорить один, інший слухає. Без образ. Кожен може попросити паузу. Те, що ми скажемо тут, залишається тут, окрім випадків, коли хтось у небезпеці. Ви згодні?»</p></div>
+  <div class="scr gr" data-lbl="КРОК 2 · ІСТОРІЇ"><p>«Розкажи, що сталось з твого погляду. Що ти відчував/-ла? Що для тебе було найважливішим?» [Медіатор перефразовує: «Я чую що тебе зачепило…»]</p></div>
+  <div class="scr gr" data-lbl="КРОК 3 · ІНТЕРЕСИ І ВАРІАНТИ"><p>«Що тобі потрібно, щоб почуватись нормально у цій ситуації? Які варіанти бачите? Що з цього може влаштувати обох?» → записати домовленість конкретно: «хто, що, коли».</p></div>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1rem;margin:.8rem 0">Таблиця фраз педагога</p>
+  <table class="tbl reveal">
+    <thead><tr><th>❌ Не казати</th><th>Ефект</th><th>✓ Альтернатива</th></tr></thead>
+    <tbody>
+      <tr><td>«Хто почав?»</td><td>Переносить фокус на вину; провокує звинувачення</td><td>«Що сталось? Що кожному потрібно?»</td></tr>
+      <tr><td>«Помиріться і подайте руки»</td><td>Примусове «примирення» — формальне і недовговічне</td><td>«Чи готові ви зараз поговорити? Що має змінитись, щоб ви могли нормально співіснувати?»</td></tr>
+      <tr><td>«Ви обидва неправі»</td><td>Ніхто не почутий; обидва ображені</td><td>«Я чую дві версії. Давайте по черзі»</td></tr>
+      <tr><td>«Не ябедничай»</td><td>Закриває канал повідомлення про булінг</td><td>«Дякую, що розповів/-ла. Ти правильно зробив/-ла»</td></tr>
+      <tr><td>«Він просто жартував»</td><td>Знецінює; жертва не захищена</td><td>«Мені важливо, як це сприйняв ти. Розкажи»</td></tr>
+      <tr><td>«Ігноруй їх, і вони відстануть»</td><td>При булінгу не працює; залишає дитину без захисту</td><td>«Ти не маєш терпіти це сам/-а. Ми разом знайдемо спосіб»</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="r">
+  <p class="sh" style="font-size:1rem;margin:.8rem 0">Exit tickets</p>
+  <table class="tbl reveal">
+    <thead><tr><th>#</th><th>Питання</th><th>Що дає</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>«Одне, що я зроблю інакше в наступному конфлікті»</td><td>Намір і перенесення</td></tr>
+      <tr><td>2</td><td>«Хвилина напруги у класі зараз: 1–10» (до/після)</td><td>Динаміка стану</td></tr>
+      <tr><td>3</td><td>«Мені потрібна розмова про ситуацію в класі»: так/ні (анонімно)</td><td>Безпечний канал</td></tr>
+      <tr><td>4</td><td>«Одне речення, яке я не хочу більше чути в конфлікті»</td><td>Мова класу</td></tr>
+    </tbody>
+  </table>
+  <div class="pi reveal"><div class="pt">💙 Завершальне слово</div><p>Підліткам рідко пояснюють, що конфлікт — звичайна, навіть корисна частина стосунків, якщо у них є мова й інструменти. Ви дали їм і те, й інше. Найцінніше, що може статись після цього уроку, це не ідеальна фраза «Я-повідомлення», а питання «Чи точно я зрозумів/-ла?» там, де раніше було б мовчання або крик.</p></div>
+</div></div>
+
+<script>
+function sw(n){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));document.querySelectorAll('.hn,.tb').forEach(b=>b.classList.remove('on'));document.getElementById('panel-'+n).classList.add('on');document.querySelectorAll('.hn,.tb').forEach(b=>{if(b.getAttribute('onclick')&&b.getAttribute('onclick').includes("'"+n+"'"))b.classList.add('on');});window.scrollTo({top:0,behavior:'smooth'});}
+const ro=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.07});document.querySelectorAll('.reveal').forEach(r=>ro.observe(r));
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Джерела й що почитати</h2><h3>Використані джерела</h3><ol><li>Glasl, F. (1982). The process of conflict escalation and roles of third parties. In G. B. J. Bomers &amp; R. B. Peterson (Eds.), <i>Conflict management and industrial relations</i>. Kluwer-Nijhoff.</li><li>Fisher, R., &amp; Ury, W. (1981). <i>Getting to Yes</i>. Houghton Mifflin.</li><li>Thomas, K. W., &amp; Kilmann, R. H. (1974). <i>Thomas-Kilmann Conflict Mode Instrument</i>. Xicom.</li><li>Gottman, J. M. (1994). <i>What Predicts Divorce?</i> Lawrence Erlbaum.</li><li>Lazare, A. (2004). <i>On Apology</i>. Oxford University Press.</li><li>Deutsch, M. (1973). <i>The Resolution of Conflict</i>. Yale University Press.</li><li>Johnson, D. W., &amp; Johnson, R. T. (1996). Conflict resolution and peer mediation programs in elementary and secondary schools: A review of the research. <i>Review of Educational Research, 66</i>(4), 459–506.</li><li>Olweus, D. (1993). <i>Bullying at School</i>. Blackwell.</li><li>Bower, S. A., &amp; Bower, G. H. (1976). <i>Asserting Yourself</i>. Addison-Wesley.</li></ol><h3>Що почитати фахівцеві</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>Getting to Yes</td><td>Fisher R., Ury W.</td><td>Принципова переговорна модель</td></tr><tr><td>Bullying at School</td><td>Olweus D., 1993</td><td>Конфлікт і булінг; програма ліцензована</td></tr><tr><td>Crucial Conversations</td><td>Patterson K. та ін., 2002</td><td>Складні розмови</td></tr><tr><td>Nonviolent Communication</td><td>Rosenberg M. B., 2003</td><td>Мова почуттів і потреб; емпірична база обмежена</td></tr></table><h3>Що порадити батькам</h3><table><tr><th>Назва</th><th>Автор / видання</th><th>Чому корисно</th></tr><tr><td>How to Talk So Kids Will Listen &amp; Listen So Kids Will Talk</td><td>Faber A., Mazlish E.</td><td>Практичні фрази</td></tr><tr><td>Raising an Emotionally Intelligent Child</td><td>Gottman J., DeClaire J., 1997</td><td>Емоційне коучинг-спілкування</td></tr><tr><td>The Whole-Brain Child</td><td>Siegel D. J., Bryson T. P., 2011</td><td>Емоції дитини</td></tr></table><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="07-7-8-case.html">← Тема 7</a></span><span><a href="09-7-8-case.html">Тема 9 →</a></span></div><a class="mo-fab" href="../index.html#t08">☰ До матриці</a></body>
+</html>

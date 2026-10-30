@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Стрес і тіло · 5–6 клас</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:    #0A0F0D;
+  --s1:    #101810;
+  --s2:    #162016;
+  --s3:    #1C2A1C;
+  --green: #2EC88A;
+  --gr-l:  rgba(46,200,138,.12);
+  --gr-ll: rgba(46,200,138,.06);
+  --orange:#E87840;
+  --or-l:  rgba(232,120,64,.1);
+  --cream: #F0E8D0;
+  --cr-l:  rgba(240,232,208,.07);
+  --blue:  #5090D8;
+  --bl-l:  rgba(80,144,216,.09);
+  --rose:  #E05878;
+  --ro-l:  rgba(224,88,120,.09);
+  --text:  #EDE8DF;
+  --muted: rgba(237,232,223,.5);
+  --dim:   rgba(237,232,223,.28);
+  --bd:    rgba(255,255,255,.07);
+  --bd2:   rgba(255,255,255,.14);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 50% at 20% 20%,rgba(46,200,138,.14) 0%,transparent 65%),
+    radial-gradient(ellipse 45% 50% at 85% 80%,rgba(232,120,64,.1) 0%,transparent 60%),
+    radial-gradient(ellipse 35% 30% at 55% 48%,rgba(80,144,216,.06) 0%,transparent 55%);}
+
+.prog{position:fixed;top:0;left:0;height:3px;z-index:500;background:linear-gradient(90deg,var(--green),var(--orange));transition:width .3s ease;width:0%;}
+
+.snav{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.55rem;z-index:300;}
+.snd{width:7px;height:7px;border-radius:50%;background:var(--bd2);border:none;cursor:pointer;padding:0;transition:all .3s;}
+.snd.on{background:var(--green);transform:scale(1.6);}
+
+/* ── HERO ── */
+.hero{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 1.5rem;text-align:center;overflow:hidden;}
+
+/* breathing circle animation */
+.breath-bg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.bc{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;opacity:.06;}
+.bc1{width:300px;height:300px;background:radial-gradient(circle,var(--green),transparent);animation:breathe 5s ease-in-out infinite;}
+.bc2{width:480px;height:480px;background:radial-gradient(circle,var(--green),transparent);animation:breathe 5s ease-in-out infinite .5s;}
+.bc3{width:660px;height:660px;background:radial-gradient(circle,var(--orange),transparent);animation:breathe 5s ease-in-out infinite 1s;}
+@keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(.9);opacity:.04;}50%{transform:translate(-50%,-50%) scale(1.05);opacity:.09;}}
+
+.hero-tag{font-size:.72rem;font-weight:700;letter-spacing:.2em;color:var(--green);margin-bottom:1.4rem;display:flex;align-items:center;gap:.7rem;justify-content:center;}
+.hero-tag::before,.hero-tag::after{content:'';width:32px;height:1px;background:var(--green);opacity:.5;}
+
+.hero h1{font-family:'Nunito',sans-serif;font-size:clamp(2.5rem,7vw,5.5rem);font-weight:900;line-height:1.08;color:var(--text);margin-bottom:.8rem;letter-spacing:-.02em;}
+.hero h1 em{font-style:normal;color:var(--green);}
+.hero h1 .l2{display:block;font-size:.52em;font-weight:700;color:var(--muted);margin-top:.3rem;}
+
+.hero-sub{font-size:1rem;font-weight:300;line-height:1.88;color:var(--muted);max-width:460px;margin:0 auto 2.5rem;}
+
+.hero-pills{display:flex;gap:.55rem;flex-wrap:wrap;justify-content:center;}
+.hpill{border:1px solid var(--bd2);border-radius:50px;padding:.38rem 1.1rem;font-size:.77rem;font-weight:600;color:var(--muted);background:rgba(255,255,255,.03);}
+
+.scroll-cue{position:absolute;bottom:2rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;font-size:.68rem;font-weight:700;color:var(--dim);letter-spacing:.12em;}
+.scroll-cue .ln{width:1px;height:48px;background:linear-gradient(to bottom,var(--green),transparent);animation:lnDrop 2.2s ease-in-out infinite;}
+@keyframes lnDrop{0%,100%{opacity:.25;transform:scaleY(.5)translateY(-12px);}50%{opacity:1;transform:scaleY(1)translateY(0);}}
+
+/* ── SECTIONS ── */
+.sec{position:relative;z-index:2;max-width:860px;margin:0 auto;padding:5.5rem 1.5rem;}
+.div{max-width:860px;margin:0 auto;height:1px;background:linear-gradient(90deg,transparent,rgba(46,200,138,.3),transparent);position:relative;z-index:2;}
+
+.sec-ey{font-size:.7rem;font-weight:700;letter-spacing:.16em;color:var(--green);margin-bottom:.9rem;display:flex;align-items:center;gap:.55rem;text-transform:uppercase;}
+.sec-ey::after{content:'';width:28px;height:1px;background:var(--green);opacity:.5;}
+
+h2{font-family:'Nunito',sans-serif;font-size:clamp(1.8rem,3.8vw,2.8rem);font-weight:900;line-height:1.15;color:var(--text);margin-bottom:1rem;letter-spacing:-.01em;}
+h2 em{font-style:normal;color:var(--green);}
+h2 strong{color:var(--orange);}
+
+.lead{font-size:.97rem;font-weight:300;line-height:1.9;color:var(--muted);max-width:640px;margin-bottom:2rem;}
+
+/* PSYCHO */
+.psy{background:linear-gradient(135deg,rgba(46,200,138,.07),rgba(46,200,138,.03));border-left:3px solid var(--green);border-radius:0 14px 14px 0;padding:1.6rem 2rem;margin:2rem 0;position:relative;overflow:hidden;}
+.psy::before{content:'"';font-family:'Nunito',sans-serif;font-size:6rem;line-height:1;color:var(--green);opacity:.07;position:absolute;top:-.5rem;left:.8rem;}
+.psy-who{font-size:.66rem;font-weight:700;letter-spacing:.15em;color:var(--green);margin-bottom:.6rem;text-transform:uppercase;}
+.psy p{font-size:.94rem;line-height:1.85;color:rgba(237,232,223,.8);font-style:italic;font-family:'Nunito',sans-serif;font-weight:500;}
+
+/* STRESS SIGNALS */
+.sig-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:.8rem;margin:1.5rem 0;}
+.sig-card{background:var(--s1);border:1px solid var(--bd);border-radius:14px;padding:1.3rem;cursor:pointer;transition:all .25s;position:relative;}
+.sig-card:hover{border-color:var(--bd2);transform:translateY(-2px);}
+.sig-card.picked{border-color:var(--orange);background:var(--or-l);}
+.sig-card .ck{position:absolute;top:.6rem;right:.7rem;font-size:.75rem;color:var(--orange);opacity:0;transition:opacity .2s;}
+.sig-card.picked .ck{opacity:1;}
+.sig-ico{font-size:1.8rem;margin-bottom:.5rem;display:block;}
+.sig-title{font-size:.86rem;font-weight:700;color:var(--text);margin-bottom:.2rem;}
+.sig-body{font-size:.77rem;font-weight:300;color:var(--muted);line-height:1.5;}
+
+/* BREATHING EXERCISE */
+.breath-box{background:var(--s1);border:1px solid var(--bd);border-radius:20px;padding:2.5rem;margin:2rem 0;text-align:center;}
+.breath-circle{width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,var(--green),#1A8058);margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;transition:all .3s;box-shadow:0 0 40px rgba(46,200,138,.2);}
+.breath-circle.inhale{animation:inhaleAnim 4s ease-in-out forwards;}
+.breath-circle.hold{animation:none;transform:scale(1.25);}
+.breath-circle.exhale{animation:exhaleAnim 6s ease-in-out forwards;}
+@keyframes inhaleAnim{from{transform:scale(1);}to{transform:scale(1.28);}}
+@keyframes exhaleAnim{from{transform:scale(1.28);}to{transform:scale(1);}}
+.bc-text{font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;color:white;text-align:center;line-height:1.2;}
+.bc-sub{font-size:.75rem;font-weight:600;color:rgba(255,255,255,.7);}
+.breath-phase{font-size:1.1rem;font-weight:700;color:var(--green);margin-bottom:.5rem;}
+.breath-count{font-family:'Nunito',sans-serif;font-size:3rem;font-weight:900;color:var(--cream);line-height:1;margin-bottom:.5rem;}
+.breath-hint{font-size:.82rem;color:var(--muted);font-weight:300;}
+.breath-btns{display:flex;gap:.6rem;justify-content:center;margin-top:1.2rem;flex-wrap:wrap;}
+.bbtn{background:none;border:1px solid var(--bd2);border-radius:50px;padding:.5rem 1.4rem;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;color:var(--muted);cursor:pointer;transition:all .2s;}
+.bbtn:hover{border-color:var(--green);color:var(--green);}
+.bbtn.active{background:var(--green);border-color:var(--green);color:var(--bg);}
+.breath-counter{font-size:.8rem;color:var(--dim);margin-top:.8rem;}
+
+/* BODY MAP */
+.body-map-wrap{margin:2rem 0;}
+.body-map-grid{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:start;}
+@media(max-width:560px){.body-map-grid{grid-template-columns:1fr;}}
+.body-svg-wrap{max-width:220px;}
+.bzone{cursor:pointer;transition:fill .2s;fill:#1C2A1C;stroke:rgba(46,200,138,.3);stroke-width:1.5;}
+.bzone:hover{fill:rgba(46,200,138,.2);}
+.bzone.active{fill:rgba(232,120,64,.3);stroke:var(--orange);}
+.body-info h3{font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:800;color:var(--text);margin-bottom:.5rem;}
+.body-info p{font-size:.85rem;font-weight:300;color:var(--muted);line-height:1.75;}
+.body-info .bi-tag{display:inline-block;background:var(--or-l);border:1px solid var(--orange);color:var(--orange);font-size:.7rem;font-weight:700;padding:.18rem .55rem;border-radius:50px;margin-bottom:.6rem;}
+
+/* COPING TOOLS */
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:1px;background:var(--bd);border:1px solid var(--bd);margin:1.5rem 0;}
+.tool-card{background:var(--s1);padding:1.5rem;cursor:pointer;transition:background .2s;}
+.tool-card:hover{background:var(--s2);}
+.tool-card.open{background:var(--s2);}
+.tool-card.open .tc-title{color:var(--green);}
+.tc-ico{font-size:2rem;margin-bottom:.6rem;display:block;}
+.tc-title{font-size:.88rem;font-weight:700;color:var(--text);margin-bottom:.25rem;transition:color .2s;}
+.tc-short{font-size:.78rem;font-weight:300;color:var(--muted);line-height:1.5;}
+.tc-full{display:none;margin-top:.8rem;font-size:.82rem;font-weight:300;color:var(--muted);line-height:1.7;border-top:1px solid var(--bd);padding-top:.8rem;}
+.tool-card.open .tc-full{display:block;}
+
+/* SCENARIOS */
+.sc-box{background:var(--s1);border:1px solid var(--bd);border-radius:18px;overflow:hidden;margin:1.5rem 0;}
+.sc-hdr{background:linear-gradient(135deg,var(--green),#1A8058);padding:1rem 1.5rem;font-family:'Nunito',sans-serif;font-size:1rem;font-weight:800;color:var(--bg);display:flex;align-items:center;justify-content:space-between;}
+.sc-bar-bg{height:3px;background:var(--bd);}
+.sc-bar-fill{height:100%;background:var(--orange);transition:width .4s ease;}
+.sc-body{padding:1.8rem;}
+.sc-q{font-family:'Nunito',sans-serif;font-size:1.05rem;font-weight:800;line-height:1.5;color:var(--text);margin-bottom:1.3rem;}
+.sc-opts{display:flex;flex-direction:column;gap:.5rem;}
+.sc-opt{background:var(--s2);border:1px solid var(--bd);border-radius:12px;padding:.82rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:.87rem;font-weight:400;cursor:pointer;text-align:left;color:var(--muted);transition:all .2s;}
+.sc-opt:hover{border-color:var(--bd2);color:var(--text);}
+.sc-opt.ok{border-color:var(--green);background:var(--gr-l);color:var(--green);}
+.sc-opt.bad{border-color:var(--rose);background:var(--ro-l);color:var(--rose);}
+.sc-opt:disabled{cursor:not-allowed;}
+.sc-fb{font-size:.86rem;padding:.9rem 1.1rem;border-left:2px solid var(--bd2);margin-top:.9rem;display:none;line-height:1.75;color:var(--muted);}
+.sc-fb.show{display:block;}.sc-fb.ok{border-color:var(--green);}.sc-fb.bad{border-color:var(--rose);}
+.sc-next{display:none;margin-top:1rem;background:none;border:1px solid var(--green);border-radius:50px;padding:.55rem 1.7rem;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:700;color:var(--green);cursor:pointer;transition:all .2s;}
+.sc-next:hover{background:var(--green);color:var(--bg);}
+.sc-next.show{display:inline-block;}
+.sc-score{font-family:'Nunito',sans-serif;font-size:1.5rem;font-weight:900;color:var(--orange);text-align:center;margin-top:1.5rem;display:none;}
+
+/* QUIZ */
+.quiz-box{background:var(--s1);border:1px solid var(--bd);border-radius:18px;padding:2rem;margin:1.5rem 0;}
+.qz-prog{font-size:.7rem;font-weight:700;letter-spacing:.09em;color:var(--dim);margin-bottom:1rem;}
+.qz-q{font-family:'Nunito',sans-serif;font-size:1.08rem;font-weight:800;line-height:1.5;color:var(--text);margin-bottom:1.3rem;}
+.qz-opts{display:flex;flex-direction:column;gap:.5rem;}
+.qz-o{background:var(--s2);border:1px solid var(--bd);border-radius:12px;padding:.8rem 1.1rem;font-family:'DM Sans',sans-serif;font-size:.87rem;font-weight:400;cursor:pointer;text-align:left;color:var(--muted);transition:all .2s;}
+.qz-o:hover{border-color:var(--bd2);color:var(--text);}
+.qz-o.ok{border-color:var(--green);background:var(--gr-l);color:var(--green);font-weight:600;}
+.qz-o.bad{border-color:var(--rose);background:var(--ro-l);color:var(--rose);}
+.qz-o:disabled{cursor:not-allowed;}
+.qz-fb{font-size:.85rem;padding:.85rem 1rem;border-left:2px solid var(--bd2);margin-top:.8rem;display:none;line-height:1.75;color:var(--muted);}
+.qz-fb.show{display:block;}.qz-fb.ok{border-color:var(--green);}.qz-fb.bad{border-color:var(--rose);}
+.qz-next{display:none;margin-top:.9rem;background:none;border:1px solid var(--orange);border-radius:50px;padding:.55rem 1.7rem;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:700;color:var(--orange);cursor:pointer;transition:all .2s;}
+.qz-next:hover{background:var(--orange);color:var(--bg);}
+.qz-next.show{display:inline-block;}
+.qz-score{font-family:'Nunito',sans-serif;font-size:1.5rem;font-weight:900;color:var(--cream);text-align:center;margin-top:1.5rem;display:none;}
+
+/* MY TOOLKIT */
+.toolkit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(195px,1fr));gap:1px;background:var(--bd);border:1px solid var(--bd);margin:1.5rem 0;}
+.tk{background:var(--s1);padding:1.4rem;}
+.tk label{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:.5rem;}
+.tk-in{width:100%;background:transparent;border:none;border-bottom:1px solid var(--bd2);padding:.5rem 0;font-family:'DM Sans',sans-serif;font-size:.84rem;color:var(--text);outline:none;resize:none;transition:border-color .2s;line-height:1.6;}
+.tk-in:focus{border-color:var(--green);}
+.tk-in::placeholder{color:var(--dim);}
+.tk-gen{background:linear-gradient(135deg,var(--green),#1A8058);color:var(--bg);border:none;border-radius:50px;padding:.78rem 2.2rem;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;display:block;margin:1.5rem auto 0;transition:all .25s;box-shadow:0 8px 24px rgba(46,200,138,.25);}
+.tk-gen:hover{transform:translateY(-2px);}
+.tk-res{display:none;margin-top:1.5rem;background:var(--s1);border:1px solid var(--bd2);border-radius:16px;padding:2rem;}
+.tk-res.show{display:block;}
+.tk-res h3{font-family:'Nunito',sans-serif;font-size:1.2rem;font-weight:900;color:var(--text);text-align:center;margin-bottom:1.2rem;}
+.tr-row{display:flex;gap:1rem;padding:.6rem 0;border-bottom:1px solid var(--bd);font-size:.85rem;font-weight:300;line-height:1.65;}
+.tr-row:last-child{border:none;}
+.tr-l{color:var(--dim);font-size:.7rem;font-weight:700;letter-spacing:.06em;min-width:150px;}
+
+/* FINAL */
+.final{position:relative;z-index:2;max-width:680px;margin:0 auto;text-align:center;padding:5rem 1.5rem 7rem;}
+.final-icon{font-size:3.5rem;display:block;margin-bottom:1.5rem;}
+.final-cert{border:1px solid var(--bd2);border-radius:16px;padding:2rem;margin:2rem 0;text-align:left;}
+.fc-l{font-size:.62rem;font-weight:700;letter-spacing:.14em;color:var(--dim);margin-bottom:.4rem;text-transform:uppercase;}
+.fc-v{font-family:'Nunito',sans-serif;font-size:.98rem;font-weight:700;color:var(--text);line-height:1.65;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s;}
+.reveal.vis{opacity:1;transform:none;}
+</style>
+<link rel="stylesheet" href="../assets/psy.css">
+</head>
+<body><nav class="mo-nav"><a href="../index.html">← Кабінет психолога</a><span class="mo-t">Тема 5 · Стрес і тіло: як зняти напруження · 5–6 клас · Урок</span><span class="mo-g"><a href="05-5-6-lesson.html" class="on">5–6 клас</a><a href="05-7-8-lesson.html">7–8 клас</a><a href="05-9-11-lesson.html">9–11 клас</a><a href="05-b-lesson.html">Батьки</a><a href="05-5-6-case.html">⇄ Кейс</a></span></nav>
+<div class="prog" id="prog"></div>
+
+<nav class="snav" id="sNav">
+  <button class="snd on" data-i="0"></button>
+  <button class="snd" data-i="1"></button>
+  <button class="snd" data-i="2"></button>
+  <button class="snd" data-i="3"></button>
+  <button class="snd" data-i="4"></button>
+  <button class="snd" data-i="5"></button>
+  <button class="snd" data-i="6"></button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="s0">
+  <div class="breath-bg">
+    <div class="bc bc1"></div>
+    <div class="bc bc2"></div>
+    <div class="bc bc3"></div>
+  </div>
+  <div class="hero-tag">Онлайн-урок · 5–6 клас</div>
+  <h1><em>Стрес і тіло:</em><span class="l2">як зняти напруження</span></h1>
+  <p class="hero-sub">Що відбувається з нашим тілом під час стресу — і як допомогти собі дихати, рухатись і відновлюватись</p>
+  <div class="hero-pills">
+    <div class="hpill">⏱ 45 хвилин</div>
+    <div class="hpill">🫁 Дихальна вправа</div>
+    <div class="hpill">🧍 Карта тіла</div>
+    <div class="hpill">🎭 Сценарії</div>
+    <div class="hpill">🧩 Вікторина</div>
+    <div class="hpill">🎒 Мій набір</div>
+  </div>
+  <div class="scroll-cue"><span>починаємо</span><div class="ln"></div></div>
+</section>
+
+<!-- S1: ЩО ТАКЕ СТРЕС -->
+<div class="div"></div>
+<section class="sec reveal" id="s1">
+  <div class="sec-ey">Частина 1 · Що відбувається</div>
+  <h2>Стрес — це <em>не страшно</em></h2>
+  <p class="lead">Стрес — це реакція тіла на щось важке, нове або загрозливе. Він є у всіх — і це нормально. Проблема не в самому стресі, а в тому, що ми не завжди знаємо, що з ним робити.</p>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Слово до 5–6 класу</div>
+    <p>Стрес — давня система. Ще коли наші предки зустрічали хижаків, тіло вмикало «тривогу»: серце б'ється швидше, м'язи напружуються, думки прискорюються. Це допомагало вижити. Сьогодні хижаків немає — але контрольна робота, сварка з другом або нова школа вмикають ту саму систему. Знати про це — вже допомагає.</p>
+  </div>
+
+  <p style="font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:1rem">Відмітьте те, що ти відчуваєш під час стресу:</p>
+  <div class="sig-grid">
+    <div class="sig-card" onclick="this.classList.toggle('picked')">
+      <span class="ck">✓</span><span class="sig-ico">💓</span>
+      <div class="sig-title">Серце б'ється швидко</div>
+      <div class="sig-body">Тіло готується до дії — серце качає більше крові</div>
+    </div>
+    <div class="sig-card" onclick="this.classList.toggle('picked')">
+      <span class="ck">✓</span><span class="sig-ico">😰</span>
+      <div class="sig-title">Пітніють долоні</div>
+      <div class="sig-body">Тіло охолоджується і готується до руху</div>
+    </div>
+    <div class="sig-card" onclick="this.classList.toggle('picked')">
+      <span class="ck">✓</span><span class="sig-ico">🌪️</span>
+      <div class="sig-title">Метелики в животі</div>
+      <div class="sig-body">Кров відходить від шлунку до м'язів</div>
+    </div>
+    <div class="sig-card" onclick="this.classList.toggle('picked')">
+      <span class="ck">✓</span><span class="sig-ico">😤</span>
+      <div class="sig-title">Важко дихати</div>
+      <div class="sig-body">Дихання стає швидшим і поверхневим</div>
+    </div>
+    <div class="sig-card" onclick="this.classList.toggle('picked')">
+      <span class="ck">✓</span><span class="sig-ico">🤯</span>
+      <div class="sig-title">Думки плутаються</div>
+      <div class="sig-body">Мозок у режимі «загрози» — важко зосередитись</div>
+    </div>
+    <div class="sig-card" onclick="this.classList.toggle('picked')">
+      <span class="ck">✓</span><span class="sig-ico">💪</span>
+      <div class="sig-title">Напружуються плечі</div>
+      <div class="sig-body">М'язи готуються захищатись або тікати</div>
+    </div>
+    <div class="sig-card" onclick="this.classList.toggle('picked')">
+      <span class="ck">✓</span><span class="sig-ico">😶</span>
+      <div class="sig-title">Хочеться замовкнути</div>
+      <div class="sig-body">Третя реакція на стрес — завмерти (freeze)</div>
+    </div>
+    <div class="sig-card" onclick="this.classList.toggle('picked')">
+      <span class="ck">✓</span><span class="sig-ico">😢</span>
+      <div class="sig-title">Хочеться плакати</div>
+      <div class="sig-body">Сльози — нормальний спосіб тіла знизити напруження</div>
+    </div>
+  </div>
+  <div id="sigResult" style="font-size:.85rem;color:var(--muted);margin-top:.5rem;font-weight:300;font-style:italic"></div>
+  <button style="background:var(--green);color:var(--bg);border:none;border-radius:50px;padding:.55rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;margin-top:.8rem;transition:all .2s" onclick="checkSig()">Перевірити мій стрес-профіль</button>
+</section>
+
+<!-- S2: КАРТА ТІЛА -->
+<div class="div"></div>
+<section class="sec reveal" id="s2">
+  <div class="sec-ey">Частина 2 · Карта тіла</div>
+  <h2>Де <em>живе</em> стрес?</h2>
+  <p class="lead">Кожна частина тіла по-своєму реагує на стрес. Натисни на зону — дізнайся, що там відбувається і як допомогти.</p>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Про тіло і емоції</div>
+    <p>Вчені довели: емоції живуть у тілі. Фінські дослідники (2014) просили людей намалювати, де вони відчувають різні емоції — і в усіх картинки були схожі. Страх — у грудях і горлі. Злість — у руках і голові. Тривога — в животі. Твоє тіло — найкраща карта твоїх почуттів.</p>
+  </div>
+
+  <div class="body-map-grid">
+    <div class="body-svg-wrap">
+      <svg viewBox="0 0 120 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:160px">
+        <!-- head -->
+        <ellipse cx="60" cy="30" rx="22" ry="26" class="bzone" id="bz-head" onclick="showZone('head')" title="Голова"/>
+        <!-- neck -->
+        <rect x="50" y="54" width="20" height="14" rx="4" class="bzone" id="bz-throat" onclick="showZone('throat')"/>
+        <!-- shoulders -->
+        <ellipse cx="25" cy="78" rx="16" ry="10" class="bzone" id="bz-shoulder" onclick="showZone('shoulder')"/>
+        <ellipse cx="95" cy="78" rx="16" ry="10" class="bzone" onclick="showZone('shoulder')"/>
+        <!-- chest -->
+        <rect x="34" y="66" width="52" height="46" rx="8" class="bzone" id="bz-chest" onclick="showZone('chest')"/>
+        <!-- stomach -->
+        <rect x="36" y="110" width="48" height="36" rx="8" class="bzone" id="bz-stomach" onclick="showZone('stomach')"/>
+        <!-- hands -->
+        <rect x="8" y="84" width="14" height="52" rx="6" class="bzone" id="bz-hands" onclick="showZone('hands')"/>
+        <rect x="98" y="84" width="14" height="52" rx="6" class="bzone" onclick="showZone('hands')"/>
+        <!-- legs -->
+        <rect x="36" y="148" width="20" height="70" rx="8" class="bzone" id="bz-legs" onclick="showZone('legs')"/>
+        <rect x="64" y="148" width="20" height="70" rx="8" class="bzone" onclick="showZone('legs')"/>
+        <!-- zone labels -->
+        <text x="60" y="33" text-anchor="middle" font-size="7" fill="rgba(237,232,223,.5)" font-family="DM Sans">Голова</text>
+        <text x="60" y="92" text-anchor="middle" font-size="6" fill="rgba(237,232,223,.4)">Груди</text>
+        <text x="60" y="131" text-anchor="middle" font-size="6" fill="rgba(237,232,223,.4)">Живіт</text>
+      </svg>
+    </div>
+    <div class="body-info" id="bodyInfo">
+      <div class="bi-tag">Натисни на зону</div>
+      <h3>Обери частину тіла</h3>
+      <p>Натисни на будь-яку частину тіла — і дізнайся, як саме вона реагує на стрес і що допоможе.</p>
+    </div>
+  </div>
+</section>
+
+<!-- S3: ДИХАННЯ -->
+<div class="div"></div>
+<section class="sec reveal" id="s3">
+  <div class="sec-ey">Частина 3 · Інструмент №1</div>
+  <h2><em>Дихання</em> — твій пульт керування</h2>
+  <p class="lead">Дихання — єдина функція тіла, яку ти можеш свідомо контролювати. Через дихання можна буквально «переключити» нервову систему з режиму стресу на режим спокою.</p>
+
+  <div class="psy">
+    <div class="psy-who">Порада психолога · Чому дихання працює</div>
+    <p>Коли ти видихаєш довше, ніж вдихаєш — активується парасимпатична нервова система (режим «відпочинок і відновлення»). Серце сповільнюється, м'язи розслабляються, думки проясняються. Це не магія — це біологія. І ти можеш запустити цей процес прямо зараз.</p>
+  </div>
+
+  <div class="breath-box">
+    <div class="breath-phase" id="bPhase">Натисни коло, щоб почати</div>
+    <div class="breath-circle" id="bCircle" onclick="startBreath()">
+      <div>
+        <div class="bc-text" id="bText">▶</div>
+        <div class="bc-sub" id="bSub">старт</div>
+      </div>
+    </div>
+    <div class="breath-count" id="bCount">—</div>
+    <div class="breath-hint" id="bHint">Обери техніку і натисни на коло</div>
+    <div class="breath-btns">
+      <button class="bbtn active" onclick="setTech('478')" id="btn478">4-7-8</button>
+      <button class="bbtn" onclick="setTech('box')" id="btnBox">Квадратне</button>
+      <button class="bbtn" onclick="setTech('calm')" id="btnCalm">Просте</button>
+    </div>
+    <div class="breath-counter" id="bCycles">Циклів: 0</div>
+  </div>
+</section>
+
+<!-- S4: ІНСТРУМЕНТИ -->
+<div class="div"></div>
+<section class="sec reveal" id="s4">
+  <div class="sec-ey">Частина 4 · Інструменти</div>
+  <h2>Твій набір <em>для стресу</em></h2>
+  <p class="lead">Натисни на кожну карту — дізнайся, як використовувати цей інструмент прямо зараз.</p>
+
+  <div class="tool-grid">
+    <div class="tool-card" onclick="this.classList.toggle('open')">
+      <span class="tc-ico">🫁</span>
+      <div class="tc-title">Дихання 4-7-8</div>
+      <div class="tc-short">Вдих-затримка-видих — заспокоює за хвилину</div>
+      <div class="tc-full">Вдихни носом на 4 рахунки → затримай на 7 → видихни ротом на 8. Повтори 3–4 рази. Активує парасимпатичну систему — тіло переходить у режим «спокій».</div>
+    </div>
+    <div class="tool-card" onclick="this.classList.toggle('open')">
+      <span class="tc-ico">👋</span>
+      <div class="tc-title">5-4-3-2-1</div>
+      <div class="tc-short">Заземлення через 5 почуттів</div>
+      <div class="tc-full">Назви 5 речей що бачиш → 4 що можеш торкнутись → 3 що чуєш → 2 що відчуваєш на запах → 1 на смак. Переключає мозок з «тривоги» на «зараз».</div>
+    </div>
+    <div class="tool-card" onclick="this.classList.toggle('open')">
+      <span class="tc-ico">🤸</span>
+      <div class="tc-title">Фізична розрядка</div>
+      <div class="tc-short">Потрясти руками, поскакати, покрутити шиєю</div>
+      <div class="tc-full">Стрес готує тіло до дії — дай йому цю дію. 10 стрибків, потрясіть руками, покрутіть головою і плечима. Кортизол (гормон стресу) знижується через рух.</div>
+    </div>
+    <div class="tool-card" onclick="this.classList.toggle('open')">
+      <span class="tc-ico">🧊</span>
+      <div class="tc-title">Холод або тепло</div>
+      <div class="tc-short">Холодна вода на зап'ястя або теплий чай</div>
+      <div class="tc-full">Холодна вода на зап'ястя або обличчя активує нерв, що сповільнює серцебиття. Теплий напій — розслабляє через відчуття тепла і ритму ковтання.</div>
+    </div>
+    <div class="tool-card" onclick="this.classList.toggle('open')">
+      <span class="tc-ico">✍️</span>
+      <div class="tc-title">Записати</div>
+      <div class="tc-short">Виписати думки — вони «виходять» з голови</div>
+      <div class="tc-full">Коли думки крутяться по колу — запиши їх. Це буквально «звільняє» оперативну пам'ять мозку. Не потрібно красиво — просто виплесни всі думки на папір.</div>
+    </div>
+    <div class="tool-card" onclick="this.classList.toggle('open')">
+      <span class="tc-ico">🎵</span>
+      <div class="tc-title">Музика</div>
+      <div class="tc-short">Ритм музики синхронізується з серцебиттям</div>
+      <div class="tc-full">Спокійна музика з темпом 60–80 BPM сповільнює серцебиття. Улюблена гучна музика — допомагає виплеснути злість або тривогу. Вибір залежить від того, що потрібно.</div>
+    </div>
+    <div class="tool-card" onclick="this.classList.toggle('open')">
+      <span class="tc-ico">💬</span>
+      <div class="tc-title">Поговорити</div>
+      <div class="tc-short">Розповісти комусь — вже знижує стрес наполовину</div>
+      <div class="tc-full">Дослідження показують: коли ми розповідаємо про проблему, рівень кортизолу знижується навіть якщо проблема не вирішена. Потрібна не порада — потрібне вухо.</div>
+    </div>
+    <div class="tool-card" onclick="this.classList.toggle('open')">
+      <span class="tc-ico">🌿</span>
+      <div class="tc-title">Природа і пауза</div>
+      <div class="tc-short">5 хвилин надворі — вже змінює стан</div>
+      <div class="tc-full">Природне освітлення і зелений колір знижують рівень кортизолу. Навіть вікно з видом на дерево допомагає. Якщо немає виходу — 5 хвилин тиші з заплющеними очима.</div>
+    </div>
+  </div>
+</section>
+
+<!-- S5: СЦЕНАРІЇ -->
+<div class="div"></div>
+<section class="sec reveal" id="s5">
+  <div class="sec-ey">Активність · Гра</div>
+  <h2>Що б ти <em>зробив/-ла?</em></h2>
+  <p class="lead">7 реальних ситуацій. Вибери відповідь — дізнайся, що допоможе найбільше.</p>
+
+  <div class="sc-box">
+    <div class="sc-hdr">
+      <span id="scHdr">Ситуація 1 з 7</span>
+      <span id="scPts" style="font-size:.8rem;font-weight:700">0 pts</span>
+    </div>
+    <div class="sc-bar-bg"><div class="sc-bar-fill" id="scFill" style="width:14%"></div></div>
+    <div class="sc-body">
+      <div class="sc-q" id="scQ"></div>
+      <div class="sc-opts" id="scOpts"></div>
+      <div class="sc-fb" id="scFb"></div>
+      <button class="sc-next" id="scNext" onclick="nextSc()">Наступна →</button>
+      <div class="sc-score" id="scScore"></div>
+    </div>
+  </div>
+</section>
+
+<!-- S6: ВІКТОРИНА -->
+<div class="div"></div>
+<section class="sec reveal" id="s6">
+  <div class="sec-ey">Вікторина</div>
+  <h2>7 запитань про <em>стрес і тіло</em></h2>
+  <p class="lead">Перевір, що ти знаєш про стрес, нервову систему і способи заспокоїтись.</p>
+
+  <div class="quiz-box">
+    <div class="qz-prog" id="qzProg">Питання 1 з 7</div>
+    <div class="qz-q" id="qzQ"></div>
+    <div class="qz-opts" id="qzOpts"></div>
+    <div class="qz-fb" id="qzFb"></div>
+    <button class="qz-next" id="qzNext" onclick="nextQz()">Далі →</button>
+    <div class="qz-score" id="qzScore"></div>
+  </div>
+</section>
+
+<!-- S7: МІЙ НАБІР -->
+<div class="div"></div>
+<section class="sec reveal" id="s7">
+  <div class="sec-ey">Практика</div>
+  <h2>Мій особистий <em>набір</em></h2>
+  <p class="lead">Заповни свій план — що допомагає саме тобі. Збережи або зроби скріншот.</p>
+
+  <div class="toolkit-grid">
+    <div class="tk">
+      <label>Мій знак стресу №1</label>
+      <input class="tk-in" type="text" id="tk1" placeholder="Що відчуваю першим…">
+      <br><br>
+      <label>Мій знак стресу №2</label>
+      <input class="tk-in" type="text" id="tk2" placeholder="Що відбувається з тілом…">
+    </div>
+    <div class="tk">
+      <label>Моя техніка №1 для швидкого заспокоєння</label>
+      <textarea class="tk-in" id="tk3" rows="3" placeholder="Наприклад, дихання 4-7-8…"></textarea>
+    </div>
+    <div class="tk">
+      <label>Людина, якій я можу розповісти</label>
+      <input class="tk-in" type="text" id="tk4" placeholder="Ім'я…">
+      <br><br>
+      <label>Моє місце відновлення</label>
+      <input class="tk-in" type="text" id="tk5" placeholder="Де мені добре…">
+    </div>
+    <div class="tk">
+      <label>Що НЕ допомагає мені (і я це знаю)</label>
+      <textarea class="tk-in" id="tk6" rows="3" placeholder="Сидіти і хвилюватись, кричати…"></textarea>
+    </div>
+  </div>
+  <button class="tk-gen" onclick="genTk()">Створити мій план 🌿</button>
+  <div class="tk-res" id="tkRes">
+    <h3>🌿 Мій план зі стресом</h3>
+    <div id="tkContent"></div>
+    <p style="font-size:.72rem;color:var(--dim);text-align:center;margin-top:1.3rem;letter-spacing:.07em">ЗБЕРЕЖИ СКРІНШОТ · ПЕРЕЧИТАЙ КОЛИ ВАЖКО</p>
+  </div>
+</section>
+
+<!-- FINAL -->
+<div class="div"></div>
+<div class="final reveal">
+  <span class="final-icon">🌿</span>
+  <div class="sec-ey" style="justify-content:center">Урок завершено</div>
+  <h2>Твоє тіло вміє <em>відновлюватись</em></h2>
+  <p class="lead" style="margin:0 auto 2rem;text-align:center">Ти знаєш, що таке стрес, де він живе в тілі і маєш 8 інструментів. Це вже захист.</p>
+  <div class="final-cert">
+    <div class="fc-l">Знаю</div>
+    <div class="fc-v">Що таке стрес · Де він у тілі · 8 технік заспокоєння · Як дихати правильно · Коли просити допомоги</div>
+    <br>
+    <div class="fc-l">Якщо дуже важко</div>
+    <div class="fc-v">116 111 — безкоштовно, анонімно, цілодобово</div>
+  </div>
+  <div class="psy" style="text-align:left">
+    <div class="psy-who">Порада психолога · Фінальна порада</div>
+    <p>Стрес — це сигнал, а не вирок. Він каже: «тут щось важливе для тебе». Тепер ти знаєш, як його почути — і що зробити далі. Якщо стрес стає надто великим і не проходить — це нормально звернутись по допомогу. До дорослого, якому довіряєш. Або на 116 111.</p>
+  </div>
+</div>
+
+<script>
+// NAV
+const sIds=['s0','s1','s2','s3','s4','s5','s6','s7'];
+const snds=document.querySelectorAll('.snd');
+snds.forEach(d=>d.addEventListener('click',()=>document.getElementById(sIds[+d.dataset.i])?.scrollIntoView({behavior:'smooth'})));
+window.addEventListener('scroll',()=>{
+  const p=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
+  document.getElementById('prog').style.width=p+'%';
+  sIds.forEach((id,i)=>{const el=document.getElementById(id);if(!el)return;const r=el.getBoundingClientRect();if(r.top<=window.innerHeight*.55&&r.bottom>=window.innerHeight*.45){snds.forEach(d=>d.classList.remove('on'));snds[i]?.classList.add('on');}});
+});
+document.querySelectorAll('.reveal').forEach(r=>new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('vis')),{threshold:.06}).observe(r));
+
+// STRESS SIGNALS CHECK
+function checkSig(){
+  const n=document.querySelectorAll('.sig-card.picked').length;
+  const msgs=['Схоже, у тебе мало ознак стресу зараз. Або ти вже добре його контролюєш 🌿','Є кілька знаків — важливо знати свою реакцію і мати план 🌱','Стрес у тілі відчутний. Сьогодні практикуємо, як з цим працювати 💙','Тіло дає багато сигналів. Добре, що ти це помічаєш — це вже перший крок 🧡'];
+  const r=document.getElementById('sigResult');
+  r.textContent=n<=2?msgs[0]:n<=4?msgs[1]:n<=6?msgs[2]:msgs[3];
+}
+
+// BODY MAP
+const zones={
+  head:{name:'Голова і мозок',tag:'Думки і голова',text:'Під стресом думки прискорюються, може боліти голова, важко зосередитись. Мозок у режимі «загрози» шукає небезпеку скрізь. Допомагає: заземлення 5-4-3-2-1, глибоке дихання, записати думки.'},
+  throat:{name:'Горло і шия',tag:'Горло',text:'Під стресом горло стискається — важко говорити або ковтати. М\'язи шиї напружуються. Допомагає: тепле пиття, повільні вдихи, плавні оберти головою, сказати вголос «я в безпеці».'},
+  shoulder:{name:'Плечі',tag:'Плечі і шия',text:'«Плечі біля вух» — класична поза стресу. М\'язи несуть весь «тягар» напруги. Допомагає: підняти плечі якнайвище — затримати — різко опустити. Повторити 3 рази.'},
+  chest:{name:'Груди і серце',tag:'Груди',text:'Серце б\'ється швидше, може відчуватись тиск або стиснення. Дихання стає поверхневим. Допомагає: дихання 4-7-8, рука на серці (тепло заспокоює), повільний видих через рот.'},
+  stomach:{name:'Живіт',tag:'Живіт і кишківник',text:'«Метелики», нудота, судоми — кров відходить від травної системи до м\'язів. Допомагає: тепло на живіт, діафрагмальне дихання (дихай животом, а не грудьми), прогулянка.'},
+  hands:{name:'Руки',tag:'Руки',text:'Руки тремтять, напружуються кулаки або навпаки — тяжкість. Тіло готується «боротись» або «захищатись». Допомагає: потрясти руками, стиснути кулаки і різко розтиснути, зробити 10 помахів руками.'},
+  legs:{name:'Ноги',tag:'Ноги',text:'Ноги можуть тремтіти, відчуватись важкими або ватними. Тіло готується «тікати». Допомагає: присісти кілька разів, потупцювати на місці, пройтись навіть 2 хвилини — дати ногам зробити те, до чого готувались.'}
+};
+function showZone(z){
+  document.querySelectorAll('.bzone').forEach(b=>b.classList.remove('active'));
+  const zone=zones[z];if(!zone)return;
+  const el=document.getElementById('bz-'+z);
+  document.querySelectorAll(`[onclick*="${z}"]`).forEach(b=>b.classList.add('active'));
+  document.getElementById('bodyInfo').innerHTML=`<div class="bi-tag">${zone.tag}</div><h3>${zone.name}</h3><p>${zone.text}</p>`;
+}
+
+// BREATHING
+let bTech='478',bInterval=null,bPhaseIdx=0,bCycleCount=0,bIsRunning=false;
+const techs={
+  '478':{phases:['Вдих','Затримай','Видих'],times:[4,7,8],labels:['носом','затримай','ротом']},
+  'box':{phases:['Вдих','Затримай','Видих','Затримай'],times:[4,4,4,4],labels:['носом','затримай','ротом','затримай']},
+  'calm':{phases:['Вдих','Видих'],times:[4,6],labels:['носом','ротом повільно']}
+};
+let bCountdown=0;
+function setTech(t){
+  bTech=t;
+  document.querySelectorAll('.bbtn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('btn'+t.charAt(0).toUpperCase()+t.slice(1)).classList.add('active');
+  if(bIsRunning)stopBreath();
+  resetBreath();
+}
+function resetBreath(){
+  document.getElementById('bPhase').textContent='Натисни коло, щоб почати';
+  document.getElementById('bText').textContent='▶';
+  document.getElementById('bSub').textContent='старт';
+  document.getElementById('bCount').textContent='—';
+  document.getElementById('bHint').textContent='Обери техніку і натисни на коло';
+  document.getElementById('bCycles').textContent='Циклів: 0';
+  bPhaseIdx=0;bCycleCount=0;bCountdown=0;
+  const c=document.getElementById('bCircle');c.className='breath-circle';
+}
+function startBreath(){
+  if(bIsRunning){stopBreath();return;}
+  bIsRunning=true;runPhase();
+}
+function runPhase(){
+  const tech=techs[bTech];
+  const phase=tech.phases[bPhaseIdx];
+  const time=tech.times[bPhaseIdx];
+  const lbl=tech.labels[bPhaseIdx];
+  bCountdown=time;
+  document.getElementById('bPhase').textContent=phase;
+  document.getElementById('bText').textContent=phase;
+  document.getElementById('bSub').textContent=lbl;
+  document.getElementById('bHint').textContent=`${time} секунд`;
+  document.getElementById('bCount').textContent=bCountdown;
+  const c=document.getElementById('bCircle');
+  c.className='breath-circle';
+  if(phase==='Вдих'){void c.offsetWidth;c.classList.add('inhale');c.style.animationDuration=time+'s';}
+  else if(phase==='Видих'){void c.offsetWidth;c.classList.add('exhale');c.style.animationDuration=time+'s';}
+  bInterval=setInterval(()=>{
+    bCountdown--;
+    document.getElementById('bCount').textContent=bCountdown;
+    if(bCountdown<=0){
+      clearInterval(bInterval);
+      bPhaseIdx=(bPhaseIdx+1)%tech.phases.length;
+      if(bPhaseIdx===0){bCycleCount++;document.getElementById('bCycles').textContent='Циклів: '+bCycleCount;}
+      if(bCycleCount>=5){stopBreath();document.getElementById('bPhase').textContent='Чудово! 5 циклів! 🌿';document.getElementById('bCount').textContent='✓';return;}
+      runPhase();
+    }
+  },1000);
+}
+function stopBreath(){
+  clearInterval(bInterval);bIsRunning=false;
+  document.getElementById('bText').textContent='▶';document.getElementById('bSub').textContent='ще раз';
+  document.getElementById('bCircle').className='breath-circle';
+}
+
+// SCENARIOS
+const scenarios=[
+  {q:'Завтра контрольна, і ти не можеш заснути — думки крутяться по колу. Що допоможе?',
+   opts:['Переглядати телефон до пізньої ночі','Записати всі думки на папір і зробити дихання 4-7-8','Їсти солодке і дивитись відео','Просто лежати і хвилюватись'],
+   ans:1,fb:'✓ Записати думки «виганяє» їх з голови — мозок перестає «утримувати» їх. Дихання 4-7-8 активує режим спокою за кілька хвилин.'},
+  {q:'На уроці тебе викликали відповідати, і ти відчув/-ла, що руки тремтять і голос зникає. Що зробити прямо зараз?',
+   opts:['Почервоніти і мовчати','Зробити один глибокий вдих носом і повільний видих ротом, потім почати говорити','Сказати «не знаю» і сісти','Подумати «всі думають що я дурень/-ня»'],
+   ans:1,fb:'✓ Один глибокий видих буквально знижує рівень кортизолу і сповільнює серцебиття. Цього достатньо, щоб почати говорити.'},
+  {q:'Після складного дня ти відчуваєш напругу в плечах і голову «як ватяна». Що допоможе?',
+   opts:['Лягти перед телефоном на 3 години','Підняти плечі вгору, затримати і різко опустити — 3 рази. Потім 10 хвилин прогулянки','Ні з ким не розмовляти','Поїсти чогось смачного і забути'],
+   ans:1,fb:'✓ Фізичний рух знижує кортизол, а «скидання плечей» знімає м\'язову напругу. Прогулянка — один з найкращих антистресових засобів.'},
+  {q:'Ти посварився/-лась з другом і відчуваєш злість — хочеться щось розбити. Що краще?',
+   opts:['Написати образливе повідомлення одразу','Фізична розрядка: 20 стрибків або потрясти руками + потім написати, що відчуваєш на папері','Мовчати і тримати все в собі','Поскаржитись всім у класі'],
+   ans:1,fb:'✓ Злість — енергія. Тілу потрібно її «витратити» фізично. Після — писати. Це набагато ефективніше, ніж слати злі повідомлення.'},
+  {q:'Перед виступом на шкільному заході в тебе «метелики» в животі і тремтять коліна. Це означає…',
+   opts:['Ти погано підготувався/-лась','Ти хворієш','Твоє тіло готується до важливої події — це нормальна реакція на стрес','Треба відмовитись від виступу'],
+   ans:2,fb:'✓ «Метелики» і тремтіння — ознака, що тіло в режимі «готовності». Це та сама енергія, що й страх, але спрямована інакше. Спортсмени кажуть це «бойовий дух».'},
+  {q:'Мама або тато дуже зайняті і немає з ким поговорити. Стрес не проходить вже кілька днів. Що правильно?',
+   opts:['Тримати все в собі — нікому не цікаво','Шукати допомоги у незнайомців в інтернеті','Поговорити зі шкільним психологом або зателефонувати на 116 111','Нічого не робити — само пройде'],
+   ans:2,fb:'✓ Стрес, що не проходить — сигнал, що потрібна допомога. Шкільний психолог або 116 111 — безкоштовно, конфіденційно. Просити допомоги — це сила.'},
+  {q:'Що НЕ є ознакою стресу?',
+   opts:['Серцебиття прискорюється','М\'язи напружуються','Тіло повністю розслаблене і думки спокійні','Живіт стискається'],
+   ans:2,fb:'✓ Розслаблене тіло і спокійні думки — ознака відпочинку, не стресу. Всі інші варіанти — це реакція «бий або тікай» (fight or flight).'},
+];
+let scI=0,scSc=0,scAns=false;
+function loadSc(){
+  const s=scenarios[scI];
+  document.getElementById('scHdr').textContent=`Ситуація ${scI+1} з ${scenarios.length}`;
+  document.getElementById('scFill').style.width=`${((scI+1)/scenarios.length)*100}%`;
+  document.getElementById('scQ').textContent=s.q;
+  const o=document.getElementById('scOpts');o.innerHTML='';
+  s.opts.forEach((op,i)=>{const b=document.createElement('button');b.className='sc-opt';b.textContent=op;b.onclick=()=>ansSc(i);o.appendChild(b);});
+  document.getElementById('scFb').className='sc-fb';
+  document.getElementById('scNext').className='sc-next';
+  scAns=false;
+}
+function ansSc(i){
+  if(scAns)return;scAns=true;
+  const s=scenarios[scI];
+  document.querySelectorAll('.sc-opt').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('scFb');
+  if(i===s.ans){document.querySelectorAll('.sc-opt')[i].classList.add('ok');fb.className='sc-fb ok show';scSc++;document.getElementById('scPts').textContent=scSc+' pts';}
+  else{document.querySelectorAll('.sc-opt')[i].classList.add('bad');document.querySelectorAll('.sc-opt')[s.ans].classList.add('ok');fb.className='sc-fb bad show';}
+  fb.textContent=s.fb;document.getElementById('scNext').className='sc-next show';
+}
+function nextSc(){
+  scI++;
+  if(scI<scenarios.length){loadSc();return;}
+  document.getElementById('scQ').textContent='';document.getElementById('scOpts').innerHTML='';
+  document.getElementById('scFb').className='sc-fb';document.getElementById('scNext').className='sc-next';
+  document.getElementById('scHdr').textContent='Завершено!';
+  const sc=document.getElementById('scScore');sc.style.display='block';
+  const msgs=['Добрий початок! Продовжуй вчитись 💙','Ти знаєш головне! 🌱','Дуже добре! 🌿','Відмінно! Ти справжній/-я знавець/-вчиня стресу 🌟'];
+  const t=Math.min(Math.floor(scSc/(scenarios.length/msgs.length)),msgs.length-1);
+  sc.textContent=`${scSc} з ${scenarios.length} — ${msgs[t]}`;
+}
+loadSc();
+
+// QUIZ
+const qzData=[
+  {q:'Що таке стрес?',opts:['Хвороба','Нормальна реакція тіла на щось важке або нове','Поганий настрій','Вигадка дорослих'],ans:1,exp:'✓ Стрес — природна реакція, що допомагає нам справлятись з викликами. Він є у всіх і не є хворобою.'},
+  {q:'Яка реакція тіла НЕ є частиною стресу?',opts:['Серце б\'ється швидше','Дихання стає поверхневим','М\'язи повністю розслаблені','Пітніють долоні'],ans:2,exp:'✓ Розслаблені м\'язи — ознака відпочинку. Під стресом м\'язи навпаки напружуються, щоб бути готовими до дії.'},
+  {q:'Чому довгий видих заспокоює?',opts:['Тому що менше кисню потрапляє в мозок','Активується парасимпатична система — режим «спокій і відновлення»','Тому що це відволікає','Це не працює — це міф'],ans:1,exp:'✓ Довгий видих активує парасимпатичну нервову систему. Серце сповільнюється, м\'язи розслабляються.'},
+  {q:'Що таке техніка 5-4-3-2-1?',opts:['Рахування до 5','Заземлення через 5 почуттів — переключає мозок на «зараз»','Вправа для пам\'яті','Дихальна техніка'],ans:1,exp:'✓ 5-4-3-2-1 використовує всі 5 органів чуттів, щоб переключити мозок з тривоги на реальний момент. Дуже ефективно при панічних атаках.'},
+  {q:'Чому фізична активність знижує стрес?',opts:['Тому що стомлює і забуваєш про проблему','Знижується рівень кортизолу (гормону стресу), тіло «витрачає» накопичену напругу','Тому що треба думати про рухи','Насправді фізична активність посилює стрес'],ans:1,exp:'✓ Під стресом тіло готується до руху (бій або втеча). Фізична активність «виконує» цей намір і знижує рівень кортизолу.'},
+  {q:'Що означає «метелики в животі» перед виступом?',opts:['Ти захворів/-ла','Ти не готовий/-а','Тіло в режимі готовності — нормальна реакція на важливу подію','Треба відмовитись від виступу'],ans:2,exp:'✓ «Метелики» — та сама енергія стресу, що може стати «бойовим духом». Спортсмени, актори і музиканти відчувають те саме.'},
+  {q:'Якщо стрес не проходить кілька тижнів — що правильно?',opts:['Чекати поки само пройде','Тримати все в собі','Звернутись до шкільного психолога або на 116 111','Більше спати і їсти'],ans:2,exp:'✓ Тривалий стрес — сигнал, що потрібна підтримка. 116 111 — безкоштовно, анонімно, цілодобово. Просити допомоги — нормально і правильно.'},
+];
+let qzI=0,qzSc=0,qzAns=false;
+function loadQz(){
+  const q=qzData[qzI];
+  document.getElementById('qzProg').textContent=`Питання ${qzI+1} з ${qzData.length}`;
+  document.getElementById('qzQ').textContent=q.q;
+  const o=document.getElementById('qzOpts');o.innerHTML='';
+  q.opts.forEach((op,i)=>{const b=document.createElement('button');b.className='qz-o';b.textContent=op;b.onclick=()=>ansQz(i);o.appendChild(b);});
+  document.getElementById('qzFb').className='qz-fb';document.getElementById('qzNext').className='qz-next';qzAns=false;
+}
+function ansQz(i){
+  if(qzAns)return;qzAns=true;
+  const q=qzData[qzI];
+  document.querySelectorAll('.qz-o').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('qzFb');
+  if(i===q.ans){document.querySelectorAll('.qz-o')[i].classList.add('ok');fb.className='qz-fb ok show';qzSc++;}
+  else{document.querySelectorAll('.qz-o')[i].classList.add('bad');document.querySelectorAll('.qz-o')[q.ans].classList.add('ok');fb.className='qz-fb bad show';}
+  fb.textContent=q.exp;document.getElementById('qzNext').className='qz-next show';
+}
+function nextQz(){
+  qzI++;
+  if(qzI<qzData.length){loadQz();return;}
+  document.getElementById('qzQ').textContent='';document.getElementById('qzOpts').innerHTML='';
+  document.getElementById('qzFb').className='qz-fb';document.getElementById('qzNext').className='qz-next';
+  document.getElementById('qzProg').textContent='Вікторину завершено!';
+  const sc=document.getElementById('qzScore');sc.style.display='block';
+  const msgs=['Продовжуй вивчати! 💙','Добре — знаєш основи 🌱','Відмінно — ти знавець/-вчиня! 🌿','Бездоганно! 🌟'];
+  const t=Math.min(Math.floor(qzSc/(qzData.length/msgs.length)),msgs.length-1);
+  sc.textContent=`${qzSc} з ${qzData.length} — ${msgs[t]}`;
+}
+loadQz();
+
+// TOOLKIT
+function genTk(){
+  const v=id=>document.getElementById(id).value.trim()||'—';
+  document.getElementById('tkContent').innerHTML=`
+    <div class="tr-row"><span class="tr-l">Знак стресу №1</span><span>${v('tk1')}</span></div>
+    <div class="tr-row"><span class="tr-l">Знак стресу №2</span><span>${v('tk2')}</span></div>
+    <div class="tr-row"><span class="tr-l">Техніка заспокоєння</span><span>${v('tk3')}</span></div>
+    <div class="tr-row"><span class="tr-l">Людина довіри</span><span>${v('tk4')}</span></div>
+    <div class="tr-row"><span class="tr-l">Місце відновлення</span><span>${v('tk5')}</span></div>
+    <div class="tr-row"><span class="tr-l">Що НЕ допомагає</span><span>${v('tk6')}</span></div>`;
+  document.getElementById('tkRes').classList.add('show');
+}
+</script>
+<style id="srcblk">.sb{max-width:960px;margin:3rem auto 4rem;padding:1.4rem 1.5rem;border:1px solid rgba(128,128,128,.35);border-radius:12px;background:rgba(128,128,128,.09);line-height:1.6;color:inherit;font-size:.9rem;position:relative;z-index:5}.sb h2{font-size:1.15rem;margin:0 0 .6rem}.sb h3{font-size:.95rem;margin:1.1rem 0 .4rem}.sb ol{padding-left:1.3rem}.sb li{margin:.35rem 0;font-size:.84rem;opacity:.92}.sb .nt{font-size:.78rem;opacity:.78;margin:.6rem 0}.sb table{width:100%;border-collapse:collapse;font-size:.82rem}.sb td,.sb th{text-align:left;padding:.4rem .5rem;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}.sb .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem}.sb .cards div{border:1px solid rgba(128,128,128,.3);border-radius:10px;padding:.7rem .9rem;font-size:.82rem}.sb .cards i{font-style:normal;font-size:1.2rem;display:block}.sb details summary{cursor:pointer;font-weight:600}</style><!--srcblk--><div class="sb"><h2>📖 Що ще почитати чи подивитись</h2><div class="cards"><div><i>🧰</i><b>Видих довший за вдих</b><br><span>Практика<br>Щодня по 1 хвилині перед сном, разом із дорослим</span></div><div><i>📞</i><b>116 111</b><br><span>Дитяча лінія<br>Безкоштовно, анонімно, цілодобово. Психологічна підтримка: 0 800 500 335</span></div></div><h3>Джерела, на які спирається урок</h3><details><summary>Показати список (6)</summary><ol><li>McEwen, B. S. (1998). Protective and damaging effects of stress mediators. <i>New England Journal of Medicine, 338</i>(3), 171–179.</li><li>Thayer, J. F., Åhs, F., Fredrikson, M., Sollers, J. J., &amp; Wager, T. D. (2012). A meta-analysis of heart rate variability and neuroimaging studies. <i>Neuroscience &amp; Biobehavioral Reviews, 36</i>(2), 747–756.</li><li>Sapolsky, R. M. (2004). <i>Why Zebras Don’t Get Ulcers</i> (3rd ed.). Henry Holt.</li><li>Porges, S. W. (2011). <i>The Polyvagal Theory</i>. W. W. Norton. (Теорія дискусійна: використовуйте як практичну метафору.)</li><li>Pennebaker, J. W. (1997). Writing about emotional experiences as a therapeutic process. <i>Psychological Science, 8</i>(3), 162–166.</li><li>Keller, A., Litzelman, K., Wisk, L. E., et al. (2012). Does the perception that stress affects health matter? <i>Health Psychology, 31</i>(5), 677–684.</li></ol></details><p class="nt">Бібліографічні дані наведено за знаннями автора без звірки з першоджерелами в мережі: перед цитуванням перевірте видання, рік, DOI та доступність. Українські переклади книг можуть існувати або ні. Зведений реєстр: project_sources.html.</p><p class="nt">Допомога: 116 111 (безкоштовно, анонімно, цілодобово) · 0 800 500 335 · 102 / 103.</p></div><!--/srcblk--><div class="mo-foot"><span><a href="04-5-6-lesson.html">← Тема 4</a></span><span><a href="06-5-6-lesson.html">Тема 6 →</a></span></div><a class="mo-fab" href="../index.html#t05">☰ До матриці</a></body>
+</html>
